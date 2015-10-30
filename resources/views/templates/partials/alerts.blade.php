@@ -1,3 +1,9 @@
+@if (Session::has('personal'))
+	<div class="card-panel lime waves-effect waves-light" role="alert">
+		{{ Session::get('personal') }}
+	</div>
+@endif
+
 @if (Session::has('info'))
 	<div class="card-panel lime waves-effect waves-light" role="alert">
 		{{ Session::get('info') }}

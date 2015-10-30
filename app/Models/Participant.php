@@ -41,7 +41,7 @@ class Participant extends Model implements AuthenticatableContract{
                             ];
 
     public static function authParticipant($credentials){
-        return (bool) (Participant::where('cpf', '=' , $credentials['cpf'])->where('password', '=' , $credentials['password'])->first() != null);
+        return Participant::where('cpf', '=' , $credentials['cpf'])->where('password', '=' , $credentials['password'])->first();
     }
 
 }

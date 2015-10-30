@@ -35,3 +35,15 @@ Route::get('about', 'PagesController@about' );
 
 Route::get('marcos', 'PagesController@teste_marcos');
 // +++++++++++++++++++++++++++++++++++++++++++++++
+
+// ==================== PAGES ====================
+Route::get('/activity', [
+	'uses' 	=> 'PagesController@activityIndex',
+	'as' 	=> 'activity',
+]);
+
+Route::get('/participant', [
+	'uses' 	=> 'PagesController@participantIndex',
+	'as' 	=> 'participant',
+]);
+// +++++++++++++++++++++++++++++++++++++++++++++++

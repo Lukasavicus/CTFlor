@@ -28,6 +28,7 @@
             	<form class="col s8" action="{{ route('home') }}" method="POST">
         			<div class="row">
 		                <div class="input-field col s8">
+		                	<i class="material-icons prefix">perm_identity</i>
 		                    <input id="cpf" name="cpf" type="text" class="validate"/>
 		                    <label class="active" for="cpf">CPF</label>
 		                    @if($errors->has('cpf'))
@@ -35,6 +36,7 @@
 		 		 			@endif
 		                </div>
 	                	<div class="input-field col s8">
+	                		<i class="material-icons prefix">vpn_key</i>
 	                        <input id="password" name="password" type="password" class="validate"/>
 	            			<label for="password">Password</label>
 	                	</div>
