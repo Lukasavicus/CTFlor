@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Jobs;
+namespace CTFlor\Jobs;
 
 use Illuminate\Bus\Queueable;
 

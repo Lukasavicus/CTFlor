@@ -14,7 +14,6 @@ return array(
     'CreateMiniCourseParticipantsTable' => $baseDir . '/database/migrations/2015_10_30_000059_create_minicourseParticipants_table.php',
     'CreateParticipantsTable' => $baseDir . '/database/migrations/2015_10_29_232653_create_participants_table.php',
     'CreateTechnicalVisitParticipantsTable' => $baseDir . '/database/migrations/2015_10_30_000509_create_technicalVisitParticipants_table.php',
-    'CreateTest' => $baseDir . '/database/migrations/2015_10_30_034510_create_test.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',

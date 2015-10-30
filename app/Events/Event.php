@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace CTFlor\Events;
 
 abstract class Event
 {

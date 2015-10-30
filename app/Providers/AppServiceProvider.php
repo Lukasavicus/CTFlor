@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace CTFlor\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

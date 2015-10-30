@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+// ===================== HOME ====================
+Route::get('/', [
+    'uses' => '\CTFlor\Http\Controllers\HomeController@index',
+    'as' => 'home',
+]);
+
+Route::post('/', [
+    'uses' => '\CTFlor\Http\Controllers\HomeController@post',
+]);
+
+// +++++++++++++++++++++++++++++++++++++++++++++++
