@@ -3,22 +3,25 @@
 @section('search')
     <div class="row">
         <form class="col s12" action="{{ route('home') }}" method="POST">
-        	<div class="input-field col s3">
-                <select>
-        	        <option value="" disabled selected>Choose your option</option>
-        	        <option value="1">Option 1</option>
-        	        <option value="2">Option 2</option>
-        	        <option value="3">Option 3</option>
-                </select>
-                <label>Parameters</label>
+        	<div class="input-field col s4 left-align">
+                <p>
+                    <input type="checkbox" id="name"/>
+                    <label for="name">Nome</label>
+                    &nbsp;
+                    <input type="checkbox" id="location"/>
+                    <label for="location">Localizacao</label>
+                    &nbsp;
+                    <input type="checkbox" id="type"/>
+                    <label for="type">Tipo</label>
+                </p>
             </div>
-            <div class="input-field col s7">
+            <div class="input-field col s6">
                 <i class="material-icons prefix">search</i>
             	<input id="icon_search" type="text" class="validate">
-                <label for="icon_search">Search</label>
+                <label for="icon_search">Buscar</label>
             </div>
-            <div class="input-field col s2">
-                <button class="waves-effect waves-light btn" type="submit">Search</button>
+            <div class="input-field col s2 right-align">
+                <button class="waves-effect waves-light btn" type="submit">Buscar</button>
             </div>
         </form>
     </div>
@@ -31,61 +34,100 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">toc</i>
-                    <input id="icon_prefix" type="text" class="validate">
-                    <label for="icon_prefix">Name of Activity</label>
+                    <input id="nameForm" type="text" class="validate">
+                    <label for="nameForm">Nome</label>
                 </div>
                   
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">today</i>
-                    <label class="light-blue-text darken-4">From</label>
-                    <input type="date" class="datepicker" class="light-blue-text darken-4">
+                    <i class="material-icons prefix">credit_card</i>
+                    <input id="cpf" type="text" class="validate">
+                    <label for="cpf">CPF</label>
                 </div>
 
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">today</i>
-                    <label class="light-blue-text darken-4">To</label>
-                    <input type="date" class="datepicker" class="light-blue-text darken-4">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
                 </div>
             </div>
 
 
             <div class="row">
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">room</i>
-                    <input id="icon_telephone" type="text" class="validate">
-                    <label for="icon_telephone">Location</label>
+                    <i class="material-icons prefix">phone</i>
+                    <input id="phone" type="text" class="validate">
+                    <label for="phone">Telefone</label>
                 </div>
 
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">perm_identity</i>
-                    <input id="icon_telephone" type="number" class="validate">
-                    <label for="icon_telephone">Quantity of Participants</label>
+                    <i class="material-icons prefix">location_on</i>
+                    <input id="address" type="text" class="validate">
+                    <label for="address">Endereco</label>
                 </div>
 
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">schedule</i>
-                    <input id="first_name2" type="time" class="validate">
-                    <label class="active" for="first_name2">Duration</label>
+                    <i class="material-icons prefix">lock</i>
+                    <input id="password" type="password" class="validate">
+                    <label class="active" for="password">Senha</label>
                 </div>
             </div>
+
 
             <div class="row">
                 <div class="input-field col s4">
                     <select>
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                      <option value="" disabled selected>Escolha uma opcao</option>
+                      <option value="student">Estudante</option>
+                      <option value="professor">Professor</option>
+                      <option value="community">Comunidade</option>
                     </select>
-                    <label><i class="material-icons left">description</i>Materialize Select</label>
+                    <label>Tipo de usuario</label>
                 </div>
 
                 <div class="input-field col s4">
-                    <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Save</a>
+                    <i class="material-icons prefix">store</i>
+                    <input id="university" type="text" class="validate">
+                    <label for="university">Universidade</label>
                 </div>
 
                 <div class="input-field col s4">
-                    <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Clear fields</a>
+                    <i class="material-icons prefix">assignment</i>
+                    <input id="course" type="text" class="validate">
+                    <label class="active" for="course">Curso</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">work</i>
+                    <input id="department" type="text" class="validate">
+                    <label for="department">Departamento</label>
+                </div>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">supervisor_account</i>
+                    <input id="responsability" type="text" class="validate">
+                    <label for="responsability">Responsabilidade</label>
+                </div>
+
+            </div>
+
+
+
+            <div class="row">
+            <div class="input-field col s3"></div>
+                <div class="input-field col s4">
+                    <a href="#!" class="waves-effect waves-light btn" id="insertButton" name="insertButton">
+                        <i class="material-icons left">input</i>
+                        Inserir
+                    </a>
+                </div>
+
+                <div class="input-field col s5">
+                    <a href="#!" class="waves-effect waves-light btn" id="clearButton" name="clearButton">
+                        <i class="material-icons left">delete</i>
+                        Limpar
+                    </a>
                 </div>
             </div>
 
