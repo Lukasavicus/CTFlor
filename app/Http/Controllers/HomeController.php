@@ -2,6 +2,7 @@
 
 namespace CTFlor\Http\Controllers;
 use Auth;
+use CTFlor\Models\Participant;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller{
@@ -13,16 +14,15 @@ class HomeController extends Controller{
 	public function post(Request $request){
 
 		$this->validate($request, [
-			'login' => 'required',
+			'cpf' => 'required',
 			'password' => 'required',
 		]);
 
-		$cpf_participant = $request->input('login');
-		$password_participant = $request->input('password');
+		$credentials = $request->only(['cpf', 'password', 'login']);
 
-		//dd($cpf_participant . ' ' . $password_participant);
+		//dd('>' .  $credentials['password'] . '|' . $credentials['login'] . '|' . $credentials['cpf'] . '<');
 
-		if(!Auth::attempt(['cpf' => $cpf_participant, 'password' => $password_participant] ) ){
+		if(!Auth::attempt($request->only(['cpf', 'password']) ) ){
 			dd('error');//echo 'Error';
 			return redirect()->back()->with('error', 'Could not sign you in with these credentials.');
 		}
