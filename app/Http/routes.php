@@ -36,6 +36,7 @@ Route::get('/alerts', function(){
 Route::get('about', 'PagesController@about' );
 
 Route::get('marcos', 'PagesController@teste_marcos');
+<<<<<<< HEAD
 // +++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -43,3 +44,20 @@ Route::get('marcos', 'PagesController@teste_marcos');
 // =============== Events CRUD ===================
 Route::resource('event', 'EventController');
 // +++++++++++++++++++++++++++++++++++++++++++++++
+||||||| merged common ancestors
+// +++++++++++++++++++++++++++++++++++++++++++++++
+=======
+// +++++++++++++++++++++++++++++++++++++++++++++++
+
+// ==================== PAGES ====================
+Route::get('/activity', [
+	'uses' 	=> 'PagesController@activityIndex',
+	'as' 	=> 'activity',
+]);
+
+Route::get('/participant', [
+	'uses' 	=> 'PagesController@participantIndex',
+	'as' 	=> 'participant',
+]);
+// +++++++++++++++++++++++++++++++++++++++++++++++
+>>>>>>> e41d4c50c387d2d95b9623bb7dd624778718389c
