@@ -37,3 +37,9 @@ Route::get('about', 'PagesController@about' );
 
 Route::get('marcos', 'PagesController@teste_marcos');
 // +++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+// =============== Events CRUD ===================
+Route::resource('event', 'EventController');
+// +++++++++++++++++++++++++++++++++++++++++++++++
