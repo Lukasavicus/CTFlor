@@ -14,6 +14,16 @@
 
 	<div class="container">
     	<div class="section">
+
+    		@include('templates.partials.alerts')
+    		<!--
+    		<h5 class="header col s12 light">
+    			>>
+				{{ Session::get('info') }}
+				<<
+			</h5>
+			-->
+
       		<div class="row">
             	<form class="col s8" action="{{ route('home') }}" method="POST">
         			<div class="row">

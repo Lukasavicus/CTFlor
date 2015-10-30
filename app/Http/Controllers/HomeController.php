@@ -25,11 +25,11 @@ class HomeController extends Controller{
 		//echo $authencted_client;
 
 		if(!$authencted_client){ //!Auth::attempt($request->only(['cpf', 'password']) ) 
-			dd('error');//echo 'Error';
+			//dd('error');//echo 'Error';
 			return redirect()->back()->with('error', 'Could not sign you in with these credentials.');
 		}
 
-		dd('no error');//echo 'No Error';
+		//dd('no error');//echo 'No Error';
 
 		return redirect()->route('home')->with('info', 'You are now signed in.');
 	}
