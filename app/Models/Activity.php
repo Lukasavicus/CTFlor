@@ -35,4 +35,8 @@ class Activity extends  Model implements AuthenticatableContract{
      * @var array
      */
     //protected $hidden = [];
+
+    public function getTypes(){
+        return array([]);
+    }
 }

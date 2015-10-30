@@ -27,7 +27,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="green-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+      Made by <a class="green-text text-lighten-3" href="http://materializecss.com">Materialize</a> and Love
       </div>
     </div>
   </footer>
