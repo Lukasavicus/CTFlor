@@ -17,9 +17,9 @@ class CreateParticipantsTable extends Migration
             
             $table->increments('id');
             $table->string('name');
-            $table->integer('cpf')->unique();
+            $table->string('cpf')->unique();
             $table->string('email');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('address');
             $table->string('password');
             $table->enum('type', ['student', 'professor', 'community', 'organization']);

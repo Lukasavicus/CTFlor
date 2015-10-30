@@ -7,11 +7,14 @@
 	    <form class="col s8" action="{{ route('home') }}" method="POST">
 	      	<div class="row">
 		        <div class="input-field col s8">
-		       		<input id="first_name2" type="text" class="validate">
- 		 			<label class="active" for="first_name2">Login</label>
+		       		<input name="login" id="login" type="text" class="validate">
+ 		 			<label class="active" for="login">Login</label>
+ 		 			@if($errors->has('login'))
+ 		 				<span>{{ $errors->first('login') }}</span>
+ 		 			@endif
 		        </div>
 		        <div class="input-field col s8">
-		        	<input id="password" type="password" class="validate">
+		        	<input name="password" id="password" type="password" class="validate">
 	            	<label for="password">Password</label>
 		        </div>
 	      	</div>
