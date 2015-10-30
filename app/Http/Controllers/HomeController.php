@@ -18,21 +18,20 @@ class HomeController extends Controller{
 			'password' => 'required',
 		]);
 
-		$credentials = $request->only(['cpf', 'password', 'login']);
+		$credentials = $request->only(['cpf', 'password']);
 
-		//dd('>' .  $credentials['password'] . '|' . $credentials['login'] . '|' . $credentials['cpf'] . '<');
+		$authencted_client = Participant::authParticipant($credentials);
 
-		if(!Auth::attempt($request->only(['cpf', 'password']) ) ){
-			dd('error');//echo 'Error';
+		//echo $authencted_client;
+
+		if(!$authencted_client){ //!Auth::attempt($request->only(['cpf', 'password']) ) 
+			//dd('error');//echo 'Error';
 			return redirect()->back()->with('error', 'Could not sign you in with these credentials.');
 		}
 
-		dd('no error');//echo 'No Error';
+		//dd('no error');//echo 'No Error';
 
 		return redirect()->route('home')->with('info', 'You are now signed in.');
-
-		//print_r("Bloody hell");
-		//dd($request->input('login') . " " . $request->input('password'));
 	}
 
 }

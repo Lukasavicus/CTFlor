@@ -19,8 +19,6 @@ Route::get('/', [
     'as' => 'home',
 ]);
 
-Route::get('about', 'PagesController@about' );
-
 Route::post('/', [
     'uses' => '\CTFlor\Http\Controllers\HomeController@post',
 ]);
@@ -31,4 +29,11 @@ Route::post('/', [
 Route::get('/alerts', function(){
 	return redirect()->route('home')->with('info', 'You have signed up!');
 });
+// +++++++++++++++++++++++++++++++++++++++++++++++
+
+
+// ==================== TESTES ===================
+Route::get('about', 'PagesController@about' );
+
+Route::get('marcos', 'PagesController@teste_marcos');
 // +++++++++++++++++++++++++++++++++++++++++++++++

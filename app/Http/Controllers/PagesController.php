@@ -17,4 +17,8 @@ class PagesController extends Controller
     	return view('pages.about', compact('congress', 'description'));
 
     }
+
+    public function teste_marcos(){
+    	return view('marcos');
+    }
 }
