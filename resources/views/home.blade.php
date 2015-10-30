@@ -18,8 +18,11 @@
             	<form class="col s8" action="{{ route('home') }}" method="POST">
         			<div class="row">
 		                <div class="input-field col s8">
-		                    <input id="login" name="name" type="text" class="validate"/>
-		                    <label class="active" for="first_name2">Login</label>
+		                    <input id="cpf" name="cpf" type="text" class="validate"/>
+		                    <label class="active" for="cpf">CPF</label>
+		                    @if($errors->has('cpf'))
+		 		 				<span>{{ $errors->first('cpf') }}</span>
+		 		 			@endif
 		                </div>
 	                	<div class="input-field col s8">
 	                        <input id="password" name="password" type="password" class="validate"/>

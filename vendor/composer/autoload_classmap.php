@@ -47,6 +47,7 @@ return array(
     'CreateMiniCourseParticipantsTable' => $baseDir . '/database/migrations/2015_10_30_000059_create_minicourseParticipants_table.php',
     'CreateParticipantsTable' => $baseDir . '/database/migrations/2015_10_29_232653_create_participants_table.php',
     'CreateTechnicalVisitParticipantsTable' => $baseDir . '/database/migrations/2015_10_30_000509_create_technicalVisitParticipants_table.php',
+<<<<<<< HEAD
     'Cron\\AbstractField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/AbstractField.php',
     'Cron\\CronExpression' => $vendorDir . '/mtdowling/cron-expression/src/Cron/CronExpression.php',
     'Cron\\DayOfMonthField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/DayOfMonthField.php',
@@ -57,6 +58,9 @@ return array(
     'Cron\\MinutesField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/MinutesField.php',
     'Cron\\MonthField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/MonthField.php',
     'Cron\\YearField' => $vendorDir . '/mtdowling/cron-expression/src/Cron/YearField.php',
+=======
+    'CreateTest' => $baseDir . '/database/migrations/2015_10_30_122452_create_test.php',
+>>>>>>> 74ecddbc3408b07d21ca16a0622e7e0bf59a989e
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'Diff' => $vendorDir . '/phpspec/php-diff/lib/Diff.php',
     'Diff_Renderer_Abstract' => $vendorDir . '/phpspec/php-diff/lib/Diff/Renderer/Abstract.php',
