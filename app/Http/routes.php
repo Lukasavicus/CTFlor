@@ -11,6 +11,8 @@
 |
 */
 
+
+
 // ===================== HOME ====================
 Route::get('/', [
     'uses' => '\CTFlor\Http\Controllers\HomeController@index',

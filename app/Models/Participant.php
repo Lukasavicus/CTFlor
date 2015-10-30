@@ -30,6 +30,7 @@ class Participant extends Model implements AuthenticatableContract{
                             'course',
                             'department',
                             'responsability',
+                            'password',
                             ];
 
     /**
@@ -37,8 +38,7 @@ class Participant extends Model implements AuthenticatableContract{
      *
      * @var array
      */
-    protected $hidden = [   'password',
-                            ];
+    protected $hidden = [ 'password'];
 
     
 

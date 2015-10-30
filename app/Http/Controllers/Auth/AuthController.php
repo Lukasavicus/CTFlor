@@ -3,6 +3,7 @@
 namespace CTFlor\Http\Controllers\Auth;
 
 use CTFlor\User;
+use CTFlor\Models\Participant;
 use Validator;
 use CTFlor\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -42,9 +43,8 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'name' => 'required|max:20',
+            'password' => 'required|confirmed|min:2',
         ]);
     }
 
@@ -56,9 +56,9 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Participant::create([
             'name' => $data['name'],
-            'email' => $data['email'],
+            'cpf' => $data['cpf'],
             'password' => bcrypt($data['password']),
         ]);
     }
