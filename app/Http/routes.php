@@ -17,6 +17,8 @@ Route::get('/', [
     'as' => 'home',
 ]);
 
+Route::get('about', 'PagesController@about' );
+
 Route::post('/', [
     'uses' => '\CTFlor\Http\Controllers\HomeController@post',
 ]);
