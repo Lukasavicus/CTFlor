@@ -7,10 +7,8 @@
                 <p>
                     <input type="checkbox" id="name"/>
                     <label for="name">Nome</label>
-                    &nbsp;
                     <input type="checkbox" id="location"/>
                     <label for="location">Localizacao</label>
-                    &nbsp;
                     <input type="checkbox" id="type"/>
                     <label for="type">Tipo</label>
                 </p>
@@ -33,7 +31,7 @@
         
             <div class="row">
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">toc</i>
+                    <i class="material-icons prefix">perm_identity</i>
                     <input id="nameForm" type="text" class="validate">
                     <label for="nameForm">Nome</label>
                 </div>
@@ -76,10 +74,10 @@
             <div class="row">
                 <div class="input-field col s4">
                     <select>
-                      <option value="" disabled selected>Escolha uma opcao</option>
-                      <option value="student">Estudante</option>
-                      <option value="professor">Professor</option>
-                      <option value="community">Comunidade</option>
+                        <option value="" disabled selected>Escolha uma opcao</option>
+                        <option value="student">Estudante</option>
+                        <option value="professor">Professor</option>
+                        <option value="community">Comunidade</option>
                     </select>
                     <label>Tipo de usuario</label>
                 </div>
@@ -145,23 +143,19 @@
         <ul class="collection">
         @foreach($participants as $participant)
             <li class="collection-item avatar">
-                <i class="material-icons circle">toc</i>
-                <span class="title">{{ $participant->name }}</span>
-                <p>
-                    <i class="material-icons">credit_card</i>
-                    <i class="material-icons">person_pin</i>
-                    <i class="material-icons">call</i>
-                    <i class="material-icons">location_on</i>
-                    <i class="material-icons">verified_user</i>
-                    <i class="material-icons">perm_identity</i>
-                    <i class="material-icons">description</i>
-                    <i class="material-icons">grade</i>
-                    <i class="material-icons">work</i>
-                    <i class="material-icons">visibility</i>
-                </p>
-                <br>
-                <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Edit</a>
-                <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Delete</a>
+                <div class="row col s12">
+                    <i class="material-icons left">perm_identity</i>
+                    <div class="col s3">
+                        <span id="nameSearch" name="nameSearch">{{ $participant->name }}</span>
+                    </div>
+                    
+                    <i class="tiny material-icons left">credit_card</i>
+                    <div class="col s3">
+                        <span id="cpfSearch" name="cpfSearch">{{ $participant->cpf }}</span>
+                    </div>
+                    <a href="#!" class="waves-effect waves-light btn"><i class="tiny material-icons left">info_outline</i>Editar</a>
+                    <a href="#!" class="waves-effect waves-light btn"><i class="tiny material-icons left">delete</i>Excluir</a>
+                </div>
             </li>
         @endforeach
         </ul>
