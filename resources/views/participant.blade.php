@@ -33,7 +33,7 @@
         
             <div class="row">
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">toc</i>
+                    <i class="material-icons prefix">perm_identity</i>
                     <input id="nameForm" type="text" class="validate">
                     <label for="nameForm">Nome</label>
                 </div>
@@ -76,10 +76,10 @@
             <div class="row">
                 <div class="input-field col s4">
                     <select>
-                      <option value="" disabled selected>Escolha uma opcao</option>
-                      <option value="student">Estudante</option>
-                      <option value="professor">Professor</option>
-                      <option value="community">Comunidade</option>
+                        <option value="" disabled selected>Escolha uma opcao</option>
+                        <option value="student">Estudante</option>
+                        <option value="professor">Professor</option>
+                        <option value="community">Comunidade</option>
                     </select>
                     <label>Tipo de usuario</label>
                 </div>
@@ -144,25 +144,75 @@
     @else
         <ul class="collection">
         @foreach($participants as $participant)
-            <li class="collection-item avatar">
-                <i class="material-icons circle">toc</i>
-                <span class="title">{{ $participant->name }}</span>
-                <p>
-                    <i class="material-icons">credit_card</i>
-                    <i class="material-icons">person_pin</i>
-                    <i class="material-icons">call</i>
-                    <i class="material-icons">location_on</i>
-                    <i class="material-icons">verified_user</i>
-                    <i class="material-icons">perm_identity</i>
-                    <i class="material-icons">description</i>
-                    <i class="material-icons">grade</i>
-                    <i class="material-icons">work</i>
-                    <i class="material-icons">visibility</i>
-                </p>
-                <br>
-                <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Edit</a>
-                <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Delete</a>
-            </li>
+            <div class="row col s12">
+                    <li class="collection-item avatar">
+                        <i class="material-icons left">perm_identity</i>
+                        <div class="col s2">
+                            <span id="nameSearch" name="nameSearch">{{ $participant->name }}</span>
+                        </div>
+                        
+                        <div class="col s1">
+                            <!--    <i class="tiny material-icons">credit_card</i>  -->
+                            <span id="cpfSearch" name="cpfSearch">{{ $participant->cpf }}</span>
+                        </div>
+
+                        <div class="col s2">
+                            <!--    <i class="tiny material-icons">email</i> -->
+                            <span id="emailSearch" name="emailSearch">{{ $participant->email }}</span>
+                        </div>
+                        
+                        <div class="col s1">
+                            <!--    <i class="tiny material-icons">phone</i>    -->
+                            <span id="phoneSearch" name="phoneSearch">{{ $participant->phone }}</span>
+                        </div>
+                        <!--
+                        <div class="col s1">
+                            <i class="tiny material-icons">location_on</i>
+                            <span class="title" id="locationSearch" name="locationSearch">{{ $participant->address }}</span>
+                        </div>
+                        -->
+                        <!-- <div class="col s1">
+                            <i class="tiny material-icons"></i>
+                            <span class="title" id="typeSearch" name="typeSearch">{{ $participant->type }}</span>
+                        </div> -->
+                        <!--
+                        <div class="col s1">
+                            <i class="tiny material-icons">store</i>
+                            <span class="title" id="universitySearch" name="universitySearch">{{ $participant->university }}</span>
+                        </div>
+                        -->
+                        <!-- <div class="col s1">
+                            <i class="tiny material-icons">assignment</i>
+                            <span id="courseSearch" name="courseSearch">{{ $participant->course }}</span>
+                        </div>
+                        
+
+                        <div class="col s1">
+                            <i class="tiny material-icons">work</i>
+                            <span id="departmentSearch" name="departmentSearch">{{ $participant->department }}</span>
+                        </div>
+
+                        <div class="col s1">
+                            <i class="material-icons">supervisor_account</i>
+                            <span class="title" id="responsabilitySearch" name="responsabilitySearch">{{ $participant->responsability }}</span>
+                        </div> -->
+
+                        <div class="col s2">
+                            <a href="#!" class="waves-effect waves-light btn">
+                                <i class="tiny material-icons left">info_outline</i>
+                                Editar
+                            </a>
+                        </div>
+
+                        <div class="col s2">
+                            <a href="#!" class="waves-effect waves-light btn">
+                                <i class="tiny material-icons left">delete</i>
+                                Excluir
+                            </a>
+                        </div>
+
+                    </li>
+                </div>
         @endforeach
         </ul>
     @endif
