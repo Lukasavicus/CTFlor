@@ -2,7 +2,8 @@
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
+          <h5 class="white-text">OptimizeTechnology</h5>
+          <h6 class="white-text">Company Bio</h6>
           <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
         </div>
         <div class="col l3 s12">
@@ -27,21 +28,37 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="green-text text-lighten-3" href="http://materializecss.com">Materialize</a> and Love
+      Made by <a class="green-text text-lighten-3" href="http://materializecss.com">Materialize</a> with Love
       </div>
     </div>
   </footer>
-  <!--  Scripts-->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
+
   <script>
        $(document).ready(function() {
             $('select').material_select();
             });
+       
             $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15 // Creates a dropdown of 15 years to control year
             });
   </script>
+
+  <script>
+    $(document).ready(
+      function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal-trigger').leanModal();
+      }
+  );
+
+    function open(text){
+      alert('asdasd');
+      document.getElementById('modalMSG').innerHTML += text;
+    }
+
+  </script>
+
+
   </body>
 </html>

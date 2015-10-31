@@ -116,8 +116,8 @@
                     <i class="material-icons">description</i>
                 </p>
                 <br>
-                <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Edit</a>
-                <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">delete</i>Delete</a>
+                <button class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Edit</button>
+                <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="document.getElementById('modalMSG').innerHTML = '{{$activity->name}}';)"><i class="material-icons left">delete</i>Delete</a>
             </li>
         @endforeach
         </ul>

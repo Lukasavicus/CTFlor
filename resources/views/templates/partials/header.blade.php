@@ -9,5 +9,23 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!--  Scripts-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
 </head>
 <body>
+
+<!-- Modal Structure -->
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content" id="modalMSG">
+      <h4>Delete Register</h4>
+      <p>Do you really wanna delete the register:</p> 
+    </div>
+    <div id="teste">
+    	
+    </div>
+    <div class="modal-footer">
+      <a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Yes</a>
+      <a href="" class="modal-action modal-close waves-effect waves-red btn-flat ">No</a>
+    </div>
+  </div>
