@@ -26,25 +26,25 @@
 
 @section('fields')
     <div class="row">
-        <form class="col s12">
+        <form class="col s12" method="POST" action="{{ route('activity') }}">
         
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">toc</i>
-                    <input id="icon_prefix" type="text" class="validate">
+                    <input id="name" name="name" type="text" class="validate">
                     <label for="icon_prefix">Name of Activity</label>
                 </div>
                   
                 <div class="input-field col s4">
                     <i class="material-icons prefix">today</i>
                     <label class="light-blue-text darken-4">From</label>
-                    <input type="date" class="datepicker" class="light-blue-text darken-4">
+                    <input type="date" id="start" name="start"  class="datepicker" class="light-blue-text darken-4">
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">today</i>
                     <label class="light-blue-text darken-4">To</label>
-                    <input type="date" class="datepicker" class="light-blue-text darken-4">
+                    <input type="date" id="end" name="end" class="datepicker" class="light-blue-text darken-4">
                 </div>
             </div>
 
@@ -52,26 +52,26 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">room</i>
-                    <input id="icon_telephone" type="text" class="validate">
+                    <input id="location" name="location" type="text" class="validate">
                     <label for="icon_telephone">Location</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i>
-                    <input id="icon_telephone" type="number" class="validate">
+                    <input id="qnt_participants" name="qnt_participants" type="number" class="validate">
                     <label for="icon_telephone">Quantity of Participants</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">schedule</i>
-                    <input id="first_name2" type="time" class="validate">
-                    <label class="active" for="first_name2">Duration</label>
+                    <input id="duration" name="duration" type="time" class="validate">
+                    <label class="active" for="duration">Duration</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s4">
-                    <select>
+                    <select id="type" name="type">
                         <option value="" disabled selected>Choose your option</option>
                         <option value="1">Option 1</option>
                         <option value="2">Option 2</option>
@@ -81,13 +81,15 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Save</a>
+                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Save</button>
                 </div>
 
                 <div class="input-field col s4">
                     <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Clear fields</a>
                 </div>
             </div>
+
+            <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
 
         </form>
     </div>

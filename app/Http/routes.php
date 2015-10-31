@@ -44,14 +44,20 @@ Route::get('marcos', 'PagesController@teste_marcos');
 Route::resource('event', 'EventController');
 // +++++++++++++++++++++++++++++++++++++++++++++++
 
-// ==================== PAGES ====================
+// ================= ACTIVITY ====================
 Route::get('/activity', [
-	'uses' 	=> 'PagesController@activityIndex',
+	'uses' 	=> 'ActivityController@activityIndex',
 	'as' 	=> 'activity',
 ]);
 
+Route::post('/activity', [
+	'uses' 	=> 'ActivityController@store',
+]);
+// +++++++++++++++++++++++++++++++++++++++++++++++
+
+// ================ PARTICIPANT ==================
 Route::get('/participant', [
-	'uses' 	=> 'PagesController@participantIndex',
+	'uses' 	=> 'ParticipantController@participantIndex',
 	'as' 	=> 'participant',
 ]);
 // +++++++++++++++++++++++++++++++++++++++++++++++
