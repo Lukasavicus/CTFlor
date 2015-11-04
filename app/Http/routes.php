@@ -56,8 +56,27 @@ Route::post('/senha', ['uses' => function(){   dd(bcrypt(Input::get('cpf') ) ); 
 
 
 
-// ===================== Events ==================
-Route::resource('event', 'EventController');
+// ===================== EVENTS ==================
+Route::get('/event', [
+    'uses'  => '\CTFlor\Http\Controllers\EventController@eventIndex',
+    'as'    => 'event',
+]);
+
+Route::post('/event', [
+    'uses'  => '\CTFlor\Http\Controllers\EventController@store',
+]);
+
+Route::get('/event/delete', [
+    'uses' => '\CTFlor\Http\Controllers\EventController@deleteRegister',
+    'as' => 'event.delete',
+]);
+
+Route::post('/event/delete', [
+    'uses' => '\CTFlor\Http\Controllers\EventController@deleteRegister',
+]);
+
+
+// -----------------------------------------------
 
 Route::get('/subscribingevent', [
     'uses'  => '\CTFlor\Http\Controllers\EventController@insc',

@@ -7,34 +7,15 @@ use Illuminate\Http\Request;
 use CTFlor\Http\Requests;
 use CTFlor\Http\Controllers\Controller;
 use CTFlor\Event;
-//use Illuminate\Support\Facades\Validator;
-//use Illuminate\Support\Facades\Input;
 use Validator, Input, Redirect; 
 
 
-class EventController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-        $eventsCollection = Event::all();
-        return view('event.index', compact('eventsCollection'));
-    }
+class EventController extends Controller{
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        return view('event.create');
+    public function eventIndex(){
+        $events = DB::table('events')->get();
+        return view('event', ['events' => $events])->with('event', 'EVENTS');
+        //return view('event');
     }
 
     /**
@@ -43,56 +24,31 @@ class EventController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        // validate
-        // read more on validation at http://laravel.com/docs/validation
-        $rules = array(
-            'name'       => 'required'
-        );
+    public function store(Request $request){
 
-        $validator = Validator::make(Input::all(), $rules);
+        $this->validate($request,[
+            'name'              => 'required|unique:events',
+            'start'             => 'required',
+            'end'               => 'required',
+            'location'          => 'required',
+        ]);
 
-        // process the login
-        if ($validator->fails()) {
-            return Redirect::to('event.create')
-                ->withErrors($validator);
-        } else {
-            // store
-            $event = new Event;
-            $event->name       = Input::get('name');
-            $event->start      = Input::get('start');
-            $event->location = Input::get('location');
-            $event->save();
+        DB::table('Events')->insert([
+            'name'              => Input::get('name'),
+            'start'             => Input::get('start'),
+            'end'               => Input::get('end'),
+            'location'          => Input::get('location'),
+         ]);
 
-            // redirect
-            Session::flash('message', 'Successfully created event!');
-            return Redirect::to('event');
-        }
-    
+        return redirect()->back()->with('info', 'Successfully created event!');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function deleteRegister(Request $request){
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $id = Input::get('modalMSGValue');
+
+        Event::where('name', '=', $id)->delete();
+        return redirect()->back()->with('info', 'Successfully deleted participant!');
     }
 
     public function insc(){
