@@ -103,4 +103,13 @@ Route::get('/participant', [
 	'uses' 	=> 'ParticipantController@participantIndex',
 	'as' 	=> 'participant',
 ]);
+
+Route::get('/participant/delete', [
+    'uses' => '\CTFlor\Http\Controllers\ParticipantController@deleteRegister',
+    'as' => 'participant.delete',
+]);
+
+Route::post('/participant/delete', [
+    'uses' => '\CTFlor\Http\Controllers\ParticipantController@deleteRegister',
+]);
 // +++++++++++++++++++++++++++++++++++++++++++++++

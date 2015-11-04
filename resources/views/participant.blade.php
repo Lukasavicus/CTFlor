@@ -153,8 +153,8 @@
                     <div class="col s3">
                         <span id="cpfSearch" name="cpfSearch">{{ $participant->cpf }}</span>
                     </div>
-                    <a href="#!" class="waves-effect waves-light btn"><i class="tiny material-icons left">info_outline</i>Editar</a>
-                    <a href="#!" class="waves-effect waves-light btn"><i class="tiny material-icons left">delete</i>Excluir</a>
+                    <button class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Edit</button>
+                <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $participant->name }}');"><i class="material-icons left">delete</i>Delete</a>
                 </div>
             </li>
         @endforeach
@@ -164,6 +164,6 @@
 
 <script type="text/javascript">
     window.onload = function() {
-        document.myform.action = {{ route('participant.delete') }};
+        document.formHeader.action = {{ route('participant.delete') }};
     }
 </script>

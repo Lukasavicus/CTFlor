@@ -18,7 +18,7 @@
 <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content" >
-    <form id="formHeader" method="POST" action="{{ route('activity.delete') }}">
+    <form id="formHeader" name="formHeader" method="POST" action="">
       <h4>Delete Register</h4>
       <p>Do you really wanna delete the register:</p> 
       <p id="modalMSG"></p>

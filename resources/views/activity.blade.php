@@ -126,6 +126,6 @@
 
 <script type="text/javascript">
     window.onload = function() {
-        document.myform.action = {{ route('activity.delete') }};
+        document.formHeader.action = {{ route('activity.delete') }};
     }
 </script>
