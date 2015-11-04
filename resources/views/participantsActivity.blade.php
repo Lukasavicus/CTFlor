@@ -39,7 +39,7 @@
             	<td> {{$participantN->name}} </td>
             	<td> {{$participantN->cpf}} </td>
             	<td> {{$participantN->type}} </td>
-            	<td> <button> >> </button></td>
+            	<td> <button class="waves-effect waves-green btn"> >> </button></td>
 			</tr>
 		@endforeach
 	</tbody>
@@ -60,7 +60,7 @@
             	<td> {{$participant->name}} </td>
             	<td> {{$participant->cpf}} </td>
             	<td> {{$participant->type}} </td>
-            	<td> <button> << </button></td>
+            	<td> <button class="waves-effect waves-red btn"> << </button></td>
 			<tr>
     	@endforeach
 	</tbody>
@@ -70,9 +70,4 @@
 @stop
 
 @section('tableWithSelected2')
-@stop
-
-@section('options')
-	<button> Save </button>
-	<button> Clear </button>
 @stop

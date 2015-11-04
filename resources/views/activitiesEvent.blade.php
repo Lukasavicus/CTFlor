@@ -43,7 +43,7 @@
             	<td> {{$activityN->end}} </td>
             	<td> {{$activityN->location}} </td>
             	<td> {{$activityN->type}} </td>
-            	<td> <button> >> </button></td>
+            	<td> <button class="waves-effect waves-green btn"> >> </button></td>
 			</tr>
 		@endforeach
 	</tbody>
@@ -68,7 +68,7 @@
             	<td> {{$activity->end}} </td>
             	<td> {{$activity->location}} </td>
             	<td> {{$activity->type}} </td>
-            	<td> <button> >> </button></td>
+            	<td> <button class="waves-effect waves-red btn"> << </button></td>
 			</tr>
 		@endforeach
 	</tbody>
@@ -78,9 +78,4 @@
 @stop
 
 @section('tableWithSelected2')
-@stop
-
-@section('options')
-	<button> Save </button>
-	<button> Clear </button>
 @stop

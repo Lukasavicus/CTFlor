@@ -39,7 +39,7 @@
             	<td> {{$speakerN->name}} </td>
             	<td> {{$speakerN->cpf}} </td>
             	<td> {{$speakerN->type}} </td>
-            	<td> <button> >> </button></td>
+            	<td> <button class="waves-effect waves-green btn"> >> </button></td>
 			</tr>
 		@endforeach
 	</tbody>
@@ -60,7 +60,7 @@
             	<td> {{$speaker->name}} </td>
             	<td> {{$speaker->cpf}} </td>
             	<td> {{$speaker->type}} </td>
-            	<td> <button> << </button></td>
+            	<td> <button class="waves-effect waves-red btn"> << </button></td>
 			<tr>
     	@endforeach
 	</tbody>
@@ -81,7 +81,7 @@
             	<td> {{$judgeN->name}} </td>
             	<td> {{$judgeN->cpf}} </td>
             	<td> {{$judgeN->type}} </td>
-            	<td> <button> >> </button></td>
+            	<td> <button class="waves-effect waves-green btn"> >> </button></td>
 			</tr>
 		@endforeach
 	</tbody>
@@ -102,13 +102,8 @@
             	<td> {{$judge->name}} </td>
             	<td> {{$judge->cpf}} </td>
             	<td> {{$judge->type}} </td>
-            	<td> <button> << </button></td>
+            	<td> <button class="waves-effect waves-red btn"> << </button></td>
 			<tr>
     	@endforeach
 	</tbody>
-@stop
-
-@section('options')
-	<button> Save </button>
-	<button> Clear </button>
 @stop

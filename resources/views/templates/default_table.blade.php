@@ -21,33 +21,47 @@
 	</div>
 </div>
 
-<div class="col s6">
-  <table class="highlight">
-  	@yield('tableWithAll1')
-  </table>
-</div>
+<div class="row">
+  <div class="col s12">
 
-<div class="col s6">
-  <table class="highlight">
-  	@yield('tableWithSelected1')
-  </table>
-</div>
+    <div class="row">
+      <div class="col s6">
+        <table class="bordered highlight">
+        	@yield('tableWithAll1')
+        </table>
+      </div>
 
-<div class="col s6">
-  <table class="highlight">
-  	@yield('tableWithAll2')
-  </table>
-</div>
+      <div class="col s6">
+        <table class="bordered highlight">
+        	@yield('tableWithSelected1')
+        </table>
+      </div>
+    </div>
 
-<div class="col s6">
-  <table class="highlight">
-  	@yield('tableWithSelected2')
-  </table>
+
+    <div class="row">
+      <div class="col s6">
+        <table class="bordered highlight">
+        	@yield('tableWithAll2')
+        </table>
+      </div>
+
+      <div class="col s6">
+        <table class="bordered highlight">
+        	@yield('tableWithSelected2')
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container">
     <div class="section">
-		@yield('options')
+		  <div class="row">      
+        <div class="input-field col s3">
+            <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Salvar</button>
+        </div>
+    </div>
 	</div>
 </div>	
 
