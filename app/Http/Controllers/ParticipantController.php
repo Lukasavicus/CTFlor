@@ -57,7 +57,7 @@ class ParticipantController extends Controller{
             'email'			    => Input::get('email'),
             'phone'			    => Input::get('phone'),
             'address'		    => Input::get('address'),
-            'password'		    => Input::get('password'),
+            'password'		    => bcrypt(Input::get('password')),
             'type'			    => Input::get('type'),
             'university'		=> Input::get('university'),
         	'course'			=> Input::get('course'),
