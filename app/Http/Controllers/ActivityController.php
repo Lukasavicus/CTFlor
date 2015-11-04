@@ -35,6 +35,10 @@ class ActivityController extends Controller{
             'type'              => 'required',
         );
 
+        $this->validate($request,[
+            'name' => 'required',
+        ]);
+
         DB::table('Activities')->insert([
             'name'              => Input::get('name'),
             'start'             => Input::get('start'),
@@ -44,6 +48,12 @@ class ActivityController extends Controller{
             'duration'          => Input::get('duration'),
             'type'              => Input::get('type'),
          ]);
+
+        $this->validate($request, [
+            'email' => 'required|unique:participants|email|max:255',
+            'name' => 'required|unique:participants|alpha_dash|max:20',
+            'password' => 'required|min:6',
+        ]);
 
         return redirect()->back()->with('info', 'Successfully created activity!');
     }

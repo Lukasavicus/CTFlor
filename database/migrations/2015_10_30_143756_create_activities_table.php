@@ -17,10 +17,11 @@ class CreateActivitiesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->date('start');
+            $table->time('startTime');
             $table->date('end');
+            $table->time('endTime');
             $table->string('location');
             $table->integer('qnt_participants');
-            $table->time('duration');
             $table->enum('type', ['lecture', 'mini_course', 'technical_visit']);
             $table->timestamps();
         });

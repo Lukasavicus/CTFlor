@@ -26,6 +26,8 @@ class CreateParticipantsTable extends Migration
             $table->string('course')->nullable(); //only valid to student
             $table->string('department')->nullable();
             $table->string('responsability')->nullable();
+            //$table->string('payment')->nullable();
+            //$table->float('paymentValue')->nullable();
             $table->timestamps();
 
         });

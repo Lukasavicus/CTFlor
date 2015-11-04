@@ -14,7 +14,6 @@
 	<div class="card-panel red waves-effect waves-light" role="alert">
 		{{ Session::get('error') }}
 	</div>
-	<input type="text" value="{{ Session::get('error') }}">
 @endif
 
 @if (Session::has('activity'))

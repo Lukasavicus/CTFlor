@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Save</button>
+                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
                 </div>
 
                 <div class="input-field col s4">
@@ -126,6 +126,6 @@
 
 <script type="text/javascript">
     window.onload = function() {
-        document.formHeader.action = {{ route('activity.delete') }};
+        document.formHeader.action = "{{ route('activity.delete') }}";
     }
 </script>

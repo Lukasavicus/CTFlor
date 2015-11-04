@@ -104,6 +104,10 @@ Route::get('/participant', [
 	'as' 	=> 'participant',
 ]);
 
+Route::post('/participant', [
+    'uses'  => 'ParticipantController@store',
+]);
+
 Route::get('/participant/delete', [
     'uses' => '\CTFlor\Http\Controllers\ParticipantController@deleteRegister',
     'as' => 'participant.delete',

@@ -27,24 +27,24 @@
 
 @section('fields')
     <div class="row">
-        <form class="col s12">
+        <form class="col s12" method="POST" action="{{ route('participant') }}">
         
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i>
-                    <input id="nameForm" type="text" class="validate">
-                    <label for="nameForm">Nome</label>
+                    <input id="name" name="name" type="text" class="validate">
+                    <label for="name">Nome</label>
                 </div>
                   
                 <div class="input-field col s4">
                     <i class="material-icons prefix">credit_card</i>
-                    <input id="cpf" type="text" class="validate">
+                    <input id="cpf" nmae="cpf" type="text" class="validate">
                     <label for="cpf">CPF</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">email</i>
-                    <input id="email" type="email" class="validate">
+                    <input id="email" name="email" type="email" class="validate">
                     <label for="email">Email</label>
                 </div>
             </div>
@@ -53,19 +53,19 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">phone</i>
-                    <input id="phone" type="text" class="validate">
+                    <input id="phone" name="phone" type="text" class="validate">
                     <label for="phone">Telefone</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">location_on</i>
-                    <input id="address" type="text" class="validate">
+                    <input id="address" name="address" type="text" class="validate">
                     <label for="address">Endereco</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">lock</i>
-                    <input id="password" type="password" class="validate">
+                    <input id="password" name="password" type="password" class="validate">
                     <label class="active" for="password">Senha</label>
                 </div>
             </div>
@@ -73,7 +73,7 @@
 
             <div class="row">
                 <div class="input-field col s4">
-                    <select>
+                    <select id="type" name="type">
                         <option value="" disabled selected>Escolha uma opcao</option>
                         <option value="student">Estudante</option>
                         <option value="professor">Professor</option>
@@ -84,13 +84,13 @@
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">store</i>
-                    <input id="university" type="text" class="validate">
+                    <input id="university" name="university" type="text" class="validate">
                     <label for="university">Universidade</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment</i>
-                    <input id="course" type="text" class="validate">
+                    <input id="course" name="course" type="text" class="validate">
                     <label class="active" for="course">Curso</label>
                 </div>
             </div>
@@ -98,13 +98,13 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">work</i>
-                    <input id="department" type="text" class="validate">
+                    <input id="department" name="department" type="text" class="validate">
                     <label for="department">Departamento</label>
                 </div>
 
                 <div class="input-field col s6">
                     <i class="material-icons prefix">supervisor_account</i>
-                    <input id="responsability" type="text" class="validate">
+                    <input id="responsability" name="responsability" type="text" class="validate">
                     <label for="responsability">Responsabilidade</label>
                 </div>
 
@@ -113,21 +113,16 @@
 
 
             <div class="row">
-            <div class="input-field col s3"></div>
                 <div class="input-field col s4">
-                    <a href="#!" class="waves-effect waves-light btn" id="insertButton" name="insertButton">
-                        <i class="material-icons left">input</i>
-                        Inserir
-                    </a>
+                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
                 </div>
 
                 <div class="input-field col s5">
-                    <a href="#!" class="waves-effect waves-light btn" id="clearButton" name="clearButton">
-                        <i class="material-icons left">delete</i>
-                        Limpar
-                    </a>
+                    <a href="#!" class="waves-effect waves-light btn" id="clearButton" name="clearButton"><i class="material-icons left">delete</i>Limpar</a>
                 </div>
             </div>
+
+            <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
 
         </form>
     </div>
@@ -164,6 +159,6 @@
 
 <script type="text/javascript">
     window.onload = function() {
-        document.formHeader.action = {{ route('participant.delete') }};
+        document.formHeader.action = "{{ route('participant.delete') }}";
     }
 </script>
