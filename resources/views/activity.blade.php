@@ -42,19 +42,35 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">today</i>
-                    <label class="light-blue-text darken-4">To</label>
-                    <input type="date" id="end" name="end" class="datepicker" class="light-blue-text darken-4">
+                    <i class="material-icons prefix">schedule</i>
+                    <input id="startTime" name="startTime" type="time" class="validate">
+                    <label class="active" for="startTime">Start Time:</label>
                 </div>
             </div>
 
 
             <div class="row">
                 <div class="input-field col s4">
+                    <i class="material-icons prefix">today</i>
+                    <label class="light-blue-text darken-4">To</label>
+                    <input type="date" id="end" name="end" class="datepicker" class="light-blue-text darken-4">
+                </div>
+
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">schedule</i>
+                    <input id="endTime" name="endTime" type="time" class="validate">
+                    <label class="active" for="endTime">End Time:</label>
+                </div>
+
+                <div class="input-field col s4">
                     <i class="material-icons prefix">room</i>
                     <input id="location" name="location" type="text" class="validate">
                     <label for="icon_telephone">Location</label>
                 </div>
+
+            </div>
+
+            <div class="row">
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i>
@@ -62,14 +78,6 @@
                     <label for="icon_telephone">Quantity of Participants</label>
                 </div>
 
-                <div class="input-field col s4">
-                    <i class="material-icons prefix">schedule</i>
-                    <input id="duration" name="duration" type="time" class="validate">
-                    <label class="active" for="duration">Duration</label>
-                </div>
-            </div>
-
-            <div class="row">
                 <div class="input-field col s4">
                     <select id="type" name="type">
                         <option value="" disabled selected>Choose your option</option>
@@ -79,14 +87,18 @@
                     </select>
                     <label><i class="material-icons left">description</i>Materialize Select</label>
                 </div>
+            </div>
 
-                <div class="input-field col s4">
+            <div class="row">
+                
+                <div class="input-field col s2">
                     <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
                 </div>
 
-                <div class="input-field col s4">
+                <div class="input-field col s2">
                     <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Clear fields</a>
                 </div>
+
             </div>
 
             <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">

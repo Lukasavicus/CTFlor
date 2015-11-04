@@ -24,36 +24,27 @@ class ActivityController extends Controller{
      */
     public function store(Request $request){
 
-        // validate
-        // read more on validation at http://laravel.com/docs/validation
-        $rules = array(
-            'name'              => 'required|alpha',
+        $this->validate($request,[
+            'name'              => 'required|unique:activities',
             'start'             => 'required',
+            'startTime'         => 'required',
             'end'               => 'required',
+            'endTime'           => 'required',
             'location'          => 'required',
             'qnt_participants'  => 'required',
             'type'              => 'required',
-        );
-
-        $this->validate($request,[
-            'name' => 'required',
         ]);
 
         DB::table('Activities')->insert([
             'name'              => Input::get('name'),
             'start'             => Input::get('start'),
+            'startTime'         => Input::get('startTime'),
             'end'               => Input::get('end'),
+            'endTime'           => Input::get('endTime'),
             'location'          => Input::get('location'),
             'qnt_participants'  => Input::get('qnt_participants'),
-            'duration'          => Input::get('duration'),
             'type'              => Input::get('type'),
          ]);
-
-        $this->validate($request, [
-            'email' => 'required|unique:participants|email|max:255',
-            'name' => 'required|unique:participants|alpha_dash|max:20',
-            'password' => 'required|min:6',
-        ]);
 
         return redirect()->back()->with('info', 'Successfully created activity!');
     }

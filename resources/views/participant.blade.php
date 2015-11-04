@@ -38,7 +38,7 @@
                   
                 <div class="input-field col s4">
                     <i class="material-icons prefix">credit_card</i>
-                    <input id="cpf" nmae="cpf" type="text" class="validate">
+                    <input id="cpf" name="cpf" type="text" class="validate">
                     <label for="cpf">CPF</label>
                 </div>
 
@@ -132,7 +132,7 @@
 
     @if($participants == null)
         <div class="card-panel red waves-effect waves-light" role="alert">
-            "Nenhum evento foi cadastrado ainda."
+            "Nenhum Participante foi cadastrado ainda."
         </div>
     @else
         <ul class="collection">

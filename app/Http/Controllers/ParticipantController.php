@@ -28,72 +28,27 @@ class ParticipantController extends Controller{
 
     	//dd($request);
 
-        // validate
-        // read more on validation at http://laravel.com/docs/validation
-        $rules = array(
-            'name'					=> 'required',
-            'cpf'					=> 'required|unique:participants',
-            'email'					=> 'required',
-            'phone'					=> 'required',
-            'address'				=> 'required',
-            'password'				=> 'required',
-            'type'					=> 'required',
-        );
+        $this->validate($request,[
+            'name'			=> 'required',
+            'cpf'			=> 'required|unique:participants',
+            'email'			=> 'required',
+            'phone'			=> 'required',
+            'address'		=> 'required',
+            'password'		=> 'required',
+            'type'			=> 'required',
+        ]);
 
-        $student = array(
-        	'university'	=> 'required',
-        	'course'		=> 'required',
-    	);
-
-        $professor = array(
-        	'university'	=> 'required',
-        	'department'	=> 'required',
-    	);
-
-        $valRules = Validator::make([
-        	$request->input('name'), 
-        	$request->input('cpf'), 
-        	$request->input('email'), 
-        	$request->input('phone'), 
-        	$request->input('address'), 
-        	$request->input('password'), 
-        	$request->input('type'),
-        	], $rules);
-
-        $valStudent = Validator::make([$request->input('university'), $request->input('course')], $student);
-
-        $valProfessor = Validator::make([$request->input('university'), $request->input('department')], $professor);
-
-
-        $this->validate($request, [
-			'email' => 'required|unique:participants|email|max:255',
-			'name' => 'required|unique:participants|alpha_dash|max:20',
-			'password' => 'required|min:6',
-		]);
-
-        //if($valRules->fails())
-        	//return redirect()->back()->with('error', 'Error on try to created activity![1]');
-        //else{
-        	//if(Input::get('type') == "student"){
-        	//	if($valStudent->fails()){
-        	//		return redirect()->back()->with('error', 'Error on try to created activity![2]');
-    		//	}
-			//}
-			//else if(Input::get('type') == "professor"){
-        	//	if($valProfessor->fails()){
-        	//		return redirect()->back()->with('error', 'Error on try to created activity![3]');
-    		//	}
-			//}
-        //}
+        //if(Input::get('type') == "Estudante")
+        //	dd('estudante');
 
         DB::table('participants')->insert([
-            'name'              => Input::get('name'),
-            'start'             => Input::get('start'),
-            'end'               => Input::get('end'),
-            'location'          => Input::get('location'),
-            'qnt_participants'  => Input::get('qnt_participants'),
-            'duration'          => Input::get('duration'),
-            'type'              => Input::get('type'),
+            'name'			    => Input::get('name'),
+            'cpf'			    => Input::get('cpf'),
+            'email'			    => Input::get('email'),
+            'phone'			    => Input::get('phone'),
+            'address'		    => Input::get('address'),
+            'password'		    => Input::get('password'),
+            'type'			    => Input::get('type'),
             'university'		=> Input::get('university'),
         	'course'			=> Input::get('course'),
         	'department'		=> Input::get('department'),
