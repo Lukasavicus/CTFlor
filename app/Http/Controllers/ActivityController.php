@@ -51,8 +51,6 @@ class ActivityController extends Controller{
 
     public function deleteRegister(Request $request){
 
-        //dd('all ¬ ok >' . '< |>' . Input::get('modalMSGValue') . '<| >>' . $request->input('modalMSGValue')  . '<<' );
-
         $id = Input::get('modalMSGValue');
 
         Activity::where('name', '=', $id)->delete();

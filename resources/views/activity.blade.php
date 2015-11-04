@@ -72,13 +72,13 @@
 
             <div class="row">
 
-                <div class="input-field col s4">
+                <div class="input-field col s6">
                     <i class="material-icons prefix">perm_identity</i>
                     <input id="qnt_participants" name="qnt_participants" type="number" class="validate">
                     <label for="icon_telephone">Quantity of Participants</label>
                 </div>
 
-                <div class="input-field col s4">
+                <div class="input-field col s6">
                     <select id="type" name="type">
                         <option value="" disabled selected>Choose your option</option>
                         <option value="1">Option 1</option>
@@ -91,11 +91,11 @@
 
             <div class="row">
                 
-                <div class="input-field col s2">
+                <div class="input-field col s3">
                     <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
                 </div>
 
-                <div class="input-field col s2">
+                <div class="input-field col s3">
                     <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Clear fields</a>
                 </div>
 

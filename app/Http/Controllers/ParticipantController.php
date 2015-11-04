@@ -38,8 +38,18 @@ class ParticipantController extends Controller{
             'type'			=> 'required',
         ]);
 
-        //if(Input::get('type') == "Estudante")
-        //	dd('estudante');
+        if(Input::get('type') == "student"){
+	        $this->validate($request,[
+	            'university'		=> 'required',
+	            'course'			=> 'required',
+	        ]);
+        }
+        else if(Input::get('type') == "professor"){
+	        $this->validate($request,[
+	            'university'		=> 'required',
+	            'department'			=> 'required',
+	        ]);
+        }
 
         DB::table('participants')->insert([
             'name'			    => Input::get('name'),
@@ -59,8 +69,6 @@ class ParticipantController extends Controller{
     }
 
     public function deleteRegister(Request $request){
-
-        //dd('all ¬ ok >' . '< |>' . Input::get('modalMSGValue') . '<| >>' . $request->input('modalMSGValue')  . '<<' );
 
         $id = Input::get('modalMSGValue');
 

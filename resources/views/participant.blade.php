@@ -78,6 +78,7 @@
                         <option value="student">Estudante</option>
                         <option value="professor">Professor</option>
                         <option value="community">Comunidade</option>
+                        <option value="organization">Organização</option>
                     </select>
                     <label>Tipo de usuario</label>
                 </div>
@@ -113,11 +114,11 @@
 
 
             <div class="row">
-                <div class="input-field col s4">
+                <div class="input-field col s3">
                     <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
                 </div>
 
-                <div class="input-field col s5">
+                <div class="input-field col s3">
                     <a href="#!" class="waves-effect waves-light btn" id="clearButton" name="clearButton"><i class="material-icons left">delete</i>Limpar</a>
                 </div>
             </div>
