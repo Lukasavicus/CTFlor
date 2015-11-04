@@ -8,7 +8,6 @@
         <li><a href="{{ route('activity') }}">Atividades</a></li>
         <li><a href="{{ route('participant') }}">Participantes</a></li>
         <li><a href="{{ route('event') }}">Eventos</a></li>
-        <li><a href="{{ route('subscribingevent') }}">Inscrição de Atividades</a></li>
         <li><a href="{{ route('subscribingactivity') }}">Inscrição de Participantes</a></li>
         <li><a href="{{ route('subscribinglecture') }}">Inscrição de Palestra</a></li>
         <li><a href="#"><i class="large material-icons">settings</i></a></li>

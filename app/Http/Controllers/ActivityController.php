@@ -13,7 +13,9 @@ class ActivityController extends Controller{
     
     public function activityIndex(){
     	$activities = DB::table('activities')->get();
-    	return view('activity', ['activities' => $activities])->with('activity', 'ACTIVITIES');
+        $events = DB::table('events')->get();
+        $types = Activity::getTypes();
+    	return view('activity', ['activities' => $activities, 'events' => $events, 'types' => $types])->with('activity', 'ACTIVITIES');
     }
 
     /**
@@ -24,6 +26,8 @@ class ActivityController extends Controller{
      */
     public function store(Request $request){
 
+        //dd($request);
+
         $this->validate($request,[
             'name'              => 'required|unique:activities',
             'start'             => 'required',
@@ -33,6 +37,7 @@ class ActivityController extends Controller{
             'location'          => 'required',
             'qnt_participants'  => 'required',
             'type'              => 'required',
+            'id_event'          => 'required',
         ]);
 
         DB::table('Activities')->insert([
@@ -44,6 +49,7 @@ class ActivityController extends Controller{
             'location'          => Input::get('location'),
             'qnt_participants'  => Input::get('qnt_participants'),
             'type'              => Input::get('type'),
+            'id_event'          => Input::get('id_event'),
          ]);
 
         return redirect()->back()->with('info', 'Successfully created activity!');

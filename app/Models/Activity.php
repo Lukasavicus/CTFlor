@@ -27,6 +27,11 @@ class Activity extends  Model implements AuthenticatableContract{
                             'qnt_participants',
                             'duration',
                             'type',
+                            'id_event',
                             ];
+
+    public static function getTypes(){
+        return array(array('value' => 'lecture', 'text' => 'Palestra'), array('value' => 'mini_course', 'text' => 'Mini-Curso'), array('value' => 'technical_visit', 'text' => 'Visita Técnica'));
+    }
 
 }

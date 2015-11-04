@@ -75,13 +75,6 @@ Route::post('/event/delete', [
     'uses' => '\CTFlor\Http\Controllers\EventController@deleteRegister',
 ]);
 
-
-// -----------------------------------------------
-
-Route::get('/subscribingevent', [
-    'uses'  => '\CTFlor\Http\Controllers\EventController@insc',
-    'as'    => 'subscribingevent',
-]);
 // +++++++++++++++++++++++++++++++++++++++++++++++
 
 
