@@ -2,6 +2,7 @@
 
 namespace CTFlor\Http\Controllers;
 
+use DB;
 use Illuminate\Http\Request;
 use CTFlor\Http\Requests;
 use CTFlor\Http\Controllers\Controller;
@@ -93,4 +94,12 @@ class EventController extends Controller
     {
         //
     }
+
+    public function insc(){
+        $events = DB::table('events')->get();
+        $activitiesNotInsc = DB::table('activities')->get();
+        $activitiesInsc = DB::table('activities')->get();
+        return view('activitiesevent', ['events' => $events, 'activNotInsc' => $activitiesNotInsc, 'activInsc' => $activitiesInsc])->with('event', 'EVENTS');
+    }
+
 }

@@ -22,24 +22,9 @@
         			<div class="row">
 		                <div class="input-field col s8">
 		                	<i class="material-icons prefix">perm_identity</i>
-		                    <input id="cpf" name="cpf" type="text" class="validate"/>
+		                    <input id="cpf" name="cpf" type="text" class="validate" value="{{ Auth::user()['name']}}">
 		                    <label class="active" for="cpf">CPF</label>
-		                    @if($errors->has('cpf'))
-		 		 				<span>{{ $errors->first('cpf') }}</span>
-		 		 			@endif
 		                </div>
-	                	<div class="input-field col s8">
-	                		<i class="material-icons prefix">vpn_key</i>
-	                        <input id="password" name="password" type="password" class="validate"/>
-	            			<label for="password">Password</label>
-		                    @if($errors->has('password'))
-		 		 				<span>{{ $errors->first('password') }}</span>
-		 		 			@endif
-	                	</div>
-	                	<div class="input-field col s8">
-							<button class="waves-effect waves-light btn" type="submit">Sign In</button>
-						</div>
-						<input type="hidden" name="_token" value="{{Session::token()}}">
        	 			</div>
             	</form>
           	</div>

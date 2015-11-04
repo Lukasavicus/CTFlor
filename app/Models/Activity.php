@@ -29,14 +29,4 @@ class Activity extends  Model implements AuthenticatableContract{
                             'type',
                             ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    //protected $hidden = [];
-
-    public function getTypes(){
-        return array([]);
-    }
 }

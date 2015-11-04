@@ -9,17 +9,7 @@
       </div>
       <br><br>
 
-	@if (Session::has('event'))
-		<div class="card-panel lime waves-effect waves-light" role="alert">
-			{{ Session::get('event') }}
-		</div>
-	@endif
-
-	@if (Session::has('participant'))
-		<div class="card-panel lime waves-effect waves-light" role="alert">
-			{{ Session::get('participant') }}
-		</div>
-	@endif	
+	@include('templates.partials.alerts')
 
     </div>
   </div>

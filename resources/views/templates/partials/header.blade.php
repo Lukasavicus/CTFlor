@@ -17,15 +17,24 @@
 
 <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
-    <div class="modal-content" id="modalMSG">
+    <div class="modal-content" >
+    <form id="formHeader" method="POST" action="{{ route('activity.delete') }}">
       <h4>Delete Register</h4>
       <p>Do you really wanna delete the register:</p> 
-    </div>
-    <div id="teste">
-    	
+      <p id="modalMSG"></p>
+      <input type="hidden" id="modalMSGValue" name="modalMSGValue" value="">
+      <p>Doing this you can't recovery this register again</p>
+      <!--
+      <p>If you are shure please, enter your password:</p>
+  	  <i class="material-icons prefix">lock</i>
+  	  <input id="passwordAuth" type="password" class="validate">
+  	  <label class="active" for="passwordAuth">Senha</label>
+      -->
     </div>
     <div class="modal-footer">
-      <a href="" class="modal-action modal-close waves-effect waves-green btn-flat ">Yes</a>
-      <a href="" class="modal-action modal-close waves-effect waves-red btn-flat ">No</a>
+      <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+      <input type="hidden" name="_token" value="{{Session::token()}}">
+    </form>
+      <a class="modal-action modal-close waves-effect waves-red btn-flat ">Cancel</a>
     </div>
   </div>

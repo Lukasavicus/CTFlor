@@ -1,11 +1,15 @@
 <?php 
 
 namespace CTFlor\Http\Controllers;
+
 use Auth;
+use Hash;
 use CTFlor\Models\Participant;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller{
+
+    public static $userLoged = null;
 
 	public function index(){
 		return view('home');
@@ -13,35 +17,22 @@ class HomeController extends Controller{
 
 	public function post(Request $request){
 
-		$this->validate($request, [
-			'cpf' => 'required',
-			'password' => 'required',
-		]);
+        $this->validate($request, [
+            'cpf' => 'required',
+            'password' => 'required',
+        ]);
 
-		$credentials = $request->only(['cpf', 'password']);
+        $credentials = $request->only(['cpf', 'password']); 
 
-		$authencted_client = Participant::authParticipant($credentials);
+        if(!Auth::attempt($request->only(['cpf', 'password']))){
+            return redirect()->back()->with('error', 'Could not sign you in with these credentials.');
+        }
+        
+        return redirect()->route('principal')->with('personal', 'Welcome back ' . Auth::user()['name'] . '.' . PHP_EOL . 'You are now signed in.')->with('pagePrincipal','pagePrincipal');
+    }
 
-		if(!$authencted_client){
-			return redirect()->back()->with('error', 'Could not sign you in with these credentials.');
-		}
-		
-		return redirect()->route('home')->with('personal', 'Welcome back ' . $authencted_client['name'] . '.' . PHP_EOL . 'You are now signed in.');
-	}
+    public function principal(){
+    	return view('principal');
+    }
 
 }
-
-
-/*
-
-		$this->validate($request, [
-			'login' => 'required|unique:participants|number|max:11',
-			'password' => 'required|min:3',
-		]);
-
-		Participant::create([
-			'cpf' 		=> 	$request->input('login'),
-			'password' 	=>	bcrypt($request->input('password')),
-		]);
-
-*/

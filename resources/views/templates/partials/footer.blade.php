@@ -34,7 +34,6 @@
   </footer>
 
   <script>
-  
     $(document).ready(function() {
       $('select').material_select();
     });
@@ -52,13 +51,15 @@
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal-trigger').leanModal();
       }
-  );
+    );
+  </script>
 
-    function open(text){
-      alert('asdasd');
-      document.getElementById('modalMSG').innerHTML += text;
+  <script type="text/javascript">
+    function modalSetText(text){
+      //alert('asdasd ' + text);
+      document.getElementById('modalMSG').innerHTML = text;
+      document.getElementById('modalMSGValue').value = text;
     }
-
   </script>
 
 

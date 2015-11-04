@@ -161,3 +161,9 @@
         </ul>
     @endif
 @stop
+
+<script type="text/javascript">
+    window.onload = function() {
+        document.myform.action = {{ route('participant.delete') }};
+    }
+</script>

@@ -117,9 +117,15 @@
                 </p>
                 <br>
                 <button class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Edit</button>
-                <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="document.getElementById('modalMSG').innerHTML = '{{$activity->name}}';)"><i class="material-icons left">delete</i>Delete</a>
+                <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $activity->name }}');"><i class="material-icons left">delete</i>Delete</a>
             </li>
         @endforeach
         </ul>
     @endif
 @stop
+
+<script type="text/javascript">
+    window.onload = function() {
+        document.myform.action = {{ route('activity.delete') }};
+    }
+</script>

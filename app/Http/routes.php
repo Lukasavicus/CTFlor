@@ -10,9 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-
-
 // ===================== HOME ====================
 Route::get('/', [
     'uses' => '\CTFlor\Http\Controllers\HomeController@index',
@@ -25,6 +22,17 @@ Route::post('/', [
 
 // +++++++++++++++++++++++++++++++++++++++++++++++
 
+
+
+// ===================== HOME ====================
+Route::get('/principal', [
+    'uses' => '\CTFlor\Http\Controllers\HomeController@principal',
+    'as' => 'principal',
+]);
+// +++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
 // ==================== ALERTS ===================
 Route::get('/alerts', function(){
 	return redirect()->route('home')->with('info', 'You have signed up!');
@@ -32,28 +40,63 @@ Route::get('/alerts', function(){
 // +++++++++++++++++++++++++++++++++++++++++++++++
 
 
+
 // ==================== TESTES ===================
 Route::get('about', 'PagesController@about' );
 
 Route::get('marcos', 'PagesController@teste_marcos');
+
+Route::get('/teste', function(){    return view('teste');   });
+
+Route::get('/senha',  ['uses' => function(){    return view('senha');   }, 'as' => 'senha']);
+
+Route::post('/senha', ['uses' => function(){   dd(bcrypt(Input::get('cpf') ) ); /* return view('senha', ['hashed' => 'HASH-ME']); */  }]);//bcrypt(Input::get('cpf') )
 // +++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
-// =============== Events CRUD ===================
+
+// ===================== Events ==================
 Route::resource('event', 'EventController');
+
+Route::get('/subscribingevent', [
+    'uses'  => '\CTFlor\Http\Controllers\EventController@insc',
+    'as'    => 'subscribingevent',
+]);
 // +++++++++++++++++++++++++++++++++++++++++++++++
+
 
 // ================= ACTIVITY ====================
 Route::get('/activity', [
-	'uses' 	=> 'ActivityController@activityIndex',
+	'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@activityIndex',
 	'as' 	=> 'activity',
 ]);
 
 Route::post('/activity', [
-	'uses' 	=> 'ActivityController@store',
+	'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@store',
+]);
+
+Route::get('/activity/delete', [
+    'uses' => '\CTFlor\Http\Controllers\ActivityController@deleteRegister',
+    'as' => 'activity.delete',
+]);
+
+Route::post('/activity/delete', [
+    'uses' => '\CTFlor\Http\Controllers\ActivityController@deleteRegister',
+]);
+
+Route::get('/subscribingactivity', [
+    'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@insc',
+	'as' 	=> 'subscribingactivity',
+]);
+
+Route::get('/subscribinglecture', [
+    'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscLecture',
+    'as'    => 'subscribinglecture',
 ]);
 // +++++++++++++++++++++++++++++++++++++++++++++++
+
+
 
 // ================ PARTICIPANT ==================
 Route::get('/participant', [

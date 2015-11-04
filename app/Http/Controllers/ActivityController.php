@@ -2,19 +2,18 @@
 
 namespace CTFlor\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Validator, Input, Redirect; 
-
 use DB;
-use CTFlor\Http\Requests;
+use Auth;
+use Validator, Input, Redirect;
+use Illuminate\Http\Request;
 use CTFlor\Http\Controllers\Controller;
-use CTFLor\Models\Activity;
+use CTFlor\Models\Activity;
 
 class ActivityController extends Controller{
     
     public function activityIndex(){
     	$activities = DB::table('activities')->get();
-    	return view('activity', ['activities' => $activities])->with('event', 'EVENTS');
+    	return view('activity', ['activities' => $activities])->with('activity', 'ACTIVITIES');
     }
 
     /**
@@ -36,26 +35,42 @@ class ActivityController extends Controller{
             'type'              => 'required',
         );
 
-        //$validator = Validator::make(Input::all(), $rules);
+        DB::table('Activities')->insert([
+            'name'              => Input::get('name'),
+            'start'             => Input::get('start'),
+            'end'               => Input::get('end'),
+            'location'          => Input::get('location'),
+            'qnt_participants'  => Input::get('qnt_participants'),
+            'duration'          => Input::get('duration'),
+            'type'              => Input::get('type'),
+         ]);
 
-        //if ($validator->fails()) {
-        //    dd('¬ ok '. $validator);//echo 'not ok';
-        //    return redirect()->back()->with('error', $validator);
-        //}
-        //else{
+        return redirect()->back()->with('info', 'Successfully created activity!');
+    }
 
-            DB::table('Activities')->insert([
-                'name'              => Input::get('name'),
-                'start'             => Input::get('start'),
-                'end'               => Input::get('end'),
-                'location'          => Input::get('location'),
-                'qnt_participants'  => Input::get('qnt_participants'),
-                'duration'          => Input::get('duration'),
-                'type'              => Input::get('type'),
-             ]);
+    public function deleteRegister(Request $request){
 
-            return redirect()->back()->with('info', 'Successfully created activity!');
-        //}
-    
+        //dd('all ¬ ok >' . '< |>' . Input::get('modalMSGValue') . '<| >>' . $request->input('modalMSGValue')  . '<<' );
+
+        $id = Input::get('modalMSGValue');
+
+        Activity::where('name', '=', $id)->delete();
+        return redirect()->back()->with('info', 'Successfully deleted activity!');
+    }
+
+    public function insc(){
+        $activities = DB::table('activities')->get();
+        $participantsNotInsc = DB::table('participants')->get();
+        $participantsInsc = DB::table('participants')->get();
+        return view('participantsActivity', ['activities' => $activities, 'partNotInsc' => $participantsNotInsc, 'partInsc' => $participantsInsc])->with('activity', 'ACTIVITIES');
+    }
+
+    public function inscLecture(){
+        $activities = DB::table('activities')->get();
+        $speakerNotInsc = DB::table('participants')->get();
+        $speakerInsc = DB::table('participants')->get();
+        $judgeNotInsc = DB::table('participants')->get();
+        $judgeInsc = DB::table('participants')->get();
+        return view('lectureActivity', ['activities' => $activities, 'speakerNotInsc' => $speakerNotInsc, 'speakerInsc' => $speakerInsc, 'judgeNotInsc' => $judgeNotInsc, 'judgeInsc' => $judgeInsc]);
     }
 }
