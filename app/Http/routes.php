@@ -106,6 +106,19 @@ Route::get('/subscribinglecture', [
     'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscLecture',
     'as'    => 'subscribinglecture',
 ]);
+
+// -----------------------------------------------
+
+Route::get('/subscribingminicourse', [
+    'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscMiniCourse',
+    'as'    => 'subscribingminicourse',
+]);
+
+Route::get('/subscribingtechnicalvisit', [
+    'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscTechnicalVisit',
+    'as'    => 'subscribingtechnicalvisit',
+]);
+
 // +++++++++++++++++++++++++++++++++++++++++++++++
 
 

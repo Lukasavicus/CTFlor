@@ -26,9 +26,7 @@
 
     <div class="row">
       <div class="col s6">
-        <table class="bordered highlight">
         	@yield('tableWithAll1')
-        </table>
       </div>
 
       <div class="col s6">

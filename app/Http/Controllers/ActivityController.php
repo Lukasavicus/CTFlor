@@ -8,6 +8,7 @@ use Validator, Input, Redirect;
 use Illuminate\Http\Request;
 use CTFlor\Http\Controllers\Controller;
 use CTFlor\Models\Activity;
+use CTFlor\Models\Participant;
 
 class ActivityController extends Controller{
     
@@ -64,18 +65,53 @@ class ActivityController extends Controller{
     }
 
     public function insc(){
+        global $id_activity;
+        $id_activity = '5';
         $activities = DB::table('activities')->get();
-        $participantsNotInsc = DB::table('participants')->get();
-        $participantsInsc = DB::table('participants')->get();
+
+        // SELECT name from participants where id != (select id_participant from activitiesparticipants where id_activity = 5); or
+        // SELECT name from participants where id NOT IN (select id_participant from activitiesparticipants where id_activity = 5); 
+
+        
+        $participantsNotInsc = Participant::WhereNotIn('id', function($id_activity, $query){
+            $query->select('id_participant')->from('activitiesparticipants')->where('id_activity', '=', '5');
+        })->get();
+
+
+        // SELECT name from participants where id = (select id_participant from activitiesparticipants where id_activity = 5); or
+        // SELECT name from participants where id IN (select id_participant from activitiesparticipants where id_activity = 5); 
+        $participantsInsc = Participant::WhereIn('id', function($query){
+            $query->select('id_participant')->from('activitiesparticipants')->where('id_activity', '=', '5');
+        })->get();
+
+
         return view('participantsActivity', ['activities' => $activities, 'partNotInsc' => $participantsNotInsc, 'partInsc' => $participantsInsc])->with('activity', 'ACTIVITIES');
     }
 
     public function inscLecture(){
-        $activities = DB::table('activities')->get();
+        $activities = DB::table('activities')->where('type', '=', 'lecture')->get();
         $speakerNotInsc = DB::table('participants')->get();
         $speakerInsc = DB::table('participants')->get();
         $judgeNotInsc = DB::table('participants')->get();
         $judgeInsc = DB::table('participants')->get();
         return view('lectureActivity', ['activities' => $activities, 'speakerNotInsc' => $speakerNotInsc, 'speakerInsc' => $speakerInsc, 'judgeNotInsc' => $judgeNotInsc, 'judgeInsc' => $judgeInsc]);
+    }
+
+    public function inscMiniCourse(){
+        $activities = DB::table('activities')->where('type', '=', 'mini_course')->get();
+        $speakerNotInsc = DB::table('participants')->get();
+        $speakerInsc = DB::table('participants')->get();
+        $judgeNotInsc = DB::table('participants')->get();
+        $judgeInsc = DB::table('participants')->get();
+        return view('minicourseActivity', ['activities' => $activities, 'speakerNotInsc' => $speakerNotInsc, 'speakerInsc' => $speakerInsc, 'judgeNotInsc' => $judgeNotInsc, 'judgeInsc' => $judgeInsc]);
+    }
+
+    public function inscTechnicalVisit(){
+        $activities = DB::table('activities')->where('type', '=', 'technical_visit')->get();
+        $speakerNotInsc = DB::table('participants')->get();
+        $speakerInsc = DB::table('participants')->get();
+        $judgeNotInsc = DB::table('participants')->get();
+        $judgeInsc = DB::table('participants')->get();
+        return view('technicalVisitActivity', ['activities' => $activities, 'speakerNotInsc' => $speakerNotInsc, 'speakerInsc' => $speakerInsc, 'judgeNotInsc' => $judgeNotInsc, 'judgeInsc' => $judgeInsc]);
     }
 }
