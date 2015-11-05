@@ -27,7 +27,7 @@
 @section('tableWithAll1')
     <h5>Participantes Não Inscritos</h5>
 
-    @if($partNotInsc == null)
+    @if(($partNotInsc == null) || ($partNotInsc->count() == 0))
         Não existem participantes não inscritos nessa palestra.
     @else
         <table class="bordered highlight">
@@ -56,7 +56,7 @@
 @section('tableWithSelected1')
     <h5>Participantes Inscritos</h5>
 
-    @if($partInsc == null)
+    @if(($partInsc == null) || ($partInsc->count() == 0))
         Não existem participantes inscritos nessa palestra.
     @else
         <table class="bordered highlight">

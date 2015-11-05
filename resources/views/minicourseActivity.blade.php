@@ -26,10 +26,10 @@
 
 @section('tableWithAll1')
 
-    <h5>Palestrantes Não Inscritos</h5>
+    <h5>Apresentadores Não Inscritos</h5>
 
-    @if($speakerNotInsc == null)
-        Não existem palestrantes não inscritos nessa palestra.
+    @if(($presenterNotInsc == null) || ($presenterNotInsc->count() == 0))
+        Não existem apresentadores não inscritos nessa palestra.
     @else
         <table class="bordered highlight">
 			<thead>
@@ -41,11 +41,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($speakerNotInsc as $speakerN)
+				@foreach($presenterNotInsc as $presenterN)
 					<tr>
-		            	<td> {{$speakerN->name}} </td>
-		            	<td> {{$speakerN->cpf}} </td>
-		            	<td> {{$speakerN->type}} </td>
+		            	<td> {{$presenterN->name}} </td>
+		            	<td> {{$presenterN->cpf}} </td>
+		            	<td> {{$presenterN->type}} </td>
 		            	<td> <button class="waves-effect waves-green btn"> >> </button></td>
 					</tr>
 				@endforeach
@@ -56,10 +56,10 @@
 
 @section('tableWithSelected1')
 
-    <h5>Palestrantes Inscritos</h5>
+    <h5>Apresentadores Inscritos</h5>
 
-    @if($speakerInsc == null)
-        Não existem palestrantes inscritos nessa palestra.
+    @if(($presenterInsc == null) || ($presenterInsc->count() == 0))
+        Não existem apresentadores inscritos nessa palestra.
     @else
         <table class="bordered highlight">
 			<thead>
@@ -71,11 +71,11 @@
 				</tr>
 			</thead>
 			<tbody>
-				@foreach($speakerInsc as $speaker)
+				@foreach($presenterInsc as $presenter)
 					<tr>
-		            	<td> {{$speaker->name}} </td>
-		            	<td> {{$speaker->cpf}} </td>
-		            	<td> {{$speaker->type}} </td>
+		            	<td> {{$presenter->name}} </td>
+		            	<td> {{$presenter->cpf}} </td>
+		            	<td> {{$presenter->type}} </td>
 		            	<td> <button class="waves-effect waves-red btn"> << </button></td>
 					</tr>
 		    	@endforeach
@@ -85,61 +85,7 @@
 @stop
 
 @section('tableWithAll2')
-
-    <h5>Membros da Banca Não Inscritos</h5>
-
-    @if($judgeNotInsc == null)
-        Não existem membros da banca não inscritos nessa palestra.
-    @else
-    	<table class="bordered highlight">
-			<thead>
-				<tr>
-					<th data-field="name">Nome</th>
-					<th data-field="cpf">CPF</th>
-					<th data-field="type">Tipo</th>
-					<th data-field="type">Selecionar</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($judgeNotInsc as $judgeN)
-					<tr>
-		            	<td> {{$judgeN->name}} </td>
-		            	<td> {{$judgeN->cpf}} </td>
-		            	<td> {{$judgeN->type}} </td>
-		            	<td> <button class="waves-effect waves-green btn"> >> </button></td>
-					</tr>
-				@endforeach
-			</tbody>
-		</table>
-	@endif
 @stop
 
 @section('tableWithSelected2')
-
-    <h5>Membros da Banca Inscritos</h5>
-
-    @if($judgeNotInsc == null)
-        Não existem membros da banca inscritos nessa palestra.
-    @else
-    	<table class="bordered highlight">
-			<thead>
-				<tr>
-					<th data-field="name">Nome</th>
-					<th data-field="cpf">CPF</th>
-					<th data-field="type">Tipo</th>
-					<th data-field="type">Deselecionar</th>
-				</tr>
-			</thead>
-			<tbody>
-				@foreach($judgeInsc as $judge)
-					<tr>
-		            	<td> {{$judge->name}} </td>
-		            	<td> {{$judge->cpf}} </td>
-		            	<td> {{$judge->type}} </td>
-		            	<td> <button class="waves-effect waves-red btn"> << </button></td>
-					</tr>
-		    	@endforeach
-			</tbody>
-		</table>
-	@endif
 @stop

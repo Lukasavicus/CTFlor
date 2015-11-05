@@ -28,7 +28,7 @@
 
     <h5>Palestrantes Não Inscritos</h5>
 
-    @if($speakerNotInsc == null)
+    @if(($speakerNotInsc == null) || ($speakerNotInsc->count() == 0))
         Não existem palestrantes não inscritos nessa palestra.
     @else
         <table class="bordered highlight">
@@ -58,7 +58,7 @@
 
     <h5>Palestrantes Inscritos</h5>
 
-    @if($speakerInsc == null)
+    @if(($speakerInsc == null) || ($speakerInsc->count() == 0))
         Não existem palestrantes inscritos nessa palestra.
     @else
         <table class="bordered highlight">
@@ -88,7 +88,7 @@
 
     <h5>Membros da Banca Não Inscritos</h5>
 
-    @if($judgeNotInsc == null)
+    @if(($judgeNotInsc == null) || ($judgeNotInsc->count() == 0))
         Não existem membros da banca não inscritos nessa palestra.
     @else
     	<table class="bordered highlight">
@@ -118,8 +118,8 @@
 
     <h5>Membros da Banca Inscritos</h5>
 
-    @if($judgeNotInsc == null)
-        Não existem membros da banca inscritos nessa palestra.
+    @if(($judgeInsc == null) || ($judgeInsc->count() == 0))
+        Não existem membros da banca inscritos nessa palestra.        
     @else
     	<table class="bordered highlight">
 			<thead>
