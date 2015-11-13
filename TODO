@@ -1,0 +1,25 @@
+ - Mensagens de erro de preenchimento de formulário (4 - eventos/participantes/atividades/materiais)
+ - Conferir "/alerts" e "->with" para atender a todos os casos
+ - Revisar textos do site
+
+ - Material - model
+ - Material - Controller
+ - Material - View
+
+ - crUd (3 - eventos/participantes/atividades) + suporte para isso (BD (3 - eventos/participantes/atividades)) (COMPLETAR)
+ - clear fields (3 - eventos/participantes/atividades)
+
+ - Listas de opções dinâmicas (4 - partAtiv/lecture/mini/technical) -> AJAX
+ - Salvar (ou atualizar) Listas (4 - partAtiv/lecture/mini/technical)
+
+
+ - Mais coisas
+
+====================================================
+
+
+
+
+====================================================
+
+ - Site (TODO O SITE)

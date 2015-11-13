@@ -45,4 +45,12 @@ class Participant extends Model implements AuthenticatableContract{
     //    return Participant::$loged;
     //}
 
+    public static function getRolesGeneric(){
+        return array('listener', 'speaker');
+    }
+
+    public static function getRolesLecture(){
+        return array('listener', 'speaker', 'judge');
+    }
+
 }
