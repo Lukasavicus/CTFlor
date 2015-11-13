@@ -106,7 +106,7 @@
                 </div>
 
                 <div class="input-field col s3">
-                    <button class="waves-effect waves-light btn" onclick="fun()"><i class="material-icons left">info_outline</i>Clear fields</button>
+                    <button class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Clear fields</button>
                 </div>
 
             </div>
@@ -127,24 +127,25 @@
         <ul class="collection">
         @foreach($activities as $activity)
             <li class="collection-item avatar">
-                <i class="material-icons circle">toc</i>
-                <span class="title">{{ $activity->name }}</span>
-                <p>
-                    <i class="material-icons">today</i>
-                    <i class="material-icons">today</i>
-                    <i class="material-icons">room</i>
-                    <i class="material-icons">perm_identity</i>
-                    <i class="material-icons">schedule</i>
-                    <i class="material-icons">description</i>
-                </p>
-                <br>
-                <?php
-                      $activityString = $activity->name . "?" . $activity->start . "?" . $activity->startTime . "?" .
-                                           $activity->end . "?" . $activity->endTime . "?" . $activity->location . "?" .
-                                           $activity->qnt_participants . "?" . $activity->type . "?";
-                    ?>
-                <button class="waves-effect waves-light btn" onclick="edit('{{ $activityString }}');"><i class="material-icons left">info_outline</i>Edit</button>
-                <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $activity->name }}');"><i class="material-icons left">delete</i>Delete</a>
+                <div class="row col s12">
+                    <i class="material-icons left">toc</i>
+                    <div class="col s3">
+                        <span id="nameSearch" name="nameSearch">{{ $activity->name }}</span>
+                    </div>
+                    
+                    <i class="tiny material-icons left">description</i>
+                    <div class="col s3">
+                        <span id="typeSearch" name="typeSearch">{{ $events[array_search($activity->id_event, array_column($events, 'id'))]->name }} </span>
+                    </div>
+
+                    <?php
+                          $activityString = $activity->name . "?" . $activity->start . "?" . $activity->startTime . "?" .
+                                               $activity->end . "?" . $activity->endTime . "?" . $activity->location . "?" .
+                                               $activity->qnt_participants . "?" . $activity->type . "?" . $activity->id_event . "?";
+                        ?>
+                    <button class="waves-effect waves-light btn" onclick="edit('{{ $activityString }}');"><i class="material-icons left">info_outline</i>Edit</button>
+                    <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $activity->name }}');"><i class="material-icons left">delete</i>Delete</a>
+                </div>    
             </li>
         @endforeach
         </ul>

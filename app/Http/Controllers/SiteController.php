@@ -19,7 +19,7 @@ class SiteController extends Controller{
     }
 
     public function programacaoPage(){
-        $activities = DB::table('activities')->orderBy('name')->get();
+        $activities = DB::table('activities')->orderBy('start', 'startTime')->get();
         $types = Activity::getTypes();
         return view('site.site_programacao', ['activities' => $activities, 'types' => $types]);
     }

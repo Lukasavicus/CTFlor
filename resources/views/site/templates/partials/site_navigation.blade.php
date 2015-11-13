@@ -1,4 +1,7 @@
-<div class="navbar-fixed">
+<div>
+  <div class="nav-wrapper brown lighten-1" height="200px" align="center">
+      <img src="images/CTFlorfaixa.png" style="width:40%; max-height:200px;">
+    </div>
   <nav>
     <div class="nav-wrapper brown lighten-1">
 <!--
@@ -45,16 +48,4 @@
       </ul>
     </div>
   </nav>
-</div>
-
-<div class="section no-pad-bot" id="index-banner">
-  <div class="container">
-    <br><br>
-    <div class="row col s12">
-      <div class="navbar-fixed">
-          <img src="images/CTFlorfaixa.png" style="width:100%; max-height:200px;">
-      </div>
-    </div>
-    <p><br><br><br><br><br></p>
-  </div>
 </div>

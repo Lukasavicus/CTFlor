@@ -83,16 +83,23 @@
         <ul class="collection">
         @foreach($events as $event)
             <li class="collection-item avatar">
-                <i class="material-icons circle">toc</i>
-                <span class="title">{{ $event->name }}</span>
-                <p>
-                    <i class="material-icons">today</i>
-                    <i class="material-icons">today</i>
-                    <i class="material-icons">room</i>
-                </p>
-                <br>
+                <div class="row col s12">
+                    <i class="material-icons left">toc</i>
+                    <div class="col s3">
+                        <span id="nameSearch" name="nameSearch">{{ $event->name }}</span>
+                    </div>
+                    
+                    <i class="tiny material-icons left">room</i>
+                    <div class="col s3">
+                        <span id="typeSearch" name="typeSearch">{{ $event->location }} </span>
+                    </div>
+
+                    <?php
+                          $eventString = $event->name . "?" . $event->start . "?" . $event->end . "?" . $event->location . "?";
+                    ?>
                 <button class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Edit</button>
                 <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $event->name }}');"><i class="material-icons left">delete</i>Delete</a>
+                </div>    
             </li>
         @endforeach
         </ul>
@@ -108,11 +115,11 @@
 
 <script type="text/javascript">
 
-    function edit( activityString ) {
+    function edit( eventString ) {
 
-        alert(activityString);
+        alert(eventString);
 
-      var split = activityString.split('?');
+      var split = eventString.split('?');
 
         alert('1 ' + split[0]);
 
