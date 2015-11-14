@@ -28,24 +28,24 @@
 @section('fields')
     <div class="row">
         <form class="col s12" method="POST" action="{{ route('participant') }}">
-        
+
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i>
-                    <input id="name" name="name" type="text" class="validate">
-                    <label for="name">Nome</label>
+                    <input id="name_" name="name" type="text" class="validate">
+                    <label for="name" id="lName" name="lName">Nome</label>
                 </div>
-                  
+
                 <div class="input-field col s4">
                     <i class="material-icons prefix">credit_card</i>
-                    <input id="cpf" name="cpf" type="text" class="validate">
-                    <label for="cpf">CPF</label>
+                    <input id="cpf_" name="cpf" type="text" class="validate">
+                    <label for="cpf" id="lCpf" name="lCpf">CPF</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">email</i>
-                    <input id="email" name="email" type="email" class="validate">
-                    <label for="email">Email</label>
+                    <input id="email_" name="email" type="email" class="validate">
+                    <label for="email" id="lEmail" name="lEmail">Email</label>
                 </div>
             </div>
 
@@ -53,27 +53,27 @@
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">phone</i>
-                    <input id="phone" name="phone" type="text" class="validate">
-                    <label for="phone">Telefone</label>
+                    <input id="phone_" name="phone" type="text" class="validate">
+                    <label for="phone" id="lPhone" name="lPhone">Telefone</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">location_on</i>
-                    <input id="address" name="address" type="text" class="validate">
-                    <label for="address">Endereco</label>
+                    <input id="address_" name="address" type="text" class="validate">
+                    <label for="address" id="lAddress" name="lAddress">Endereco</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">lock</i>
-                    <input id="password" name="password" type="password" class="validate">
-                    <label class="active" for="password">Senha</label>
+                    <input id="password_" name="password" type="password" class="validate">
+                    <label class="active" for="password" id="lPassword" name="lPassword">Senha</label>
                 </div>
             </div>
 
 
             <div class="row">
                 <div class="input-field col s4">
-                    <select id="type" name="type">
+                    <select id="type_" name="type">
                         <option value="" disabled selected>Escolha uma opcao</option>
                         <option value="student">Estudante</option>
                         <option value="professor">Professor</option>
@@ -85,28 +85,28 @@
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">store</i>
-                    <input id="university" name="university" type="text" class="validate">
-                    <label for="university">Universidade</label>
+                    <input id="university_" name="university" type="text" class="validate">
+                    <label for="university" id="lUniversity" name="lUniversity">Universidade</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">assignment</i>
-                    <input id="course" name="course" type="text" class="validate">
-                    <label class="active" for="course">Curso</label>
+                    <input id="course_" name="course" type="text" class="validate">
+                    <label class="active" for="course" id="lCourse" name="lCourse">Curso</label>
                 </div>
             </div>
 
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">work</i>
-                    <input id="department" name="department" type="text" class="validate">
-                    <label for="department">Departamento</label>
+                    <input id="department_" name="department" type="text" class="validate">
+                    <label for="department" id="lDepartment" name="lDepartment">Departamento</label>
                 </div>
 
                 <div class="input-field col s6">
                     <i class="material-icons prefix">supervisor_account</i>
-                    <input id="responsability" name="responsability" type="text" class="validate">
-                    <label for="responsability">Responsabilidade</label>
+                    <input id="responsability_" name="responsability" type="text" class="validate">
+                    <label for="responsability" id="lResponsability" name="lResponsability">Responsabilidade</label>
                 </div>
 
             </div>
@@ -119,7 +119,7 @@
                 </div>
 
                 <div class="input-field col s3">
-                    <a href="#!" class="waves-effect waves-light btn" id="clearButton" name="clearButton"><i class="material-icons left">delete</i>Limpar</a>
+                    <a href="#!" class="waves-effect waves-light btn" id="clearButton_" name="clearButton"><i class="material-icons left">delete</i>Limpar</a>
                 </div>
             </div>
 
@@ -144,12 +144,18 @@
                     <div class="col s3">
                         <span id="nameSearch" name="nameSearch">{{ $participant->name }}</span>
                     </div>
-                    
+
                     <i class="tiny material-icons left">credit_card</i>
                     <div class="col s3">
                         <span id="cpfSearch" name="cpfSearch">{{ $participant->cpf }}</span>
                     </div>
-                    <button class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Edit</button>
+                    <?php
+                      $participantString = $participant->name . "?" . $participant->cpf . "?" . $participant->email . "?" .
+                                           $participant->phone . "?" . $participant->address . "?" . $participant->type . "?" .
+                                           $participant->university . "?" . $participant->course . "?" . $participant->department . "?" .
+                                           $participant->responsability ;
+                    ?>
+                    <button class="waves-effect waves-light btn" onclick="edit('{{ $participantString }}');" ><i class="material-icons left">info_outline</i>Edit</button>
                 <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $participant->name }}');"><i class="material-icons left">delete</i>Delete</a>
                 </div>
             </li>
@@ -162,4 +168,45 @@
     window.onload = function() {
         document.formHeader.action = "{{ route('participant.delete') }}";
     }
+
+    function edit( myParticipantString ) {
+
+      var split = myParticipantString.split('?');
+
+      document.getElementById("name_").value =  split[0];
+      document.getElementById("lName").className += " active";
+
+      document.getElementById("cpf_").value = split[1];
+      document.getElementById("lCpf").className += " active";
+
+      document.getElementById("email_").value = split[2];
+      document.getElementById("lEmail").className += " active";
+
+      document.getElementById("phone_").value = split[3];
+      document.getElementById("lPhone").className += " active";
+
+      document.getElementById("address_").value = split[4];
+      document.getElementById("lAddress").className += " active";
+
+      document.getElementById("type_").value = split[5];
+      document.getElementById("lType").className += " active";
+
+      document.getElementById("university_").value = split[6];
+      document.getElementById("lUniversity").className += " active";
+
+      document.getElementById("course_").value = split[7];
+      document.getElementById("lCourse").className += " active";
+
+      document.getElementById("department_").value = split[8];
+      document.getElementById("lDepartment").className += " active";
+
+      document.getElementById("responsability_").value = split[9];
+      document.getElementById("lResponsability").className += " active";
+
+
+
+    }
+
+
+
 </script>

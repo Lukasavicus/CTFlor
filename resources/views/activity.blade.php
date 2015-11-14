@@ -27,14 +27,14 @@
 @section('fields')
     <div class="row">
         <form class="col s12" method="POST" action="{{ route('activity') }}">
-        
+
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">toc</i>
                     <input id="name" name="name" type="text" class="validate">
                     <label for="icon_prefix">Name of Activity</label>
                 </div>
-                  
+
                 <div class="input-field col s4">
                     <i class="material-icons prefix">today</i>
                     <label class="light-blue-text darken-4">From</label>
@@ -42,9 +42,9 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">schedule</i>
-                    <input id="startTime" name="startTime" type="time" class="validate">
-                    <label class="active" for="startTime">Start Time:</label>
+                    <!-- <i class="material-icons prefix">schedule</i> -->
+                    <input id="startTime" name="startTime" class="timepicker" type="text" >
+                    <label for="startTime">Start Time:</label>
                 </div>
             </div>
 
@@ -57,9 +57,9 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">schedule</i>
-                    <input id="endTime" name="endTime" type="time" class="validate">
-                    <label class="active" for="endTime">End Time:</label>
+                  <!--  <i class="material-icons prefix">schedule</i> -->
+                    <input id="endTime" name="endTime" type="text" class="timepicker">
+                    <label for="endTime">End Time:</label>
                 </div>
 
                 <div class="input-field col s4">
@@ -90,7 +90,7 @@
             </div>
 
             <div class="row">
-                
+
                 <div class="input-field col s3">
                     <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
                 </div>
@@ -137,6 +137,16 @@
 @stop
 
 <script type="text/javascript">
+
+    $("#startTime").pickatime({
+      twelvehour: true
+    });
+
+    $("#endTime").pickatime({
+      darktheme: true,
+      twelvehour: false
+    });
+
     window.onload = function() {
         document.formHeader.action = "{{ route('activity.delete') }}";
     }
