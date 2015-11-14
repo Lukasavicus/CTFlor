@@ -16,6 +16,7 @@ class CreateActivitiesParticipantsTable extends Migration
         Schema::create('activitiesParticipants', function(Blueprint $table){
             $table->integer('id_activity')->unsigned();
             $table->integer('id_participant')->unsigned();
+            $table->enum('role_participant', ['listener', 'speaker', 'judge']);
             $table->primary(['id_activity', 'id_participant']);
             $table->foreign('id_activity')->references('id')->on('activities')->onDelete('cascade');
             $table->foreign('id_participant')->references('id')->on('participants')->onDelete('cascade');

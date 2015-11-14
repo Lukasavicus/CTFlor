@@ -72,20 +72,30 @@
 
             <div class="row">
 
-                <div class="input-field col s6">
+                <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i>
                     <input id="qnt_participants" name="qnt_participants" type="number" class="validate">
                     <label for="icon_telephone">Quantity of Participants</label>
                 </div>
 
-                <div class="input-field col s6">
+                <div class="input-field col s4">
                     <select id="type" name="type">
                         <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Option 1</option>
-                        <option value="2">Option 2</option>
-                        <option value="3">Option 3</option>
+                        @foreach($types as $type)
+                            <option value="{{$type['value']}}">{{$type['text']}}</option>
+                        @endforeach
                     </select>
-                    <label><i class="material-icons left">description</i>Materialize Select</label>
+                    <label><i class="material-icons left">description</i>Tipo</label>
+                </div>
+
+                <div class="input-field col s4">
+                    <select id="id_event" name="id_event">
+                        <option value="" disabled selected>Choose your option</option>
+                            @foreach($events as $event)
+                                <option value="{{$event->id}}">{{$event->name}}</option>
+                            @endforeach
+                    </select>
+                    <label><i class="material-icons left">description</i>Evento</label>
                 </div>
             </div>
 

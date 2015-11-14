@@ -40,27 +40,17 @@ class Participant extends Model implements AuthenticatableContract{
      */
     protected $hidden = [ 'password'];
 
-    public static $loged = null;
+    //public static function authParticipant($credentials){
+    //    Participant::$loged = Participant::where('cpf', '=' , $credentials['cpf'])->where('password', '=' , $credentials['password'])->where('type', '=', 'organization')->first();
+    //    return Participant::$loged;
+    //}
 
-    public static function authParticipant($credentials){
-        Participant::$loged = Participant::where('cpf', '=' , $credentials['cpf'])->where('password', '=' , $credentials['password'])->where('type', '=', 'organization')->first();
-        return Participant::$loged;
+    public static function getRolesGeneric(){
+        return array('listener', 'speaker');
     }
 
-    public static function getLogedId(){
-        return Participant::$loged['cpf'];
-    }
-
-    public static function hasLoged(){
-        return (bool)(Participant::$loged != null);
-    }
-
-    public static function getOne(){
-        return 1;
-    }
-
-    public function getName(){
-        return $this->name;
+    public static function getRolesLecture(){
+        return array('listener', 'speaker', 'judge');
     }
 
 }

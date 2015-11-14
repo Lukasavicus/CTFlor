@@ -10,129 +10,195 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-// ===================== HOME ====================
-Route::get('/', [
-    'uses' => '\CTFlor\Http\Controllers\HomeController@index',
-    'as' => 'home',
-]);
 
-Route::post('/', [
-    'uses' => '\CTFlor\Http\Controllers\HomeController@post',
-]);
+// ==================================================== HOME ======================================================
+    Route::get('/', [
+        'uses' => '\CTFlor\Http\Controllers\HomeController@index',
+        'as' => 'home',
+    ]);
 
-// +++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-// ===================== HOME ====================
-Route::get('/principal', [
-    'uses' => '\CTFlor\Http\Controllers\HomeController@principal',
-    'as' => 'principal',
-]);
-// +++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-// ==================== ALERTS ===================
-Route::get('/alerts', function(){
-	return redirect()->route('home')->with('info', 'You have signed up!');
-});
-// +++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-// ==================== TESTES ===================
-Route::get('about', 'PagesController@about' );
-
-Route::get('marcos', 'PagesController@teste_marcos');
-
-Route::get('/teste', function(){    return view('teste');   });
-
-Route::get('/senha',  ['uses' => function(){    return view('senha');   }, 'as' => 'senha']);
-
-Route::post('/senha', ['uses' => function(){   dd(bcrypt(Input::get('cpf') ) ); /* return view('senha', ['hashed' => 'HASH-ME']); */  }]);//bcrypt(Input::get('cpf') )
-// +++++++++++++++++++++++++++++++++++++++++++++++
+    Route::post('/', [
+        'uses' => '\CTFlor\Http\Controllers\HomeController@post',
+    ]);
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
 
-// ===================== EVENTS ==================
-Route::get('/event', [
-    'uses'  => '\CTFlor\Http\Controllers\EventController@eventIndex',
-    'as'    => 'event',
-]);
-
-Route::post('/event', [
-    'uses'  => '\CTFlor\Http\Controllers\EventController@store',
-]);
-
-Route::get('/event/delete', [
-    'uses' => '\CTFlor\Http\Controllers\EventController@deleteRegister',
-    'as' => 'event.delete',
-]);
-
-Route::post('/event/delete', [
-    'uses' => '\CTFlor\Http\Controllers\EventController@deleteRegister',
-]);
-
-
-// -----------------------------------------------
-
-Route::get('/subscribingevent', [
-    'uses'  => '\CTFlor\Http\Controllers\EventController@insc',
-    'as'    => 'subscribingevent',
-]);
-// +++++++++++++++++++++++++++++++++++++++++++++++
-
-
-// ================= ACTIVITY ====================
-Route::get('/activity', [
-	'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@activityIndex',
-	'as' 	=> 'activity',
-]);
-
-Route::post('/activity', [
-	'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@store',
-]);
-
-Route::get('/activity/delete', [
-    'uses' => '\CTFlor\Http\Controllers\ActivityController@deleteRegister',
-    'as' => 'activity.delete',
-]);
-
-Route::post('/activity/delete', [
-    'uses' => '\CTFlor\Http\Controllers\ActivityController@deleteRegister',
-]);
-
-Route::get('/subscribingactivity', [
-    'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@insc',
-	'as' 	=> 'subscribingactivity',
-]);
-
-Route::get('/subscribinglecture', [
-    'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscLecture',
-    'as'    => 'subscribinglecture',
-]);
-// +++++++++++++++++++++++++++++++++++++++++++++++
+// ==================================================== PRINCIPAL =================================================
+    Route::get('/principal', [
+        'uses' => '\CTFlor\Http\Controllers\HomeController@principal',
+        'as' => 'controle.principal',
+    ]);
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
-// ================ PARTICIPANT ==================
-Route::get('/participant', [
-	'uses' 	=> 'ParticipantController@participantIndex',
-	'as' 	=> 'participant',
-]);
 
-Route::post('/participant', [
-    'uses'  => 'ParticipantController@store',
-]);
+// ==================================================== ALERTS ====================================================
+    Route::get('/alerts', function(){
+    	return redirect()->route('home')->with('info', 'You have signed up!');
+    });
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-Route::get('/participant/delete', [
-    'uses' => '\CTFlor\Http\Controllers\ParticipantController@deleteRegister',
-    'as' => 'participant.delete',
-]);
 
-Route::post('/participant/delete', [
-    'uses' => '\CTFlor\Http\Controllers\ParticipantController@deleteRegister',
-]);
-// +++++++++++++++++++++++++++++++++++++++++++++++
+
+
+// ==================================================== EVENTS ====================================================
+    Route::get('/event', [
+        'uses'  => '\CTFlor\Http\Controllers\EventController@eventIndex',
+        'as'    => 'crud.event',
+    ]);
+
+    Route::post('/event', [
+        'uses'  => '\CTFlor\Http\Controllers\EventController@store',
+    ]);
+
+    Route::get('/event/delete', [
+        'uses' => '\CTFlor\Http\Controllers\EventController@deleteRegister',
+        'as' => 'crud.event.delete',
+    ]);
+
+    Route::post('/event/delete', [
+        'uses' => '\CTFlor\Http\Controllers\EventController@deleteRegister',
+    ]);
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+// ==================================================== ACTIVITY ==================================================
+    Route::get('/activity', [
+    	'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@activityIndex',
+    	'as' 	=> 'crud.activity',
+    ]);
+
+    Route::post('/activity', [
+    	'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@store',
+    ]);
+
+    Route::get('/activity/delete', [
+        'uses' => '\CTFlor\Http\Controllers\ActivityController@deleteRegister',
+        'as' => 'crud.activity.delete',
+    ]);
+
+    Route::post('/activity/delete', [
+        'uses' => '\CTFlor\Http\Controllers\ActivityController@deleteRegister',
+    ]);
+
+    // -----------------------------------------------
+
+    Route::get('/subscribingactivity', [
+        'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@insc',
+    	'as' 	=> 'associacao.subscribingactivity',
+    ]);
+
+    Route::post('/subscribingactivity', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscSave',
+    ]);
+
+    // -----------------------------------------------
+
+    Route::get('/subscribinglecture', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscLecture',
+        'as'    => 'associacao.subscribinglecture',
+    ]);
+
+    Route::post('/subscribinglecture', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscLectureSave',
+    ]);
+
+    // -----------------------------------------------
+
+    Route::get('/subscribingminicourse', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscMiniCourse',
+        'as'    => 'associacao.subscribingminicourse',
+    ]);
+
+    Route::post('/subscribingminicourse', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscMiniCourseSave',
+    ]);
+
+    // -----------------------------------------------
+
+    Route::get('/subscribingtechnicalvisit', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscTechnicalVisit',
+        'as'    => 'associacao.subscribingtechnicalvisit',
+    ]);
+
+    Route::post('/subscribingtechnicalvisit', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscTechnicalVisitLectureSave',
+    ]);
+
+
+    Route::get('/subscribing', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@subscribing',
+        'as'    => 'subscribing',
+    ]);
+    /*
+    Route::post('/subscribing', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscTechnicalVisitLectureSave',
+    ]);
+    */
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+// ==================================================== PARTICIPANT ===============================================
+    Route::get('/participant', [
+    	'uses' 	=> 'ParticipantController@participantIndex',
+    	'as' 	=> 'crud.participant',
+    ]);
+
+    Route::post('/participant', [
+        'uses'  => 'ParticipantController@store',
+    ]);
+
+    Route::get('/participant/delete', [
+        'uses' => '\CTFlor\Http\Controllers\ParticipantController@deleteRegister',
+        'as' => 'crud.participant.delete',
+    ]);
+
+    Route::post('/participant/delete', [
+        'uses' => '\CTFlor\Http\Controllers\ParticipantController@deleteRegister',
+    ]);
+
+    Route::get('/subscribingP', [
+        'uses'  => '\CTFlor\Http\Controllers\ParticipantController@subscribing',
+        'as'    => 'subscribingP',
+    ]);
+    /*
+    Route::post('/subscribingP', [
+        'uses'  => '\CTFlor\Http\Controllers\ParticipantController@inscTechnicalVisitLectureSave',
+    ]);
+    */
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+// ==================================================== MATERIAL ==================================================
+    Route::get('/material', [
+        'uses' => '\CTFlor\Http\Controllers\MaterialController@materialIndex',
+        'as' => 'crud.material',
+    ]);
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+// ==================================================== SITE ======================================================
+    Route::get('/site', [
+        'uses' => '\CTFlor\Http\Controllers\SiteController@indexPage',
+        'as' => 'site',
+    ]);
+
+    Route::get('/site.local', [
+        'uses' => '\CTFlor\Http\Controllers\SiteController@localPage',
+        'as' => 'site.local',
+    ]);
+
+    Route::get('/site.programacao', [
+        'uses' => '\CTFlor\Http\Controllers\SiteController@programacaoPage',
+        'as' => 'site.programacao',
+    ]);
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

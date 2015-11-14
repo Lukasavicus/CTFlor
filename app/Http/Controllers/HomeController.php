@@ -9,8 +9,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller{
 
-    public static $userLoged = null;
-
 	public function index(){
 		return view('home');
 	}
@@ -28,11 +26,11 @@ class HomeController extends Controller{
             return redirect()->back()->with('error', 'Could not sign you in with these credentials.');
         }
         
-        return redirect()->route('principal')->with('personal', 'Welcome back ' . Auth::user()['name'] . '.' . PHP_EOL . 'You are now signed in.')->with('pagePrincipal','pagePrincipal');
+        return redirect()->route('controle.principal')->with('personal', 'Welcome back ' . Auth::user()['name'] . '.' . PHP_EOL . 'You are now signed in.')->with('pagePrincipal','pagePrincipal');
     }
 
     public function principal(){
-    	return view('principal');
+    	return view('controle.principal');
     }
 
 }

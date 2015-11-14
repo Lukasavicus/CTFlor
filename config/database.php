@@ -57,7 +57,11 @@ return [
             'host'      => env('DB_HOST', 'localhost'),
             'database'  => env('DB_DATABASE', 'ctflor'),
             'username'  => env('DB_USERNAME', 'root'),
+<<<<<<< HEAD
             'password'  => env('DB_PASSWORD', 'Markos2525-'),
+=======
+            'password'  => env('DB_PASSWORD', 's400'),
+>>>>>>> ce725b898b19a11e9e5137b50c021ac787075189
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

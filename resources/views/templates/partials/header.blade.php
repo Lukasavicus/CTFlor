@@ -3,8 +3,13 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+<<<<<<< HEAD
   <title>Starter Template - Materialize</title>
 
+=======
+  <title>CTFlor - Control System</title>
+ 
+>>>>>>> ce725b898b19a11e9e5137b50c021ac787075189
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>

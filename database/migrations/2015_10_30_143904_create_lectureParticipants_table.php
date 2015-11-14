@@ -16,7 +16,6 @@ class CreateLectureParticipantsTable extends Migration
         Schema::create('lectureParticipants', function(Blueprint $table){
             $table->integer('id_activity')->unsigned();
             $table->integer('id_participant')->unsigned();
-            $table->string('folder_path');
             $table->enum('role', ['presenter', 'judge']);
             $table->primary(['id_activity', 'id_participant']);
             $table->foreign('id_activity')->references('id')->on('activities')->onDelete('cascade');
