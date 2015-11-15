@@ -1,27 +1,76 @@
 @extends('site.templates.site_default')
 @section('content')
-	<!--
-	<div class="section no-pad-bot" id="index-banner">
-	    <div class="container">
-	      <br><br>
-	      <h1 class="header center green-text text-darken-3">CTFlor Control System</h1>
-	      <div class="row center">
-	        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
-	      </div>
-	      <br><br>
-	    </div>
-  	</div>
-  	-->
 
 	<div class="container">
     	<div class="section">
 
     		@include('templates.partials.alerts')
 
-      		<div class="row col s12">
+      	<div class="row col s12">
 
-	<!-- ================================================================================================ -->
-   	 			<!-- ===================== -->
+					<div class="slider">
+				    <ul class="slides">
+
+							<li>
+				        <img src="images/photo1.png"> <!-- random image -->
+				        <div class="caption right-align">
+				          <h3>Mesa Redonda</h3>
+				          <h5 class="light grey-text text-lighten-3">Momento para tirar as dúvidas com os palestrantes.</h5>
+				        </div>
+				      </li>
+
+							<li>
+				        <img src="images/photo2.png"> <!-- random image -->
+				        <div class="caption left-align">
+				          <h3>Palestrante da Universidade de Weissbeir</h3>
+				          <h5 class="light grey-text text-lighten-3">Momento da apresentação</h5>
+				        </div>
+				      </li>
+
+							<li>
+				        <img src="images/photo3.png"> <!-- random image -->
+				        <div class="caption right-align">
+				          <h3>Right Aligned Caption</h3>
+				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				        </div>
+				      </li>
+
+				      <li>
+				        <img src="images/photo4.png"> <!-- random image -->
+				        <div class="caption center-align">
+				          <h3>This is our big Tagline!</h3>
+				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				        </div>
+				      </li>
+
+							<li>
+								<img src="images/photo5.png"> <!-- random image -->
+								<div class="caption center-align">
+									<h3>This is our big Tagline!</h3>
+									<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+								</div>
+							</li>
+
+							<li>
+				        <img src="images/photo6.png"> <!-- random image -->
+				        <div class="caption center-align">
+				          <h3>This is our big Tagline!</h3>
+				          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				        </div>
+				      </li>
+
+
+				    </ul>
+				  </div>
+
+
+				</div>
+
+
+
+
+
+
 
    	 			<div class="row col s12">
 	   	 			<div class="card">
@@ -67,10 +116,14 @@
 					</div>
 				</div>
 
-   	 			<!-- +++++++++++++++++++++ -->
-	<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-
-          	</div>
     	</div>
   	</div>
+
+		<script>
+		$(document).ready(function(){
+      $('.slider').slider({full_width: true});
+    });
+		</script>
+
+
 @stop

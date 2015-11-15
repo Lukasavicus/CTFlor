@@ -37,12 +37,10 @@
                     </select>
                     <label>Activities</label>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-  
 <div class="row">
 <!-- ================================= Participantes ================================= -->
     <div class="col s10">
@@ -80,7 +78,6 @@
             </tbody>
         </table>
     </div>
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 
 
@@ -119,7 +116,6 @@
         <p id="partN" style="visibility:hidden"> Não existem palestrantes inscritos nessa palestra.</p>
         @endif
     </div>
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
 
 
@@ -174,8 +170,7 @@
         <p id="partN" style="visibility:hidden"> Não existem membros da banca inscritos nessa palestra.</p>
         @endif
     </div>
-<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-  
+
 
 
     <div class="col s10">

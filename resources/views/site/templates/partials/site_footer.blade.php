@@ -1,3 +1,83 @@
+<!-- LOGOTIPOS -->
+<div class="container">
+	<div class="row" align="center">
+
+	 <table class="responsive-table">
+  	    <tr>
+  	      <td>Realização:</td>
+
+  	      <td>
+            <a href="http://www.ufscar.br/" title="UFSCar" target="_blank">
+              <img src="images/ufscarLogo.png" alt="UFSCar" width="150" height="80" border="0" />
+            </a>
+          </td>
+
+          <td>
+            <a href="https://www.facebook.com/Ecoflorestaljr/" title="EcoFlorestalJR" target="_blank">
+              <img src="images/ecoFlorestalLogo.png" alt="EcoFlorestalJR" width="150" height="80" border="0" />
+            </a>
+          </td>
+        </tr>
+    </table>
+
+      <table class="responsive-table">
+        <tr>
+          <td>Apoio:</td>
+          <td>
+            <a href="http://www.cnpq.br/" title="CNPQ" target="_blank" class="lk_img">
+              <img src="images/cnpq.png" alt="CNPQ" width="120" height="36" border="0" />
+            </a>
+          </td>
+
+          <td>
+            <a href="http://www.sebrae.com.br/" title="BioMassa" target="_blank" class="lk_img">
+              <img src="images/grupoPesquisaLogo.png" alt="BioMassa" width="100" height="60" border="0" />
+            </a>
+          </td>
+        </tr>
+      </table>
+
+      <table class="responsive-table">
+        <tr>
+          <td>Patrocínio</td>
+
+          <td>
+            <a href="http://www.newholland.com/Pages/index.html" title="New Holland" target="_blank" class="lk_img">
+              <img src="images/newHollandLogo.png" alt="New Holland" width="120" height="57" border="0" />
+            </a>
+          </td>
+
+          <td>
+            <a href="http://www.celmarmoveis.com.br/" title="Celmar" target="_blank" class="lk_img">
+              <img src="images/celmar.png" alt="Celmar" width="140" height="51" border="0" />
+            </a>
+          </td>
+
+          <td>
+            <a href="http://panicenter.com.br/" title="Panicenter" target="_blank" class="lk_img">
+              <img src="images/panicenterLogo.png" alt="Panicenter" width="120" height="43" border="0" />
+            </a>
+          </td>
+
+
+          <td>
+            <a href="http://www.aguaklarina.com.br/" title="Klarina" target="_blank" class="lk_img">
+              <img src="images/klarinaLogo.png" alt="Klarina" width="120" height="41" border="0" />
+            </a>
+          </td>
+
+          <td>
+            <a href="http://www.syngenta.com/global/corporate/en/Pages/home.aspx" title="Syngenta" target="_blank" class="lk_img">
+              <img src="images/syngentaLogo.png" alt="Syngenta" width="110" height="44" border="0" />
+            </a>
+          </td>
+        </tr>
+      </table>
+
+	</div>
+</div>
+
+
   <footer class="page-footer brown">
     <div class="container">
       <div class="row">
@@ -7,24 +87,11 @@
           <p class="grey-text text-lighten-4">A Empresa Júnior do curso da Engenharia Florestal é uma empresa incubada pela UFSCar que fornece a comunidade eventos de relevância profissional e acadêmica.</p>
         </div>
         <div class="col l3 s12">
-          <h5 class="white-text">Patrocínio</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+
+
+
+
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Apoio</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
     </div>
     <div class="footer-copyright">
       <div class="container">

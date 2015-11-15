@@ -13,17 +13,38 @@
 
 // ==================================================== HOME ======================================================
     Route::get('/', [
-        'uses' => '\CTFlor\Http\Controllers\HomeController@index',
-        'as' => 'home',
+        'uses' => '\CTFlor\Http\Controllers\SiteController@indexPage',
+        'as' => 'site',
     ]);
 
-    Route::post('/', [
+      Route::post('/', [
         'uses' => '\CTFlor\Http\Controllers\HomeController@post',
     ]);
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+// ==================================================== SITE ======================================================
+    Route::get('/site', [
+      'uses' => '\CTFlor\Http\Controllers\HomeController@index',
+      'as' => 'home',
+    ]);
 
+    Route::get('/site.local', [
+        'uses' => '\CTFlor\Http\Controllers\SiteController@localPage',
+        'as' => 'site.local',
+    ]);
+
+    Route::get('/site.programacao', [
+        'uses' => '\CTFlor\Http\Controllers\SiteController@programacaoPage',
+        'as' => 'site.programacao',
+    ]);
+
+    Route::get('/site.subscribe', [
+        'uses' => '\CTFlor\Http\Controllers\SiteController@subscribePage',
+        'as' => 'site.subscribe',
+    ]);
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // ==================================================== PRINCIPAL =================================================
     Route::get('/principal', [
@@ -182,23 +203,5 @@
     Route::get('/material', [
         'uses' => '\CTFlor\Http\Controllers\MaterialController@materialIndex',
         'as' => 'crud.material',
-    ]);
-// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-// ==================================================== SITE ======================================================
-    Route::get('/site', [
-        'uses' => '\CTFlor\Http\Controllers\SiteController@indexPage',
-        'as' => 'site',
-    ]);
-
-    Route::get('/site.local', [
-        'uses' => '\CTFlor\Http\Controllers\SiteController@localPage',
-        'as' => 'site.local',
-    ]);
-
-    Route::get('/site.programacao', [
-        'uses' => '\CTFlor\Http\Controllers\SiteController@programacaoPage',
-        'as' => 'site.programacao',
     ]);
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -27,14 +27,14 @@
 @section('fields')
     <div class="row">
         <form class="col s12" method="POST" action="{{ route('crud.activity') }}">
-        
+
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">toc</i>
                     <input id="name_" name="name" type="text" class="validate">
                     <label id="lname" for="icon_prefix">Name of Activity</label>
                 </div>
-                  
+
                 <div class="input-field col s4">
                     <i class="material-icons prefix">today</i>
                     <label id="lstart" class="light-blue-text darken-4">From</label>
@@ -100,7 +100,7 @@
             </div>
 
             <div class="row">
-                
+
                 <div class="input-field col s3">
                     <button type="submit" class="waves-effect waves-light btn" onclick="setDates()"><i class="material-icons left">input</i>Inserir</button>
                 </div>
@@ -132,7 +132,7 @@
                     <div class="col s3">
                         <span id="nameSearch" name="nameSearch">{{ $activity->name }}</span>
                     </div>
-                    
+
                     <i class="tiny material-icons left">description</i>
                     <div class="col s3">
                         <span id="typeSearch" name="typeSearch">{{ $events[array_search($activity->id_event, array_column($events, 'id'))]->name }} </span>
@@ -145,7 +145,7 @@
                         ?>
                     <button class="waves-effect waves-light btn" onclick="edit('{{ $activityString }}');"><i class="material-icons left">info_outline</i>Edit</button>
                     <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $activity->name }}');"><i class="material-icons left">delete</i>Delete</a>
-                </div>    
+                </div>
             </li>
         @endforeach
         </ul>
@@ -213,10 +213,10 @@
         var yyyy = today.getFullYear();
         if(dd<10){
             dd='0'+dd
-        } 
+        }
         if(mm<10){
             mm='0'+mm
-        } 
+        }
 
         var today = yyyy+'-'+mm+'-'+dd;
 
@@ -232,10 +232,10 @@
         var yyyy = today.getFullYear();
         if(dd<10){
             dd='0'+dd
-        } 
+        }
         if(mm<10){
             mm='0'+mm
-        } 
+        }
 
         var today = yyyy+'-'+mm+'-'+dd;
 

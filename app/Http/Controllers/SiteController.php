@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace CTFlor\Http\Controllers;
 
@@ -22,6 +22,11 @@ class SiteController extends Controller{
         $activities = DB::table('activities')->orderBy('start', 'startTime')->get();
         $types = Activity::getTypes();
         return view('site.site_programacao', ['activities' => $activities, 'types' => $types]);
+    }
+
+    public function subscribePage()
+    {
+      return view('site.subscribe');
     }
 
 }
