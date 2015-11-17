@@ -12,9 +12,9 @@
 */
 
 // ==================================================== HOME ======================================================
-    Route::get('/', [
-        'uses' => '\CTFlor\Http\Controllers\SiteController@indexPage',
-        'as' => 'site',
+    Route::get('/site', [
+      'uses' => '\CTFlor\Http\Controllers\HomeController@index',
+      'as' => 'home',
     ]);
 
       Route::post('/', [
@@ -24,9 +24,11 @@
 
 
 // ==================================================== SITE ======================================================
-    Route::get('/site', [
-      'uses' => '\CTFlor\Http\Controllers\HomeController@index',
-      'as' => 'home',
+
+
+    Route::get('/', [
+        'uses' => '\CTFlor\Http\Controllers\SiteController@indexPage',
+        'as' => 'site',
     ]);
 
     Route::get('/site.local', [
@@ -42,6 +44,11 @@
     Route::get('/site.subscribe', [
         'uses' => '\CTFlor\Http\Controllers\SiteController@subscribePage',
         'as' => 'site.subscribe',
+    ]);
+
+    Route::get('/site.login', [
+        'uses' => '\CTFlor\Http\Controllers\SiteController@loginPage',
+        'as' => 'site.login',
     ]);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

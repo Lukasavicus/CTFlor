@@ -75,7 +75,7 @@
    	 			<div class="row col s12">
 	   	 			<div class="card">
 						<div class="card-image waves-effect waves-block waves-light">
-					    	<img class="activator" src="images/CTFlor1.jpg">
+					    	<img class="activator" src="images/CTFlor1.jpg"  style="width:40%; max-height:100px;" >
 					    </div>
 					    <div class="card-content">
 					    	<span class="card-title activator grey-text text-darken-4">CTFlor - 2014<i class="material-icons right">more_vert</i></span>
@@ -121,7 +121,10 @@
 
 		<script>
 		$(document).ready(function(){
-      $('.slider').slider({full_width: true});
+      $('.slider').slider({
+				full_width: false,
+				interval: 2000
+			});
     });
 		</script>
 

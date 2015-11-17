@@ -1,8 +1,13 @@
 @extends('site.templates.site_default')
 @section('content')
+<div class="container">
+    @include('templates.partials.alerts')
 
+    <h3> Cadastre-se na nossa plataforma agora mesmo!</h3>
+    <br />
+    <br />
     <div class="row">
-        <form class="col s12" method="POST" action="#">
+        <form class="col s12" method="POST" action="{{ route('crud.participant') }}">
 
             <div class="row">
                 <div class="input-field col s4">
@@ -90,11 +95,11 @@
 
             <div class="row">
                 <div class="input-field col s3">
-                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
+                    <button type="submit" class="waves-effect waves-light green darken-4 btn"><i class="material-icons left">input</i>Inserir</button>
                 </div>
 
                 <div class="input-field col s3">
-                    <a href="#!" class="waves-effect waves-light btn" id="clearButton_" name="clearButton"><i class="material-icons left">delete</i>Limpar</a>
+                    <a href="#!" class="waves-effect waves-light green darken-4 btn" id="clearButton_" name="clearButton"><i class="material-icons left">delete</i>Limpar</a>
                 </div>
             </div>
 
@@ -102,4 +107,5 @@
 
         </form>
     </div>
+</div>
 @stop

@@ -26,7 +26,12 @@ class SiteController extends Controller{
 
     public function subscribePage()
     {
-      return view('site.subscribe');
+      return view('site.site_subscribe');
+    }
+
+    public function loginPage()
+    {
+      return view('site.site_login');
     }
 
 }
