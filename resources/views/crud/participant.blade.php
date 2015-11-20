@@ -28,14 +28,14 @@
 @section('fields')
     <div class="row">
         <form class="col s12" method="POST" action="{{ route('crud.participant') }}">
-        
+
             <div class="row">
                 <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i>
                     <input id="name_" name="name" type="text" class="validate">
                     <label id="lname" for="name">Nome</label>
                 </div>
-                  
+
                 <div class="input-field col s4">
                     <i class="material-icons prefix">credit_card</i>
                     <input id="cpf_" name="cpf" type="text" class="validate">
@@ -114,13 +114,18 @@
 
 
             <div class="row">
+
                 <div class="input-field col s3">
                     <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
                 </div>
 
                 <div class="input-field col s3">
-                    <a href="#!" class="waves-effect waves-light btn" id="clearButton" name="clearButton"><i class="material-icons left">delete</i>Limpar</a>
+                  <button id="clearButton_" name="clearButton" class="waves-effect waves-light btn" onclick="clear();" >
+                    <i class="material-icons left">delete</i>
+                    Limpar
+                  </button>
                 </div>
+
             </div>
 
             <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
@@ -144,7 +149,7 @@
                     <div class="col s3">
                         <span id="nameSearch" name="nameSearch">{{ $participant->name }}</span>
                     </div>
-                    
+
                     <i class="tiny material-icons left">credit_card</i>
                     <div class="col s3">
                         <span id="cpfSearch" name="cpfSearch">{{ $participant->cpf }}</span>
@@ -174,7 +179,7 @@
 
     function edit( myParticipantString ) {
 
-        alert(myParticipantString);
+      //alert(myParticipantString);
 
       var split = myParticipantString.split('?');
 
@@ -196,7 +201,7 @@
 
       document.getElementById(split[5]).selected = true;
 
-      alert('teste2 ' + split[5] + ' ' +(document.getElementById(split[5]) == null) + ' ' + document.getElementById(split[5]).selected);
+      //alert('teste2 ' + split[5] + ' ' +(document.getElementById(split[5]) == null) + ' ' + document.getElementById(split[5]).selected);
 
       document.getElementById("university_").value = split[6];
       document.getElementById("luniversity").className += " active";
@@ -209,6 +214,29 @@
 
       document.getElementById("responsability_").value = split[9];
       document.getElementById("lresponsability").className += " active";
+    }
+
+    function clear()
+    {
+      document.getElementById("name_").value =  "";
+
+      document.getElementById("cpf_").value = "";
+
+      document.getElementById("email_").value = "";
+
+      document.getElementById("phone_").value = "";
+
+      document.getElementById("address_").value = "";
+
+      document.getElementById("type_").value = "";
+
+      document.getElementById("university_").value = "";
+
+      document.getElementById("course_").value = "";
+
+      document.getElementById("department_").value = "";
+
+      document.getElementById("responsability_").value = "";
     }
 
 </script>

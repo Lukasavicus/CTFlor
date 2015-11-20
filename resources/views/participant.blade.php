@@ -114,13 +114,19 @@
 
 
             <div class="row">
-                <div class="input-field col s3">
-                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
-                </div>
 
                 <div class="input-field col s3">
-                    <a href="#!" class="waves-effect waves-light btn" id="clearButton_" name="clearButton"><i class="material-icons left">delete</i>Limpar</a>
+                    <button type="submit" class="waves-effect waves-light btn">
+                      <i class="material-icons left">input</i>
+                      Inserir
+                    </button>
                 </div>
+
+                <button id="clearButton_" name="clearButton" class="waves-effect waves-light btn" onclick="clear();" >
+                  <i class="material-icons left">delete</i>
+                  Limpar
+                </button>
+
             </div>
 
             <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
@@ -155,8 +161,16 @@
                                            $participant->university . "?" . $participant->course . "?" . $participant->department . "?" .
                                            $participant->responsability ;
                     ?>
-                    <button class="waves-effect waves-light btn" onclick="edit('{{ $participantString }}');" ><i class="material-icons left">info_outline</i>Edit</button>
-                <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $participant->name }}');"><i class="material-icons left">delete</i>Delete</a>
+                    <button class="waves-effect waves-light btn" onclick="edit('{{ $participantString }}');" >
+                      <i class="material-icons left">info_outline</i>
+                      Edit
+                    </button>
+
+                    <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $participant->name }}');">
+                      <i class="material-icons left">delete</i>
+                      Delete
+                    </a>
+
                 </div>
             </li>
         @endforeach
@@ -169,7 +183,8 @@
         document.formHeader.action = "{{ route('participant.delete') }}";
     }
 
-    function edit( myParticipantString ) {
+    function edit( myParticipantString )
+    {
 
       var split = myParticipantString.split('?');
 
@@ -203,8 +218,29 @@
       document.getElementById("responsability_").value = split[9];
       document.getElementById("lResponsability").className += " active";
 
+    }
 
+    function clear()
+    {
+      document.getElementById("name_").value =  "";
 
+      document.getElementById("cpf_").value = "";
+
+      document.getElementById("email_").value = "";
+
+      document.getElementById("phone_").value = "";
+
+      document.getElementById("address_").value = "";
+
+      document.getElementById("type_").value = "";
+
+      document.getElementById("university_").value = "";
+
+      document.getElementById("course_").value = "";
+
+      document.getElementById("department_").value = "";
+
+      document.getElementById("responsability_").value = "";
     }
 
 
