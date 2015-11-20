@@ -9,7 +9,7 @@ use CTFlor\Http\Controllers\Controller;
 use CTFlor\Models\Material;
 use CTFlor\Models\Participant;
 use CTFlor\Models\Activity;
-use Validator, Input, Redirect; 
+use Validator, Input, Redirect;
 
 
 class MaterialController extends Controller{
@@ -25,7 +25,7 @@ class MaterialController extends Controller{
         ->get();
 
         //dd($partActivities);
-        
+
         return view('crud.material', ['materials' => $materials, 'partActivities' => $partActivities]);
     }
 

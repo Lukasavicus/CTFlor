@@ -26,7 +26,7 @@ class ParticipantController extends Controller{
      */
     public function store(Request $request){
 
-    	//dd($request);
+    	dd($request);
 
         $this->validate($request,[
             'name'			=> 'required',
@@ -53,16 +53,16 @@ class ParticipantController extends Controller{
 
         DB::table('participants')->insert([
             'name'			    => Input::get('name'),
-            'cpf'			    => Input::get('cpf'),
+            'cpf'			      => Input::get('cpf'),
             'email'			    => Input::get('email'),
             'phone'			    => Input::get('phone'),
             'address'		    => Input::get('address'),
-            'password'		    => bcrypt(Input::get('password')),
+            'password'		  => bcrypt(Input::get('password')),
             'type'			    => Input::get('type'),
             'university'		=> Input::get('university'),
-        	'course'			=> Input::get('course'),
-        	'department'		=> Input::get('department'),
-        	'responsability'	=> Input::get('responsability'),
+        	  'course'			  => Input::get('course'),
+        	  'department'		=> Input::get('department'),
+        	  'responsability'=> Input::get('responsability'),
          ]);
 
         return redirect()->back()->with('info', 'Successfully created activity!');
@@ -116,7 +116,7 @@ class ParticipantController extends Controller{
         ->where('activities.type', '=', 'technical_visit')
         ->orderBy('aName')
         ->get();
-        
+
 
         return view('lista.participantes', ['participants' => $participants, 'lectures' => $lectures, 'mini_courses' => $mini_courses, 'technical_visits' => $technical_visits,]);
     }
@@ -126,7 +126,7 @@ class ParticipantController extends Controller{
         dd('subscribingSave');
 
         $ids = explode('&', $request['allData'], -1);
-        
+
         DB::table('technicalvisitparticipants')->where('id_activity', '=', $ids[0])->delete();
 
         $i = 1;
@@ -134,7 +134,7 @@ class ParticipantController extends Controller{
         for (; $i < $tam; $i++) {
             DB::table('technicalvisitparticipants')->insert(['id_activity' => $ids[0], 'id_participant' => $ids[$i]]);
         }
-        
+
         return $this->same_subscribing($ids[0]);
 
     }

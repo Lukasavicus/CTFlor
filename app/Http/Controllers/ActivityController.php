@@ -11,7 +11,7 @@ use CTFlor\Models\Activity;
 use CTFlor\Models\Participant;
 
 class ActivityController extends Controller{
-    
+
     public function activityIndex(){
     	$activities = DB::table('activities')->orderBy('name')->get();
         $events = DB::table('events')->orderBy('name')->get();
@@ -50,7 +50,6 @@ class ActivityController extends Controller{
             'location'          => Input::get('location'),
             'qnt_participants'  => Input::get('qnt_participants'),
             'type'              => Input::get('type'),
-            'id_event'          => Input::get('id_event'),
          ]);
 
         return redirect()->back()->with('info', 'Successfully created activity!');
@@ -75,14 +74,14 @@ class ActivityController extends Controller{
         $activities = DB::table('activities')->orderBy('name')->get();
 
         // SELECT name from participants where id != (select id_participant from activitiesparticipants where id_activity = 5); or
-        // SELECT name from participants where id NOT IN (select id_participant from activitiesparticipants where id_activity = 5); 
+        // SELECT name from participants where id NOT IN (select id_participant from activitiesparticipants where id_activity = 5);
         $participantsNotInsc = Participant::WhereNotIn('id', function($query) use ($id_activity){
             $query->select('id_participant')->from('activitiesparticipants')->where('id_activity', '=', $id_activity);
         })->orderBy('name')->get();
 
 
         // SELECT name from participants where id = (select id_participant from activitiesparticipants where id_activity = 5); or
-        // SELECT name from participants where id IN (select id_participant from activitiesparticipants where id_activity = 5); 
+        // SELECT name from participants where id IN (select id_participant from activitiesparticipants where id_activity = 5);
         $participantsInsc = Participant::WhereIn('id', function($query) use ($id_activity){
             $query->select('id_participant')->from('activitiesparticipants')->where('id_activity', '=', $id_activity);
         })->orderBy('name')->get();
@@ -98,14 +97,14 @@ class ActivityController extends Controller{
         $activities = DB::table('activities')->orderBy('name')->get();
 
         // SELECT name from participants where id != (select id_participant from activitiesparticipants where id_activity = 5); or
-        // SELECT name from participants where id NOT IN (select id_participant from activitiesparticipants where id_activity = 5); 
+        // SELECT name from participants where id NOT IN (select id_participant from activitiesparticipants where id_activity = 5);
         $participantsNotInsc = Participant::WhereNotIn('id', function($query) use ($id_activity){
             $query->select('id_participant')->from('activitiesparticipants')->where('id_activity', '=', $id_activity);
         })->orderBy('name')->get();
 
 
         // SELECT name from participants where id = (select id_participant from activitiesparticipants where id_activity = 5); or
-        // SELECT name from participants where id IN (select id_participant from activitiesparticipants where id_activity = 5); 
+        // SELECT name from participants where id IN (select id_participant from activitiesparticipants where id_activity = 5);
         $participantsInsc = Participant::WhereIn('id', function($query) use ($id_activity){
             $query->select('id_participant')->from('activitiesparticipants')->where('id_activity', '=', $id_activity);
         })->orderBy('name')->get();
@@ -117,7 +116,7 @@ class ActivityController extends Controller{
     public function inscSave(Request $request){
 
         $ids = explode('&', $request['allData'], -1);
-        
+
         DB::table('activitiesparticipants')->where('id_activity', '=', $ids[0])->delete();
 
         $i = 1;
@@ -125,7 +124,7 @@ class ActivityController extends Controller{
         for (; $i < $tam; $i++) {
             DB::table('activitiesparticipants')->insert(['id_activity' => $ids[0], 'id_participant' => $ids[$i]]);
         }
-        
+
         return $this->same_insc($ids[0]);
 
     }
@@ -154,7 +153,7 @@ class ActivityController extends Controller{
         // SELECT name from participants where id NOT IN (select id_participant from lectureparticipants where id_activity = 3 and role = 'judge');
         $judgeNotInsc = Participant::WhereNotIn('id', function($query) use ($id_activity){
             $query->select('id_participant')->from('lectureparticipants')->where('id_activity', '=', $id_activity)->where('role', '=', 'judge');
-        })->orderBy('name')->get();      
+        })->orderBy('name')->get();
 
         // SELECT name from participants where id NOT IN (select id_participant from lectureparticipants where id_activity = 3 and role = 'judge');
         $judgeInsc = Participant::WhereIn('id', function($query) use ($id_activity){
@@ -182,7 +181,7 @@ class ActivityController extends Controller{
         // SELECT name from participants where id NOT IN (select id_participant from lectureparticipants where id_activity = 3 and role = 'judge');
         $judgeNotInsc = Participant::WhereNotIn('id', function($query) use ($id_activity){
             $query->select('id_participant')->from('lectureparticipants')->where('id_activity', '=', $id_activity)->where('role', '=', 'judge');
-        })->orderBy('name')->get();      
+        })->orderBy('name')->get();
 
         // SELECT name from participants where id NOT IN (select id_participant from lectureparticipants where id_activity = 3 and role = 'judge');
         $judgeInsc = Participant::WhereIn('id', function($query) use ($id_activity){
@@ -195,7 +194,7 @@ class ActivityController extends Controller{
     public function inscLectureSave(Request $request){
 
         $ids = explode('&', $request['allData'], -1);
-        
+
         DB::table('lecturesparticipants')->where('id_activity', '=', $ids[0])->delete();
 
         $i = 1;
@@ -203,7 +202,7 @@ class ActivityController extends Controller{
         for (; $i < $tam; $i++) {
             DB::table('lecturesparticipants')->insert(['id_activity' => $ids[0], 'id_participant' => $ids[$i]]);
         }
-        
+
         return $this->same_inscLecture($ids[0]);
 
     }
@@ -253,7 +252,7 @@ class ActivityController extends Controller{
     public function inscMiniCourseSave(Request $request){
 
         $ids = explode('&', $request['allData'], -1);
-        
+
         DB::table('minicourseparticipants')->where('id_activity', '=', $ids[0])->delete();
 
         $i = 1;
@@ -261,7 +260,7 @@ class ActivityController extends Controller{
         for (; $i < $tam; $i++) {
             DB::table('minicourseparticipants')->insert(['id_activity' => $ids[0], 'id_participant' => $ids[$i]]);
         }
-        
+
         return $this->same_inscMiniCourse($ids[0]);
 
     }
@@ -312,7 +311,7 @@ class ActivityController extends Controller{
     public function inscTechnicalVisitLectureSave(Request $request){
 
         $ids = explode('&', $request['allData'], -1);
-        
+
         DB::table('technicalvisitparticipants')->where('id_activity', '=', $ids[0])->delete();
 
         $i = 1;
@@ -320,7 +319,7 @@ class ActivityController extends Controller{
         for (; $i < $tam; $i++) {
             DB::table('technicalvisitparticipants')->insert(['id_activity' => $ids[0], 'id_participant' => $ids[$i]]);
         }
-        
+
         return $this->same_inscTechnicalVisit($ids[0]);
 
     }
@@ -356,8 +355,6 @@ class ActivityController extends Controller{
         ->orderBy('name')
         ->get();
 
-        //dd($partNotSubscribed);
-
         $speakers = DB::table('activitiesparticipants')
         ->join('participants', 'activitiesparticipants.id_participant', '=', 'participants.id')
         ->select('participants.name as pName', 'participants.cpf' , 'participants.type', 'activitiesparticipants.role_participant')
@@ -375,8 +372,6 @@ class ActivityController extends Controller{
         ->get();
 
         $responsability = "Palestrantes";
-        //$responsability = "Apresentadores";
-        //$responsability = "Responsáveis";
 
         return view('lista.atividade', ['activities' => $activities, 'partSubscribed' => $partSubscribed, 'partNotSubscribed' => $partNotSubscribed, 'speakers' => $speakers, 'judges' => $judges, 'responsability' => $responsability]);
     }
@@ -386,7 +381,7 @@ class ActivityController extends Controller{
         dd('subscribingSave');
 
         $ids = explode('&', $request['allData'], -1);
-        
+
         DB::table('technicalvisitparticipants')->where('id_activity', '=', $ids[0])->delete();
 
         $i = 1;
@@ -394,7 +389,7 @@ class ActivityController extends Controller{
         for (; $i < $tam; $i++) {
             DB::table('technicalvisitparticipants')->insert(['id_activity' => $ids[0], 'id_participant' => $ids[$i]]);
         }
-        
+
         return $this->same_subscribing($ids[0]);
 
     }

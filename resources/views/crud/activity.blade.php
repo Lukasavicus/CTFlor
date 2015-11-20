@@ -1,6 +1,7 @@
 @extends('templates.default_crud')
 
 @section('search')
+
     <div class="row">
         <form class="col s12" action="{{ route('home') }}" method="POST">
         	<div class="input-field col s3">
@@ -14,9 +15,10 @@
             </div>
             <div class="input-field col s7">
                 <i class="material-icons prefix">search</i>
-            	<input id="icon_search" type="text" class="validate">
+            	  <input id="icon_search" type="text" class="validate">
                 <label for="icon_search">Search</label>
             </div>
+
             <div class="input-field col s2">
                 <button class="waves-effect waves-light btn" type="submit">Search</button>
             </div>
@@ -38,14 +40,20 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">today</i>
                     <label id="lstart" class="light-blue-text darken-4">From</label>
-                    <input type="date" id="start_" name="start"  class="datepicker" class="light-blue-text darken-4">
+                    <input type="date" id="start_" name="start"  class="datepicker" class="light-blue-text darken-4" >
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">schedule</i>
-                    <input id="startTime_" name="startTime" type="time" class="validate">
-                    <label class="active" id="lstarttime_" for="startTime">Start Time:</label>
+                    <input id="startTime_" name="startTime" type="text" class="timepicker">
+                    <label for="lStartTime_">Start Time:</label>
                 </div>
+
+                <script>
+                  $('#startTime_').pickatime({   twelvehour: false  });
+                </script>
+
+
             </div>
 
 
@@ -58,9 +66,13 @@
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">schedule</i>
-                    <input  id="endTime_" name="endTime" type="time" class="validate">
-                    <label class="active" id="lendtime" for="endTime">End Time:</label>
+                    <input id="endTime_" name="endTime" type="text" class="timepicker">
+                    <label for="lEndTime">End Time:</label>
                 </div>
+
+                <script>
+                  $('#endTime_').pickatime({   twelvehour: false  });
+                </script>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">room</i>
@@ -102,11 +114,17 @@
             <div class="row">
 
                 <div class="input-field col s3">
-                    <button type="submit" class="waves-effect waves-light btn" onclick="setDates()"><i class="material-icons left">input</i>Inserir</button>
+                    <button type="submit" class="waves-effect waves-light btn" onclick="setDates();">
+                      <i class="material-icons left">input</i>
+                      Inserir
+                    </button>
                 </div>
 
                 <div class="input-field col s3">
-                    <button class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Clear fields</button>
+                    <button class="waves-effect waves-light btn" onclick="clearFields()">
+                      <i class="material-icons left">info_outline</i>
+                      Clear fields
+                    </button>
                 </div>
 
             </div>
@@ -142,9 +160,15 @@
                           $activityString = $activity->name . "?" . $activity->start . "?" . $activity->startTime . "?" .
                                                $activity->end . "?" . $activity->endTime . "?" . $activity->location . "?" .
                                                $activity->qnt_participants . "?" . $activity->type . "?" . $activity->id_event . "?";
-                        ?>
-                    <button class="waves-effect waves-light btn" onclick="edit('{{ $activityString }}');"><i class="material-icons left">info_outline</i>Edit</button>
-                    <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $activity->name }}');"><i class="material-icons left">delete</i>Delete</a>
+                    ?>
+                    <button class="waves-effect waves-light btn" onclick="edit('{{ $activityString }}');">
+                      <i class="material-icons left">info_outline</i>
+                      Edit
+                    </button>
+                    <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $activity->name }}');">
+                      <i class="material-icons left">delete</i>
+                      Delete
+                    </a>
                 </div>
             </li>
         @endforeach
@@ -152,58 +176,78 @@
     @endif
 @stop
 
+
+
 <script type="text/javascript">
+
     window.onload = function() {
         document.formHeader.action = "{{ route('crud.activity.delete') }}";
     }
+
 </script>
 
 <script type="text/javascript">
 
+
     function edit( activityString ) {
 
-        alert(activityString);
+      alert(activityString);
 
       var split = activityString.split('?');
-
-        alert('1 ' + split[0]);
 
       document.getElementById("name_").value =  split[0];
       document.getElementById("lname").className += " active";
 
+      document.getElementById("start_").value =  split[1];
+      document.getElementById("lstart").className += " active";
 
-//      document.getElementById("start_").value = split[1];
-//      document.getElementById("lstart").className += " active";
+      document.getElementById("startTime_").value =  split[2];
+      document.getElementById("lStartTime").className += " active";
 
-//      document.getElementById("starttime_").value = split[2].slice(0, 5);
-//      document.getElementById("lstarttime").className += " active";
+      document.getElementById("end_").value =  split[3];
+      document.getElementById("lend").className += " active";
 
-
-//      document.getElementById("end_").value = split[3];
-//      document.getElementById("lend").className += " active";
-
-//      document.getElementById("endtime_").value = split[4];
-//      document.getElementById("lendtime").className += " active";
-
-    alert('5 ' + split[5]);
-
+      document.getElementById("endTime_").value =  split[4];
+      document.getElementById("lEndTime").className += " active";
 
       document.getElementById('location_').value = split[5];
       document.getElementById("llocation").className += " active";
 
-
       document.getElementById("qnt_participants_").value = split[6];
       document.getElementById("lqnt_participants").className += " active";
 
-//      document.getElementById("course_").value = split[7];
-//      document.getElementById("lcourse").className += " active";
+      document.getElementById("type_").value =  split[7];
 
-//      document.getElementById("department_").value = split[8];
-//      document.getElementById("ldepartment").className += " active";
+      document.getElementById("id_event_").value =  split[8];
+    }
+
+
+
+    function clearFields( ) {
+
+      document.getElementById("name_").value =  "";
+
+      document.getElementById("start_").value =  "";
+
+      document.getElementById("startTime_").value =  "";
+
+      document.getElementById("end_").value =  "";
+
+      document.getElementById("endTime_").value =  "";
+
+      document.getElementById('location_').value = "";
+
+      document.getElementById("qnt_participants_").value = "";
+
+      document.getElementById("type_").value =  "";
+
+      document.getElementById("id_event_").value =  "";
     }
 </script>
 
 <script>
+
+
     function setDates(){
 
         var today = new Date(Date.parse(document.getElementById('start_').value));

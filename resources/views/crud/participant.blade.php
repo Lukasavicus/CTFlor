@@ -13,6 +13,7 @@
                     <label for="type">Tipo</label>
                 </p>
             </div>
+            <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
             <div class="input-field col s6">
                 <i class="material-icons prefix">search</i>
             	<input id="icon_search" type="text" class="validate">
@@ -116,7 +117,10 @@
             <div class="row">
 
                 <div class="input-field col s3">
-                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
+                    <button type="submit" class="waves-effect waves-light btn">
+                      <i class="material-icons left">input</i>
+                      Inserir
+                    </button>
                 </div>
 
                 <div class="input-field col s3">
