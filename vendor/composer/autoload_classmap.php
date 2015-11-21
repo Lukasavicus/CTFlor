@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddColumnsFilenameMimeOriginalFileName' => $baseDir . '/database/migrations/2015_11_21_125628_add_columns_filename_mime_originalFileName.php',
+    'AlterColumns' => $baseDir . '/database/migrations/2015_11_21_190207_alter_columns.php',
     'CreateActivitiesParticipantsTable' => $baseDir . '/database/migrations/2015_10_30_143849_create_activitiesParticipants_table.php',
     'CreateActivitiesTable' => $baseDir . '/database/migrations/2015_10_30_143756_create_activities_table.php',
     'CreateEventsActivitiesTable' => $baseDir . '/database/migrations/2015_10_30_143829_create_eventsActivities_table.php',

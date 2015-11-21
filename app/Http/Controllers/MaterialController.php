@@ -29,13 +29,13 @@ class MaterialController extends Controller
         ->orderBy('pName')
         ->get();
 
+
         return view('crud.material', compact('materials', 'partActivities') );
     }
 
 
     public function store(Request $request)
     {
-
         $this->validate($request,[
             'id_activity'       => 'required|unique:materials',
             'id_participant'    => 'required',
@@ -45,15 +45,14 @@ class MaterialController extends Controller
             'category'          => 'required',
         ]);
 
-        Storage::disk('local')->makeDirectory($request->input('participant'));
-
         $file = $request->file('fileField');
     		$extension = $file->getClientOriginalExtension();
 
-        Storage::disk('local')->put(
-                                  $request->input('id_participant').'/'.$file->getClientOriginalName().'.'.$extension,
-                                  File::get($file)
-                                );
+        Storage::disk('local')->
+                      put(
+                          $request->input('id_participant').'/'.$request->input('id_participant').'.'.$extension,
+                          File::get($file)
+                      );
 
         $entry = new Material();
     		$entry->mime = $file->getClientMimeType();
@@ -62,18 +61,9 @@ class MaterialController extends Controller
 
     		$entry->save();
 
-        Material::create
-                ([
-                  'id_activity'       => $request->input('id_activity'),
-                  'id_participant'    => $request->input('id_participant'),
-                  'title'             => $request->input('title'),
-                  'keywords'          => $request->input('keywords'),
-                  'abstract'          => $request->input('abstract'),
-                  'category'          => $request->input('category'),
-                  'filename'          => $entry->filename,
-                  'mime'              => $entry->mime,
-                  'original_filename' => $entry->original_filename,
-                ]);
+
+        $input = $request->all();
+        Material::create($input);
 
 
         return redirect()->back()->with('info', 'Successfully created material!');
