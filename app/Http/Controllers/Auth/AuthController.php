@@ -45,7 +45,7 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'cpf' => 'required|max:20',
+            'cpf'      => 'required|max:20',
             'password' => 'required|confirmed|min:2',
         ]);
     }
@@ -58,7 +58,7 @@ class AuthController extends Controller
      */
     protected function create(array $data){
         return Participant::create([
-            'cpf' => $data['cpf'],
+            'cpf'      => $data['cpf'],
             'password' => $data['password'],
         ]);
     }

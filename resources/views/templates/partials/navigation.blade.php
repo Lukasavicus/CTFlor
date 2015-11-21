@@ -1,14 +1,6 @@
 <div class="navbar-fixed green darken-1">
   <nav>
     <div class="nav-wrapper green lighten-1">
-<!--
-        <ul id="dropdown1" class="dropdown-content">
-          <li class=""><a href="{{ route('associacao.subscribingactivity') }}">Inscrição de Participantes</a></li>
-          <li class=""><a href="{{ route('associacao.subscribinglecture') }}">Inscrição de Palestra</a></li>
-          <li class=""><a href="{{ route('associacao.subscribingminicourse') }}">Inscrição de Mini-Curso</a></li>
-          <li class=""><a href="{{ route('associacao.subscribingtechnicalvisit') }}">Inscrição de Visita Técnica</a></li>
-        </ul>
--->
 
         <ul id="dropdown1" class="dropdown-content">
           <li class=""><a href="{{ route('subscribing') }}">Lista por Atividades</a></li>

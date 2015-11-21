@@ -23,7 +23,7 @@
 <div class="container">
     <div class="section">
 @yield('fields')
-	</div>
+	   </div>
 </div>
 
 <div class="container">

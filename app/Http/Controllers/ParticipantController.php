@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use DB;
 use Input;
+use Illuminate\Support\Facades\Mail;
 use CTFlor\Http\Requests;
 use CTFlor\Http\Controllers\Controller;
 use CTFlor\Models\Participant;
@@ -26,11 +27,11 @@ class ParticipantController extends Controller{
     {
         $this->validate($request,[
             'name'			=> 'required',
-            'cpf'			=> 'required|unique:participants',
+            'cpf'			  => 'required|unique:participants',
             'email'			=> 'required',
             'phone'			=> 'required',
             'address'		=> 'required',
-            'password'		=> 'required',
+            'password'  => 'required',
             'type'			=> 'required',
         ]);
 
@@ -52,6 +53,13 @@ class ParticipantController extends Controller{
         $inputParticipant = $request->all();
 
         Participant::create($inputParticipant);
+
+        Mail::raw('You have successfully created your account on CTFlor website',
+            function ($message)
+            {
+              $message->to(Input::get('email'), Input::get('name'))->subject('CTFlor Website - Registration');
+            }
+        );
 
         return redirect()->back()->with('info', 'Successfully created event!');
 

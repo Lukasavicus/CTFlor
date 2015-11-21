@@ -32,14 +32,8 @@
       <p id="modalMSG"></p>
       <input type="hidden" id="modalMSGValue" name="modalMSGValue" value="">
       <p>Doing this you can't recovery this register again</p>
-      <!--
-      <p>If you are shure please, enter your password:</p>
-  	  <i class="material-icons prefix">lock</i>
-  	  <input id="passwordAuth" type="password" class="validate">
-  	  <label class="active" for="passwordAuth">Senha</label>
-      -->
     </div>
-    <div class="modal-footer">
+      <div class="modal-footer">
       <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
       <input type="hidden" name="_token" value="{{Session::token()}}">
     </form>

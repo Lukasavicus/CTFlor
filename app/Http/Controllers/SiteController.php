@@ -19,9 +19,9 @@ class SiteController extends Controller{
     }
 
     public function programacaoPage(){
-        $activities = DB::table('activities')->orderBy('start', 'startTime')->get();
+        $activities = Activity::orderBy('start', 'startTime')->get();
         $types = Activity::getTypes();
-        return view('site.site_programacao', ['activities' => $activities, 'types' => $types]);
+        return view('site.site_programacao', compact('activities', 'types') );
     }
 
     public function subscribePage()
