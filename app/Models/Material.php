@@ -15,28 +15,20 @@ class Material extends Model implements AuthenticatableContract{
      */
     protected $table = 'materials';
 
-    private static $path = "A:\Documentos\GitHub\CTFlor";
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [ 'id_activity',    
+    protected $fillable = [ 'id_activity',
                             'id_participant',
                             'title',
                             'keywords',
-                            'resumo',
                             'abstract',
-                            'categoria',
+                            'category',
+                            'filename',
+                            'mime',
+                            'original_filename',
                             ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    //protected $hidden = [];
-{
-    //
 }

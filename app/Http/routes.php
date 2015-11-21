@@ -165,11 +165,7 @@
         'uses'  => '\CTFlor\Http\Controllers\ActivityController@subscribing',
         'as'    => 'subscribing',
     ]);
-    /*
-    Route::post('/subscribing', [
-        'uses'  => '\CTFlor\Http\Controllers\ActivityController@inscTechnicalVisitLectureSave',
-    ]);
-    */
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -213,4 +209,9 @@
         'uses' => '\CTFlor\Http\Controllers\MaterialController@materialIndex',
         'as' => 'crud.material',
     ]);
+
+    Route::post('/material', [
+        'uses' => '\CTFlor\Http\Controllers\MaterialController@store',
+    ]);
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

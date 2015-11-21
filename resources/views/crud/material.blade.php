@@ -55,32 +55,87 @@
 
 @section('elements')
     <div class="row">
-        <form class="col s12" method="POST" action="{{ route('crud.event') }}">
-        
+        @if($errors->any())
+            <div class="card-panel red waves-effect waves-light" role="alert">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
+        <form class="col s12" method="POST" action="{{ route('crud.material') }}" enctype="multipart/form-data">
+
             <div class="row">
+
                 <div class="input-field col s4">
-                    <i class="material-icons prefix">toc</i>
-                    <input id="name" name="name" type="text" class="validate">
-                    <label for="icon_prefix">Name of Event</label>
-                </div>
-                  
-                <div class="input-field col s4">
-                    <i class="material-icons prefix">today</i>
-                    <label class="light-blue-text darken-4">From</label>
-                    <input type="date" id="start" name="start"  class="datepicker" class="light-blue-text darken-4">
+                    <i class="material-icons prefix">web</i>
+                    <input id="activity_" name="id_activity" type="text" class="validate">
+                    <label for="icon_prefix">Activity</label>
                 </div>
 
-                
                 <div class="input-field col s4">
-                    <button type="submit" class="waves-effect waves-light btn"><i class="material-icons left">input</i>Inserir</button>
+                    <i class="material-icons prefix">perm_identity</i>
+                    <input id="participant_" name="id_participant" type="text" class="validate">
+                    <label for="icon_prefix">Participant</label>
+                </div>
+
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">description</i>
+                    <input id="title_" name="title" type="text" class="validate">
+                    <label for="icon_prefix">Title</label>
                 </div>
 
             </div>
 
             <div class="row">
 
+
+
                 <div class="input-field col s4">
-                    <a href="#!" class="waves-effect waves-light btn"><i class="material-icons left">info_outline</i>Clear fields</a>
+                    <i class="material-icons prefix">language</i>
+                    <input id="keywords_" name="keywords" type="text" class="validate">
+                    <label for="icon_prefix">Keywords</label>
+                </div>
+
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">note_add</i>
+                    <input id="abstract_" name="abstract" type="text" class="validate">
+                    <label for="icon_prefix">Abstract</label>
+                </div>
+
+                <div class="input-field col s4">
+                    <i class="material-icons prefix">clear_all</i>
+                    <input id="category_" name="category" type="text" class="validate">
+                    <label for="icon_prefix">Category</label>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="file-field input-field col s4">
+                  <div class="btn">
+                    <span>File</span>
+                    <input id="fileField_" name="fileField" type="file">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input id="filePath_" name="filename" class="file-path validate" type="text">
+                  </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s4">
+                    <button type="submit" class="waves-effect waves-light btn">
+                      <i class="material-icons left">input</i>
+                      Inserir
+                    </button>
+                </div>
+
+                <div class="input-field col s4">
+                    <button class="waves-effect waves-light btn" onclick="clearFields()">
+                      <i class="material-icons left">info_outline</i>
+                      Clear fields
+                    </button>
                 </div>
 
             </div>
