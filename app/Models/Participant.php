@@ -20,7 +20,7 @@ class Participant extends Model implements AuthenticatableContract{
      *
      * @var array
      */
-    protected $fillable = [ 'name',    
+    protected $fillable = [ 'name',
                             'cpf',
                             'email',
                             'phone',
@@ -38,12 +38,8 @@ class Participant extends Model implements AuthenticatableContract{
      *
      * @var array
      */
-    protected $hidden = [ 'password'];
+    protected $hidden = ['password'];
 
-    //public static function authParticipant($credentials){
-    //    Participant::$loged = Participant::where('cpf', '=' , $credentials['cpf'])->where('password', '=' , $credentials['password'])->where('type', '=', 'organization')->first();
-    //    return Participant::$loged;
-    //}
 
     public static function getRolesGeneric(){
         return array('listener', 'speaker');

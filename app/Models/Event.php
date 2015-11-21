@@ -20,11 +20,12 @@ class Event extends Model implements AuthenticatableContract{
      *
      * @var array
      */
-    protected $fillable = [ 'name',    
+    protected $fillable = [ 'name',
                             'start',
                             'end',
                             'location',
-                            ];
+                          ];
+                        
 
     /**
      * The attributes excluded from the model's JSON form.

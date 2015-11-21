@@ -114,7 +114,9 @@
         'uses' => '\CTFlor\Http\Controllers\ActivityController@deleteRegister',
     ]);
 
-    // -----------------------------------------------
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// ==================================================== SUBSCRIPTION ==============================================
 
     Route::get('/subscribingactivity', [
         'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@insc',

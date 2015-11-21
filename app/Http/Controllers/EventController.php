@@ -7,24 +7,21 @@ use Illuminate\Http\Request;
 use CTFlor\Http\Requests;
 use CTFlor\Http\Controllers\Controller;
 use CTFlor\Models\Event;
-use Validator, Input, Redirect; 
+use Validator, Input, Redirect;
 
 
 class EventController extends Controller{
 
-    public function eventIndex(){
-        $events = DB::table('events')->orderBy('name')->get();
-        return view('crud.event', ['events' => $events])->with('event', 'EVENTS');
-        //return view('event');
+    public function eventIndex()
+    {
+        $events = Event::orderBy('name')->get();
+
+        return view('crud.event', compact('events'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request){
+
+    public function store(Request $request)
+    {
 
         $this->validate($request,[
             'name'              => 'required|unique:events',
@@ -33,30 +30,31 @@ class EventController extends Controller{
             'location'          => 'required',
         ]);
 
-        DB::table('Events')->insert([
-            'name'              => Input::get('name'),
-            'start'             => Input::get('start'),
-            'end'               => Input::get('end'),
-            'location'          => Input::get('location'),
-         ]);
+        $inputEvent = $request->all();
 
+        Event::create($inputEvent);
 
         return redirect()->back()->with('info', 'Successfully created event!');
     }
 
-    public function deleteRegister(Request $request){
+    public function deleteRegister(Request $request)
+    {
 
         $id = Input::get('modalMSGValue');
 
         Event::where('name', '=', $id)->delete();
         return redirect()->back()->with('info', 'Successfully deleted participant!');
+
     }
 
-    public function insc(){
-        $events = DB::table('events')->orderBy('name')->get();
-        $activitiesNotInsc = DB::table('activities')->orderBy('name')->get();
-        $activitiesInsc = DB::table('activities')->orderBy('name')->get();
-        return view('activitiesevent', ['events' => $events, 'activNotInsc' => $activitiesNotInsc, 'activInsc' => $activitiesInsc])->with('event', 'EVENTS');
+    public function insc()
+    {
+        $events = Event::orderBy('name')->get();
+        $activitiesNotInsc = Activity::orderBy('name')->get();
+        $activitiesInsc = Activity::orderBy('name')->get();
+        return view('activitiesevent', compact('events', 'activitiesInsc', 'activitiesNotInsc') );
     }
+
+
 
 }

@@ -20,12 +20,22 @@
             <div class="input-field col s2">
                 <button class="waves-effect waves-light btn" type="submit">Search</button>
             </div>
+
+            <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
+
         </form>
     </div>
 @stop
 
 @section('fields')
     <div class="row">
+        @if($errors->any())
+            <div class="card-panel red waves-effect waves-light" role="alert">
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
         <form class="col s12" method="POST" action="{{ route('crud.event') }}">
 
             <div class="row">
@@ -176,7 +186,7 @@
 
         var today = yyyy+'-'+mm+'-'+dd;
 
-        alert(today);
+        //alert(today);
         document.getElementById('start_').value = today;
 
         // -----------------------------------------------------
@@ -195,7 +205,7 @@
 
         var today = yyyy+'-'+mm+'-'+dd;
 
-        alert(today);
+        //alert(today);
         document.getElementById('end_').value = today;
 
     }

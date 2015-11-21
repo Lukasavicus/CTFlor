@@ -28,6 +28,15 @@
 
 @section('fields')
     <div class="row">
+        @if($errors->any())
+            <div class="card-panel red waves-effect waves-light" role="alert">
+                <p>
+                @foreach($errors->all() as $error)
+                  {{ $error }}
+                @endforeach
+                </p>
+            </div>
+        @endif
         <form class="col s12" method="POST" action="{{ route('crud.participant') }}">
 
             <div class="row">
@@ -202,10 +211,7 @@
       document.getElementById("address_").value = split[4];
       document.getElementById("laddress").className += " active";
 
-
       document.getElementById(split[5]).selected = true;
-
-      //alert('teste2 ' + split[5] + ' ' +(document.getElementById(split[5]) == null) + ' ' + document.getElementById(split[5]).selected);
 
       document.getElementById("university_").value = split[6];
       document.getElementById("luniversity").className += " active";

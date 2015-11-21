@@ -9,25 +9,21 @@ use Input;
 use CTFlor\Http\Requests;
 use CTFlor\Http\Controllers\Controller;
 use CTFlor\Models\Participant;
+use CTFlor\Models\ActivityParticipant;
+use CTFlor\Models\TechnicalVisitParticipant;
 use Validator;
 
 class ParticipantController extends Controller{
 
-    public function participantIndex(){
-        $participants = DB::table('participants')->orderBy('name')->get();
-        return view('crud.participant', ['participants' => $participants])->with('participant', 'PARTICIPANTS');
+    public function participantIndex()
+    {
+        $participants = Participant::orderBy('name')->get();
+        return view('crud.participant', compact('participants') );
     }
 
-     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request){
 
-    	dd($request);
-
+    public function store(Request $request)
+    {
         $this->validate($request,[
             'name'			=> 'required',
             'cpf'			=> 'required|unique:participants',
@@ -38,34 +34,27 @@ class ParticipantController extends Controller{
             'type'			=> 'required',
         ]);
 
-        if(Input::get('type') == "student"){
-	        $this->validate($request,[
-	            'university'		=> 'required',
-	            'course'			=> 'required',
-	        ]);
+        if(Input::get('type') == "student")
+        {
+          $this->validate($request,[
+              'university'		=> 'required',
+              'course'			=> 'required',
+          ]);
         }
-        else if(Input::get('type') == "professor"){
-	        $this->validate($request,[
-	            'university'		=> 'required',
-	            'department'		=> 'required',
-	        ]);
+        else if(Input::get('type') == "professor")
+        {
+          $this->validate($request,[
+              'university'		=> 'required',
+              'department'		=> 'required',
+          ]);
         }
 
-        DB::table('participants')->insert([
-            'name'			    => Input::get('name'),
-            'cpf'			      => Input::get('cpf'),
-            'email'			    => Input::get('email'),
-            'phone'			    => Input::get('phone'),
-            'address'		    => Input::get('address'),
-            'password'		  => bcrypt(Input::get('password')),
-            'type'			    => Input::get('type'),
-            'university'		=> Input::get('university'),
-        	  'course'			  => Input::get('course'),
-        	  'department'		=> Input::get('department'),
-        	  'responsability'=> Input::get('responsability'),
-         ]);
+        $inputParticipant = $request->all();
 
-        return redirect()->back()->with('info', 'Successfully created activity!');
+        Participant::create($inputParticipant);
+
+        return redirect()->back()->with('info', 'Successfully created event!');
+
     }
 
     public function deleteRegister(Request $request){
@@ -73,6 +62,7 @@ class ParticipantController extends Controller{
         $id = Input::get('modalMSGValue');
 
         Participant::where('name', '=', $id)->delete();
+
         return redirect()->back()->with('info', 'Successfully deleted participant!');
     }
 
@@ -82,18 +72,13 @@ class ParticipantController extends Controller{
 
 
     public function subscribing(){
-        $participants = DB::table('participants')->orderBy('name')->get(); //->where('type', '=', 'technical_visit')
 
-        //dd($participants);
+        $participants = Participant::orderBy('name')->get();
+
 
         $id_participant = '2';
 
-        // SELECT a.name, a.start, a.end, ap.role_participant
-        //    from activities as a, activitiesparticipants as ap
-        //    where a.id = ap.id_activity and ap.id_participant = 2;
-
-        $lectures = DB::table('activitiesparticipants')
-        ->join('activities', 'activitiesparticipants.id_activity', '=', 'activities.id')
+        $lectures = ActivityParticipant::join('activities', 'activitiesparticipants.id_activity', '=', 'activities.id')
         ->select('activities.name as aName', 'activities.*', 'activitiesparticipants.role_participant')
         ->where('activitiesparticipants.id_participant', '=', $id_participant)
         ->where('activities.type', '=', 'lecture')
@@ -101,16 +86,14 @@ class ParticipantController extends Controller{
         ->get();
 
 
-        $mini_courses = DB::table('activitiesparticipants')
-        ->join('activities', 'activitiesparticipants.id_activity', '=', 'activities.id')
+        $mini_courses = ActivityParticipant::join('activities', 'activitiesparticipants.id_activity', '=', 'activities.id')
         ->select('activities.name as aName', 'activities.*', 'activitiesparticipants.role_participant')
         ->where('activitiesparticipants.id_participant', '=', $id_participant)
         ->where('activities.type', '=', 'mini_course')
         ->orderBy('aName')
         ->get();
 
-        $technical_visits = DB::table('activitiesparticipants')
-        ->join('activities', 'activitiesparticipants.id_activity', '=', 'activities.id')
+        $technical_visits = ActivityParticipant::join('activities', 'activitiesparticipants.id_activity', '=', 'activities.id')
         ->select('activities.name as aName', 'activities.*', 'activitiesparticipants.role_participant')
         ->where('activitiesparticipants.id_participant', '=', $id_participant)
         ->where('activities.type', '=', 'technical_visit')
@@ -118,21 +101,20 @@ class ParticipantController extends Controller{
         ->get();
 
 
-        return view('lista.participantes', ['participants' => $participants, 'lectures' => $lectures, 'mini_courses' => $mini_courses, 'technical_visits' => $technical_visits,]);
+        return view('lista.participantes', compact('lectures', 'mini_courses', 'technical_visits'));
     }
 
     public function subscribingSave(Request $request){
 
-        dd('subscribingSave');
 
         $ids = explode('&', $request['allData'], -1);
 
-        DB::table('technicalvisitparticipants')->where('id_activity', '=', $ids[0])->delete();
+        TechnicalVisitParticipant::where('id_activity', '=', $ids[0])->delete();
 
         $i = 1;
         $tam = count($ids);
         for (; $i < $tam; $i++) {
-            DB::table('technicalvisitparticipants')->insert(['id_activity' => $ids[0], 'id_participant' => $ids[$i]]);
+            technicalVisitParticipants::create(['id_activity' => $ids[0], 'id_participant' => $ids[$i]]);
         }
 
         return $this->same_subscribing($ids[0]);

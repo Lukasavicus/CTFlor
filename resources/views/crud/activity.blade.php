@@ -153,7 +153,7 @@
 
                     <i class="tiny material-icons left">description</i>
                     <div class="col s3">
-                        <span id="typeSearch" name="typeSearch">{{ $events[array_search($activity->id_event, array_column($events, 'id'))]->name }} </span>
+                        <span id="typeSearch" name="typeSearch"> </span>
                     </div>
 
                     <?php
@@ -264,9 +264,7 @@
 
         var today = yyyy+'-'+mm+'-'+dd;
 
-        alert(today);
         document.getElementById('start_').value = today;
-
         // -----------------------------------------------------
 
         var today = new Date(Date.parse(document.getElementById('end_').value));
@@ -283,8 +281,6 @@
 
         var today = yyyy+'-'+mm+'-'+dd;
 
-        alert(today);
         document.getElementById('end_').value = today;
-
     }
 </script>
