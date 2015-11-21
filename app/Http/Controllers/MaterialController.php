@@ -45,11 +45,16 @@ class MaterialController extends Controller
             'category'          => 'required',
         ]);
 
-        Storage::makeDirectory($request->input('participant'));
+        Storage::disk('local')->makeDirectory($request->input('participant'));
 
         $file = $request->file('fileField');
     		$extension = $file->getClientOriginalExtension();
-        Storage::disk('local')->put($request->input('participant').'/'.$file->getFilename().'.'.$extension, File::get($file));
+
+        Storage::disk('local')->put(
+                                  $request->input('id_participant').'/'.$file->getClientOriginalName().'.'.$extension,
+                                  File::get($file)
+                                );
+
         $entry = new Material();
     		$entry->mime = $file->getClientMimeType();
     		$entry->original_filename = $file->getClientOriginalName();
@@ -59,13 +64,15 @@ class MaterialController extends Controller
 
         Material::create
                 ([
-                  'id_activity'       => $request->input('activity'),
-                  'id_participant'    => $request->input('participant'),
+                  'id_activity'       => $request->input('id_activity'),
+                  'id_participant'    => $request->input('id_participant'),
                   'title'             => $request->input('title'),
                   'keywords'          => $request->input('keywords'),
                   'abstract'          => $request->input('abstract'),
                   'category'          => $request->input('category'),
-                  
+                  'filename'          => $entry->filename,
+                  'mime'              => $entry->mime,
+                  'original_filename' => $entry->original_filename,
                 ]);
 
 
