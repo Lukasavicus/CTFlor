@@ -3,9 +3,9 @@
 
     <div class="container">
         <div class="section">
-            @if($activities == null)
+            @if($activities == null || $activities->count() == 0)
                 <div class="card-panel red waves-effect waves-light" role="alert">
-                    "Nenhuma atividade foi cadastrado ainda."
+                    "Nenhuma atividade foi cadastrada ainda."
                 </div>
             @else
                 <ul class="collection">

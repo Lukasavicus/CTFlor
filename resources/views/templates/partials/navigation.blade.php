@@ -17,7 +17,7 @@
           </li>
           <li class="divider"></li>
           <li>
-              <a href="{{ route('associacao.subscribingactivity') }}">Sair</a>
+              <a href="{{ route('site.signout') }}">Sair</a>
           </li>
       </ul>
 

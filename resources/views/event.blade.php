@@ -75,7 +75,7 @@
 
 @section('elements')
 
-    @if($events == null)
+    @if($events == null || $events->count() == 0)
         <div class="card-panel red waves-effect waves-light" role="alert">
             "Nenhuma atividade foi cadastrado ainda."
         </div>

@@ -55,9 +55,9 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'ctflor'),
+            'database'  => env('DB_DATABASE', 'ctflor2'),
             'username'  => env('DB_USERNAME', 'root'),
-            'password'  => env('DB_PASSWORD', 'Markos2525-'),
+            'password'  => env('DB_PASSWORD', 's400'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

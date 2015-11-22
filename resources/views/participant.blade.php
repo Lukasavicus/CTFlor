@@ -137,7 +137,7 @@
 
 @section('elements')
 
-    @if($participants == null)
+    @if($participants == null || $participants->count() == 0)
         <div class="card-panel red waves-effect waves-light" role="alert">
             "Nenhum Participante foi cadastrado ainda."
         </div>
