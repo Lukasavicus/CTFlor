@@ -20,8 +20,6 @@ class AuthController extends Controller{
 			'password' => 'required|min:6',
 		]);
 
-		//dd('all ok');
-
 		User::create([
 			'email' => $request->input('email'),
 			'username' => $request->input('username'),
@@ -45,7 +43,7 @@ class AuthController extends Controller{
 		$size = strlen($request['email']);
 		$count = substr_count($request['email'], '@',0, $size);
 
-		if($count != 0) 
+		if($count != 0)
 			$column = 'email';
 		else
 			$column = 'username';
@@ -57,8 +55,6 @@ class AuthController extends Controller{
 
 
 		return redirect()->route('home')->with('info', 'You are now signed in.' . $column . ' ' . $request['password'] . ' ' . $request['email']  . ' ' . $count);
-
-		//dd('all ok');
 	}
 
 	public function getSignout(){
@@ -67,4 +63,3 @@ class AuthController extends Controller{
 	}
 
 }
-?>

@@ -27,7 +27,7 @@ class Activity extends  Model implements AuthenticatableContract{
                             'qnt_participants',
                             'duration',
                             'type',
-                            'id_event'
+                            'event_id',
                           ];
 
     public static function getTypes(){

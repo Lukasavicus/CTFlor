@@ -6,7 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddColumnRememberToken' => $baseDir . '/database/migrations/2015_11_21_225817_add_column_remember_token.php',
     'AddColumnsFilenameMimeOriginalFileName' => $baseDir . '/database/migrations/2015_11_21_125628_add_columns_filename_mime_originalFileName.php',
+    'AddEventForeignKeyOnActivity' => $baseDir . '/database/migrations/2015_11_21_235705_add_eventForeignKey_onActivity.php',
     'AlterColumns' => $baseDir . '/database/migrations/2015_11_21_190207_alter_columns.php',
     'CreateActivitiesParticipantsTable' => $baseDir . '/database/migrations/2015_10_30_143849_create_activitiesParticipants_table.php',
     'CreateActivitiesTable' => $baseDir . '/database/migrations/2015_10_30_143756_create_activities_table.php',

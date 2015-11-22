@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterColumns extends Migration
+class AddColumnRememberToken extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,8 @@ class AlterColumns extends Migration
      */
     public function up()
     {
-        Schema::table('materials', function (Blueprint $table) {
-          
-            $table->integer('id_activity')->unsigned()->nullabe()->change();
-            $table->integer('id_participant')->unsigned()->nullabe()->change();
-
+        Schema::table('participants', function (Blueprint $table) {
+            $table->rememberToken();
         });
     }
 
@@ -27,7 +24,7 @@ class AlterColumns extends Migration
      */
     public function down()
     {
-        Schema::table('materials', function (Blueprint $table) {
+        Schema::table('participants', function (Blueprint $table) {
             //
         });
     }

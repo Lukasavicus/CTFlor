@@ -4,6 +4,7 @@
 
     <div class="row">
         <form class="col s12" action="{{ route('home') }}" method="POST">
+          <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
         	<div class="input-field col s3">
                 <select>
         	        <option value="" disabled selected>Choose your option</option>
@@ -22,6 +23,7 @@
             <div class="input-field col s2">
                 <button class="waves-effect waves-light btn" type="submit">Search</button>
             </div>
+
         </form>
     </div>
 @stop
@@ -101,7 +103,7 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <select id="id_event_" name="id_event">
+                    <select id="id_event_" name="event_id">
                         <option>Choose your option</option>
                             @foreach($events as $event)
                                 <option value="{{$event->id}}">{{$event->name}}</option>
@@ -184,10 +186,6 @@
         document.formHeader.action = "{{ route('crud.activity.delete') }}";
     }
 
-</script>
-
-<script type="text/javascript">
-
 
     function edit( activityString ) {
 
@@ -243,9 +241,6 @@
 
       document.getElementById("id_event_").value =  "";
     }
-</script>
-
-<script>
 
 
     function setDates(){

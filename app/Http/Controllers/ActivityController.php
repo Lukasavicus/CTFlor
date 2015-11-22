@@ -37,16 +37,17 @@ class ActivityController extends Controller{
             'location'          => 'required',
             'qnt_participants'  => 'required',
             'type'              => 'required',
-            'id_event'          => 'required',
+            'event_id'          => 'required',
         ]);
 
-        $input = $request->except('id_event');
+        $input = $request->all();
 
         Activity::create($input);
 
         return redirect()->back()->with('info', 'Successfully created event!');
 
     }
+
 
     public function deleteRegister(Request $request){
 
@@ -432,7 +433,7 @@ class ActivityController extends Controller{
     }
 
     public function subscribingSave(Request $request)
-    {  
+    {
         $ids = explode('&', $request['allData'], -1);
 
         TechnicalVisitParticipant::where('id_activity', '=', $ids[0])->delete();

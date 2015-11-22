@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AlterColumns extends Migration
+class AddEventForeignKeyOnActivity extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class AlterColumns extends Migration
      */
     public function up()
     {
-        Schema::table('materials', function (Blueprint $table) {
-          
-            $table->integer('id_activity')->unsigned()->nullabe()->change();
-            $table->integer('id_participant')->unsigned()->nullabe()->change();
-
+        Schema::table('activities', function (Blueprint $table) {
+          $table->integer('event_id')->unsigned()->nullable();
+          $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 
@@ -27,7 +25,7 @@ class AlterColumns extends Migration
      */
     public function down()
     {
-        Schema::table('materials', function (Blueprint $table) {
+        Schema::table('participants', function (Blueprint $table) {
             //
         });
     }
