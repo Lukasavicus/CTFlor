@@ -52,7 +52,27 @@ class ParticipantController extends Controller{
 
         $inputParticipant = $request->all();
 
-        Participant::create($inputParticipant);
+        //Participant::create($inputParticipant);
+
+        // =====================================================
+
+            DB::table('participants')->insert([
+                'name'              => Input::get('name'),
+                'cpf'               => Input::get('cpf'),
+                'email'             => Input::get('email'),
+                'phone'             => Input::get('phone'),
+                'address'           => Input::get('address'),
+                'password'          => bcrypt(Input::get('password')),
+                'type'              => Input::get('type'),
+                'university'        => Input::get('university'),
+                'course'            => Input::get('course'),
+                'department'        => Input::get('department'),
+                'responsability'    => Input::get('responsability'),
+            ]);
+
+        // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            
 
         Mail::raw('You have successfully created your account on CTFlor website',
             function ($message)
@@ -60,6 +80,8 @@ class ParticipantController extends Controller{
               $message->to(Input::get('email'), Input::get('name'))->subject('CTFlor Website - Registration');
             }
         );
+
+        
 
         return redirect()->back()->with('info', 'Successfully created event!');
 
