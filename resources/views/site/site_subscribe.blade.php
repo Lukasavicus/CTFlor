@@ -96,14 +96,14 @@
 
 
                 <div class="input-field col s3">
-                    <button type="submit" class="waves-effect waves-light btn">
+                    <button type="submit" class="waves-effect waves-light green darken-4 btn">
                       <i class="material-icons left">input</i>
                       Inserir
                     </button>
                 </div>
 
                 <div class="input-field col s3">
-                  <button id="clearButton_" name="clearButton" class="waves-effect waves-light btn" onclick="clear();" >
+                  <button id="clearButton_" name="clearButton" class="waves-effect waves-light green darken-4 btn" onclick="clear();" >
                     <i class="material-icons left">delete</i>
                     Limpar
                   </button>

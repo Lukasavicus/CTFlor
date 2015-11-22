@@ -127,6 +127,16 @@
 
                 <div class="row">
 
+                    <div class="input-field col s4">
+                        <i class="material-icons prefix">payment</i>
+                        <input id="priceActivity_" name="priceActivity" type="number" step="0.01" class="validate">
+                        <label id="lPriceActivity" for="icon_telephone">Price</label>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
                     <div class="input-field col s3">
                         <button type="submit" class="waves-effect waves-light btn" onclick="setDates();">
                           <i class="material-icons left">input</i>
