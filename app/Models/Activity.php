@@ -28,6 +28,7 @@ class Activity extends  Model implements AuthenticatableContract{
                             'duration',
                             'type',
                             'event_id',
+                            'priceActivity',
                           ];
 
     public static function getTypes(){

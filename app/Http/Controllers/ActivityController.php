@@ -38,6 +38,7 @@ class ActivityController extends Controller{
             'qnt_participants'  => 'required',
             'type'              => 'required',
             'event_id'          => 'required',
+            'priceActivity'     => 'required',
         ]);
 
         $input = $request->all();
