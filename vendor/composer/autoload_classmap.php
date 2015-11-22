@@ -20,6 +20,8 @@ return array(
     'CreateMiniCourseParticipantsTable' => $baseDir . '/database/migrations/29/2015_10_30_000059_create_minicourseParticipants_table.php',
     'CreateMinicourseParticipantsTable' => $baseDir . '/database/migrations/2015_10_30_143940_create_minicourseParticipants_table.php',
     'CreateParticipantsTable' => $baseDir . '/database/migrations/2015_10_30_143811_create_participants_table.php',
+    'CreateTableChat' => $baseDir . '/database/migrations/2015_11_22_161147_createTableChat.php',
+    'CreateTableChatMessages' => $baseDir . '/database/migrations/2015_11_22_160505_createTableChatMessages.php',
     'CreateTechnicalVisitParticipantsTable' => $baseDir . '/database/migrations/2015_10_30_144004_create_technicalVisitParticipants_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',

@@ -229,3 +229,18 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 */
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// ==================================================== AUTHENTICATION ==================================================
+
+Route::get('/testeChat', [
+      'uses' => '\CTFlor\Http\Controllers\ChatController@index',
+      'as' => 'chat',
+]);
+
+Route::post('sendMessage', array('uses' => 'ChatController@sendMessage'));
+Route::post('isTyping', array('uses' => 'ChatController@isTyping'));
+Route::post('notTyping', array('uses' => 'ChatController@notTyping'));
+Route::post('retrieveChatMessages', array('uses' => 'ChatController@retrieveChatMessages'));
+Route::post('retrieveTypingStatus', array('uses' => 'ChatController@retrieveTypingStatus'));
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

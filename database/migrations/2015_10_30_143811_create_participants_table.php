@@ -13,7 +13,7 @@ class CreateParticipantsTable extends Migration
     public function up()
     {
         Schema::create('participants', function(Blueprint $table){
-            
+
             $table->increments('id');
             $table->string('name');
             $table->string('cpf')->unique();
@@ -40,7 +40,6 @@ class CreateParticipantsTable extends Migration
      */
     public function down()
     {
-        //
         Schema::drop('participants');
     }
 }
