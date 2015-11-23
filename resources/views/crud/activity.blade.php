@@ -42,6 +42,15 @@
 @section('fields')
     <div class="row">
         <div class="card card-panel">
+            @if($errors->any())
+                <div class="card-panel red waves-effect waves-light" role="alert">
+                    <p>
+                    @foreach($errors->all() as $error)
+                      {{ $error }}
+                    @endforeach
+                    </p>
+                </div>
+            @endif
             <form class="col s12" method="POST" action="{{ route('crud.activity') }}">
 
                 <div class="row">

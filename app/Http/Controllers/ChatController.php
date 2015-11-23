@@ -13,8 +13,6 @@ class ChatController extends Controller
 
     public function index()
     {
-        //$participants = Participant::orderBy('name')->get();
-
         return view('chat');
     }
 
@@ -47,10 +45,12 @@ class ChatController extends Controller
         $username = Input::get('username');
 
         $chat = Chat::find(1);
+
         if ($chat->userParticipant == $username)
             $chat->userParticipant_is_typing = false;
         else
             $chat->userBanca_is_typing = false;
+
         $chat->save();
     }
 

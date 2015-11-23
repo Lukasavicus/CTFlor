@@ -2,13 +2,16 @@
 <html>
 <head>
     <title>Chats</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/chats.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/chat.css" rel="stylesheet">
 </head>
 <body>
 
     <div class="col-lg-4 col-lg-offset-4">
-        <h1 id="greeting">Hello, <span id="username">Marcos</span></h1>
+        <h1 id="greeting">
+          Hello,
+          <span id="username">Marcos Cavalcante</span>
+        </h1>
 
         <div id="chat-window" class="col-lg-12">
 
@@ -20,6 +23,6 @@
     </div>
 
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="js/chats.js"></script>
+    <script src="js/chat.js"></script>
 </body>
 </html>

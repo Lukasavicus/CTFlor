@@ -58,7 +58,7 @@
     },
     'as' => 'site.signout',
 ]);
-        
+
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -86,23 +86,23 @@
     Route::get('/event', [
         'uses'  => '\CTFlor\Http\Controllers\EventController@eventIndex',
         'as'    => 'crud.event',
-        'middleware' => ['auth'],
+        //'middleware' => ['auth'],
     ]);
 
     Route::post('/event', [
         'uses'  => '\CTFlor\Http\Controllers\EventController@store',
-        'middleware' => ['auth'],
+        //'middleware' => ['auth'],
     ]);
 
     Route::get('/event/delete', [
         'uses' => '\CTFlor\Http\Controllers\EventController@deleteRegister',
         'as' => 'crud.event.delete',
-        'middleware' => ['auth'],
+        //'middleware' => ['auth'],
     ]);
 
     Route::post('/event/delete', [
         'uses' => '\CTFlor\Http\Controllers\EventController@deleteRegister',
-        'middleware' => ['auth'],
+        //'middleware' => ['auth'],
     ]);
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -113,12 +113,12 @@
     Route::get('/activity', [
     	'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@activityIndex',
     	'as' 	=> 'crud.activity',
-        'middleware' => ['auth'],
+      //'middleware' => ['auth'],
     ]);
 
     Route::post('/activity', [
     	'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@store',
-        'middleware' => ['auth'],
+      //'middleware' => ['auth'],
     ]);
 
     Route::get('/activity/delete', [
@@ -140,7 +140,7 @@
 
     Route::get('/subscribingactivity', [
         'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@insc',
-    	'as' 	=> 'associacao.subscribingactivity',
+    	  'as' 	=> 'associacao.subscribingactivity',
         'middleware' => ['auth'],
     ]);
 
@@ -204,12 +204,12 @@
     Route::get('/participant', [
     	'uses' 	=> 'ParticipantController@participantIndex',
     	'as' 	=> 'crud.participant',
-        'middleware' => ['auth'],
+      //'middleware' => ['auth'],
     ]);
 
     Route::post('/participant', [
         'uses'  => 'ParticipantController@store',
-        'middleware' => ['auth'],
+        //'middleware' => ['auth'],
     ]);
 
     Route::get('/participant/delete', [
@@ -253,6 +253,24 @@
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+// ==================================================== MATERIAL ==================================================
+    Route::get('/board', [
+        'uses' => '\CTFlor\Http\Controllers\BancaAvaliadoraController@bancaIndex',
+        'as' => 'crud.banca',
+        //'middleware' => ['auth'],
+    ]);
+
+    Route::post('/board', [
+        'uses' => '\CTFlor\Http\Controllers\BancaAvaliadoraController@store',
+        //'middleware' => ['auth'],
+    ]);
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
 // ==================================================== AUTHENTICATION ==================================================
 
 // Authentication routes...
@@ -269,15 +287,33 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 // ==================================================== AUTHENTICATION ==================================================
 
-Route::get('/testeChat', [
-      'uses' => '\CTFlor\Http\Controllers\ChatController@index',
-      'as' => 'chat',
-]);
+    Route::get('/testeChat', [
+          'uses' => '\CTFlor\Http\Controllers\ChatController@index',
+          'as' => 'chat',
+    ]);
 
-Route::post('sendMessage', array('uses' => 'ChatController@sendMessage'));
-Route::post('isTyping', array('uses' => 'ChatController@isTyping'));
-Route::post('notTyping', array('uses' => 'ChatController@notTyping'));
-Route::post('retrieveChatMessages', array('uses' => 'ChatController@retrieveChatMessages'));
-Route::post('retrieveTypingStatus', array('uses' => 'ChatController@retrieveTypingStatus'));
+    Route::post('/sendMessage', [
+          'uses' => 'ChatController@sendMessage',
+    ]);
+
+
+    Route::post('/isTyping', [
+          'uses' => 'ChatController@isTyping',
+    ]);
+
+
+    Route::post('/notTyping', [
+          'uses' => 'ChatController@notTyping',
+    ]);
+
+
+    Route::post('/retrieveChatMessages', [
+          'uses' => 'ChatController@retrieveChatMessages',
+    ]);
+
+
+    Route::post('/retrieveTypingStatus', [
+          'uses' => 'ChatController@retrieveTypingStatus',
+    ]);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

@@ -72,7 +72,7 @@ class ParticipantController extends Controller{
 
         // +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-            
+
 
         Mail::raw('You have successfully created your account on CTFlor website',
             function ($message)
@@ -81,7 +81,7 @@ class ParticipantController extends Controller{
             }
         );
 
-        
+
 
         return redirect()->back()->with('info', 'Successfully created event!');
 
