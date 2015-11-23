@@ -18,15 +18,16 @@ use CTFlor\Models\TechnicalVisitParticipant;
 class ActivityController extends Controller{
 
     public function activityIndex(){
-    	$activities = Activity::orderBy('name')->get();
-      $events = Event::orderBy('name')->get();
-      $types = Activity::getTypes();
+    	  $activities = Activity::orderBy('name')->get();
+        $events = Event::orderBy('name')->get();
+        $types = Activity::getTypes();
 
       return view('crud.activity', compact('activities', 'events', 'types') );
     }
 
 
     public function store(Request $request){
+
 
         $this->validate($request,[
             'name'              => 'required|unique:activities',
@@ -37,9 +38,10 @@ class ActivityController extends Controller{
             'location'          => 'required',
             'qnt_participants'  => 'required',
             'type'              => 'required',
-            'event_id'          => 'required',
+            'id_event'          => 'required',
             'priceActivity'     => 'required',
         ]);
+
 
         $input = $request->all();
 
@@ -59,6 +61,9 @@ class ActivityController extends Controller{
         return redirect()->back()->with('info', 'Successfully deleted activity!');
     }
 
+    public function alterRegister(Request $request){
+
+    }
 
 
 // ============================== Inscrição de Participantes =================================================

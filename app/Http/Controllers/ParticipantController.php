@@ -54,6 +54,8 @@ class ParticipantController extends Controller{
 
         //Participant::create($inputParticipant);
 
+        //Não alterar - ainda que fora do padrão
+        
         // =====================================================
 
             DB::table('participants')->insert([

@@ -14,7 +14,7 @@ class RemoveColumnResumo extends Migration
     {
         Schema::table('materials', function (Blueprint $table) {
              $table->dropColumn('resumo');
-             $table->renameColumn('categoria', 'category');
+            // $table->renameColumn('categoria', 'category');
         });
     }
 

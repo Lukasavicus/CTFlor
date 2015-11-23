@@ -50,7 +50,7 @@ class BancaAvaliadoraController extends Controller
     {
         //
         $this->validate($request,[
-            'event_id'                 => 'required',
+            'id_event'              => 'required',
             'professor1'            => 'required',
             'professor2'            => 'required',
             'professor3'            => 'required',

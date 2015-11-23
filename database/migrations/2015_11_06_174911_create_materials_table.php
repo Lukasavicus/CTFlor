@@ -20,9 +20,12 @@ class CreateMaterialsTable extends Migration
             $table->foreign('id_participant')->references('id')->on('participants')->onDelete('cascade');
             $table->string('title');
             $table->string('keywords');
-            $table->string('resumo');
-            $table->string('abstract');
-            $table->string('categoria');
+            $table->text('resumo');
+            $table->text('abstract');
+            $table->string('category');
+            //$table->string('filename');
+            //$table->string('mime');
+            //$table->string('original_filename');
             $table->timestamps();
         });
     }

@@ -54,7 +54,7 @@
                 <div class="row">
 
                     <div class="input-field col s6">
-                        <select id="event_id_" name="event_id" >
+                        <select id="id_event_" name="id_event" >
                             <option>Choose an Event</option>
                             @foreach($events as $event)
                                 <option value="{{$event->id}}">{{$event->name}}</option>
@@ -136,7 +136,7 @@
                 @foreach($boards as $board)
                 <?php
                     foreach ($events as $event)
-                      if($event->{'id'} == $board->event_id)    $nameEvent = $event->{'name'};
+                      if($event->{'id'} == $board->id_event)    $nameEvent = $event->{'name'};
 
                     //echo $professors;
                     foreach ($professors as $professor)
@@ -206,7 +206,7 @@
 
       var split = bancaString.split('?');
 
-      document.getElementById("event_id_").value =  split[0];
+      document.getElementById("id_event_").value =  split[0];
       document.getElementById("lEvent").className += " active";
 
       document.getElementById("professor1_").value =  split[1];

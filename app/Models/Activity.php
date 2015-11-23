@@ -22,12 +22,13 @@ class Activity extends  Model implements AuthenticatableContract{
      */
     protected $fillable = [ 'name',
                             'start',
+                            'startTime',
                             'end',
+                            'endTime',
                             'location',
                             'qnt_participants',
-                            'duration',
                             'type',
-                            'event_id',
+                            'id_event',
                             'priceActivity',
                           ];
 
