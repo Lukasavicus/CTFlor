@@ -60,7 +60,7 @@
                                 <option value="{{$event->id}}">{{$event->name}}</option>
                             @endforeach
                         </select>
-                        <label><i class="material-icons left">description</i>Event</label>
+                        <label id="lEvent" ><i class="material-icons left">description</i>Event</label>
                     </div>
 
                     <div class="input-field col s6">
@@ -70,7 +70,7 @@
                                     <option value="{{$professor->id}}">{{$professor->name}}</option>
                                 @endforeach
                         </select>
-                        <label><i class="material-icons left">description</i>First Professor</label>
+                        <label id="lProfessor1"><i class="material-icons left">description</i>First Professor</label>
                     </div>
               </div>
               <div class="row">
@@ -81,7 +81,7 @@
                                     <option value="{{$professor->id}}">{{$professor->name}}</option>
                                 @endforeach
                         </select>
-                        <label><i class="material-icons left">description</i>Second Professor</label>
+                        <label id="lProfessor2"><i class="material-icons left">description</i>Second Professor</label>
                     </div>
 
                     <div class="input-field col s6">
@@ -91,7 +91,7 @@
                                     <option value="{{$professor->id}}">{{$professor->name}}</option>
                                 @endforeach
                         </select>
-                        <label><i class="material-icons left">description</i>Third Professor</label>
+                        <label id="lProfessor3"><i class="material-icons left">description</i>Third Professor</label>
                     </div>
 
               </div>
@@ -106,8 +106,9 @@
                       </button>
                   </div>
 
+
                   <div class="input-field col s3">
-                      <button class="waves-effect waves-light btn">
+                      <button type="reset" class="waves-effect waves-light btn">
                         <i class="material-icons left">info_outline</i>
                         Clear fields
                       </button>
@@ -115,10 +116,10 @@
 
               </div>
 
-
-                <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
+              <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
 
             </form>
+
       </div>
     </div>
 @stop
@@ -133,20 +134,47 @@
         @else
                 <table class="responsive-table">
                 @foreach($boards as $board)
+                <?php
+                    foreach ($events as $event)
+                      if($event->{'id'} == $board->event_id)    $nameEvent = $event->{'name'};
+
+                    //echo $professors;
+                    foreach ($professors as $professor)
+                        if($professor->{'id'} == $board->professor1)   $professor1Name = $professor->{'name'};
+
+                        else if($professor->{'id'} == $board->professor2)  $professor2Name = $professor->{'name'};
+
+                        else if($professor->{'id'} == $board->professor3)  $professor3Name = $professor->{'name'};
+
+                ?>
                     <tr>
                           <td>
                               <i class="material-icons left">toc</i>
-                              <span id="nameSearch" name="nameSearch">{{ $board->id }}</span>
+                              <span id="nameSearch" name="nameSearch">{{ $nameEvent }}</span>
                           </td>
 
 
                           <td>
                               <i class="tiny material-icons left">description</i>
-                              <span id="typeSearch" name="typeSearch"> </span>
+                              <span id="typeSearch" name="typeSearch">{{ $professor1Name }} </span>
                           </td>
 
                           <td>
-                              <button class="waves-effect waves-light btn">
+                              <i class="tiny material-icons left">description</i>
+                              <span id="typeSearch" name="typeSearch">{{ $professor2Name }} </span>
+                          </td>
+
+                         <td>
+                              <i class="tiny material-icons left">description</i>
+                              <span id="typeSearch" name="typeSearch">{{ $professor3Name }} </span>
+                          </td>
+                          <?php
+                                $bancaString = $nameEvent . "?" . $professor1Name  . "?" . $professor2Name  . "?" .
+                                                     $professor3Name . "?";
+                          ?>
+
+                          <td>
+                              <button class="waves-effect waves-light btn"  onclick="edit('{{ $bancaString }}');" >
                                 <i class="material-icons left">info_outline</i>
                                 Edit
                               </button>
@@ -173,60 +201,23 @@
         document.formHeader.action = "{{ route('crud.activity.delete') }}";
     }
 
-    /*
-    function edit( activityString ) {
 
-      alert(activityString);
+    function edit( bancaString ) {
 
-      var split = activityString.split('?');
+      var split = bancaString.split('?');
 
-      document.getElementById("name_").value =  split[0];
-      document.getElementById("lname").className += " active";
+      document.getElementById("event_id_").value =  split[0];
+      document.getElementById("lEvent").className += " active";
 
-      document.getElementById("start_").value =  split[1];
-      document.getElementById("lstart").className += " active";
+      document.getElementById("professor1_").value =  split[1];
+      document.getElementById("lProfessor1").className += " active";
 
-      document.getElementById("startTime_").value =  split[2];
-      document.getElementById("lStartTime").className += " active";
+      document.getElementById("professor2_").value =  split[2];
+      document.getElementById("lProfessor2").className += " active";
 
-      document.getElementById("end_").value =  split[3];
-      document.getElementById("lend").className += " active";
+      document.getElementById("professor3_").value =  split[3];
+      document.getElementById("lProfessor3").className += " active";
 
-      document.getElementById("endTime_").value =  split[4];
-      document.getElementById("lEndTime").className += " active";
-
-      document.getElementById('location_').value = split[5];
-      document.getElementById("llocation").className += " active";
-
-      document.getElementById("qnt_participants_").value = split[6];
-      document.getElementById("lqnt_participants").className += " active";
-
-      document.getElementById("type_").value =  split[7];
-
-      document.getElementById("id_event_").value =  split[8];
     }
 
-
-
-    function clearFields( ) {
-
-      document.getElementById("name_").value =  "";
-
-      document.getElementById("start_").value =  "";
-
-      document.getElementById("startTime_").value =  "";
-
-      document.getElementById("end_").value =  "";
-
-      document.getElementById("endTime_").value =  "";
-
-      document.getElementById('location_').value = "";
-
-      document.getElementById("qnt_participants_").value = "";
-
-      document.getElementById("type_").value =  "";
-
-      document.getElementById("id_event_").value =  "";
-    }
-    */
 </script>

@@ -154,7 +154,7 @@
                     </div>
 
                     <div class="input-field col s3">
-                        <button class="waves-effect waves-light btn" onclick="clearFields()">
+                        <button class="waves-effect waves-light btn" type="reset">
                           <i class="material-icons left">info_outline</i>
                           Clear fields
                         </button>
@@ -179,17 +179,42 @@
         @else
                 <table class="responsive-table">
                 @foreach($activities as $activity)
+
+                <?php
+                    foreach ($events as $event)
+                      if($event->{'id'} == $activity->event_id)    $nameEvent = $event->{'name'};
+
+                    //echo $professors;
+                    foreach ($types as $type)
+                        if($type['value'] == $activity->type)   $typeActivity = $type['text'];
+
+
+                ?>
                     <tr>
+
+                          <td>
+                              <i class="tiny material-icons left">description</i>
+                              <span id="typeSearch" name="typeSearch"> {{ $nameEvent }} </span>
+                          </td>
+
+                          <td>
+                              <i class="tiny material-icons left">description</i>
+                              <span id="typeSearch" name="typeSearch"> {{ $typeActivity }} </span>
+                          </td>
+
+
                           <td>
                               <i class="material-icons left">toc</i>
                               <span id="nameSearch" name="nameSearch">{{ $activity->name }}</span>
                           </td>
 
-
                           <td>
-                              <i class="tiny material-icons left">description</i>
-                              <span id="typeSearch" name="typeSearch"> </span>
+                              <i class="material-icons left">payment</i>
+                              <span id="nameSearch" name="nameSearch">{{ $activity->priceActivity }}</span>
                           </td>
+
+
+
 
                           <?php
                                 $activityString = $activity->name . "?" . $activity->start . "?" . $activity->startTime . "?" .
@@ -227,7 +252,7 @@
 
     function edit( activityString ) {
 
-      alert(activityString);
+      //alert(activityString);
 
       var split = activityString.split('?');
 
@@ -256,30 +281,6 @@
 
       document.getElementById("id_event_").value =  split[8];
     }
-
-
-
-    function clearFields( ) {
-
-      document.getElementById("name_").value =  "";
-
-      document.getElementById("start_").value =  "";
-
-      document.getElementById("startTime_").value =  "";
-
-      document.getElementById("end_").value =  "";
-
-      document.getElementById("endTime_").value =  "";
-
-      document.getElementById('location_').value = "";
-
-      document.getElementById("qnt_participants_").value = "";
-
-      document.getElementById("type_").value =  "";
-
-      document.getElementById("id_event_").value =  "";
-    }
-
 
     function setDates(){
 

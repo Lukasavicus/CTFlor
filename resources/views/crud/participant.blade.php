@@ -146,9 +146,9 @@
                     </div>
 
                     <div class="input-field col s3">
-                      <button id="clearButton_" name="clearButton" class="waves-effect waves-light btn" onclick="clear();" >
+                      <button id="clearButton_" name="clearButton" class="waves-effect waves-light btn" type="reset" >
                         <i class="material-icons left">delete</i>
-                        Limpar
+                        Clear Fields
                       </button>
                     </div>
 
@@ -251,29 +251,6 @@
 
       document.getElementById("responsability_").value = split[9];
       document.getElementById("lresponsability").className += " active";
-    }
-
-    function clear()
-    {
-      document.getElementById("name_").value =  "";
-
-      document.getElementById("cpf_").value = "";
-
-      document.getElementById("email_").value = "";
-
-      document.getElementById("phone_").value = "";
-
-      document.getElementById("address_").value = "";
-
-      document.getElementById("type_").value = "";
-
-      document.getElementById("university_").value = "";
-
-      document.getElementById("course_").value = "";
-
-      document.getElementById("department_").value = "";
-
-      document.getElementById("responsability_").value = "";
     }
 
 </script>
