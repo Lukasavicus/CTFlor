@@ -23,9 +23,10 @@ class CreateActivitiesTable extends Migration
             $table->string('location');
             $table->integer('qnt_participants');
             $table->enum('type', ['lecture', 'mini_course', 'technical_visit']);
-            $table->integer('id_event')->unsigned();
+            $table->integer('id_event')->unsigned();//->nullable();
+            $table->float('priceActivity');
             $table->timestamps();
-            $table->foreign('id_event')->references('id')->on('events');
+            $table->foreign('id_event')->references('id')->on('events');//->onDelete('cascade')
         });
     }
 

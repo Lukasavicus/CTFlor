@@ -131,8 +131,21 @@
         'uses' => '\CTFlor\Http\Controllers\ActivityController@deleteRegister',
         'middleware' => ['auth'],
     ]);
+/*
+    Route::get('/activity/alter', [
+        'uses' => '\CTFlor\Http\Controllers\ActivityController@deleteRegister',
+        'as' => 'crud.activity.delete',
+        'middleware' => ['auth'],
+    ]);
 
+    Route::post('/activity/alter', [
+        'uses' => '\CTFlor\Http\Controllers\ActivityController@deleteRegister',
+        'middleware' => ['auth'],
+    ]);
+*/
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 
 // ==================================================== SUBSCRIPTION ==============================================
 

@@ -19,14 +19,17 @@ class ActivityController extends Controller{
 
     public function activityIndex(){
     	$activities = Activity::orderBy('name')->get();
-      $events = Event::orderBy('name')->get();
-      $types = Activity::getTypes();
+        //$events = Event::orderBy('name')->get();
+        $events = DB::table('events')->orderBy('name')->get(); //Não alterar - ainda que fora do padrão
+        $types = Activity::getTypes();
 
-      return view('crud.activity', compact('activities', 'events', 'types') );
+      //return view('crud.activity', compact('activities', 'events', 'types') );
+        return view('crud.activity', ['activities' => $activities, 'events' => $events, 'types' => $types]); //Não alterar - ainda que fora do padrão
     }
 
 
     public function store(Request $request){
+
 
         $this->validate($request,[
             'name'              => 'required|unique:activities',
@@ -37,9 +40,10 @@ class ActivityController extends Controller{
             'location'          => 'required',
             'qnt_participants'  => 'required',
             'type'              => 'required',
-            'event_id'          => 'required',
+            'id_event'          => 'required',
             'priceActivity'     => 'required',
         ]);
+
 
         $input = $request->all();
 
