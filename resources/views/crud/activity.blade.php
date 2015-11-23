@@ -182,7 +182,7 @@
 
                 <?php
                     foreach ($events as $event)
-                      if($event->{'id'} == $activity->event_id)    $nameEvent = $event->{'name'};
+                        if($event->{'id'} == $activity->event_id)    $nameEvent = $event->{'name'};
 
                     //echo $professors;
                     foreach ($types as $type)
