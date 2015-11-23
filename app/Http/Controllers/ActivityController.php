@@ -19,12 +19,12 @@ class ActivityController extends Controller{
 
     public function activityIndex(){
     	$activities = Activity::orderBy('name')->get();
-        //$events = Event::orderBy('name')->get();
-        $events = DB::table('events')->orderBy('name')->get(); //Não alterar - ainda que fora do padrão
+        $events = Event::orderBy('name')->get();
+        //$events = DB::table('events')->orderBy('name')->get(); //Não alterar - ainda que fora do padrão
         $types = Activity::getTypes();
 
-      //return view('crud.activity', compact('activities', 'events', 'types') );
-        return view('crud.activity', ['activities' => $activities, 'events' => $events, 'types' => $types]); //Não alterar - ainda que fora do padrão
+      return view('crud.activity', compact('activities', 'events', 'types') );
+      //  return view('crud.activity', ['activities' => $activities, 'events' => $events, 'types' => $types]); //Não alterar - ainda que fora do padrão
     }
 
 
@@ -63,6 +63,9 @@ class ActivityController extends Controller{
         return redirect()->back()->with('info', 'Successfully deleted activity!');
     }
 
+    public function alterRegister(Request $request){
+
+    }
 
 
 // ============================== Inscrição de Participantes =================================================

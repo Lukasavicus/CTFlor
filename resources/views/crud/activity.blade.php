@@ -223,8 +223,11 @@
                 @foreach($activities as $activity)
 
                 <?php
-                    foreach ($events as $event)
-                      if($event->{'id'} == $activity->event_id)    $nameEvent = $event->{'name'};
+                    foreach ($events as $event){
+                      //echo "E: " . $event->{'id'} . "<br> A:" . $activity->id_event . "<br> C:" .  ($event->{'id'} == $activity->id_event) . "<br>";
+                      if($event->{'id'} == $activity->id_event)
+                        $nameEvent = $event->{'name'};
+                    }
 
                     //echo $professors;
                     foreach ($types as $type)
@@ -249,25 +252,6 @@
                               <i class="material-icons left">toc</i>
                               <span id="nameSearch" name="nameSearch">{{ $activity->name }}</span>
                           </td>
-
-
-                          <!-- 
-
-                          <td>
-                              <i class="material-icons left">payment</i>
-                              <span id="nameSearch" name="nameSearch">{{ $activity->priceActivity }}</span>
-                          </td>
-                          -->
-
-                          <td>
-                            <i class="tiny material-icons left">description</i>
-                            <div class="col s3">
-                                <span id="typeSearch" name="typeSearch">{{ $events[array_search($activity->id_event, array_column($events, 'id'))]->name }} </span>
-                            </div>
-                          </td>
-
-
-
 
                           <?php
                                 $activityString = $activity->name . "?" . $activity->start . "?" . $activity->startTime . "?" .
@@ -345,7 +329,7 @@
     function editMode(){
       document.getElementById("cancelar").setAttribute("style", "visibility:visible");
       document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Alterar";
-      //document.formSubmit.action = "{{ route('crud.activity.alter') }}";
+      
     }
 
     function cancelAll(){
