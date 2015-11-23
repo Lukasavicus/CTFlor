@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class RemoveColumnResumo extends Migration
+class DeleteTechnicalMiniCourseLectureParticipants extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class RemoveColumnResumo extends Migration
      */
     public function up()
     {
-        Schema::table('materials', function (Blueprint $table) {
-             $table->dropColumn('resumo');
-             $table->renameColumn('categoria', 'category');
-        });
+        //
+        Schema::drop('technicalVisitParticipants');
+        Schema::drop('miniCourseParticipants');
+        Schema::drop('lectureParticipants');
     }
 
     /**
@@ -25,8 +25,6 @@ class RemoveColumnResumo extends Migration
      */
     public function down()
     {
-        Schema::table('materials', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

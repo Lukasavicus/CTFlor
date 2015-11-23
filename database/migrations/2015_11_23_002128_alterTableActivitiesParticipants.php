@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddColumnRememberToken extends Migration
+class AlterTableActivitiesParticipants extends Migration
 {
     /**
      * Run the migrations.
@@ -12,8 +12,11 @@ class AddColumnRememberToken extends Migration
      */
     public function up()
     {
-        Schema::table('participants', function (Blueprint $table) {
-            $table->rememberToken();
+        //
+        Schema::table('activitiesParticipants', function ($table) {
+
+            $table->enum('typeActivity', ['lecture', 'mini_course', 'technical_visit']);
+
         });
     }
 
@@ -24,8 +27,6 @@ class AddColumnRememberToken extends Migration
      */
     public function down()
     {
-        Schema::table('participants', function (Blueprint $table) {
-            //
-        });
+        //
     }
 }

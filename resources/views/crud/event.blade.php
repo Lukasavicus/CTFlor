@@ -95,7 +95,7 @@
                   </div>
 
                   <div class="input-field col s4">
-                      <button class="waves-effect waves-light btn" onclick="clearFields()">
+                      <button class="waves-effect waves-light btn" type="reset">
                         <i class="material-icons left">info_outline</i>
                         Clear fields
                       </button>
@@ -129,6 +129,17 @@
                           <i class="tiny material-icons left">room</i>
                           <span id="typeSearch" name="typeSearch">{{ $event->location }} </span>
                    </td>
+
+                   <td>
+                         <i class="tiny material-icons left">room</i>
+                         <span id="typeSearch" name="typeSearch">{{ $event->start }} </span>
+                  </td>
+
+                  <td>
+                        <i class="tiny material-icons left">room</i>
+                        <span id="typeSearch" name="typeSearch">{{ $event->end }} </span>
+                 </td>
+
                         <?php
                               $eventString = $event->name . "?" . $event->start . "?" .
                                              $event->end . "?" . $event->location . "?";
@@ -179,16 +190,6 @@
       document.getElementById("lLocation").className += " active";
     }
 
-    function clearFields( )
-    {
-      document.getElementById("name_").value =  "";
-
-      document.getElementById("start_").value = "";
-
-      document.getElementById("starttime_").value = "";
-
-      document.getElementById("end_").value = "";
-    }
 
     function setDates(){
 

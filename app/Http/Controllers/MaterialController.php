@@ -23,14 +23,16 @@ class MaterialController extends Controller
     {
         $materials = Material::orderBy('title')->get();
 
-        $partActivities = ActivityParticipant::join('participants', 'activitiesparticipants.id_participant', '=', 'participants.id')
+        /*$partActivities = ActivityParticipant::join('participants', 'activitiesparticipants.id_participant', '=', 'participants.id')
         ->join('activities', 'activitiesparticipants.id_activity', '=', 'activities.id')
         ->select('participants.name as pName', 'participants.*', 'activities.name as aName', 'activities.*', 'activitiesparticipants.*')
         ->orderBy('pName')
         ->get();
+        */
+        $activities = Activity::orderBy('name')->get();
 
 
-        return view('crud.material', compact('materials', 'partActivities') );
+        return view('crud.material', compact('materials', 'activities') );
     }
 
 

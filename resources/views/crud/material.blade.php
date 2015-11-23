@@ -57,15 +57,20 @@
             <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
             <div class="row">
 
-                <div class="input-field col s4">
-                    <i class="material-icons prefix">web</i>
-                    <input id="activity_" name="id_activity" type="text" class="validate">
-                    <label for="icon_prefix">Activity</label>
-                </div>
+              <div class="input-field col s4">
+                  <select id="activity_" name="id_activity" >
+                      <option>Choose an Event</option>
+                      @foreach($activities as $activity)
+                          <option value="{{$activity->id}}">{{$activity->name}}</option>
+                      @endforeach
+                  </select>
+                  <label id="lActivity" ><i class="material-icons left">web</i>Activity</label>
+              </div>
+                
 
                 <!-- <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i> -->
-                    <input id="participant_" name="id_participant" type="hidden" class="validate" value="5">
+                    <input id="participant_" name="id_participant" type="hidden" class="validate" value="4">
                 <!--<label for="icon_prefix">Participant</label>
                 </div> -->
 
@@ -119,7 +124,7 @@
                 </div>
 
                 <div class="input-field col s4">
-                    <button class="waves-effect waves-light btn" onclick="clearFields()">
+                    <button class="waves-effect waves-light btn" type="reset">
                       <i class="material-icons left">info_outline</i>
                       Clear fields
                     </button>

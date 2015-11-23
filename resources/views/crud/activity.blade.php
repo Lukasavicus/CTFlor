@@ -69,7 +69,20 @@
         @endif
       </div>
         <div class="card card-panel">
+
             <form id="formSubmit" class="col s12" method="POST" action="{{ route('crud.activity') }}">
+
+            @if($errors->any())
+                <div class="card-panel red waves-effect waves-light" role="alert">
+                    <p>
+                    @foreach($errors->all() as $error)
+                      {{ $error }}
+                    @endforeach
+                    </p>
+                </div>
+            @endif
+            <form class="col s12" method="POST" action="{{ route('crud.activity') }}">
+
 
                 <div class="row">
                     <div class="input-field col s4">
@@ -172,6 +185,7 @@
                     </div>
 
                     <div class="input-field col s3">
+
                         <button type="reset" class="waves-effect waves-light btn" onclick="clearFields()">
                           <i class="material-icons left">info_outline</i>
                           Limpar Campos
@@ -180,6 +194,9 @@
 
                     <div id="cancelar" class="input-field col s3" style="visibility:hidden">
                         <button class="waves-effect waves-light btn" onclick="cancelAll()">
+
+                        <button class="waves-effect waves-light btn" type="reset">
+
                           <i class="material-icons left">info_outline</i>
                           Cancelar
                         </button>
@@ -204,16 +221,41 @@
         @else
                 <table class="responsive-table">
                 @foreach($activities as $activity)
+
+                <?php
+                    foreach ($events as $event)
+                      if($event->{'id'} == $activity->event_id)    $nameEvent = $event->{'name'};
+
+                    //echo $professors;
+                    foreach ($types as $type)
+                        if($type['value'] == $activity->type)   $typeActivity = $type['text'];
+
+
+                ?>
                     <tr>
+
+                          <td>
+                              <i class="tiny material-icons left">description</i>
+                              <span id="typeSearch" name="typeSearch"> {{ $nameEvent }} </span>
+                          </td>
+
+                          <td>
+                              <i class="tiny material-icons left">description</i>
+                              <span id="typeSearch" name="typeSearch"> {{ $typeActivity }} </span>
+                          </td>
+
+
                           <td>
                               <i class="material-icons left">toc</i>
                               <span id="nameSearch" name="nameSearch">{{ $activity->name }}</span>
                           </td>
 
+
                           <!-- 
+
                           <td>
-                              <i class="tiny material-icons left">description</i>
-                              <span id="typeSearch" name="typeSearch"> </span>
+                              <i class="material-icons left">payment</i>
+                              <span id="nameSearch" name="nameSearch">{{ $activity->priceActivity }}</span>
                           </td>
                           -->
 
@@ -223,6 +265,9 @@
                                 <span id="typeSearch" name="typeSearch">{{ $events[array_search($activity->id_event, array_column($events, 'id'))]->name }} </span>
                             </div>
                           </td>
+
+
+
 
                           <?php
                                 $activityString = $activity->name . "?" . $activity->start . "?" . $activity->startTime . "?" .
@@ -304,7 +349,7 @@
     }
 
     function cancelAll(){
-      clearFields();
+      //clearFields();
       document.getElementById("cancelar").setAttribute("style", "visibility:visible");
       document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Inserir";
       document.formSubmit.action = "{{ route('crud.activity') }}";
