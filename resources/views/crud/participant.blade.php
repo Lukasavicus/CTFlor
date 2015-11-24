@@ -53,6 +53,13 @@
             <form class="col s12" method="POST" action="{{ route('crud.participant') }}">
 
                 <div class="row">
+
+                    <div class="input-field" style="visibility:hidden">
+                        <i class="material-icons prefix">toc</i>
+                        <input id="id_" name="id" type="number" class="validate" value="-1">
+                        <label id="lid" for="icon_prefix">ID:</label>
+                    </div>
+
                     <div class="input-field col s4">
                         <i class="material-icons prefix">perm_identity</i>
                         <input id="name_" name="name" type="text" class="validate">
@@ -97,7 +104,7 @@
                 <div class="row">
                     <div class="input-field col s4">
                         <select id="type_" name="type">
-                            <option value="" selected="false">Escolha uma opcao</option>
+                            <option value="" selected="false">Choose your option</option>
                             <option id="student" value="student">Estudante</option>
                             <option id="professor" value="professor">Professor</option>
                             <option id="community" value="community">Comunidade</option>
@@ -139,9 +146,9 @@
                 <div class="row">
 
                     <div class="input-field col s3">
-                        <button type="submit" class="waves-effect waves-light btn">
+                        <button id="incluir_alterar" type="submit" class="waves-effect waves-light btn">
                           <i class="material-icons left">input</i>
-                          Inserir
+                          Insert
                         </button>
                     </div>
 
@@ -150,6 +157,13 @@
                         <i class="material-icons left">delete</i>
                         Clear Fields
                       </button>
+                    </div>
+
+                    <div id="cancelar" class="input-field col s3" style="visibility:hidden">
+                        <button type="reset" class="waves-effect waves-light btn" onclick="cancelAll()">
+                          <i class="material-icons left">info_outline</i>
+                          Cancelar
+                        </button>
                     </div>
 
                 </div>
@@ -184,7 +198,7 @@
                                     <span id="cpfSearch" name="cpfSearch">{{ $participant->cpf }}</span>
                                 </td>
                                 <?php
-                                  $participantString = $participant->name . "?" . $participant->cpf . "?" . $participant->email . "?" .
+                                  $participantString = $participant->id . "?" . $participant->name . "?" . $participant->cpf . "?" . $participant->email . "?" .
                                                        $participant->phone . "?" . $participant->address . "?" . $participant->type . "?" .
                                                        $participant->university . "?" . $participant->course . "?" . $participant->department . "?" .
                                                        $participant->responsability ;
@@ -223,34 +237,70 @@
 
       var split = myParticipantString.split('?');
 
-      document.getElementById("name_").value =  split[0];
+      document.getElementById("id_").value =  split[0];
+      document.getElementById("lid").className += " active";
+
+      document.getElementById("name_").value =  split[1];
       document.getElementById("lname").className += " active";
 
-      document.getElementById("cpf_").value = split[1];
+      document.getElementById("cpf_").value = split[2];
       document.getElementById("lcpf").className += " active";
 
-      document.getElementById("email_").value = split[2];
+      document.getElementById("email_").value = split[3];
       document.getElementById("lemail").className += " active";
 
-      document.getElementById("phone_").value = split[3];
+      document.getElementById("phone_").value = split[4];
       document.getElementById("lphone").className += " active";
 
-      document.getElementById("address_").value = split[4];
+      document.getElementById("address_").value = split[5];
       document.getElementById("laddress").className += " active";
 
-      document.getElementById(split[5]).selected = true;
+      //alert(split[6]);
+      //document.getElementById(split[6]).selected = true;
 
-      document.getElementById("university_").value = split[6];
+      document.getElementById("university_").value = split[7];
       document.getElementById("luniversity").className += " active";
 
-      document.getElementById("course_").value = split[7];
+      document.getElementById("course_").value = split[8];
       document.getElementById("lcourse").className += " active";
 
-      document.getElementById("department_").value = split[8];
+      document.getElementById("department_").value = split[9];
       document.getElementById("ldepartment").className += " active";
 
-      document.getElementById("responsability_").value = split[9];
+      document.getElementById("responsability_").value = split[10];
       document.getElementById("lresponsability").className += " active";
+
+      editMode();
+
     }
+
+    function editMode(){
+      document.getElementById("cancelar").setAttribute("style", "visibility:visible");
+      document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Alterar";
+      document.getElementById("cpf_").readOnly  = true;
+      document.getElementById("password_").readOnly  = true;
+    }
+
+    function cancelAll(){
+      document.getElementById("cancelar").setAttribute("style", "visibility:hidden");
+      document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Insert";
+     
+      document.getElementById("cpf_").readOnly  = false;
+      document.getElementById("password_").readOnly  = true;
+
+      document.getElementById("name_").value =  "";
+      document.getElementById("cpf_").value =  "";
+      document.getElementById("email_").value =  "";
+      document.getElementById("phone_").value =  "";
+      document.getElementById("address_").value =  "";
+      document.getElementById("password_").value = "";
+      document.getElementById("university_").value = "";
+      document.getElementById("course_").value = "";
+      document.getElementById("department_").value =  "";
+      document.getElementById("responsability_").value =  "";
+
+    }
+
+
 
 </script>

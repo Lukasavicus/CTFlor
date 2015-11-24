@@ -41,34 +41,7 @@
 
 @section('fields')
     <div class="row">
-      <div>
-        @if($errors->has('name')      ||
-            $errors->has('start')     ||
-            $errors->has('startTime') ||
-            $errors->has('end')       ||
-            $errors->has('endTime')   ||
-            $errors->has('location')  ||
-            $errors->has('qnt_participants')  ||
-            $errors->has('type')      ||
-            $errors->has('id_event')  ||
-            $errors->has('priceActivity')    )
-
-              {{ $errors->first('name')     }}
-              {{ $errors->first('start')    }}
-              {{ $errors->first('startTime')}}
-              {{ $errors->first('end')      }}
-              {{ $errors->first('endTime')  }}
-              {{ $errors->first('location') }}
-              {{ $errors->first('qnt_participants') }}
-              {{ $errors->first('type')     }}
-              {{ $errors->first('id_event') }}
-              {{ $errors->first('priceActivity')  }}
-
-              ERRO
-
-        @endif
-      </div>
-        <div class="card card-panel">
+      <div class="card card-panel">
 
             <form id="formSubmit" class="col s12" method="POST" action="{{ route('crud.activity') }}">
 
@@ -81,10 +54,16 @@
                     </p>
                 </div>
             @endif
-            <form class="col s12" method="POST" action="{{ route('crud.activity') }}">
 
 
                 <div class="row">
+
+                    <div class="input-field" style="visibility:hidden">
+                        <i class="material-icons prefix">toc</i>
+                        <input id="id_" name="id" type="number" class="validate" value="-1">
+                        <label id="lid" for="icon_prefix">ID:</label>
+                    </div>
+
                     <div class="input-field col s4">
                         <i class="material-icons prefix">toc</i>
                         <input id="name_" name="name" type="text" class="validate">
@@ -169,7 +148,7 @@
 
                     <div class="input-field col s4">
                         <i class="material-icons prefix">payment</i>
-                        <input id="priceActivity_" name="priceActivity" type="number" step="0.01" class="validate">
+                        <input id="priceActivity_" name="priceActivity" type="number" class="validate">
                         <label id="lPriceActivity" for="icon_telephone">Price</label>
                     </div>
 
@@ -178,9 +157,9 @@
                 <div class="row">
 
                     <div class="input-field col s3">
-                        <button id="inserir_alterar" type="submit" class="waves-effect waves-light btn" onclick="setDates();">
+                        <button id="incluir_alterar" type="submit" class="waves-effect waves-light btn" onclick="setDates();">
                           <i class="material-icons left">input</i>
-                          Inserir
+                          Insert
                         </button>
                     </div>
 
@@ -188,14 +167,13 @@
 
                         <button type="reset" class="waves-effect waves-light btn" onclick="clearFields()">
                           <i class="material-icons left">info_outline</i>
-                          Limpar Campos
+                          Clear Fields
                         </button>
                     </div>
 
                     <div id="cancelar" class="input-field col s3" style="visibility:hidden">
-                        <button class="waves-effect waves-light btn" onclick="cancelAll()">
 
-                        <button class="waves-effect waves-light btn" type="reset">
+                        <button type="reset" class="waves-effect waves-light btn" onclick="cancelAll()">
 
                           <i class="material-icons left">info_outline</i>
                           Cancelar
@@ -254,9 +232,9 @@
                           </td>
 
                           <?php
-                                $activityString = $activity->name . "?" . $activity->start . "?" . $activity->startTime . "?" .
+                                $activityString = $activity->id . "?" .$activity->name . "?" . $activity->start . "?" . $activity->startTime . "?" .
                                                      $activity->end . "?" . $activity->endTime . "?" . $activity->location . "?" .
-                                                     $activity->qnt_participants . "?" . $activity->type . "?" . $activity->id_event . "?";
+                                                     $activity->qnt_participants . "?" . $activity->type . "?" . $activity->id_event . "?" . $activity->priceActivity;
                           ?>
                           <td>
                               <button class="waves-effect waves-light btn" onclick="edit('{{ $activityString }}');">
@@ -293,35 +271,56 @@
 
       var split = activityString.split('?');
 
-      document.getElementById("name_").value =  split[0];
+      document.getElementById("id_").value =  split[0];
+      document.getElementById("lid").className += " active";
+
+      document.getElementById("name_").value =  split[1];
       document.getElementById("lname").className += " active";
 
-      //document.getElementById("start_").value =  split[1];
-      setDatesBack(split[1], 'start_');
+      setDatesBack(split[2], 'start_');
       document.getElementById("lstart").className += " active";
 
-      alert('aley ' + document.getElementById("lStartTime_") + ' ' + document.getElementById("startTime_"));
-      document.getElementById("startTime_").value =  split[2].substring(0, 5);
+      document.getElementById("startTime_").value =  split[3].substring(0, 5);
       document.getElementById("lStartTime_").className += " active";
 
-      //document.getElementById("end_").value =  split[3];
-      setDatesBack(split[3], 'end_');
+      setDatesBack(split[4], 'end_');
       document.getElementById("lend").className += " active";
 
-      document.getElementById("endTime_").value =  split[4].substring(0, 5);
+      document.getElementById("endTime_").value =  split[5].substring(0, 5);
       document.getElementById("lEndTime_").className += " active";
 
-      document.getElementById('location_').value = split[5];
+      document.getElementById('location_').value = split[6];
       document.getElementById("llocation").className += " active";
 
-      document.getElementById("qnt_participants_").value = split[6];
+      document.getElementById("qnt_participants_").value = split[7];
       document.getElementById("lqnt_participants").className += " active";
 
-      //document.getElementById("type_").value =  |split[7];
-      alert('test ' + split[7]);
+      /*
+      alert('test ' + split[8]);
+
+      var index = "-1";
+
+      if(split[8] === "lecture")
+        index = "1";
+      else if(split[8] === "mini_course")
+        index = "2";
+      else
+        index = "3";
+
+      alert(index + " " +  split[8] + " " + (split[8] === "lecture") + " " + document.getElementById("type_").selectedIndex);
+
+      //document.getElementById("type_").selectedIndex = index;
+      document.getElementById("type_").options[parseInt(index)].selected = true;
+
+      alert(index + " " +  split[8] + " " + (split[8] === "lecture") + " " + document.getElementById("type_").selectedIndex);
 
       //document.getElementById("id_event_").value =  split[8];
+      */
 
+      //alert(split);
+
+      document.getElementById("priceActivity_").value = split[10];
+      //document.getElementById("lpriceActivity").className += " active";
       editMode();
 
     }
@@ -329,34 +328,20 @@
     function editMode(){
       document.getElementById("cancelar").setAttribute("style", "visibility:visible");
       document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Alterar";
-
     }
 
     function cancelAll(){
-      //clearFields();
-      document.getElementById("cancelar").setAttribute("style", "visibility:visible");
-      document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Inserir";
-      document.formSubmit.action = "{{ route('crud.activity') }}";
-    }
-
-    function clearFields( ) {
-
+      document.getElementById("cancelar").setAttribute("style", "visibility:hidden");
+      document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Insert";
+      
       document.getElementById("name_").value =  "";
-
       document.getElementById("start_").value =  "";
-
       document.getElementById("startTime_").value =  "";
-
       document.getElementById("end_").value =  "";
-
       document.getElementById("endTime_").value =  "";
-
       document.getElementById('location_').value = "";
-
       document.getElementById("qnt_participants_").value = "";
-
       document.getElementById("type_").value =  "";
-
       document.getElementById("id_event_").value =  "";
     }
 
@@ -424,6 +409,6 @@
 
         document.getElementById('end_').value = today2;
 
-        alert(today1 + " " + today2);
+        //alert(today1 + " " + today2);
     }
 </script>

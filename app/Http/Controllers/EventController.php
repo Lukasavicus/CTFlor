@@ -12,33 +12,38 @@ use Validator, Input, Redirect;
 
 class EventController extends Controller{
 
-    public function eventIndex()
-    {
+    public function eventIndex(){
         $events = Event::orderBy('name')->get();
 
         return view('crud.event', compact('events'));
     }
 
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
 
-        $this->validate($request,[
-            'name'              => 'required|unique:events',
-            'start'             => 'required',
-            'end'               => 'required',
-            'location'          => 'required',
-        ]);
+        //dd($request);
 
-        $inputEvent = $request->all();
+        $evento = Event::find($request['id']);
 
-        Event::create($inputEvent);
+        if($evento != null)
+            return $this->alterRegister($request, $evento);
+        else{
+            $this->validate($request,[
+                'name'              => 'required|unique:events',
+                'start'             => 'required',
+                'end'               => 'required',
+                'location'          => 'required',
+            ]);
 
-        return redirect()->back()->with('info', 'Successfully created event!');
+            $inputEvent = $request->all();
+
+            Event::create($inputEvent);
+
+            return redirect()->back()->with('info', 'Successfully created event!');
+        }
     }
 
-    public function deleteRegister(Request $request)
-    {
+    public function deleteRegister(Request $request){
 
         $id = Input::get('modalMSGValue');
 
@@ -47,8 +52,30 @@ class EventController extends Controller{
 
     }
 
-    public function insc()
-    {
+    private function alterRegister(Request $request, $evento){
+
+        $events = Event::orderBy('name')->get();
+
+        foreach ($events as $key){
+            if($key['name'] == $request['name'] && $key['id'] != $request['id'])//&& $key['id'] != $evento['id']
+                return redirect()->back()->with('error', 'Failed to update event!');        
+        }
+
+        //dd($request->all());
+
+         $this->validate($request,[
+                'name'              => 'required',
+                'start'             => 'required',
+                'end'               => 'required',
+                'location'          => 'required',
+        ]);
+
+        $evento->update($request->all());
+        return redirect()->back()->with('info', 'Successfully updated event!');
+
+    }
+
+    public function insc(){
         $events = Event::orderBy('name')->get();
         $activitiesNotInsc = Activity::orderBy('name')->get();
         $activitiesInsc = Activity::orderBy('name')->get();

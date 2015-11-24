@@ -28,26 +28,30 @@ class ActivityController extends Controller{
 
     public function store(Request $request){
 
+        $atividade = Activity::find($request['id']);
 
-        $this->validate($request,[
-            'name'              => 'required|unique:activities',
-            'start'             => 'required',
-            'startTime'         => 'required',
-            'end'               => 'required',
-            'endTime'           => 'required',
-            'location'          => 'required',
-            'qnt_participants'  => 'required',
-            'type'              => 'required',
-            'id_event'          => 'required',
-            'priceActivity'     => 'required',
-        ]);
+        if($atividade != null)
+            return $this->alterRegister($request, $atividade);
+        else{
+            $this->validate($request,[
+                'name'              => 'required|unique:activities',
+                'start'             => 'required',
+                'startTime'         => 'required',
+                'end'               => 'required',
+                'endTime'           => 'required',
+                'location'          => 'required',
+                'qnt_participants'  => 'required',
+                'type'              => 'required|rtype',
+                'id_event'          => 'required|revent',
+                'priceActivity'     => 'required',
+            ]);
 
+            $input = $request->all();
 
-        $input = $request->all();
+            Activity::create($input);
+            return redirect()->back()->with('info', 'Successfully created event!');
+        }
 
-        Activity::create($input);
-
-        return redirect()->back()->with('info', 'Successfully created event!');
 
     }
 
@@ -61,7 +65,32 @@ class ActivityController extends Controller{
         return redirect()->back()->with('info', 'Successfully deleted activity!');
     }
 
-    public function alterRegister(Request $request){
+    private function alterRegister(Request $request, $atividade){
+
+        $activities = Activity::orderBy('name')->get();
+
+        foreach ($activities as $key){
+            if($key['name'] == $request['name'] && $key['id'] != $request['id'])//&& $key['id'] != $atividade['id']
+                return redirect()->back()->with('error', 'Failed to update event!');        
+        }
+
+        //dd($request->all());
+
+        $this->validate($request,[
+            'name'              => 'required',
+            'start'             => 'required',
+            'startTime'         => 'required',
+            'end'               => 'required',
+            'endTime'           => 'required',
+            'location'          => 'required',
+            'qnt_participants'  => 'required',
+            'type'              => 'required|rtype',
+            'id_event'          => 'required|revent',
+            'priceActivity'     => 'required',
+        ]);
+
+        $atividade->update($request->all());
+        return redirect()->back()->with('info', 'Successfully updated event!');
 
     }
 
@@ -90,7 +119,6 @@ class ActivityController extends Controller{
                     ->where('id_activity', '=', $id_activity);
             }
         )->orderBy('name')->get();
-
 
         return view('participantsActivity', compact('activities', 'partInsc', 'partNotInsc'));
     }
