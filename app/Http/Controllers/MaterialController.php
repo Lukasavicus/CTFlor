@@ -55,7 +55,7 @@ class MaterialController extends Controller
                           $request->input('id_participant').'/'.$request->input('id_activity').$request->input('id_participant').'.'.$extension,
                           File::get($file)
                       );
-
+        
         $entry = new Material();
     		$entry->mime = $file->getClientMimeType();
     		$entry->original_filename = $file->getClientOriginalName();
