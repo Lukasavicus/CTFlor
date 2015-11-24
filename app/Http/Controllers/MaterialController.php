@@ -35,6 +35,27 @@ class MaterialController extends Controller
         return view('crud.material', compact('materials', 'activities') );
     }
 
+    public function searchMaterial(Request $request)
+    {
+        $this->validate($request,[
+               'valueSearch'       => 'required',
+               'radioSearch'       => 'required',
+        ]);
+
+        $param  = Input::get('radioSearch');
+        $searchText = Input::get('valueSearch');
+
+
+        if($param == "Title")              $results = Material::where('title', 'LIKE' , $searchText . '%')->orderBy('title')->get();
+
+        else if($param == "Category")     $results = Material::where('category', 'LIKE' , $searchText . '%')->orderBy('category')->get();
+
+        //keyword
+        else      $results = Participant::where('keyword', 'LIKE' , '%' .  $searchText . '%')->orderBy('keyword')->get();
+
+        return view('crud.material', compact('results'));
+    }
+
 
     public function store(Request $request)
     {

@@ -58,7 +58,7 @@ class EventController extends Controller{
 
         foreach ($events as $key){
             if($key['name'] == $request['name'] && $key['id'] != $request['id'])//&& $key['id'] != $evento['id']
-                return redirect()->back()->with('error', 'Failed to update event!');        
+                return redirect()->back()->with('error', 'Failed to update event!');
         }
 
         //dd($request->all());
@@ -84,7 +84,20 @@ class EventController extends Controller{
 
     public function searchEvent(Request $request)
     {
+        $this->validate($request,[
+               'valueSearch'       => 'required',
+               'radioSearch'       => 'required',
+        ]);
 
+        $param  = Input::get('radioSearch');
+        $searchText = Input::get('valueSearch');
+
+
+        if($param == "Name")  $events = Event::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
+
+        else                  $events = Event::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
+        //dd($events);
+        return view( 'crud.event',  compact('events'));
     }
 
 

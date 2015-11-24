@@ -14,21 +14,24 @@
       <div class="card card-panel">
           <form class="col s12" action="{{ route('home') }}" method="POST">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-          	 <div class="input-field col s4">
-                  <p>
-                      <input type="checkbox" id="name"/>
-                      <label for="name">Nome</label>
-                      <input type="checkbox" id="location"/>
-                      <label for="location">Localizacao</label>
-                      <input type="checkbox" id="type"/>
-                      <label for="type">Tipo</label>
-                  </p>
-              </div>
-              <div class="input-field col s6">
-                  <i class="material-icons prefix">search</i>
-              	  <input id="icon_search" type="text" class="validate">
-                  <label for="icon_search">Search</label>
-              </div>
+
+              <div class="input-field col s4">
+                   <p>
+                     <input name="radioSearch" type="radio" id="nameSearch_" value="Name" />
+                     <label for="nameSearch_">Name</label>
+
+                     <input name="radioSearch" type="radio" id="locationSearch_" value="Location" />
+                     <label for="locationSearch_">Location</label>
+
+                     <input name="radioSearch" type="radio" id="typeSearch_" value="Tipe" />
+                     <label for="typeSearch_">Type</label>
+                   </p>
+               </div>
+               <div class="input-field col s6">
+                   <i class="material-icons prefix">search</i>
+                   <input name="valueSearch" id="icon_search" type="text" class="validate">
+                   <label for="icon_search">Search</label>
+               </div>
 
               <div class="input-field col s2">
                   <button class="waves-effect waves-light btn" type="submit">Search</button>
@@ -192,66 +195,82 @@
 @section('elements')
     <div class="row">
         <div class="card card-panel">
-        @if($activities == null || $activities->count() == 0)
-            <div class="card-panel red waves-effect waves-light" role="alert">
-                "Nenhuma atividade foi cadastrado ainda."
-            </div>
-        @else
-                <table class="responsive-table">
-                @foreach($activities as $activity)
 
-                <?php
+          @if(isset($results))
+                @if($results->count() == 0)
+                    <div class="card-panel red waves-effect waves-light" role="alert">
+                        "No activity has been found."
+                    </div>
+                @else
+                    <table class="responsive-table">
+                    @foreach($results as $result)
+                        <?php
+                            foreach ($events as $event)   if($event->{'id'} == $result->id_event)     $nameEvent = $event->{'name'};
 
-                    foreach ($events as $event){
-                      if($event->{'id'} == $activity->id_event)
-                        $nameEvent = $event->{'name'};
-                    }
+                            foreach ($types as $type)     if($type['value'] == $result->type)         $typeActivity = $type['text'];
+                        ?>
+                        <tr>
+                            <td>
+                                <i class="material-icons left">description</i> <span id="nameSearch" name="nameSearch">{{ $nameEvent }}</span>
+                            </td>
 
-                    //echo $professors;
-                    foreach ($types as $type)
-                        if($type['value'] == $activity->type)   $typeActivity = $type['text'];
+                            <td>
+                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $typeActivity }} </span>
+                            </td>
+
+                            <td>
+                                <i class="tiny material-icons left">toc</i> <span id="typeSearch" name="typeSearch">{{ $result->name }} </span>
+                            </td>
+
+                            <td>
+                                <i class="tiny material-icons left">room</i> <span id="typeSearch" name="typeSearch">{{ $result->location }} </span>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </table>
+                @endif
+          @else
+                @if($activities == null || $activities->count() == 0)
+                    <div class="card-panel red waves-effect waves-light" role="alert">"No activity has been registered."</div>
+                @else
+                        <table class="responsive-table">
+                            @foreach($activities as $activity)
+                              <?php
+                                  foreach ($events as $event)     if($event->{'id'} == $activity->id_event)     $nameEvent = $event->{'name'};
+
+                                  foreach ($types as $type)       if($type['value'] == $activity->type)         $typeActivity = $type['text'];
+                              ?>
+                              <tr>
+
+                                    <td>
+                                        <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch"> {{ $nameEvent }} </span>
+                                    </td>
+
+                                    <td>
+                                        <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch"> {{ $typeActivity }} </span>
+                                    </td>
 
 
-                ?>
-                    <tr>
+                                    <td>
+                                        <i class="material-icons left">toc</i> <span id="nameSearch" name="nameSearch">{{ $activity->name }}</span>
+                                    </td>
 
-                          <td>
-                              <i class="tiny material-icons left">description</i>
-                              <span id="typeSearch" name="typeSearch"> {{ $nameEvent }} </span>
-                          </td>
-
-                          <td>
-                              <i class="tiny material-icons left">description</i>
-                              <span id="typeSearch" name="typeSearch"> {{ $typeActivity }} </span>
-                          </td>
-
-
-                          <td>
-                              <i class="material-icons left">toc</i>
-                              <span id="nameSearch" name="nameSearch">{{ $activity->name }}</span>
-                          </td>
-
-                          <?php
-                                $activityString = $activity->id . "?" .$activity->name . "?" . $activity->start . "?" . $activity->startTime . "?" .
-                                                     $activity->end . "?" . $activity->endTime . "?" . $activity->location . "?" .
-                                                     $activity->qnt_participants . "?" . $activity->type . "?" . $activity->id_event . "?" . $activity->priceActivity;
-                          ?>
-                          <td>
-                              <button class="waves-effect waves-light btn" onclick="edit('{{ $activityString }}');">
-                                <i class="material-icons left">info_outline</i>
-                                Edit
-                              </button>
-                          </td>
-                          <td>
-                              <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $activity->name }}');">
-                                <i class="material-icons left">delete</i>
-                                Delete
-                              </a>
-                          </td>
-                    </tr>
-                @endforeach
-                </table>
-            </div>
+                                    <?php
+                                          $activityString = $activity->id . "?" .$activity->name . "?" . $activity->start . "?" . $activity->startTime . "?" .
+                                                            $activity->end . "?" . $activity->endTime . "?" . $activity->location . "?" .
+                                                            $activity->qnt_participants . "?" . $activity->type . "?" . $activity->id_event . "?" . $activity->priceActivity;
+                                    ?>
+                                    <td>
+                                        <button class="waves-effect waves-light btn" onclick="edit('{{ $activityString }}');"> <i class="material-icons left">info_outline</i> Edit </button>
+                                    </td>
+                                    <td>
+                                        <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $activity->name }}');"> <i class="material-icons left">delete</i>Delete</a>
+                                    </td>
+                              </tr>
+                            @endforeach
+                        </table>
+                    </div>
+                @endif
         @endif
     </div>
 @stop
@@ -333,7 +352,7 @@
     function cancelAll(){
       document.getElementById("cancelar").setAttribute("style", "visibility:hidden");
       document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Insert";
-      
+
       document.getElementById("name_").value =  "";
       document.getElementById("start_").value =  "";
       document.getElementById("startTime_").value =  "";

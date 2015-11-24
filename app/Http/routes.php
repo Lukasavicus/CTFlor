@@ -68,6 +68,11 @@ use CTFlor\Models\Event;
         'as' => 'site.login',
     ]);
 
+    Route::get('/site.packages', [
+        'uses' => '\CTFlor\Http\Controllers\SiteController@packagesPage',
+        'as' => 'site.packages',
+    ]);
+
     Route::get('/site.signout', [
     function(){
         Auth::logout();

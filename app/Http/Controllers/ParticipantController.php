@@ -22,6 +22,29 @@ class ParticipantController extends Controller{
         return view('crud.participant', compact('participants') );
     }
 
+    public function searchParticipant(Request $request)
+    {
+        $this->validate($request,[
+               'valueSearch'       => 'required',
+               'radioSearch'       => 'required',
+        ]);
+
+        $param  = Input::get('radioSearch');
+        $searchText = Input::get('valueSearch');
+
+
+        if($param == "Name")              $results = Participant::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
+
+        else if($param == "Location")     $results = Participant::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
+
+        //type
+        else      $results = Participant::where('type', 'LIKE' , $searchText . '%')->orderBy('type')->get();
+
+        return view('crud.participant', compact('results'));
+    }
+
+
+
 
     public function store(Request $request){
 
@@ -62,7 +85,7 @@ class ParticipantController extends Controller{
             //Participant::create($inputParticipant);
 
             //Não alterar - ainda que fora do padrão
-            
+
             // =====================================================
 
                 DB::table('participants')->insert([

@@ -27,13 +27,13 @@
 
           <ul class="left hide-on-med-and-down">
             <!-- <li><a href="{{ route('site') }}"><img src="images/CTFlor2.jpg" width="30px" height="30px"></a></li> -->
-            <li class=""><a href="{{ route('site') }}">Apresentação</a></li>
-            <li class=""><a href="{{ route('site.local') }}">Local</a></li>
-            <li class=""><a href=" {{ route('site.subscribe') }} ">Inscrição</a></li>
-            <li class=""><a href="#">Trabalhos</a></li>
-            <li class=""><a href="{{ route('site.programacao') }}">Programação</a></li>
-            <li class=""><a href="#">Palestrantes</a></li>
-            <li class=""><a href="#">Patrocínio</a></li>
+            <li class=""><a href="{{ route('site') }}">CTFlor</a></li>
+            <li class=""><a href="{{ route('site.local') }}">Place</a></li>
+            <li class=""><a href=" {{ route('site.subscribe') }} ">Registration</a></li>
+            <li class=""><a href="#">Works</a></li>
+            <li class=""><a href="{{ route('site.programacao') }}">Schedule</a></li>
+            <li class=""><a href="{{ route('site.packages') }}">Packages</a></li>
+            <li class=""><a href="#">Sponsors</a></li>
             <li class=""><a href="{{ route('site.login') }}">Login</a></li>
           </ul>
         </div>

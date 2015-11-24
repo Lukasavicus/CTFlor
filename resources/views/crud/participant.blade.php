@@ -14,25 +14,29 @@
     <div class="row">
         <div class="card card-panel">
             <form class="col s12" action="{{ route('home') }}" method="POST">
-            	<div class="input-field col s4 left-align">
-                    <p>
-                        <input type="checkbox" id="name"/>
-                        <label for="name">Nome</label>
-                        <input type="checkbox" id="location"/>
-                        <label for="location">Localizacao</label>
-                        <input type="checkbox" id="type"/>
-                        <label for="type">Tipo</label>
-                    </p>
-                </div>
-                <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
-                <div class="input-field col s6">
-                    <i class="material-icons prefix">search</i>
-                	<input id="icon_search" type="text" class="validate">
-                    <label for="icon_search">Buscar</label>
-                </div>
-                <div class="input-field col s2 right-align">
-                    <button class="waves-effect waves-light btn" type="submit">Buscar</button>
-                </div>
+                  <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
+                  <div class="input-field col s4">
+                       <p>
+                         <input name="radioSearch" type="radio" id="nameSearch_" value="Name" />
+                         <label for="nameSearch_">Name</label>
+
+                         <input name="radioSearch" type="radio" id="locationSearch_" value="Location" />
+                         <label for="locationSearch_">Location</label>
+
+                         <input name="radioSearch" type="radio" id="typeSearch_" value="Tipe" />
+                         <label for="typeSearch_">Type</label>
+                       </p>
+                   </div>
+                   <div class="input-field col s6">
+                       <i class="material-icons prefix">search</i>
+                       <input name="valueSearch" id="icon_search" type="text" class="validate">
+                       <label for="icon_search">Search</label>
+                   </div>
+
+                  <div class="input-field col s2">
+                      <button class="waves-effect waves-light btn" type="submit">Search</button>
+                  </div>
+
             </form>
         </div>
     </div>
@@ -178,24 +182,52 @@
 @section('elements')
     <div class="row">
         <div class="card card-panel">
+
+          @if(isset($results))
+                @if($results->count() == 0)
+                    <div class="card-panel red waves-effect waves-light" role="alert">
+                        "No particiapnt has been found."
+                    </div>
+                @else
+                    <table class="responsive-table">
+                    @foreach($results as $result)
+                        <tr>
+                            <td>
+                                <i class="material-icons left">description</i> <span id="nameSearch" name="nameSearch">{{ $result->name }}</span>
+                            </td>
+
+                            <td>
+                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $result->cpf }} </span>
+                            </td>
+
+                            <td>
+                                <i class="tiny material-icons left">toc</i> <span id="typeSearch" name="typeSearch">{{ $result->email }} </span>
+                            </td>
+
+                            <td>
+                                <i class="tiny material-icons left">room</i> <span id="typeSearch" name="typeSearch">{{ $result->location }} </span>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </table>
+                @endif
+
+            @else
+
+
             @if($participants == null || $participants->count() == 0)
-                <div class="card-panel red waves-effect waves-light" role="alert">
-                    "Nenhum Participante foi cadastrado ainda."
-                </div>
+                <div class="card-panel red waves-effect waves-light" role="alert"> "No participant has been registered yet."</div>
             @else
                 <table class="responsive-table">
                     @foreach($participants as $participant)
                         <tr>
-
                                 <td>
-                                    <i class="material-icons left">perm_identity</i>
-                                    <span id="nameSearch" name="nameSearch">{{ $participant->name }}</span>
+                                  <i class="material-icons left">perm_identity</i><span id="nameSearch" name="nameSearch">{{ $participant->name }}</span>
                                 </td>
 
 
                                 <td>
-                                    <i class="tiny material-icons left">credit_card</i>
-                                    <span id="cpfSearch" name="cpfSearch">{{ $participant->cpf }}</span>
+                                  <i class="tiny material-icons left">credit_card</i><span id="cpfSearch" name="cpfSearch">{{ $participant->cpf }}</span>
                                 </td>
                                 <?php
                                   $participantString = $participant->id . "?" . $participant->name . "?" . $participant->cpf . "?" . $participant->email . "?" .
@@ -204,20 +236,17 @@
                                                        $participant->responsability ;
                                 ?>
                                 <td>
-                                    <button class="waves-effect waves-light btn" onclick="edit('{{ $participantString }}');">
-                                        <i class="material-icons left">info_outline</i>Edit
-                                    </button>
+                                    <button class="waves-effect waves-light btn" onclick="edit('{{ $participantString }}');"><i class="material-icons left">info_outline</i>Edit</button>
                                 </td>
 
 
                                 <td>
-                                    <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $participant->name }}');">
-                                        <i class="material-icons left">delete</i>Delete
-                                    </a>
+                                    <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $participant->name }}');"><i class="material-icons left">delete</i>Delete</a>
                                 </td>
                         </tr>
                     @endforeach
                 </table>
+            @endif
           @endif
         </div>
     </div>
@@ -284,7 +313,7 @@
     function cancelAll(){
       document.getElementById("cancelar").setAttribute("style", "visibility:hidden");
       document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Insert";
-     
+
       document.getElementById("cpf_").readOnly  = false;
       document.getElementById("password_").readOnly  = true;
 

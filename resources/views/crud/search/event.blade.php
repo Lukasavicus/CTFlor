@@ -13,7 +13,7 @@
 @section('search')
     <div class="row">
         <div class="card card-panel">
-          <form class="col s12" action="{{ route('crud.event.search') }}" method="GET">
+          <form class="col s12" action="{{ route('crud.search.event') }}" method="POST">
             <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
              <div class="input-field col s3">
                   <p>

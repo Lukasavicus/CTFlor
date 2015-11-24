@@ -30,14 +30,34 @@ class BancaAvaliadoraController extends Controller
         return view('crud.banca', compact('events', 'professors', 'boards'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function searchActivity(Request $request)
     {
-        //
+        $this->validate($request,[
+               'valueSearch'       => 'required',
+               'radioSearch'       => 'required',
+        ]);
+
+        $param  = Input::get('radioSearch');
+        $searchText = Input::get('valueSearch');
+
+
+        if($param == "Professor")
+            $results = BancaAvaliadora::join('participants', function($join)
+                                            { $join->on('BancaAvaliadora.professor1', '=', 'participants.id')
+                                                   ->orOn('BancaAvaliadora.professor2', '=', 'participants.id')
+                                                   ->orOn('BancaAvaliadora.professor3', '=', 'participants.id')
+                                                   ->where('participants.type', 'LIKE' ,'professor')
+                                                   ->where('participants.name', 'LIKE' , $searchText . '%');
+                                            })->orderBy('participants.name')->get();
+
+        //event_name
+        else
+            $results = BancaAvaliadora::join('events', function($join)
+                                            { $join->on('BancaAvaliadora.id_event', '=', 'events.id')
+                                                   ->where('events.name', 'LIKE' , $searchText . '%');
+                                            })->orderBy('events.name')->get();
+
+        return view('crud.banca', compact('results'));
     }
 
     /**

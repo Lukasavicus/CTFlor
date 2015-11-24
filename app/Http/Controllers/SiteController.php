@@ -34,4 +34,9 @@ class SiteController extends Controller{
       return view('site.site_login');
     }
 
+    public function packagesPage()
+    {
+      return view('site.site_packages');
+    }
+
 }

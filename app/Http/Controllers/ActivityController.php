@@ -55,6 +55,27 @@ class ActivityController extends Controller{
 
     }
 
+    public function searchActivity(Request $request)
+    {
+        $this->validate($request,[
+               'valueSearch'       => 'required',
+               'radioSearch'       => 'required',
+        ]);
+
+        $param  = Input::get('radioSearch');
+        $searchText = Input::get('valueSearch');
+
+
+        if($param == "Name")            $results = Activity::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
+
+        else if($param == "Location")   $results = Activity::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
+        //type_case
+        else                            $results = Activity::where('type', 'LIKE' , $searchText)->orderBy('type')->get();
+
+        return view('crud.activity', compact('results'));
+
+    }
+
 
     public function deleteRegister(Request $request){
 
@@ -71,7 +92,7 @@ class ActivityController extends Controller{
 
         foreach ($activities as $key){
             if($key['name'] == $request['name'] && $key['id'] != $request['id'])//&& $key['id'] != $atividade['id']
-                return redirect()->back()->with('error', 'Failed to update event!');        
+                return redirect()->back()->with('error', 'Failed to update event!');
         }
 
         //dd($request->all());

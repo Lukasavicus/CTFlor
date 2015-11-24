@@ -14,25 +14,30 @@
 @section('search')
     <div class="row">
         <div class="card card-panel">
-            <form class="col s12" action="{{ route('home') }}" method="POST">
-              <div class="input-field col s4 left-align">
-                  <p>
-                      <input type="checkbox" id="name"/>
-                      <label for="name">Title</label>
-                      <input type="checkbox" id="location"/>
-                      <label for="location">Keyword</label>
-                      <input type="checkbox" id="type"/>
-                      <label for="type">Category</label>
-                  </p>
+            <form class="col s12" action="{{ route('crud.material') }}" method="POST">
+              <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
+              <div class="input-field col s4">
+                   <p>
+                     <input name="radioSearch" type="radio" id="titleSearch_" value="Title" />
+                     <label for="titleSearch_">Title</label>
+
+                     <input name="radioSearch" type="radio" id="keywordSearch_" value="Keyword" />
+                     <label for="keywordSearch_">KeyWord</label>
+
+                     <input name="radioSearch" type="radio" id="categorySearch_" value="Category" />
+                     <label for="categorySearch_">Category</label>
+                   </p>
+               </div>
+               <div class="input-field col s6">
+                   <i class="material-icons prefix">search</i>
+                   <input name="valueSearch" id="icon_search" type="text" class="validate">
+                   <label for="icon_search">Search</label>
+               </div>
+
+              <div class="input-field col s2">
+                  <button class="waves-effect waves-light btn" type="submit">Search</button>
               </div>
-                <div class="input-field col s6">
-                  <i class="material-icons prefix">search</i>
-                	<input id="icon_search" type="text" class="validate">
-                  <label for="icon_search">Search</label>
-                </div>
-                <div class="input-field col s2">
-                    <button class="waves-effect waves-light btn" type="submit">Search</button>
-                </div>
+
             </form>
         </div>
     </div>
@@ -40,10 +45,6 @@
 
 @section('fields')
 
-
-@stop
-
-@section('elements')
     <div class="row">
         <div class="card card-panel">
         @if($errors->any())
@@ -137,6 +138,84 @@
     </div>
   </div>
 @stop
+
+
+
+@section('elements')
+    <div class="row">
+
+        <div class="card card-panel">
+
+          @if(isset($results))
+                @if($results->count() == 0)
+                    <div class="card-panel red waves-effect waves-light" role="alert">
+                        "No Material has been found."
+                    </div>
+                @else
+                    <table class="responsive-table">
+                    @foreach($results as $result)
+                        <?php foreach ($activities as $activity)     if($activity->{'id'} == $result->id_activity)     $nameActivity = $result->{'name'};  ?>
+
+                        <tr>
+                            <td>
+                                <i class="material-icons left">toc</i> <span id="nameSearch" name="nameSearch">{{ $nameActivity }}</span>
+                            </td>
+
+                            <td>
+                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->title }} </span>
+                            </td>
+
+                            <td>
+                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->category }} </span>
+                            </td>
+
+                            <td>
+                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->keywords }} </span>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </table>
+                @endif
+        @else
+            @if($materials == null || $materials->count() == 0)
+                <div class="card-panel red waves-effect waves-light" role="alert"> "No Material has been registered yet." </div>
+            @else
+                <table class="responsive-table">
+                @foreach($materials as $material)
+                    <?php foreach ($activities as $activity)     if($activity->{'id'} == $material->id_activity)     $nameActivity = $activity->{'name'};  ?>
+                    <tr>
+                          <td>
+                              <i class="material-icons left">toc</i> <span id="nameSearch" name="nameSearch">{{ isset($nameActivity) }}</span>
+                          </td>
+
+
+                          <td>
+                              <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->title }} </span>
+                          </td>
+
+                          <td>
+                              <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->category }} </span>
+                          </td>
+
+                          <td>
+                              <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->keywords }} </span>
+                          </td>
+
+                          <td>
+                              <button class="waves-effect waves-light btn" > <i class="material-icons left">info_outline</i> Edit </button>
+                          </td>
+                          <td>
+                              <a href="#modal1" class="waves-effect waves-light btn modal-trigger"> <i class="material-icons left">delete</i> Delete </a>
+                          </td>
+                    </tr>
+                @endforeach
+                </table>
+              </div>
+            @endif
+        @endif
+    </div>
+@stop
+
 
 <script type="text/javascript">
     window.onload = function() {
