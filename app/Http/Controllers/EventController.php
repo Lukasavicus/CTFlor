@@ -55,6 +55,11 @@ class EventController extends Controller{
         return view('activitiesevent', compact('events', 'activitiesInsc', 'activitiesNotInsc') );
     }
 
+    public function searchEvent(Request $request)
+    {
+
+    }
+
 
 
 }

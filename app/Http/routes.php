@@ -10,6 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use CTFlor\Models\Event;
 
 // ==================================================== PAYMENT ==================================================
    //Route::get('/payment', [
@@ -109,6 +110,18 @@
         'uses'  => '\CTFlor\Http\Controllers\EventController@store',
         'middleware' => ['auth'],
     ]);
+
+    Route::get('/event/search', [
+        'uses'  => '\CTFlor\Http\Controllers\EventController@searchEvent',
+        'as'    => 'crud.event.search',
+        'middleware' => ['auth'],
+    ]);
+
+    Route::post('/event/search', [
+        'uses'  => '\CTFlor\Http\Controllers\EventController@searchEvent',
+        'middleware' => ['auth'],
+    ]);
+
 
     Route::get('/event/delete', [
         'uses' => '\CTFlor\Http\Controllers\EventController@deleteRegister',

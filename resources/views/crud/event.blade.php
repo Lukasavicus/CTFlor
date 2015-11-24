@@ -13,25 +13,43 @@
 @section('search')
     <div class="row">
         <div class="card card-panel">
-            <form class="col s12" action="{{ route('home') }}" method="POST">
-                  <div class="input-field col s4 left-align">
-                      <p>
+            <form class="col s12">
+                  <table class="responsive-table">
+
+                      <td class="input-field col s6">
                           <input type="checkbox" id="name"/>
                           <label for="name">Nome</label>
-                          <input type="checkbox" id="location"/>
-                          <label for="location">Localizacao</label>
-                          <input type="checkbox" id="type"/>
-                          <label for="type">Tipo</label>
-                      </p>
-                  </div>
-                  <div class="input-field col s6">
-                      <i class="material-icons prefix">search</i>
-                  	<input id="icon_search" type="text" class="validate">
-                      <label for="icon_search">Search</label>
-                  </div>
-                  <div class="input-field col s2">
-                      <button class="waves-effect waves-light btn" type="submit">Search</button>
-                  </div>
+
+                          <i class="material-icons prefix">search</i>
+                      	  <input name="searchField" id="searchField" type="text" class="validate">
+                          <label for="icon_search">Search</label>
+                      </td>
+
+                      <div class="input-field col s6">
+                        <i class="material-icons prefix">search</i>
+                        <input name="responseField" id="responseField" type="text" class="validate">
+                        <label for="icon_search">Search</label>
+
+                              <input type="checkbox" id="location"/>
+                              <label for="location">Localizacao</label>
+
+
+                      </div>
+
+                      <div class="input-field col s6">
+                              <input type="checkbox" id="type"/>
+                              <label for="type">Tipo</label>
+
+                              <i class="material-icons prefix">search</i>
+                          	  <input name="responseField" id="responseField" type="text" class="validate">
+                              <label for="icon_search">Search</label>
+                      </div>
+
+                      <div class="input-field col s6">
+                          <button  id="searchButton" class="waves-effect waves-light btn" type="submit">Search</button>
+                      </div>
+
+                  </table>
 
                   <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
             </form>
