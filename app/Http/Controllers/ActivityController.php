@@ -18,7 +18,7 @@ use CTFlor\Models\TechnicalVisitParticipant;
 class ActivityController extends Controller{
 
     public function activityIndex(){
-    	$activities = Activity::orderBy('name')->get();
+    	  $activities = Activity::orderBy('name')->get();
         $events = Event::orderBy('name')->get();
         $types = Activity::getTypes();
 

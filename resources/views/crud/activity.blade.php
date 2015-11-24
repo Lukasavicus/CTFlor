@@ -201,8 +201,8 @@
                 @foreach($activities as $activity)
 
                 <?php
+
                     foreach ($events as $event){
-                      //echo "E: " . $event->{'id'} . "<br> A:" . $activity->id_event . "<br> C:" .  ($event->{'id'} == $activity->id_event) . "<br>";
                       if($event->{'id'} == $activity->id_event)
                         $nameEvent = $event->{'name'};
                     }
@@ -350,7 +350,7 @@
     function setDatesBack(date, id){
       //alert('>' + date);
 
-      var strFinal = date.substring(8, 10) + " "; //22 
+      var strFinal = date.substring(8, 10) + " "; //22
       var mes = parseInt(date.substring(5, 7)); //11
       var strMes = "";
       switch(mes){
