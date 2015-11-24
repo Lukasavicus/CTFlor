@@ -53,6 +53,12 @@
 
               <div class="row">
 
+                  <div class="input-field" style="visibility:hidden">
+                      <i class="material-icons prefix">toc</i>
+                      <input id="id_" name="id" type="number" class="validate" value="-1">
+                      <label id="lid" for="icon_prefix">ID:</label>
+                  </div>
+
 
                   <div class="input-field col s4">
                       <i class="material-icons prefix">toc</i>
@@ -88,9 +94,9 @@
 
               <div class="row">
                   <div class="input-field col s4">
-                      <button type="submit" class="waves-effect waves-light btn" onclick="setDates();" >
+                      <button id="incluir_alterar" type="submit" class="waves-effect waves-light btn" onclick="setDates();" >
                         <i class="material-icons left">input</i>
-                        Inserir
+                        Insert
                       </button>
                   </div>
 
@@ -99,6 +105,13 @@
                         <i class="material-icons left">info_outline</i>
                         Clear fields
                       </button>
+                  </div>
+
+                  <div id="cancelar" class="input-field col s4" style="visibility:hidden">
+                    <button type="reset" class="waves-effect waves-light btn" onclick="cancelAll()">
+                      <i class="material-icons left">info_outline</i>
+                      Cancelar
+                    </button>
                   </div>
               </div>
 
@@ -141,7 +154,7 @@
                  </td>
 
                         <?php
-                              $eventString = $event->name . "?" . $event->start . "?" .
+                              $eventString = $event->id . "?" . $event->name . "?" . $event->start . "?" .
                                              $event->end . "?" . $event->location . "?";
                         ?>
                     <td>
@@ -175,19 +188,43 @@
     {
       var split = eventString.split('?');
 
-      document.getElementById("name_").value =  split[0];
+      document.getElementById("id_").value =  split[0];
+      document.getElementById("lid").className += " active";
+
+      document.getElementById("name_").value =  split[1];
       document.getElementById("lName").className += " active";
 
-
-      document.getElementById("start_").value = split[1];
+      setDatesBack(split[2], 'start_');
       document.getElementById("lStart").className += " active";
 
-      document.getElementById("end_").value = split[2];
+      setDatesBack(split[3], 'end_');
       document.getElementById("lEnd").className += " active";
 
 
-      document.getElementById("location_").value = split[3];
+      document.getElementById("location_").value = split[4];
       document.getElementById("lLocation").className += " active";
+      editMode();
+
+    }
+
+    function editMode(){
+      document.getElementById("cancelar").setAttribute("style", "visibility:visible");
+      document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Alterar";
+    }
+
+    function cancelAll(){
+      document.getElementById("cancelar").setAttribute("style", "visibility:hidden");
+      document.getElementById("incluir_alterar").innerHTML = "<i class=\"material-icons left\">input</i> Insert";
+      
+      document.getElementById("name_").value =  "";
+      document.getElementById("start_").value =  "";
+      document.getElementById("startTime_").value =  "";
+      document.getElementById("end_").value =  "";
+      document.getElementById("endTime_").value =  "";
+      document.getElementById('location_').value = "";
+      document.getElementById("qnt_participants_").value = "";
+      document.getElementById("type_").value =  "";
+      document.getElementById("id_event_").value =  "";
     }
 
 
@@ -228,6 +265,34 @@
 
         //alert(today);
         document.getElementById('end_').value = today;
+
+    }
+
+    //2015-11-22 -> 22 November, 2015
+    function setDatesBack(date, id){
+      //alert('>' + date);
+
+      var strFinal = date.substring(8, 10) + " "; //22 
+      var mes = parseInt(date.substring(5, 7)); //11
+      var strMes = "";
+      switch(mes){
+        case 1: strMes = "January"; break;
+        case 2: strMes = "February"; break;
+        case 3: strMes = "March"; break;
+        case 4: strMes = "April"; break;
+        case 5: strMes = "May"; break;
+        case 6: strMes = "June"; break;
+        case 7: strMes = "July"; break;
+        case 8: strMes = "August"; break;
+        case 9: strMes = "September"; break;
+        case 10: strMes = "October"; break;
+        case 11: strMes = "November"; break;
+        case 12: strMes = "December"; break;
+      }
+      strFinal += strMes + ", ";
+      strFinal += date.substring(0, 4) + " "; //2015
+
+      document.getElementById(id).value = strFinal;
 
     }
 

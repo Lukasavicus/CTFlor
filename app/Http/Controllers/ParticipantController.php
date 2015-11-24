@@ -23,69 +23,73 @@ class ParticipantController extends Controller{
     }
 
 
-    public function store(Request $request)
-    {
-        $this->validate($request,[
-            'name'			=> 'required',
-            'cpf'			  => 'required|unique:participants',
-            'email'			=> 'required',
-            'phone'			=> 'required',
-            'address'		=> 'required',
-            'password'  => 'required',
-            'type'			=> 'required',
-        ]);
+    public function store(Request $request){
 
-        if(Input::get('type') == "student")
-        {
-          $this->validate($request,[
-              'university'		=> 'required',
-              'course'			=> 'required',
-          ]);
-        }
-        else if(Input::get('type') == "professor")
-        {
-          $this->validate($request,[
-              'university'		=> 'required',
-              'department'		=> 'required',
-          ]);
-        }
+        //dd($request);
 
-        $inputParticipant = $request->all();
+        $participante = Participant::find($request['id']);
 
-        //Participant::create($inputParticipant);
-
-        //Não alterar - ainda que fora do padrão
-        
-        // =====================================================
-
-            DB::table('participants')->insert([
-                'name'              => Input::get('name'),
-                'cpf'               => Input::get('cpf'),
-                'email'             => Input::get('email'),
-                'phone'             => Input::get('phone'),
-                'address'           => Input::get('address'),
-                'password'          => bcrypt(Input::get('password')),
-                'type'              => Input::get('type'),
-                'university'        => Input::get('university'),
-                'course'            => Input::get('course'),
-                'department'        => Input::get('department'),
-                'responsability'    => Input::get('responsability'),
+        if($participante != null)
+            return $this->alterRegister($request, $participante);
+        else{
+            $this->validate($request,[
+                'name'			=> 'required',
+                'cpf'			=> 'required|unique:participants',
+                'email'			=> 'required',
+                'phone'			=> 'required',
+                'address'		=> 'required',
+                'password'      => 'required',
+                'type'			=> 'required|rparticipant',
             ]);
 
-        // +++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-        Mail::raw('You have successfully created your account on CTFlor website',
-            function ($message)
+            if(Input::get('type') == "student")
             {
-              $message->to(Input::get('email'), Input::get('name'))->subject('CTFlor Website - Registration');
+              $this->validate($request,[
+                  'university'		=> 'required',
+                  'course'			=> 'required',
+              ]);
             }
-        );
+            else if(Input::get('type') == "professor")
+            {
+              $this->validate($request,[
+                  'university'		=> 'required',
+                  'department'		=> 'required',
+              ]);
+            }
 
+            $inputParticipant = $request->all();
 
+            //Participant::create($inputParticipant);
 
-        return redirect()->back()->with('info', 'Successfully created event!');
+            //Não alterar - ainda que fora do padrão
+            
+            // =====================================================
+
+                DB::table('participants')->insert([
+                    'name'              => Input::get('name'),
+                    'cpf'               => Input::get('cpf'),
+                    'email'             => Input::get('email'),
+                    'phone'             => Input::get('phone'),
+                    'address'           => Input::get('address'),
+                    'password'          => bcrypt(Input::get('password')),
+                    'type'              => Input::get('type'),
+                    'university'        => Input::get('university'),
+                    'course'            => Input::get('course'),
+                    'department'        => Input::get('department'),
+                    'responsability'    => Input::get('responsability'),
+                ]);
+
+            // +++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            Mail::raw('You have successfully created your account on CTFlor website',
+                function ($message)
+                {
+                  $message->to(Input::get('email'), Input::get('name'))->subject('CTFlor Website - Registration');
+                }
+            );
+
+            return redirect()->back()->with('info', 'Successfully created event!');
+        }
 
     }
 
@@ -96,6 +100,40 @@ class ParticipantController extends Controller{
         Participant::where('name', '=', $id)->delete();
 
         return redirect()->back()->with('info', 'Successfully deleted participant!');
+    }
+
+    private function alterRegister(Request $request, $participante){
+
+        //dd($request->all());
+
+        $this->validate($request,[
+                'name'          => 'required',
+                'cpf'           => 'required',
+                'email'         => 'required',
+                'phone'         => 'required',
+                'address'       => 'required',
+                'password'      => 'required',
+                'type'          => 'required|rparticipant',
+            ]);
+
+            if(Input::get('type') == "student")
+            {
+              $this->validate($request,[
+                  'university'      => 'required',
+                  'course'          => 'required',
+              ]);
+            }
+            else if(Input::get('type') == "professor")
+            {
+              $this->validate($request,[
+                  'university'      => 'required',
+                  'department'      => 'required',
+              ]);
+            }
+
+        $participante->update($request->all());
+        return redirect()->back()->with('info', 'Successfully updated participant!');
+
     }
 
 
