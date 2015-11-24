@@ -12,6 +12,7 @@
 */
 use CTFlor\Models\Event;
 
+
 // ==================================================== PAYMENT ==================================================
    //Route::get('/payment', [
         //'uses' => '\CTFlor\Http\Controllers\PaymentController@paymentIndex',
@@ -352,3 +353,21 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
     ]);
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    Route::get('/packages', [
+        'uses' => '\CTFlor\Http\Controllers\PagesController@packageIndex',
+        'as' => 'packages',
+    ]);
+
+    Route::post('/packages', [
+        'uses' => '\CTFlor\Http\Controllers\PagesController@store',
+    ]);
+
+    Route::get('/packages/search', [
+        'uses' => '\CTFlor\Http\Controllers\PagesController@packageSelectedIndex',
+        'as' => 'packages.search'
+    ]);
+
+    Route::post('/packages/search', [
+        'uses' => '\CTFlor\Http\Controllers\PagesController@packageSelectedIndex',
+    ]);    
