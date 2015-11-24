@@ -66,11 +66,11 @@
                   </select>
                   <label id="lActivity" ><i class="material-icons left">web</i>Activity</label>
               </div>
-                
+
 
                 <!-- <div class="input-field col s4">
                     <i class="material-icons prefix">perm_identity</i> -->
-                    <input id="participant_" name="id_participant" type="hidden" class="validate" value="4">
+                    <input id="participant_" name="id_participant" type="hidden" class="validate" value="{{ Auth::user()['id']  }}">
                 <!--<label for="icon_prefix">Participant</label>
                 </div> -->
 
