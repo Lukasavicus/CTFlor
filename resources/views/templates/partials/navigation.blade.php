@@ -7,20 +7,8 @@
           <li class=""><a href="{{ route('subscribingP') }}">Lista por Participantes</a></li>
       </ul>
 
-      <ul id="dropdown2" class="dropdown-content">
-          <li>
-              <a href="{{ route('controle.principal') }}">
-                  <div class="chip">
-                      <img src="images/yuna.jpg" alt="Contact Person">  {{ Auth::user()['name']}}
-                  </div>
-              </a>
-          </li>
-          <li class="divider"></li>
-          <li>
-              <a href="{{ route('site.signout') }}">Sair</a>
-          </li>
-      </ul>
-
+      <ul id="dropdown2" class="dropdown-content"> <li> <a href="{{ route('controle.principal') }}"> <div class="chip"> <img src="images/yuna.jpg" alt="Contact Person">  {{ Auth::user()['name']}} </div> </a> </li> <li class="divider"></li> <li> <a href="{{ route('site.signout') }}">Sair</a> </li> </ul>
+      
       <ul class="left hide-on-med-and-down">
         <li><a href="#">Logo</a></li>
         <li class=""><a href="{{ route('home') }}">Home</a></li>

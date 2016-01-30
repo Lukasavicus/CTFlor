@@ -14,15 +14,15 @@ use CTFlor\Models\Event;
 
 
 // ==================================================== PAYMENT ==================================================
-   //Route::get('/payment', [
-        //'uses' => '\CTFlor\Http\Controllers\PaymentController@paymentIndex',
-        //'as' => 'crud.banca',
-        //'middleware' => ['auth'],
-    //]);
+   Route::get('/site.payment', [
+        'uses' => '\CTFlor\Http\Controllers\PaymentController@paymentIndex',
+        'as' => 'site.payment',
+        'middleware' => ['auth'],
+    ]);
 
-    Route::post('/payment', [
+    Route::post('/site.payment', [
         'uses' => '\CTFlor\Http\Controllers\PaymentController@store',
-        //'middleware' => ['auth'],
+        'middleware' => ['auth'],
     ]);
 
 
@@ -167,6 +167,17 @@ use CTFlor\Models\Event;
         'middleware' => ['auth'],
     ]);
 
+    Route::get('/activity/search', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@searchActivity',
+        'as'    => 'crud.activity.search',
+        'middleware' => ['auth'],
+    ]);
+
+    Route::post('/activity/search', [
+        'uses'  => '\CTFlor\Http\Controllers\ActivityController@searchActivity',
+        'middleware' => ['auth'],
+    ]);
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
@@ -260,6 +271,17 @@ use CTFlor\Models\Event;
         'middleware' => ['auth'],
     ]);
 
+    Route::get('/participant/search', [
+        'uses'  => '\CTFlor\Http\Controllers\ParticipantController@searchParticipant',
+        'as'    => 'crud.participant.search',
+        'middleware' => ['auth'],
+    ]);
+
+    Route::post('/participant/search', [
+        'uses'  => '\CTFlor\Http\Controllers\ParticipantController@searchParticipant',
+        'middleware' => ['auth'],
+    ]);
+
     Route::get('/subscribingP', [
         'uses'  => '\CTFlor\Http\Controllers\ParticipantController@subscribing',
         'as'    => 'subscribingP',
@@ -288,6 +310,17 @@ use CTFlor\Models\Event;
         'middleware' => ['auth'],
     ]);
 
+    Route::get('/material/search', [
+        'uses'  => '\CTFlor\Http\Controllers\MaterialController@searchMaterial',
+        'as'    => 'crud.material.search',
+        'middleware' => ['auth'],
+    ]);
+
+    Route::post('/material/search', [
+        'uses'  => '\CTFlor\Http\Controllers\MaterialController@searchMaterial',
+        'middleware' => ['auth'],
+    ]);
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // ==================================================== MATERIAL ==================================================
@@ -299,6 +332,17 @@ use CTFlor\Models\Event;
 
     Route::post('/board', [
         'uses' => '\CTFlor\Http\Controllers\BancaAvaliadoraController@store',
+        'middleware' => ['auth'],
+    ]);
+
+    Route::get('/board/search', [
+        'uses'  => '\CTFlor\Http\Controllers\BancaAvaliadoraController@searchBoard',
+        'as'    => 'crud.banca.search',
+        'middleware' => ['auth'],
+    ]);
+
+    Route::post('/board/search', [
+        'uses'  => '\CTFlor\Http\Controllers\BancaAvaliadoraController@searchBoard',
         'middleware' => ['auth'],
     ]);
 
@@ -370,4 +414,4 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
     Route::post('/packages/search', [
         'uses' => '\CTFlor\Http\Controllers\PagesController@packageSelectedIndex',
-    ]);    
+    ]);

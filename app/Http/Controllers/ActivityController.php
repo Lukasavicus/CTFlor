@@ -17,12 +17,14 @@ use CTFlor\Models\TechnicalVisitParticipant;
 
 class ActivityController extends Controller{
 
-    public function activityIndex(){
+    public function activityIndex()
+    {
+
     	  $activities = Activity::orderBy('name')->get();
         $events = Event::orderBy('name')->get();
         $types = Activity::getTypes();
 
-      return view('crud.activity', compact('activities', 'events', 'types') );
+        return view('crud.activity', compact('activities', 'events', 'types') );
     }
 
 
@@ -62,6 +64,10 @@ class ActivityController extends Controller{
                'radioSearch'       => 'required',
         ]);
 
+        $events = Event::orderBy('name')->get();
+        $types = Activity::getTypes();
+
+
         $param  = Input::get('radioSearch');
         $searchText = Input::get('valueSearch');
 
@@ -72,7 +78,7 @@ class ActivityController extends Controller{
         //type_case
         else                            $results = Activity::where('type', 'LIKE' , $searchText)->orderBy('type')->get();
 
-        return view('crud.activity', compact('results'));
+        return view('crud.activity', compact('results', 'events', 'types'));
 
     }
 

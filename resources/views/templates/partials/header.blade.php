@@ -9,15 +9,26 @@
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
   <link href="css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
   <link href="css/materialize.clockpicker.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../css/materialize.clockpicker.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 
   <!--  Scripts-->
   <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-2.1.1.min.js"></script>
+
   <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="../js/materialize.min.js"></script>
+
   <script type="text/javascript" src="js/materialize.clockpicker.js"></script>
+  <script type="text/javascript" src="../js/materialize.clockpicker.js"></script>
 
 </head>
 <body>

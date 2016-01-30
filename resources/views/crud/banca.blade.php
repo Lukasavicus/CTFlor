@@ -12,9 +12,9 @@
 @section('search')
     <div class="row">
       <div class="card card-panel">
-          <form class="col s12" action="{{ route('crud.banca') }}" method="POST">
-            <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-              <div class="input-field col s3">
+          <form class="col s12" action="{{ route('crud.banca.search') }}" method="POST">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              <div class="input-field col s4">
                    <p>
                      <input name="radioSearch" type="radio" id="eventNameSearch_" value="EventName" />
                      <label for="eventNameSearch_">Event Name</label>
@@ -23,7 +23,7 @@
                      <label for="professorSearch_">Professor</label>
                    </p>
                </div>
-               <div class="input-field col s7">
+               <div class="input-field col s6">
                    <i class="material-icons prefix">search</i>
                    <input name="valueSearch" id="icon_search" type="text" class="validate">
                    <label for="icon_search">Search</label>
@@ -138,14 +138,19 @@
                     <table class="responsive-table">
                     @foreach($results as $result)
                         <?php
-                            foreach ($events as $event)       if($event->{'id'} == $result->id_event)    $nameEvent = $event->{'name'};
+                            foreach ($events as $event)
+                              if($event->{'id'} == $result->id_event)
+                                $nameEvent = $event->{'name'};
 
                             foreach ($professors as $professor)
-                                     if($professor->{'id'} == $result->professor1)   $professor1Name = $professor->{'name'};
+                              if($professor->{'id'} == $result->professor1)
+                                $professor1Name = $professor->{'name'};
 
-                                     else if($professor->{'id'} == $result->professor2)  $professor2Name = $professor->{'name'};
+                              else if($professor->{'id'} == $result->professor2)
+                                $professor2Name = $professor->{'name'};
 
-                                     else if($professor->{'id'} == $result->professor3)  $professor3Name = $professor->{'name'};
+                              else if($professor->{'id'} == $result->professor3)
+                                $professor3Name = $professor->{'name'};
 
                         ?>
                         <tr>

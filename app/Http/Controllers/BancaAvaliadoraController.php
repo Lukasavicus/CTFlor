@@ -30,7 +30,7 @@ class BancaAvaliadoraController extends Controller
         return view('crud.banca', compact('events', 'professors', 'boards'));
     }
 
-    public function searchActivity(Request $request)
+    public function searchBoard(Request $request)
     {
         $this->validate($request,[
                'valueSearch'       => 'required',
@@ -57,7 +57,11 @@ class BancaAvaliadoraController extends Controller
                                                    ->where('events.name', 'LIKE' , $searchText . '%');
                                             })->orderBy('events.name')->get();
 
-        return view('crud.banca', compact('results'));
+        $events = Event::orderBy('name')->get();
+        $professors = Participant::where('type', 'like' ,'professor')->orderBy('name')->get();
+        $boards = BancaAvaliadora::orderBy('created_at')->get();
+
+        return view('crud.banca', compact('results', 'events', 'professors', 'boards'));
     }
 
     /**

@@ -14,7 +14,7 @@
 @section('search')
     <div class="row">
         <div class="card card-panel">
-            <form class="col s12" action="{{ route('crud.material') }}" method="POST">
+            <form class="col s12" action="{{ route('crud.material.search') }}" method="POST">
               <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
               <div class="input-field col s4">
                    <p>
@@ -162,15 +162,15 @@
                             </td>
 
                             <td>
-                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->title }} </span>
+                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $result->title }} </span>
                             </td>
 
                             <td>
-                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->category }} </span>
+                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $result->category }} </span>
                             </td>
 
                             <td>
-                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->keywords }} </span>
+                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $result->keywords }} </span>
                             </td>
                         </tr>
                     @endforeach

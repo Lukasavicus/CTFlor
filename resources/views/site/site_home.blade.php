@@ -69,7 +69,7 @@
  	 			<div class="row">
 	   	 			<div class="card">
 
-								<div class="card-image">
+							<div class="card-image">
 									  <img src="images/CTFlor1.jpg" style="width:1000px;height:200px;">
 									  <!-- <span class="card-title">CTFlor - 2015</span> -->
 					    	</div>

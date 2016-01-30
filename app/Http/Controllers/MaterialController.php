@@ -45,6 +45,9 @@ class MaterialController extends Controller
         $param  = Input::get('radioSearch');
         $searchText = Input::get('valueSearch');
 
+        $materials = Material::orderBy('title')->get();
+        $activities = Activity::orderBy('name')->get();
+
 
         if($param == "Title")              $results = Material::where('title', 'LIKE' , $searchText . '%')->orderBy('title')->get();
 
@@ -53,7 +56,7 @@ class MaterialController extends Controller
         //keyword
         else      $results = Participant::where('keyword', 'LIKE' , '%' .  $searchText . '%')->orderBy('keyword')->get();
 
-        return view('crud.material', compact('results'));
+        return view('crud.material', compact('results', 'materials', 'activities'));
     }
 
 
@@ -76,7 +79,7 @@ class MaterialController extends Controller
                           $request->input('id_participant').'/'.$request->input('id_activity').$request->input('id_participant').'.'.$extension,
                           File::get($file)
                       );
-        
+
         $entry = new Material();
     		$entry->mime = $file->getClientMimeType();
     		$entry->original_filename = $file->getClientOriginalName();

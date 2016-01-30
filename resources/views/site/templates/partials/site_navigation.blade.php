@@ -1,6 +1,4 @@
 <div>
-
-
   <div class="nav-wrapper brown lighten-1" height="200px" align="center">
       <img src="images/CTFlorfaixa.png" style="width:40%; max-height:100px;">
       <nav>

@@ -21,5 +21,6 @@ class Package extends  Model implements AuthenticatableContract{
      * @var array
      */
     protected $fillable = [ 'name',
+                            'price'
                           ];
 }

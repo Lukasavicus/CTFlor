@@ -13,7 +13,7 @@
 @section('search')
     <div class="row">
         <div class="card card-panel">
-            <form class="col s12" action="{{ route('home') }}" method="POST">
+            <form class="col s12" action="{{ route('crud.participant.search') }}" method="POST">
                   <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
                   <div class="input-field col s4">
                        <p>

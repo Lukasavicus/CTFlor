@@ -1,0 +1,15 @@
+O que já está funcionando:
+
+	- Cadastro de artigos (com envio de email de confirmação do cadastro)
+	- Cadastro da Banca Avaliadora
+	- Uso da aplicação de pagamento PayPal (em modo de testes ainda)
+	- WebSite estático (apresentação do site, sem acesso ao sistema de cadastro e controle da CTFlor - modo Divulgação)
+
+	Maiores informações das atividades em:
+
+		- https://trello.com/b/vdx3G66S/ctflor-projeto-pds 
+		CRUD (Cadastro, Busca, Atualização e Consulta de Dados)
+
+	Documento das especificações do projeto:
+
+		- https://optimizetechnology.files.wordpress.com/2015/09/pds1.pdf

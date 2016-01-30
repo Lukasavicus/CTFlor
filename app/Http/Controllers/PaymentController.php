@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use CTFlor\Http\Requests;
 use CTFlor\Http\Controllers\Controller;
+use CTFlor\Models\Package;
+use Illuminate\Support\Facades\Mail;
 
 use Paypalpayment;
 
@@ -19,8 +21,16 @@ class PaymentController extends Controller
         config('paypal_payment.Account.ClientSecret') );
     }
 
+    public function paymentIndex()
+    {
+        //dd('HELLO');
+        $package = Package::find(1);
+        return view('site.payment', compact('package'));
+    }
+
     public function store()
     {
+        //dd('HELLO_Post');
         // ### Address
         // Base Address object used as shipping or billing
         // address in a payment. [Optional]
@@ -127,8 +137,15 @@ class PaymentController extends Controller
             exit(1);
         }
 
-        dd($payment);
-    } 
+        //dd($payment);
+        Mail::raw('You have successfully bought your CTFlor package! :D',
+            function ($message)
+            {
+              $message->to('marcos.bcc2011@gmail.com', 'Marcos Cavalcante')->subject('CTFlor Website - Shopping Cart');
+            }
+        );
+
+    }
 
 
 

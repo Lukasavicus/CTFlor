@@ -7,6 +7,7 @@ use Auth;
 use Hash;
 use Illuminate\Http\Request;
 use CTFlor\Models\Activity;
+use CTFlor\Models\Package;
 
 class SiteController extends Controller{
 
@@ -36,7 +37,9 @@ class SiteController extends Controller{
 
     public function packagesPage()
     {
-      return view('site.site_packages');
+      $packages = Package::orderBy('name')->get();
+
+      return view('site.site_packages', compact('packages'));
     }
 
 }
