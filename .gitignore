@@ -1,3 +1,4 @@
 .env
 .env.example
 config/database.php
+/vendor

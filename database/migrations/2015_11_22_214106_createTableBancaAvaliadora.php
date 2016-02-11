@@ -16,8 +16,8 @@ class CreateTableBancaAvaliadora extends Migration
           //
           $table->increments('id');
 
-          $table->integer('event_id')->unsigned()->nullable();
-          $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+          $table->integer('id_event')->unsigned()->nullable();
+          $table->foreign('id_event')->references('id')->on('events')->onDelete('cascade');
 
           $table->integer('professor1')->unsigned()->nullable();
           $table->foreign('professor1')->references('id')->on('participants')->onDelete('cascade');

@@ -19,7 +19,7 @@ class CreateTableChatMessages extends Migration
             $table->foreign('sender_username')->references('id')->on('participants')->onDelete('cascade');
             $table->text('message');
             $table->boolean('read')->default(false);
-			      $table->timestamps();
+			$table->timestamps();
         });
     }
 

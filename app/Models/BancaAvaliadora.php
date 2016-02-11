@@ -20,7 +20,7 @@ class BancaAvaliadora extends Model implements AuthenticatableContract{
      *
      * @var array
      */
-    protected $fillable = [ 'event_id',
+    protected $fillable = [ 'id_event',
                             'professor1',
                             'professor2',
                             'professor3',

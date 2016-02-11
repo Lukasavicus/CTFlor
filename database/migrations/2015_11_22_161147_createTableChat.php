@@ -24,7 +24,7 @@ class CreateTableChat extends Migration
 
             $table->boolean('userParticipant_is_typing')->default(false);
             $table->boolean('userBanca_is_typing')->default(false);
-			      $table->timestamps();
+			$table->timestamps();
         });
     }
 

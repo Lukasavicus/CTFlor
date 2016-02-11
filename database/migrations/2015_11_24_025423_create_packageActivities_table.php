@@ -13,11 +13,11 @@ class CreatePackageActivitiesTable extends Migration
     public function up()
     {
         Schema::create('packagesActivities', function(Blueprint $table){
-            $table->integer('id_package');
-            $table->integer('id_activity');
+            $table->integer('id_package')->unsigned();
+            $table->integer('id_activity')->unsigned();
             $table->primary(['id_package', 'id_activity']);
-            $table->foreign('id_package')->references('id')->on('packages')->onDelete('cascade');
-            $table->foreign('id_activity')->references('id')->on('activities')->onDelete('cascade');
+            $table->foreign('id_package')->references('id')->on('packages');
+            $table->foreign('id_activity')->references('id')->on('activities');
             $table->timestamps();
         });
     }
