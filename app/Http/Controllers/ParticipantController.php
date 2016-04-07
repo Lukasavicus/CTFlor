@@ -33,12 +33,12 @@ class ParticipantController extends Controller{
         $searchText = Input::get('valueSearch');
 
 
-        if($param == "Name")              $results = Participant::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
-
-        else if($param == "Location")     $results = Participant::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
-
-        //type
-        else      $results = Participant::where('type', 'LIKE' , $searchText . '%')->orderBy('type')->get();
+        if($param == "Name")              
+            $results = Participant::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
+        else if($param == "Location")     
+            $results = Participant::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
+        else      
+            $results = Participant::where('type', 'LIKE' , $searchText . '%')->orderBy('type')->get();
 
         return view('crud.participant', compact('results'));
     }
@@ -104,14 +104,14 @@ class ParticipantController extends Controller{
 
             // +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-            Mail::raw('You have successfully created your account on CTFlor website',
+            Mail::raw('Sua conta foi criada com sucesso na plataforma do CTFlor',
                 function ($message)
                 {
-                  $message->to(Input::get('email'), Input::get('name'))->subject('CTFlor Website - Registration');
+                  $message->to(Input::get('email'), Input::get('name'))->subject('CTFlor Sistema Web - Registro');
                 }
             );
 
-            return redirect()->back()->with('info', 'Successfully created event!');
+            return redirect()->back()->with('info', 'Conta criada com sucesso! Um email chegará em breve para você');
         }
 
     }
@@ -122,7 +122,7 @@ class ParticipantController extends Controller{
 
         Participant::where('name', '=', $id)->delete();
 
-        return redirect()->back()->with('info', 'Successfully deleted participant!');
+        return redirect()->back()->with('info', 'Participante excluído com sucesso!');
     }
 
     private function alterRegister(Request $request, $participante){
@@ -155,7 +155,7 @@ class ParticipantController extends Controller{
             }
 
         $participante->update($request->all());
-        return redirect()->back()->with('info', 'Successfully updated participant!');
+        return redirect()->back()->with('info', 'Participante atualizado com sucesso!');
 
     }
 

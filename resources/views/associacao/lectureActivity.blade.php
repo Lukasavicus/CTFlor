@@ -4,17 +4,17 @@
     <div class="row">
     	<div class="input-field col s3">
             <select id="idActivity">
-    	        <option value="Choose one activity" disabled selected>Choose one activity</option>
+    	        <option value="Choose one activity" disabled selected>Escolha uma Atividade</option>
     	        @foreach($activities as $activity)
     	        	<option value="{{$activity->id}}">{{$activity->name}}</option>
     	        @endforeach
             </select>
-            <label>Activities</label>
+            <label>Atividades</label>
         </div>
 
         <div class="input-field col s3">
             <select>
-    	        <option value="" disabled selected>Choose your option</option>
+    	        <option value="" disabled selected>Escolha uma opção</option>
     	        <option value="1">Option 1</option>
     	        <option value="2">Option 2</option>
     	        <option value="3">Option 3</option>

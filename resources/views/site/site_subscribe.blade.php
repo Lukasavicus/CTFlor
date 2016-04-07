@@ -65,9 +65,8 @@
                         <option id="student" value="student">Estudante</option>
                         <option id="professor" value="professor">Professor</option>
                         <option id="community" value="community">Comunidade</option>
-                        <option id="organization" value="organization">Organização</option>
                     </select>
-                    <label>Tipo de usuario</label>
+                    <label>Tipo de usuário</label>
                 </div>
 
                 <div class="input-field col s4">

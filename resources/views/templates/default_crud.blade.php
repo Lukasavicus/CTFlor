@@ -4,17 +4,17 @@
 <div id="modal1" class="modal modal-fixed-footer">
   <div class="modal-content" >
     <form id="formHeader" name="formHeader" method="POST" action="">
-        <h4>Delete Register</h4>
-        <p>Do you really wanna delete the register:</p>
+        <h4>Excluir Registro</h4>
+        <p>Você realmente quer excluir esse registro?</p>
         <p id="modalMSG"></p>
         <input type="hidden" id="modalMSGValue" name="modalMSGValue" value="">
-        <p>Doing this you can't recovery this register again</p>
+        <p>Ao fazer isso, você não poderá recuperá-lo novamente</p>
         </div>
         <div class="modal-footer">
-        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</button>
+        <button type="submit" class="modal-action modal-close waves-effect waves-green btn-flat">Excluir</button>
         <input type="hidden" name="_token" value="{{Session::token()}}">
     </form>
-    <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+    <a class="modal-action modal-close waves-effect waves-red btn-flat">Cancelar</a>
   </div>
 </div>
 
@@ -39,13 +39,13 @@
 <div class="container">
     <div class="section">
         @yield('fields')
-	  </div>
+	</div>
 </div>
 
 <div class="container">
     <div class="section">
         @yield('elements')
-	  </div>
+	</div>
 </div>
 
 @stop

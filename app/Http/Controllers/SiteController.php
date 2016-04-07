@@ -3,7 +3,7 @@
 namespace CTFlor\Http\Controllers;
 
 use DB;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Hash;
 use Illuminate\Http\Request;
 use CTFlor\Models\Activity;
@@ -40,6 +40,14 @@ class SiteController extends Controller{
       $packages = Package::orderBy('name')->get();
 
       return view('site.site_packages', compact('packages'));
+    }
+
+    public function signout()
+    {
+        Auth::logout();
+        //Session::flush();        
+        $info = 'Até mais e volte logo. :)';
+        return view('site.site_logout', compact('info'));
     }
 
 }

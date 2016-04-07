@@ -58,15 +58,19 @@
       <ul class="left hide-on-med-and-down">
         <li><a href="#">Logo</a></li>
         <li class=""><a href="{{ route('home') }}">Home</a></li>
-        <li class=""><a href="{{ route('controle.principal') }}">System</a></li>
-        <li class=""><a href="{{ route('crud.activity') }}">Activities</a></li>
-        <li class=""><a href="{{ route('crud.participant') }}">Participants</a></li>
-        <li class=""><a href="{{ route('crud.banca') }}">Board of Examiners</a></li>
-        <li class=""><a href="{{ route('crud.event') }}">Events</a></li>
-        <li class=""><a href="{{ route('crud.material') }}">Materials</a></li>
-        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Listas - Sub-áreas<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li class=""><a href="{{ route('crud.material') }}">Materiais</a></li>
+
+        @if( strcmp( Auth::user()->getRole(), "organization") == 0  )
+            <li class=""><a href="{{ route('controle.principal') }}">Sistema</a></li>
+            <li class=""><a href="{{ route('crud.activity') }}">Atividades</a></li>
+            <li class=""><a href="{{ route('crud.participant') }}">Participantes</a></li>
+            <li class=""><a href="{{ route('crud.banca') }}">Banca Examinadora</a></li>
+            <li class=""><a href="{{ route('crud.event') }}">Eventos</a></li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Listas de Sub-áreas<i class="material-icons right">arrow_drop_down</i></a></li>
+        @endif
+
         <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Opções do Usuário<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li class=""><a href="{{ route('site') }}">Event's web site</a></li>
+        <li class=""><a href="{{ route('site') }}">Site do Evento</a></li>
       </ul>
 
     </div>

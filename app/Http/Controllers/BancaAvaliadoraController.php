@@ -84,7 +84,7 @@ class BancaAvaliadoraController extends Controller
 
         BancaAvaliadora::create($input);
 
-        return redirect()->back()->with('info', 'Successfully created board of examiners!');
+        return redirect()->back()->with('info', 'Banca Examinadora foi criada com sucesso!');
 
     }
 

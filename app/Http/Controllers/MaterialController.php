@@ -11,6 +11,7 @@ use CTFlor\Models\Activity;
 use CTFlor\Models\ActivityParticipant;
 use Validator, Input, Redirect;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -19,18 +20,19 @@ use Illuminate\Http\Response;
 class MaterialController extends Controller
 {
 
+
     public function materialIndex()
     {
-        $materials = Material::orderBy('title')->get();
+        $user_type = Auth::user()->getRole()  ;//: "testetstetet";
 
-        /*$partActivities = ActivityParticipant::join('participants', 'activitiesparticipants.id_participant', '=', 'participants.id')
-        ->join('activities', 'activitiesparticipants.id_activity', '=', 'activities.id')
-        ->select('participants.name as pName', 'participants.*', 'activities.name as aName', 'activities.*', 'activitiesparticipants.*')
-        ->orderBy('pName')
-        ->get();
-        */
+        if( strcmp($user_type, "organization") == 0 ) 
+            $materials = Material::orderBy('title')->get();
+        else
+            $materials = Material::where('id_participant', Auth::user()->getId() )->orderBy('title')->get();
+
+        //dd(Auth::user()->getId());
+
         $activities = Activity::orderBy('name')->get();
-
 
         return view('crud.material', compact('materials', 'activities') );
     }
@@ -49,12 +51,12 @@ class MaterialController extends Controller
         $activities = Activity::orderBy('name')->get();
 
 
-        if($param == "Title")              $results = Material::where('title', 'LIKE' , $searchText . '%')->orderBy('title')->get();
-
-        else if($param == "Category")     $results = Material::where('category', 'LIKE' , $searchText . '%')->orderBy('category')->get();
-
-        //keyword
-        else      $results = Participant::where('keyword', 'LIKE' , '%' .  $searchText . '%')->orderBy('keyword')->get();
+        if($param == "Title")              
+            $results = Material::where('title', 'LIKE' , $searchText . '%')->orderBy('title')->get();
+        else if($param == "Category")     
+            $results = Material::where('category', 'LIKE' , $searchText . '%')->orderBy('category')->get();
+        else      
+            $results = Participant::where('keyword', 'LIKE' , '%' .  $searchText . '%')->orderBy('keyword')->get();
 
         return view('crud.material', compact('results', 'materials', 'activities'));
     }
@@ -63,7 +65,7 @@ class MaterialController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'id_activity'       => 'required|unique:materials',
+            'id_activity'       => 'required',
             'id_participant'    => 'required',
             'title'             => 'required',
             'keywords'          => 'required',
@@ -72,43 +74,45 @@ class MaterialController extends Controller
         ]);
 
         $file = $request->file('fileField');
-    		$extension = $file->getClientOriginalExtension();
+    	$extension = $file->getClientOriginalExtension();
 
-        Storage::disk('local')->
-                      put(
-                          $request->input('id_participant').'/'.$request->input('id_activity').$request->input('id_participant').'.'.$extension,
-                          File::get($file)
-                      );
+        $id_max = Material::max('id') + 1;
 
-        $entry = new Material();
-    		$entry->mime = $file->getClientMimeType();
-    		$entry->original_filename = $file->getClientOriginalName();
-    		$entry->filename = $file->getFilename().'.'.$extension;
+        //New file's name. It is a concatenation of the Activity's id and the participant's id.
+        $new_filename = $request->input('id_activity') . $id_max . $request->input('id_participant') . '.' . $extension;
 
-    		$entry->save();
+        //Gets the name of the folder
+        $folder = $request->input('id_participant');
+        
+        $fullpath = $folder.'/'.$new_filename;
+
+        //We finally save it to the disk
+        Storage::disk('local')->put($fullpath, File::get($file));
 
 
-        $input = $request->all();
-        Material::create($input);
-
+        $register = new Material();
+        $register = $this->getRequest( $request, $fullpath );
+        $register->save();
 
         return redirect()->back()->with('info', 'Successfully created material!');
     }
 
-    public function get($filename)
+    public function getMaterial(Request $request)
     {
-  		$entry = Fileentry::where('filename', '=', $filename)->firstOrFail();
-  		$file  = Storage::disk('local')->get($entry->filename);
+  		
+        $file = Storage::disk('local')->get( $request->input('filepath') );
 
-  		return (new Response($file, 200))->header('Content-Type', $entry->mime);
-	  }
+  		return ( new Response($file, 200) )->header('Content-Type', 'application/pdf')
+                                           ->header('Content-Disposition', 'attachment') ;
+
+    }
 
     public function deleteRegister(Request $request)
     {
         $id = Input::get('modalMSGValue');
 
         material::where('name', '=', $id)->delete();
-        return redirect()->back()->with('info', 'Successfully deleted participant!');
+        return redirect()->back()->with('info', 'Material foi excluído com sucesso!');
     }
 
     public function insc()
@@ -116,7 +120,23 @@ class MaterialController extends Controller
         $materials = Material::orderBy('title')->get();
         $activitiesNotInsc = Activity::orderBy('name')->get();
         $activitiesInsc = Activity::orderBy('name')->get();
-        return view('activitiesmaterial', compact('materials', 'activNotInsc', 'activInsc') )->with('material', 'materialS');
+        return view('activitiesmaterial', compact('materials', 'activNotInsc', 'activInsc') )
+                ->with('material', 'materialS');
+    }
+
+    public function getRequest($request, $filepath)
+    {
+        $aux = new Material();
+
+        $aux->id_activity = $request->input('id_activity');
+        $aux->id_participant = $request->input('id_participant');
+        $aux->title = $request->input('title');
+        $aux->keywords = $request->input('keywords');
+        $aux->abstract = $request->input('abstract');
+        $aux->category = $request->input('category');
+        $aux->filepath = $filepath;
+        
+        return $aux;
     }
 
 }

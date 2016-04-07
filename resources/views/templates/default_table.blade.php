@@ -4,9 +4,9 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center green-text text-darken-3">INSC!</h1>
+      <h1 class="header center green-text text-darken-3">Inscritos!</h1>
       <div class="row center">
-        <h5 class="header col s12 light">Subscribing</h5>
+        <h5 class="header col s12 light">Inscreva-se</h5>
       </div>
       <br><br>
 

@@ -72,11 +72,12 @@ class ActivityController extends Controller{
         $searchText = Input::get('valueSearch');
 
 
-        if($param == "Name")            $results = Activity::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
-
-        else if($param == "Location")   $results = Activity::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
-        //type_case
-        else                            $results = Activity::where('type', 'LIKE' , $searchText)->orderBy('type')->get();
+        if($param == "Name")            
+            $results = Activity::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
+        else if($param == "Location")   
+            $results = Activity::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
+        else                            
+            $results = Activity::where('type', 'LIKE' , $searchText)->orderBy('type')->get();
 
         return view('crud.activity', compact('results', 'events', 'types'));
 

@@ -34,13 +34,13 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if ($this->auth->guest()) {
+        /*if ($this->auth->guest()) {
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
             } else {
-                return redirect()->guest('site.subscribe')->with('info', 'You must be loged to access this area');
+                return redirect()->guest('site.subscribe')->with('info', 'You must be logged to access this area');
             }
-        }
+        }*/
 
         return $next($request);
     }

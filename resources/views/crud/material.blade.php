@@ -3,9 +3,9 @@
 
 @section('subheader')
     <br><br>
-        <h1 class="header center green-text text-darken-3">Materials' Page</h1>
+        <h1 class="header center green-text text-darken-3">Materiais</h1>
         <div class="row center">
-          <h5 class="header col s12 light">You can create, recovery, update and delete</h5>
+          <h5 class="header col s12 light">Você pode buscar, criar, alterar e excluir Materiais</h5>
         </div>
     <br><br>
 @stop
@@ -14,28 +14,28 @@
 @section('search')
     <div class="row">
         <div class="card card-panel">
-            <form class="col s12" action="{{ route('crud.material.search') }}" method="POST">
+            <form class="col s12" action="{{ route('crud.material.search') }}" method="GET">
               <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
               <div class="input-field col s4">
                    <p>
                      <input name="radioSearch" type="radio" id="titleSearch_" value="Title" />
-                     <label for="titleSearch_">Title</label>
+                     <label for="titleSearch_">Título</label>
 
                      <input name="radioSearch" type="radio" id="keywordSearch_" value="Keyword" />
-                     <label for="keywordSearch_">KeyWord</label>
+                     <label for="keywordSearch_">Palavra-chave</label>
 
                      <input name="radioSearch" type="radio" id="categorySearch_" value="Category" />
-                     <label for="categorySearch_">Category</label>
+                     <label for="categorySearch_">Categoria</label>
                    </p>
                </div>
                <div class="input-field col s6">
                    <i class="material-icons prefix">search</i>
                    <input name="valueSearch" id="icon_search" type="text" class="validate">
-                   <label for="icon_search">Search</label>
+                   <label for="icon_search">Buscar</label>
                </div>
 
               <div class="input-field col s2">
-                  <button class="waves-effect waves-light btn" type="submit">Search</button>
+                  <button class="waves-effect waves-light btn" type="submit">Buscar</button>
               </div>
 
             </form>
@@ -60,32 +60,27 @@
 
               <div class="input-field col s4">
                   <select id="activity_" name="id_activity" >
-                      <option>Choose an Event</option>
+                      <option>Escolha um evento</option>
                       @foreach($activities as $activity)
                           <option value="{{$activity->id}}">{{$activity->name}}</option>
                       @endforeach
                   </select>
-                  <label id="lActivity" ><i class="material-icons left">web</i>Activity</label>
+                  <label id="lActivity" ><i class="material-icons left">web</i>Atividade</label>
               </div>
 
+              <input id="participant_" name="id_participant" type="hidden" class="validate" value="{{ Auth::user()['id']  }}">
+            
+              <div class="input-field col s4">
+                  <i class="material-icons prefix">description</i>
+                  <input id="title_" name="title" type="text" class="validate">
+                  <label for="icon_prefix">Título</label>
+              </div>
 
-                <!-- <div class="input-field col s4">
-                    <i class="material-icons prefix">perm_identity</i> -->
-                    <input id="participant_" name="id_participant" type="hidden" class="validate" value="{{ Auth::user()['id']  }}">
-                <!--<label for="icon_prefix">Participant</label>
-                </div> -->
-
-                <div class="input-field col s4">
-                    <i class="material-icons prefix">description</i>
-                    <input id="title_" name="title" type="text" class="validate">
-                    <label for="icon_prefix">Title</label>
-                </div>
-
-                <div class="input-field col s4">
-                    <i class="material-icons prefix">language</i>
-                    <input id="keywords_" name="keywords" type="text" class="validate">
-                    <label for="icon_prefix">Keywords</label>
-                </div>
+              <div class="input-field col s4">
+                  <i class="material-icons prefix">language</i>
+                  <input id="keywords_" name="keywords" type="text" class="validate">
+                  <label for="icon_prefix">Palavra-chave</label>
+              </div>
 
             </div>
 
@@ -94,18 +89,18 @@
                 <div class="input-field col s4">
                     <i class="material-icons prefix">note_add</i>
                     <input id="abstract_" name="abstract" type="text" class="validate">
-                    <label for="icon_prefix">Abstract</label>
+                    <label for="icon_prefix">Resumo</label>
                 </div>
 
                 <div class="input-field col s4">
                     <i class="material-icons prefix">clear_all</i>
                     <input id="category_" name="category" type="text" class="validate">
-                    <label for="icon_prefix">Category</label>
+                    <label for="icon_prefix">Categoria</label>
                 </div>
 
                 <div class="file-field input-field col s4">
                   <div class="btn">
-                    <span>File</span>
+                    <span>Arquivo</span>
                     <input id="fileField_" name="fileField" type="file">
                   </div>
                   <div class="file-path-wrapper">
@@ -127,7 +122,7 @@
                 <div class="input-field col s4">
                     <button class="waves-effect waves-light btn" type="reset">
                       <i class="material-icons left">info_outline</i>
-                      Clear fields
+                      Limpar campos
                     </button>
                 </div>
 
@@ -143,46 +138,40 @@
 
 @section('elements')
     <div class="row">
-
         <div class="card card-panel">
+          <form class="col s12" action="{{ route('crud.material.get') }}" method="POST">
+                <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
 
           @if(isset($results))
-                @if($results->count() == 0)
-                    <div class="card-panel red waves-effect waves-light" role="alert">
-                        "No Material has been found."
-                    </div>
-                @else
-                    <table class="responsive-table">
-                    @foreach($results as $result)
-                        <?php foreach ($activities as $activity)     if($activity->{'id'} == $result->id_activity)     $nameActivity = $result->{'name'};  ?>
+            <table class="responsive-table">
+            @foreach($results as $result)
+                <?php 
+                    foreach ($activities as $activity)     
+                      if($activity->{'id'} == $result->id_activity)     
+                        $nameActivity = $result->{'name'};  
+                ?>
+                <tr>
+                    <td><i class="material-icons left">toc</i> <span id="nameSearch" name="nameSearch">{{ $nameActivity }}</span></td>
 
-                        <tr>
-                            <td>
-                                <i class="material-icons left">toc</i> <span id="nameSearch" name="nameSearch">{{ $nameActivity }}</span>
-                            </td>
+                    <td><i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $result->title }} </span></td>
 
-                            <td>
-                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $result->title }} </span>
-                            </td>
+                    <td><i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $result->category }} </span></td>
 
-                            <td>
-                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $result->category }} </span>
-                            </td>
-
-                            <td>
-                                <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $result->keywords }} </span>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </table>
-                @endif
+                    <td><i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $result->keywords }} </span></td>
+                </tr>
+            @endforeach
+            </table>
         @else
             @if($materials == null || $materials->count() == 0)
-                <div class="card-panel red waves-effect waves-light" role="alert"> "No Material has been registered yet." </div>
+                <div class="card-panel red waves-effect waves-light" role="alert"> "Nenhum material foi inserido ainda." </div>
             @else
                 <table class="responsive-table">
                 @foreach($materials as $material)
-                    <?php foreach ($activities as $activity)     if($activity->{'id'} == $material->id_activity)     $nameActivity = $activity->{'name'};  ?>
+                    <?php 
+                          foreach ($activities as $activity)     
+                              if($activity->{'id'} == $material->id_activity)     
+                                  $nameActivity = $activity->{'name'};  
+                    ?>
                     <tr>
                           <td>
                               <i class="material-icons left">toc</i> <span id="nameSearch" name="nameSearch">{{ isset($nameActivity) }}</span>
@@ -190,22 +179,28 @@
 
 
                           <td>
-                              <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->title }} </span>
+                              <i class="tiny material-icons left">description</i> 
+                              <span id="typeSearch" name="material_title">{{ $material->title }} </span>
                           </td>
 
                           <td>
-                              <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->category }} </span>
+                              <i class="tiny material-icons left">description</i> 
+                              <span id="typeSearch" name="typeSearch">{{ $material->category }} </span>
                           </td>
 
                           <td>
-                              <i class="tiny material-icons left">description</i> <span id="typeSearch" name="typeSearch">{{ $material->keywords }} </span>
+                              <button type="submit" class="waves-effect waves-light btn" id="filepath_button">
+                              <i class="tiny material-icons left">description</i>  Download </button>
+                              <input id="filepath_" name="filepath" type="hidden" class="validate" value="{{ $material->filepath }}">
                           </td>
 
                           <td>
-                              <button class="waves-effect waves-light btn" > <i class="material-icons left">info_outline</i> Edit </button>
+                              <button class="waves-effect waves-light btn" > 
+                              <i class="material-icons left">info_outline</i> Editar </button>
                           </td>
                           <td>
-                              <a href="#modal1" class="waves-effect waves-light btn modal-trigger"> <i class="material-icons left">delete</i> Delete </a>
+                              <a href="#modal1" class="waves-effect waves-light btn modal-trigger"> 
+                              <i class="material-icons left">delete</i> Excluir </a>
                           </td>
                     </tr>
                 @endforeach
@@ -213,7 +208,8 @@
               </div>
             @endif
         @endif
-    </div>
+        </form>
+      </div>
 @stop
 
 

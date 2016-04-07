@@ -2,3 +2,4 @@
 .env.example
 config/database.php
 vendor
+.phpintel

@@ -15,7 +15,6 @@
                 <div class="chip">
                   <img src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K8737489J2" alt="Contact Person">
                   {{ Auth::user()['name']}}
-                  Lucas
                 </div>
                 </a>
               </li>
@@ -26,12 +25,12 @@
           <ul class="left hide-on-med-and-down">
             <!-- <li><a href="{{ route('site') }}"><img src="images/CTFlor2.jpg" width="30px" height="30px"></a></li> -->
             <li class=""><a href="{{ route('site') }}">CTFlor</a></li>
-            <li class=""><a href="{{ route('site.local') }}">Place</a></li>
-            <li class=""><a href=" {{ route('site.subscribe') }} ">Registration</a></li>
-            <li class=""><a href="#">Works</a></li>
-            <li class=""><a href="{{ route('site.programacao') }}">Schedule</a></li>
-            <li class=""><a href="{{ route('site.packages') }}">Packages</a></li>
-            <li class=""><a href="#">Sponsors</a></li>
+            <li class=""><a href="{{ route('site.local') }}">Localização</a></li>
+            <li class=""><a href=" {{ route('site.subscribe') }} ">Inscrições</a></li>
+            <!-- <li class=""><a href="#">Trabalhos</a></li> -->
+            <li class=""><a href="{{ route('site.programacao') }}">Agenda</a></li>
+            <li class=""><a href="{{ route('site.packages') }}">Pacotes</a></li>
+            <li class=""><a href="#">Patrocinadores</a></li>
             <li class=""><a href="{{ route('site.login') }}">Login</a></li>
           </ul>
         </div>

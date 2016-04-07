@@ -2,9 +2,9 @@
 
 @section('subheader')
     <br><br>
-        <h1 class="header center green-text text-darken-3">Events' Page</h1>
+        <h1 class="header center green-text text-darken-3">Eventos</h1>
         <div class="row center">
-          <h5 class="header col s12 light">You can create, recovery, update and delete</h5>
+          <h5 class="header col s12 light">Você pode buscar, criar, alterar e excluir Eventos</h5>
         </div>
     <br><br>
 @stop
@@ -18,20 +18,20 @@
              <div class="input-field col s3">
                   <p>
                     <input name="radioSearch" type="radio" id="nameSearch_" value="Name" />
-                    <label for="nameSearch_">Name</label>
+                    <label for="nameSearch_">Nome</label>
 
                     <input name="radioSearch" type="radio" id="locationSearch_" value="Location" />
-                    <label for="locationSearch_">Location</label>
+                    <label for="locationSearch_">Localização</label>
                   </p>
               </div>
               <div class="input-field col s7">
                   <i class="material-icons prefix">search</i>
                   <input name="valueSearch" id="icon_search" type="text" class="validate">
-                  <label for="icon_search">Search</label>
+                  <label for="icon_search">Buscar</label>
               </div>
 
               <div class="input-field col s2">
-                  <button class="waves-effect waves-light btn" type="submit">Search</button>
+                  <button class="waves-effect waves-light btn" type="submit">Buscar</button>
               </div>
 
           </form>
@@ -63,18 +63,18 @@
                   <div class="input-field col s4">
                       <i class="material-icons prefix">toc</i>
                       <input id="name_" name="name" type="text" class="validate">
-                      <label id="lName" for="name_">Name of Event</label>
+                      <label id="lName" for="name_">Nome do Evento</label>
                   </div>
 
                   <div class="input-field col s4">
                       <i class="material-icons prefix">today</i>
-                      <label id="lStart" class="light-blue-text darken-4">From</label>
+                      <label id="lStart" class="light-blue-text darken-4">Data de Início</label>
                       <input type="date" id="start_" name="start"  class="datepicker" class="light-blue-text darken-4">
                   </div>
 
                   <div class="input-field col s4">
                       <i class="material-icons prefix">today</i>
-                      <label id="lEnd" class="light-blue-text darken-4">To</label>
+                      <label id="lEnd" class="light-blue-text darken-4">Data Término</label>
                       <input type="date" id="end_" name="end"  class="datepicker" class="light-blue-text darken-4">
                   </div>
 
@@ -87,7 +87,7 @@
                   <div class="input-field col s4">
                       <i class="material-icons prefix">room</i>
                       <input id="location_" name="location" type="text" class="validate">
-                      <label id="lLocation"for="icon_telephone">Location</label>
+                      <label id="lLocation"for="icon_telephone">Localização</label>
                   </div>
               </div>
 
@@ -96,14 +96,14 @@
                   <div class="input-field col s4">
                       <button id="incluir_alterar" type="submit" class="waves-effect waves-light btn" onclick="setDates();" >
                         <i class="material-icons left">input</i>
-                        Insert
+                        Inserir
                       </button>
                   </div>
 
                   <div class="input-field col s4">
                       <button class="waves-effect waves-light btn" type="reset">
                         <i class="material-icons left">info_outline</i>
-                        Clear fields
+                        Limpar Campos
                       </button>
                   </div>
 
@@ -128,7 +128,7 @@
 
               @if( $events == null || $events->count() == 0)
                   <div class="card-panel red waves-effect waves-light" role="alert">
-                      "No event has been registered yet."
+                      "Nenhum evento foi registrado ainda."
                   </div>
               @else
                   <table class="responsive-table">
@@ -160,13 +160,13 @@
                               ?>
                           <td>
                               <button class="waves-effect waves-light btn" onclick="edit('{{ $eventString }}');">
-                                <i class="material-icons left">info_outline</i> Edit
+                                <i class="material-icons left">info_outline</i> Editar
                               </button>
                           </td>
 
                           <td>
                               <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $event->name }}');">
-                                <i class="material-icons left">delete</i> Delete
+                                <i class="material-icons left">delete</i> Excluir
                               </a>
                           </td>
 

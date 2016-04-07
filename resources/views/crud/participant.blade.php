@@ -2,9 +2,9 @@
 
 @section('subheader')
     <br><br>
-        <h1 class="header center green-text text-darken-3">Participants' Page</h1>
+        <h1 class="header center green-text text-darken-3">Participantes</h1>
         <div class="row center">
-          <h5 class="header col s12 light">You can create, recovery, update and delete</h5>
+          <h5 class="header col s12 light">Você pode buscar, criar, alterar e excluir Participantes</h5>
         </div>
     <br><br>
 @stop
@@ -18,23 +18,23 @@
                   <div class="input-field col s4">
                        <p>
                          <input name="radioSearch" type="radio" id="nameSearch_" value="Name" />
-                         <label for="nameSearch_">Name</label>
+                         <label for="nameSearch_">Nome</label>
 
                          <input name="radioSearch" type="radio" id="locationSearch_" value="Location" />
-                         <label for="locationSearch_">Location</label>
+                         <label for="locationSearch_">Localização</label>
 
                          <input name="radioSearch" type="radio" id="typeSearch_" value="Tipe" />
-                         <label for="typeSearch_">Type</label>
+                         <label for="typeSearch_">Tipo</label>
                        </p>
                    </div>
                    <div class="input-field col s6">
                        <i class="material-icons prefix">search</i>
                        <input name="valueSearch" id="icon_search" type="text" class="validate">
-                       <label for="icon_search">Search</label>
+                       <label for="icon_search">Buscar</label>
                    </div>
 
                   <div class="input-field col s2">
-                      <button class="waves-effect waves-light btn" type="submit">Search</button>
+                      <button class="waves-effect waves-light btn" type="submit">Buscar</button>
                   </div>
 
             </form>
@@ -94,7 +94,7 @@
                     <div class="input-field col s4">
                         <i class="material-icons prefix">location_on</i>
                         <input id="address_" name="address" type="text" class="validate">
-                        <label id="laddress" for="address">Endereco</label>
+                        <label id="laddress" for="address">Endereço</label>
                     </div>
 
                     <div class="input-field col s4">
@@ -108,13 +108,13 @@
                 <div class="row">
                     <div class="input-field col s4">
                         <select id="type_" name="type">
-                            <option value="" selected="false">Choose your option</option>
+                            <option value="" selected="false">Escolha uma opção</option>
                             <option id="student" value="student">Estudante</option>
                             <option id="professor" value="professor">Professor</option>
                             <option id="community" value="community">Comunidade</option>
                             <option id="organization" value="organization">Organização</option>
                         </select>
-                        <label>Tipo de usuario</label>
+                        <label>Tipo de usuário</label>
                     </div>
 
                     <div class="input-field col s4">
@@ -152,14 +152,14 @@
                     <div class="input-field col s3">
                         <button id="incluir_alterar" type="submit" class="waves-effect waves-light btn">
                           <i class="material-icons left">input</i>
-                          Insert
+                          Inserir
                         </button>
                     </div>
 
                     <div class="input-field col s3">
                       <button id="clearButton_" name="clearButton" class="waves-effect waves-light btn" type="reset" >
                         <i class="material-icons left">delete</i>
-                        Clear Fields
+                        Limpar Campos
                       </button>
                     </div>
 
@@ -186,7 +186,7 @@
           @if(isset($results))
                 @if($results->count() == 0)
                     <div class="card-panel red waves-effect waves-light" role="alert">
-                        "No particiapnt has been found."
+                        "Nenhum participante foi encontrado."
                     </div>
                 @else
                     <table class="responsive-table">
@@ -216,7 +216,7 @@
 
 
             @if($participants == null || $participants->count() == 0)
-                <div class="card-panel red waves-effect waves-light" role="alert"> "No participant has been registered yet."</div>
+                <div class="card-panel red waves-effect waves-light" role="alert"> "Nenhum participante foi registrado ainda."</div>
             @else
                 <table class="responsive-table">
                     @foreach($participants as $participant)
@@ -236,12 +236,14 @@
                                                        $participant->responsability ;
                                 ?>
                                 <td>
-                                    <button class="waves-effect waves-light btn" onclick="edit('{{ $participantString }}');"><i class="material-icons left">info_outline</i>Edit</button>
+                                    <button class="waves-effect waves-light btn" onclick="edit('{{ $participantString }}');">
+                                    <i class="material-icons left">info_outline</i>Editar</button>
                                 </td>
 
 
                                 <td>
-                                    <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $participant->name }}');"><i class="material-icons left">delete</i>Delete</a>
+                                    <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $participant->name }}');">
+                                    <i class="material-icons left">delete</i>Excluir</a>
                                 </td>
                         </tr>
                     @endforeach

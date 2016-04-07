@@ -29,5 +29,6 @@ class Kernel extends HttpKernel
         'auth' => \CTFlor\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest' => \CTFlor\Http\Middleware\RedirectIfAuthenticated::class,
+        'role'  => \CTFlor\Http\Middleware\RoleMiddleware::class,
     ];
 }

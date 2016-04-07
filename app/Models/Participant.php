@@ -40,13 +40,29 @@ class Participant extends Model implements AuthenticatableContract{
      */
     protected $hidden = ['password'];
 
-
-    public static function getRolesGeneric(){
-        return array('listener', 'speaker');
+    public function hasRole( $role )
+    {
+        return $this->type == $role;
     }
 
-    public static function getRolesLecture(){
-        return array('listener', 'speaker', 'judge');
+    public function getRole( )
+    {
+        return $this->type;
+    }
+
+    public function getId( )
+    {
+        return $this->id;
+    }
+
+    public static function getRolesGeneric()
+    {
+        return array('student', 'community');
+    }
+
+    public static function getRolesLecture()
+    {
+        return array('student', 'professor', 'community');
     }
 
 }

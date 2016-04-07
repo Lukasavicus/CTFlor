@@ -28,17 +28,17 @@
 						                    <input id="cpf" name="cpf" type="text" class="validate"/>
 						                    <label class="active" for="cpf">CPF</label>
 						                    @if($errors->has('cpf'))
-						 		 										<span>{{ $errors->first('cpf') }}</span>
-						 		 								@endif
+						 		 				<span>{{ $errors->first('cpf') }}</span>
+						 		 			@endif
 						                </div>
 
 					                	<div class="input-field col s8">
 					                			<i class="material-icons prefix">vpn_key</i>
 					                      <input id="password" name="password" type="password" class="validate"/>
-					            					<label for="password">Password</label>
+					            			<label for="password">Password</label>
 						                    @if($errors->has('password'))
-											 		 				<span>{{ $errors->first('password') }}</span>
-											 		 			@endif
+											 	<span>{{ $errors->first('password') }}</span>
+											@endif
 					                	</div>
 
 					                	<div class="input-field col s8">

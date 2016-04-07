@@ -25,18 +25,15 @@
 
               <div class="input-field col s6">
                   <select id="type_" name="type">
-                      <option>Choose your package</option>
-                      @foreach($packages as $package)
-                          <option value="{{$package->id}}">{{$package->name}}</option>
-                      @endforeach
+                      <option>Escolha o seu pacote</option>
                   </select>
-                  <label><i class="material-icons left">description</i>Buy Package</label>
+                  <label><i class="material-icons left">description</i>Comprar Pacote</label>
               </div>
 
               <div class="input-field col s3">
                   <i class="material-icons prefix">payment</i>
-                  <input id="qnt_participants_" name="qnt_participants" type="number" class="validate" value="{{$package->price}}" readonly>
-                  <label id="lqnt_participants" for="icon_telephone">Price</label>
+                  <input id="qnt_participants_" name="qnt_participants" type="number" class="validate" value="{{}}" readonly>
+                  <label id="lqnt_participants" for="icon_telephone">Preço</label>
               </div>
 
 
@@ -45,7 +42,7 @@
               <div class="input-field col s3">
                   <button type="submit" class="waves-effect waves-light green darken-4 btn">
                     <i class="material-icons left">input</i>
-                    Buy
+                    Comprar
                   </button>
               </div>
 

@@ -33,7 +33,7 @@ class PagesController extends Controller{
 
 		//dd($request->all());
 
-		$this->validate($request,[
+			$this->validate($request,[
                 'name'              => 'required|unique:packages',
             ]);
 
@@ -56,7 +56,7 @@ class PagesController extends Controller{
 				}
 			}
 
-            return redirect()->back()->with('info', 'Successfully created event!');
+            return redirect()->back()->with('info', 'Pacote foi criado com sucesso!');
 	}
 
 	function packageSelectedIndex(Request $request){

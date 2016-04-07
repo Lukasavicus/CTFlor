@@ -39,7 +39,7 @@ class EventController extends Controller{
 
             Event::create($inputEvent);
 
-            return redirect()->back()->with('info', 'Successfully created event!');
+            return redirect()->back()->with('info', 'Evento foi criado com sucesso!');
         }
     }
 
@@ -48,7 +48,7 @@ class EventController extends Controller{
         $id = Input::get('modalMSGValue');
 
         Event::where('name', '=', $id)->delete();
-        return redirect()->back()->with('info', 'Successfully deleted participant!');
+        return redirect()->back()->with('info', 'Evento foi excluído com sucesso!');
 
     }
 
@@ -58,7 +58,7 @@ class EventController extends Controller{
 
         foreach ($events as $key){
             if($key['name'] == $request['name'] && $key['id'] != $request['id'])//&& $key['id'] != $evento['id']
-                return redirect()->back()->with('error', 'Failed to update event!');
+                return redirect()->back()->with('error', 'Falha ao atualizar evento!');
         }
 
         //dd($request->all());
@@ -71,7 +71,7 @@ class EventController extends Controller{
         ]);
 
         $evento->update($request->all());
-        return redirect()->back()->with('info', 'Successfully updated event!');
+        return redirect()->back()->with('info', 'Evento foi atualizado com sucesso!');
 
     }
 
@@ -93,9 +93,11 @@ class EventController extends Controller{
         $searchText = Input::get('valueSearch');
 
 
-        if($param == "Name")  $events = Event::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
+        if($param == "Name")  
+            $events = Event::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
 
-        else                  $events = Event::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
+        else                  
+            $events = Event::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
         //dd($events);
         return view( 'crud.event',  compact('events'));
     }

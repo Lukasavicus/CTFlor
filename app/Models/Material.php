@@ -24,11 +24,9 @@ class Material extends Model implements AuthenticatableContract{
                             'id_participant',
                             'title',
                             'keywords',
+                            'filepath',
                             'abstract',
                             'category',
-                            'filename',
-                            'mime',
-                            'original_filename',
-                            ];
+                        ];
 
 }

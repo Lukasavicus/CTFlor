@@ -4,9 +4,9 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center green-text text-darken-3">INSC!</h1>
+      <h1 class="header center green-text text-darken-3">Inscritos!</h1>
       <div class="row center">
-        <h5 class="header col s12 light">Subscribing</h5>
+        <h5 class="header col s12 light">Inscreva-se</h5>
       </div>
       <br><br>
 
@@ -25,17 +25,17 @@
                         <option value="mini_course">Mini-Curso</option>
                         <option value="technical_visit">Visita Técnica</option>
                     </select>
-                    <label>Filters</label>
+                    <label>Filtros</label>
                 </div>
 
                 <div class="input-field col s3" id="allActivities">
                     <select id="idActivity">
-                        <option value="Choose one activity" disabled selected>Choose one activity</option>
+                        <option value="Choose one activity" disabled selected>Escolha uma Atividade</option>
                         @foreach($activities as $activity)
                             <option value="{{$activity->id}}">{{$activity->name}}</option>
                         @endforeach
                     </select>
-                    <label>Activities</label>
+                    <label>Atividades</label>
                 </div>
             </div>
         </div>

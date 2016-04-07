@@ -2,9 +2,9 @@
 
 @section('subheader')
     <br><br>
-        <h1 class="header center green-text text-darken-3">Activities' Page</h1>
+        <h1 class="header center green-text text-darken-3">Atividades</h1>
         <div class="row center">
-          <h5 class="header col s12 light">You can create, recovery, update and delete</h5>
+          <h5 class="header col s12 light">Você pode buscar, criar, alterar e excluir Atividades</h5>
         </div>
     <br><br>
 @stop
@@ -18,23 +18,23 @@
               <div class="input-field col s4">
                    <p>
                      <input name="radioSearch" type="radio" id="nameSearch_" value="Name" />
-                     <label for="nameSearch_">Name</label>
+                     <label for="nameSearch_">Nome</label>
 
                      <input name="radioSearch" type="radio" id="locationSearch_" value="Location" />
-                     <label for="locationSearch_">Location</label>
+                     <label for="locationSearch_">Localização</label>
 
                      <input name="radioSearch" type="radio" id="typeSearch_" value="Tipe" />
-                     <label for="typeSearch_">Type</label>
+                     <label for="typeSearch_">Tipo</label>
                    </p>
                </div>
                <div class="input-field col s6">
                    <i class="material-icons prefix">search</i>
                    <input name="valueSearch" id="icon_search" type="text" class="validate">
-                   <label for="icon_search">Search</label>
+                   <label for="icon_search">Buscar</label>
                </div>
 
               <div class="input-field col s2">
-                  <button class="waves-effect waves-light btn" type="submit">Search</button>
+                  <button class="waves-effect waves-light btn" type="submit">Buscar</button>
               </div>
 
           </form>
@@ -48,15 +48,15 @@
 
             <form id="formSubmit" class="col s12" method="POST" action="{{ route('crud.activity') }}">
 
-            @if($errors->any())
-                <div class="card-panel red waves-effect waves-light" role="alert">
-                    <p>
-                    @foreach($errors->all() as $error)
-                      {{ $error }}
-                    @endforeach
-                    </p>
-                </div>
-            @endif
+                @if($errors->any())
+                    <div class="card-panel red waves-effect waves-light" role="alert">
+                        <p>
+                        @foreach($errors->all() as $error)
+                          {{ $error }}
+                        @endforeach
+                        </p>
+                    </div>
+                @endif
 
 
                 <div class="row">
@@ -70,19 +70,19 @@
                     <div class="input-field col s4">
                         <i class="material-icons prefix">toc</i>
                         <input id="name_" name="name" type="text" class="validate">
-                        <label id="lname" for="icon_prefix">Name of Activity</label>
+                        <label id="lname" for="icon_prefix">Nome da Atividade</label>
                     </div>
 
                     <div class="input-field col s4">
                         <i class="material-icons prefix">today</i>
-                        <label id="lstart" class="light-blue-text darken-4">From</label>
+                        <label id="lstart" class="light-blue-text darken-4">Data Início</label>
                         <input type="date" id="start_" name="start"  class="datepicker" class="light-blue-text darken-4" >
                     </div>
 
                     <div class="input-field col s4">
                         <i class="material-icons prefix">schedule</i>
                         <input id="startTime_" name="startTime" type="text" class="timepicker">
-                        <label id="lStartTime_">Start Time:</label>
+                        <label id="lStartTime_">Hora Início:</label>
                     </div>
 
                     <script>
@@ -96,14 +96,14 @@
                 <div class="row">
                     <div class="input-field col s4">
                         <i class="material-icons prefix">today</i>
-                        <label id="lend" class="light-blue-text darken-4">To</label>
+                        <label id="lend" class="light-blue-text darken-4">Data Fim</label>
                         <input type="date" id="end_" name="end" class="datepicker" class="light-blue-text darken-4">
                     </div>
 
                     <div class="input-field col s4">
                         <i class="material-icons prefix">schedule</i>
                         <input id="endTime_" name="endTime" type="text" class="timepicker">
-                        <label id="lEndTime_">End Time:</label>
+                        <label id="lEndTime_">Hora Término:</label>
                     </div>
 
                     <script>
@@ -113,7 +113,7 @@
                     <div class="input-field col s4">
                         <i class="material-icons prefix">room</i>
                         <input id="location_" name="location" type="text" class="validate">
-                        <label id="llocation" for="icon_telephone">Location</label>
+                        <label id="llocation" for="icon_telephone">Locatização</label>
                     </div>
 
                 </div>
@@ -123,12 +123,12 @@
                     <div class="input-field col s4">
                         <i class="material-icons prefix">perm_identity</i>
                         <input id="qnt_participants_" name="qnt_participants" type="number" class="validate">
-                        <label id="lqnt_participants" for="icon_telephone">Quantity of Participants</label>
+                        <label id="lqnt_participants" for="icon_telephone">Quantidade de Participantes</label>
                     </div>
 
                     <div class="input-field col s4">
                         <select id="type_" name="type">
-                            <option>Choose your option</option>
+                            <option>Escolha uma opção</option>
                             @foreach($types as $type)
                                 <option value="{{$type['value']}}">{{$type['text']}}</option>
                             @endforeach
@@ -138,7 +138,7 @@
 
                     <div class="input-field col s4">
                         <select id="id_event_" name="id_event">
-                            <option>Choose your option</option>
+                            <option>Escolha uma opção</option>
                                 @foreach($events as $event)
                                     <option value="{{$event->id}}">{{$event->name}}</option>
                                 @endforeach
@@ -152,7 +152,7 @@
                     <div class="input-field col s4">
                         <i class="material-icons prefix">payment</i>
                         <input id="priceActivity_" name="priceActivity" type="number" class="validate">
-                        <label id="lPriceActivity" for="icon_telephone">Price</label>
+                        <label id="lPriceActivity" for="icon_telephone">Preço</label>
                     </div>
 
                 </div>
@@ -162,7 +162,7 @@
                     <div class="input-field col s3">
                         <button id="incluir_alterar" type="submit" class="waves-effect waves-light btn" onclick="setDates();">
                           <i class="material-icons left">input</i>
-                          Insert
+                          Inserir
                         </button>
                     </div>
 
@@ -170,7 +170,7 @@
 
                         <button type="reset" class="waves-effect waves-light btn" onclick="clearFields()">
                           <i class="material-icons left">info_outline</i>
-                          Clear Fields
+                          Limpar Campos
                         </button>
                     </div>
 
@@ -205,9 +205,13 @@
                     <table class="responsive-table">
                     @foreach($results as $result)
                         <?php
-                            foreach ($events as $event)   if($event->{'id'} == $result->id_event)     $nameEvent = $event->{'name'};
+                            foreach ($events as $event)   
+                                if($event->{'id'} == $result->id_event)     
+                                    $nameEvent = $event->{'name'};
 
-                            foreach ($types as $type)     if($type['value'] == $result->type)         $typeActivity = $type['text'];
+                            foreach ($types as $type)     
+                                if($type['value'] == $result->type)         
+                                    $typeActivity = $type['text'];
                         ?>
                         <tr>
                             <td>
@@ -231,14 +235,18 @@
                 @endif
           @else
                 @if($activities == null || $activities->count() == 0)
-                    <div class="card-panel red waves-effect waves-light" role="alert">"No activity has been registered."</div>
+                    <div class="card-panel red waves-effect waves-light" role="alert">"Nenhuma Atividade foi registrada ainda."</div>
                 @else
                         <table class="responsive-table">
                             @foreach($activities as $activity)
                               <?php
-                                  foreach ($events as $event)     if($event->{'id'} == $activity->id_event)     $nameEvent = $event->{'name'};
+                                  foreach ($events as $event)     
+                                      if($event->{'id'} == $activity->id_event)     
+                                          $nameEvent = $event->{'name'};
 
-                                  foreach ($types as $type)       if($type['value'] == $activity->type)         $typeActivity = $type['text'];
+                                  foreach ($types as $type)       
+                                      if($type['value'] == $activity->type)         
+                                          $typeActivity = $type['text'];
                               ?>
                               <tr>
 
@@ -261,10 +269,10 @@
                                                             $activity->qnt_participants . "?" . $activity->type . "?" . $activity->id_event . "?" . $activity->priceActivity;
                                     ?>
                                     <td>
-                                        <button class="waves-effect waves-light btn" onclick="edit('{{ $activityString }}');"> <i class="material-icons left">info_outline</i> Edit </button>
+                                        <button class="waves-effect waves-light btn" onclick="edit('{{ $activityString }}');"> <i class="material-icons left">info_outline</i> Editar </button>
                                     </td>
                                     <td>
-                                        <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $activity->name }}');"> <i class="material-icons left">delete</i>Delete</a>
+                                        <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $activity->name }}');"> <i class="material-icons left">delete</i>Excluir</a>
                                     </td>
                               </tr>
                             @endforeach
