@@ -236,7 +236,7 @@ use CTFlor\Models\Event;
 
     Route::post('/participant', [
         'uses'  => 'ParticipantController@store',
-        'middleware' => ['role'],
+        //'middleware' => ['role'],
     ]);
 
     Route::get('/participant/delete', [
