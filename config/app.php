@@ -138,7 +138,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         //laravel\pagseguro\PagseguroServiceProvider::class,
-        Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
+       // Anouar\Paypalpayment\PaypalpaymentServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -198,7 +198,7 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
-        'Paypalpayment'   => Anouar\Paypalpayment\Facades\PaypalPayment::class,
+        //'Paypalpayment'   => Anouar\Paypalpayment\Facades\PaypalPayment::class,
 
     ],
 
