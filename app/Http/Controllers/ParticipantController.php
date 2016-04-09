@@ -111,7 +111,18 @@ class ParticipantController extends Controller{
                 }
             );
 
-            return redirect()->back()->with('info', 'Conta criada com sucesso! Um email chegará em breve para você');
+            $body_msg = "Sua conta foi criada com sucesso na plataforma do CTFlor. \n
+
+                        Agora, acesse o link: http://www.ctflor.com.br/site.login,
+                        realize o login no painel do usuario e se cadastre para o evento deste ano.\n
+
+                        Lembre-se que a mesma conta na plataforma ser· utilizada para se inscrever nos diferentes eventos.\n
+
+                        A equipe CTFlor agradece sua participação.\n
+
+                        - Não responder este e-mail -";
+
+            return redirect()->back()->with('info', $body_msg);
         }
 
     }

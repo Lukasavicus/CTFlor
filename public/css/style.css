@@ -1,0 +1,106 @@
+#intro{
+ background-image: url("../images/forrest.jpg");
+ background-size: cover;
+ max-width: 100%;
+
+}
+#event{
+	background-color: #108240;
+}
+.no-margin-bottom{
+	margin-bottom: 0px;
+}
+
+#map-container{
+
+	position: relative;
+    overflow: hidden;
+    margin: 0.5rem 0 1rem 0;
+    background-color: #fff;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+}
+.text-center{
+	text-align: center;
+}
+#p-location{
+  color:white;
+}
+.intro-cover{
+	height:	301px;
+	background-color:#ffffff ;
+	opacity:0.74;
+
+}
+
+.full-opacity{
+  	opacity:1;
+}
+#location{
+   background-image: url("../images/ufscar.jpg");
+   background-size: cover;
+   max-width: 100%;
+}
+.location-cover{
+	background: rgba(62,39,35,0.84);
+
+}
+.paragraph-fsize {
+  font-size: 3vmin;
+}
+
+#ctflor-logo{
+	max-width: 60%;
+	max-height:60%;
+	margin-top: 10%;
+
+}
+iframe{
+	height: 80vh;
+}
+.full-width{
+	min-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: initial;
+
+}
+
+.full-height{
+	   min-height: 100vh;
+	   overflow: hidden;
+
+}
+.photo{
+    margin-top: 1vh;
+	width: 30vw;
+    background-color: white;
+    height: 15vw;
+    position: relative;
+}
+
+
+.photo  img{
+    height: 80%;
+    width: 80%;
+    margin: 0;
+    background: yellow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+#img-first{
+     transform:	translate(15%,20%) rotate(10deg);
+
+}
+
+#img-second{
+       transform: translate(15%,2%)rotate(-10deg);
+}
+
+#img-third{
+	    transform: translate(22.5%,-15%) rotate(10deg);
+}

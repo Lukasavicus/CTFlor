@@ -44,11 +44,13 @@
       </ul>
 
       <ul id="dropdown2" class="dropdown-content">
+          <!--
           <li>
               <a href="">
                   <div class="chip">	<img src="images/yuna.jpg" alt="Contact Person">  Sarava	</div>
               </a>
           </li>
+          -->
           <li class="divider"></li>
           <li>
               <a href="{{ route('site.signout') }}">Sair</a>

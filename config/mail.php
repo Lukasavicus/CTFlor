@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'ctflor.ufscar@gmail.com', 'name' => 'Eco Florestal Jr.'],
+    'from' => ['address' => 'ctflor.ufscar@gmail.com', 'name' => 'Ecoflorestal Jr'],
 
     /*
     |--------------------------------------------------------------------------

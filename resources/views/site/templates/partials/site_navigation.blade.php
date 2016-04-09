@@ -1,39 +1,28 @@
-<div>
-  <div class="nav-wrapper brown lighten-1" height="200px" align="center">
-      <img src="images/CTFlorfaixa.png" style="width:40%; max-height:100px;">
-      <nav>
-        <div class="nav-wrapper brown darken-4">
+<div class="container-fluid">
 
-            <ul id="dropdown1" class="dropdown-content">
-              <li class=""><a href="{{ route('subscribing') }}">Lista por Atividades</a></li>
-              <li class=""><a href="{{ route('subscribingP') }}">Lista por Participantes</a></li>
-            </ul>
 
-            <ul id="dropdown2" class="dropdown-content">
-              <li>
-                <a href="{{ route('controle.principal') }}">
-                <div class="chip">
-                  <img src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K8737489J2" alt="Contact Person">
-                  {{ Auth::user()['name']}}
-                </div>
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li ><a href="{{ route('associacao.subscribingactivity') }}">Sair</a></li>
-            </ul>
+  <nav class="brown darken-4" >
+      <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">CTFlor</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="#">O evento</a></li>
+          <li><a href="#">Programacao</a></li>
+          <li><a href="#">Palestrantes</a></li>
+          <li><a href="#">Patrocinadores</a></li>
+          <li><a href="#">Local</a></li>
+          <li><a href="#">Inscrições</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+           <li><a href="#">O evento</a></li>
+          <li><a href="#">Programação</a></li>
+          <li><a href="#">Palestrantes</a></li>
+          <li><a href="#">Patrocinadores</a></li>
+          <li><a href="#">Local</a></li>
+          <li><a href="#">Inscrições</a></li>
+        </ul>
+      </div>
+    </nav>
 
-          <ul class="left hide-on-med-and-down">
-            <!-- <li><a href="{{ route('site') }}"><img src="images/CTFlor2.jpg" width="30px" height="30px"></a></li> -->
-            <li class=""><a href="{{ route('site') }}">CTFlor</a></li>
-            <li class=""><a href="{{ route('site.local') }}">Localização</a></li>
-            <li class=""><a href=" {{ route('site.subscribe') }} ">Inscrições</a></li>
-            <!-- <li class=""><a href="#">Trabalhos</a></li> -->
-            <li class=""><a href="{{ route('site.programacao') }}">Agenda</a></li>
-            <li class=""><a href="{{ route('site.packages') }}">Pacotes</a></li>
-            <li class=""><a href="#">Patrocinadores</a></li>
-            <li class=""><a href="{{ route('site.login') }}">Login</a></li>
-          </ul>
-        </div>
-      </nav>
-  </div>
+
 </div>
