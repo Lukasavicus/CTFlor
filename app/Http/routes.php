@@ -24,7 +24,7 @@ use CTFlor\Models\Event;
         'uses' => '\CTFlor\Http\Controllers\HomeController@post',
     ]);
 
-    Route::get('/', [
+    Route::get('/',  [
         'uses' => '\CTFlor\Http\Controllers\SiteController@indexPage',
         'as' => 'site',
     ]);
@@ -162,7 +162,7 @@ use CTFlor\Models\Event;
 
 
 // ==================================================== SUBSCRIPTION ==============================================
-    
+
     // =============== ACTIVITY ==============
 
     Route::get('/subscribingactivity', [
@@ -365,7 +365,3 @@ use CTFlor\Models\Event;
         'middleware' => ['auth'],
     ]);
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-

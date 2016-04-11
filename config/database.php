@@ -55,7 +55,8 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'ctflor'),
+            'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
+	    'database'  => env('DB_DATABASE', 'ctflor'),
             'username'  => env('DB_USERNAME', 'root'),
             'password'  => env('DB_PASSWORD', ''),
             'charset'   => 'utf8',

@@ -1,11 +1,47 @@
+nav{
+  padding-left: 2%;
+  font-family: Roboto !important;
+  font-size: 8pt !important;
+  font-weight: 200 !important;
+}
+nav ul li:hover {
+   background-color: #6d4c41;
+}
+col{
+  padding-left: 4%;
+}
+.image-circle{
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: 1em auto;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 50%;
+    border: 5px solid #eee;
+    box-shadow: 0 3px 2px rgba(0, 0, 0, 0.3);
+}
+
+.texto-palestrante{
+  font-size: 1em;
+}
+#palestrantes-titulo-id{
+  margin-bottom:2%;
+}
 #intro{
  background-image: url("../images/forrest.jpg");
  background-size: cover;
  max-width: 100%;
 
 }
+
 #event{
 	background-color: #108240;
+  padding-left: 2%;
+}
+#organizacao{
+  padding: 2%;
 }
 .no-margin-bottom{
 	margin-bottom: 0px;
@@ -59,7 +95,7 @@ iframe{
 	height: 80vh;
 }
 .full-width{
-	min-width: 100%;
+	  min-width: 100%;
     margin-left: auto;
     margin-right: auto;
     max-width: initial;
