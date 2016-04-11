@@ -69,7 +69,7 @@
               </div>
 
               <input id="participant_" name="id_participant" type="hidden" class="validate" value="{{ Auth::user()['id']  }}">
-            
+              
               <div class="input-field col s4">
                   <i class="material-icons prefix">description</i>
                   <input id="title_" name="title" type="text" class="validate">
@@ -77,28 +77,37 @@
               </div>
 
               <div class="input-field col s4">
-                  <i class="material-icons prefix">language</i>
-                  <input id="keywords_" name="keywords" type="text" class="validate">
-                  <label for="icon_prefix">Palavra-chave</label>
+                  <i class="material-icons prefix">perm_identity</i>
+                  <input id="author_" name="author" type="text" class="validate">
+                  <label for="icon_prefix">Autor Principal</label>
               </div>
-
+            
             </div>
 
             <div class="row">
 
-                <div class="input-field col s4">
-                    <i class="material-icons prefix">note_add</i>
-                    <input id="abstract_" name="abstract" type="text" class="validate">
-                    <label for="icon_prefix">Resumo</label>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">language</i>
+                    <textarea id="keywords_" name="keywords" class="materialize-textarea validate"></textarea>
+                    <label for="icon_prefix">Palavras-chave</label>
                 </div>
 
-                <div class="input-field col s4">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">note_add</i>
+                    <textarea id="abstract_" name="abstract" class="materialize-textarea validate"></textarea>
+                    <label for="icon_prefix">Resumo</label>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6">
                     <i class="material-icons prefix">clear_all</i>
                     <input id="category_" name="category" type="text" class="validate">
                     <label for="icon_prefix">Categoria</label>
                 </div>
 
-                <div class="file-field input-field col s4">
+                <div class="file-field input-field col s6">
                   <div class="btn">
                     <span>Arquivo</span>
                     <input id="fileField_" name="fileField" type="file">
@@ -107,12 +116,12 @@
                     <input id="filePath_" name="filename" class="file-path validate" type="text">
                   </div>
                 </div>
-
+            
             </div>
 
-
             <div class="row">
-                <div class="input-field col s4">
+
+                <div class="input-field col s4 offset-s2">
                     <button type="submit" class="waves-effect waves-light btn">
                       <i class="material-icons left">input</i>
                       Inserir
@@ -192,11 +201,6 @@
                               <button type="submit" class="waves-effect waves-light btn" id="filepath_button">
                               <i class="tiny material-icons left">description</i>  Download </button>
                               <input id="filepath_" name="filepath" type="hidden" class="validate" value="{{ $material->filepath }}">
-                          </td>
-
-                          <td>
-                              <button class="waves-effect waves-light btn" > 
-                              <i class="material-icons left">info_outline</i> Editar </button>
                           </td>
                           <td>
                               <a href="#modal1" class="waves-effect waves-light btn modal-trigger"> 

@@ -30,7 +30,6 @@ class MaterialController extends Controller
         else
             $materials = Material::where('id_participant', Auth::user()->getId() )->orderBy('title')->get();
 
-        //dd(Auth::user()->getId());
 
         $activities = Activity::orderBy('name')->get();
 
@@ -94,7 +93,7 @@ class MaterialController extends Controller
         $register = $this->getRequest( $request, $fullpath );
         $register->save();
 
-        return redirect()->back()->with('info', 'Successfully created material!');
+        return redirect()->back()->with('info', 'Material adicionado com sucesso!');
     }
 
     public function getMaterial(Request $request)
@@ -131,6 +130,7 @@ class MaterialController extends Controller
         $aux->id_activity = $request->input('id_activity');
         $aux->id_participant = $request->input('id_participant');
         $aux->title = $request->input('title');
+        $aux->author = $request->input('author');
         $aux->keywords = $request->input('keywords');
         $aux->abstract = $request->input('abstract');
         $aux->category = $request->input('category');

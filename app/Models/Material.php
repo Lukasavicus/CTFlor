@@ -23,6 +23,7 @@ class Material extends Model implements AuthenticatableContract{
     protected $fillable = [ 'id_activity',
                             'id_participant',
                             'title',
+                            'author',
                             'keywords',
                             'filepath',
                             'abstract',
