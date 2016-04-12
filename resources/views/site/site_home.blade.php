@@ -1,13 +1,14 @@
 @extends('site.templates.site_default')
 @section('content')
+<link href="css/animate.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 			<!-- Page Content goes here -->
 
 					    <!-- Pagina principal com o logo e informacao do evento -->
 						<div class="row no-margin-bottom">
 							<div id="intro" class="full-height full-width">
-								 <div class="col s12 full-height text-center intro-cover">
-											<img class="responsive-img" id="ctflor-logo" src="../images/CTFlorfaixa.png"/>
+								 <div  class="col s12 full-height text-center intro-cover">
+											<img class="responsive-img animated tada " id="ctflor-logo" src="../images/CTFlorfaixa.png"/>
 								</div>
 							</div>
 						</div>
@@ -15,8 +16,8 @@
 						<div class="row no-margin-bottom">
 						 <div id="event" class="full-height full-width">
 								<div class="col s6">
-										 <h3>CTFlor - SIMATEF</h3>
-										 <p  class="flow-text paragraph-fsize"> O Congresso de Ciência e Tecnologia Florestal e IV Simpósio de Meio Ambiente e
+										 <h3 class="animated bounce">CTFlor - SIMATEF</h3>
+										 <p  class="flow-text paragraph-fsize"> O Congresso de Engenharia Florestal e IV Simpósio de Meio Ambiente e
 												Tecnologia Florestal serão realizados nos dias 21, 22 e 23 de maio, sendo um evento
 												promovido pela Ecoflorestal Jr. Empresa e Consultoria Florestal, formada por alunos
 												do curso de Engenharia Florestal da Universidade Federal de São Carlos - Campus Sorocaba.
@@ -44,10 +45,6 @@
 						 </div>
 						</div>
 
-
-
-
-<!--
 						<div class="row no-margin-bottom">
 						 <div id="programacao" class="full-height full-width">
 								<div class="col s6">
@@ -60,9 +57,64 @@
 							</div>
 						 </div>
 						</div>
--->
 
+						<div class="row no-margin-bottom">
+						 <div id="palestrantes" class="full-height full-width">
+							 <div id="palestrantes-titulo-id"class="row">
+								 <div class="col s12">
+									 <h2 class="text-center">Palestrantes</h2>
+								 </div>
+							 </div>
 
+						 		<div class="row">
+									<div class="col s6">
+										<div class="col s6">
+										 	<img class="responsive-img image-circle" id="ctflor-logo" src="../images/marcela.jpg"/>
+									  </div>
+										<div class="col s6">
+										 	<span class="texto-palestrante">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempus, libero id molestie tincidunt, arcu eros aliquet lacus, at efficitur massa tortor sed libero. Proin hendrerit erat ex, et dictum sapien volutpat sed. Fusce in tincidunt quam.
+										 	</span>
+									  </div>
+									</div>
+
+									<div class="col s6">
+										<div class="col s6">
+										 	<img class="responsive-img image-circle" id="ctflor-logo" src="../images/forrest.jpg"/>
+									  </div>
+										<div class="col s6">
+										 	<span class="texto-palestrante">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempus, libero id molestie tincidunt, arcu eros aliquet lacus, at efficitur massa tortor sed libero. Proin hendrerit erat ex, et dictum sapien volutpat sed. Fusce in tincidunt quam.
+										 	</span>
+									  </div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col s6">
+										<div class="col s6">
+											<img class="responsive-img image-circle" id="ctflor-logo" src="../images/marcela.jpg"/>
+										</div>
+										<div class="col s6">
+											<span class="texto-palestrante">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempus, libero id molestie tincidunt, arcu eros aliquet lacus, at efficitur massa tortor sed libero. Proin hendrerit erat ex, et dictum sapien volutpat sed. Fusce in tincidunt quam.
+											</span>
+										</div>
+									</div>
+
+									<div class="col s6">
+										<div class="col s6">
+											<img class="responsive-img image-circle" id="ctflor-logo" src="../images/forrest.jpg"/>
+										</div>
+										<div class="col s6">
+											<span class="texto-palestrante">
+												Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tempus, libero id molestie tincidunt, arcu eros aliquet lacus, at efficitur massa tortor sed libero. Proin hendrerit erat ex, et dictum sapien volutpat sed. Fusce in tincidunt quam.
+											</span>
+										</div>
+									</div>
+								</div>
+
+						 </div>
+						</div>
 
 					<div id="location" class="row no-margin-bottom">
 						<div class="col s12 full-height text-center location-cover">
@@ -205,88 +257,115 @@
 					</div>
 
 
-
-
-
-
 				</div>
 
 
 
+				<div id="organizacao" class="full-width container">
+					<div class="row" align="center">
+							 <table class="responsive-table">
+						  	    <tr>
+						  	      <td>Realização:</td>
 
-				 <div class="col s4">
-					<div class="container">
-								@include('templates.partials.alerts')
-								<h3> Gerencie sua inscricao</h3>
-								<br />
-								<br />
-									<div class="row">
-											<form class="col s12" action="{{ route('home') }}" method="POST">
-													<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-													<div class="row">
-														<div class="card card-content">
-																	<div class="input-field col s8">
-																			<i class="material-icons prefix">perm_identity</i>
-																			<input id="cpf" name="cpf" type="text" class="validate"/>
-																			<label class="active" for="cpf">CPF</label>
-																			@if($errors->has('cpf'))
-																				<span>{{ $errors->first('cpf') }}</span>
-																			@endif
-																	</div>
-																	<div class="input-field col s8">
-																			<i class="material-icons prefix">vpn_key</i>
-																			<input id="password" name="password" type="password" class="validate"/>
-																			<label for="password">Password</label>
-																			@if($errors->has('password'))
-																					<span>{{ $errors->first('password') }}</span>
-																			@endif
-																	</div>
+						  	      <td>
+						            <a href="http://www.ufscar.br/" title="UFSCar" target="_blank">
+						              <img src="images/ufscarLogo.png" alt="UFSCar" width="150" height="80" border="0" />
+						            </a>
+						          </td>
 
-																	<div class="card-action input-field col s8">
-																		<button class="waves-effect waves-light green darken-4 btn" type="submit">Sign In</button>
-																	</div>
-														</div>
-												</div>
-											</form>
-									</div>
-							</div>
+						          <td>
+						            <a href="https://www.facebook.com/Ecoflorestaljr/" title="EcoFlorestalJR" target="_blank">
+						              <img src="images/ecoFlorestalLogo.png" alt="EcoFlorestalJR" width="150" height="80" border="0" />
+						            </a>
+						          </td>
+						        </tr>
+						    </table>
+
+					      <table class="responsive-table">
+					        <tr>
+					          <td>Apoio:</td>
+					          <td>
+					            <a href="http://www.cnpq.br/" title="CNPQ" target="_blank" class="lk_img">
+					              <img src="images/cnpq.png" alt="CNPQ" width="120" height="36" border="0" />
+					            </a>
+					          </td>
+
+					          <td>
+					            <a href="http://www.sebrae.com.br/" title="BioMassa" target="_blank" class="lk_img">
+					              <img src="images/grupoPesquisaLogo.png" alt="BioMassa" width="100" height="60" border="0" />
+					            </a>
+					          </td>
+					        </tr>
+					      </table>
+
+					      <table class="responsive-table">
+					        <tr>
+					          <td>Patrocínio</td>
+
+					          <td>
+					            <a href="http://www.newholland.com/Pages/index.html" title="New Holland" target="_blank" class="lk_img">
+					              <img src="images/newHollandLogo.png" alt="New Holland" width="120" height="57" border="0" />
+					            </a>
+					          </td>
+
+					          <td>
+					            <a href="http://www.celmarmoveis.com.br/" title="Celmar" target="_blank" class="lk_img">
+					              <img src="images/celmar.png" alt="Celmar" width="140" height="51" border="0" />
+					            </a>
+					          </td>
+
+					          <td>
+					            <a href="http://www.aguaklarina.com.br/" title="Klarina" target="_blank" class="lk_img">
+					              <img src="images/klarinaLogo.png" alt="Klarina" width="120" height="41" border="0" />
+					            </a>
+					          </td>
+
+					          <td>
+					            <a href="http://www.syngenta.com/global/corporate/en/Pages/home.aspx" title="Syngenta" target="_blank" class="lk_img">
+					              <img src="images/syngentaLogo.png" alt="Syngenta" width="110" height="80" border="0" />
+					            </a>
+					          </td>
+					        </tr>
+
+					      </table>
+
+
 					</div>
-
-
-
 				</div>
+
+
+
+
 
 			</div>
 
 			<script>
 			    $(document).ready(function() {
-           			$("#type_").on("change",function(){
-             			
-             			if($(this).val()== 'professor'){
-						  	$('.hide-curso').hide();
-							 $('.hide-dep').show();
-						}
-						
-						if($(this).val()== 'student'){
-							$('.hide-dep').hide();
-							$('.hide-curso').show();
-						}
-					});
+						$(".button-collapse").sideNav();
+
+						 	new scrollReveal();
+           					$("#type_").on("change",function(){
+		           			if($(this).val()== 'professor'){
+												$('.hide-curso').hide();
+								 			  $('.hide-dep').show();
+										}
+										if($(this).val()== 'student'){
+												$('.hide-dep').hide();
+												$('.hide-curso').show();
+										}
+								});
 
 					$("#cpf_").blur(function(){
 						TestaCPF($this.val());
 					});
 
-					
+
 					$("#password_1").blur(function(){
 						if($(this).val() != document.getElementById("password_").value){
-
 						}
-
 					});
-			      
-			      	$('select').material_select();
 
+			      	$('select').material_select();
 
 			    });
 
@@ -312,46 +391,45 @@
 
 			      document.getElementById("responsability_").value = "";
 			    }
-				
-				function TestaCPF(strCPF) 
-				{ 
-					var Soma; 
-					var Resto; 
-					Soma = 0; 
 
-					if (strCPF == "00000000000") 
-						return false; 
+				function TestaCPF(strCPF)
+				{
+					var Soma;
+					var Resto;
+					Soma = 0;
 
-					for (i=1; i<=9; i++) 
-						Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i); 
-					
-					Resto = (Soma * 10) % 11; 
-						
-					if ((Resto == 10) || (Resto == 11)) 
-						Resto = 0; 
+					if (strCPF == "00000000000")
+						return false;
 
-					if (Resto != parseInt(strCPF.substring(9, 10)) ) 
-						return false; 
+					for (i=1; i<=9; i++)
+						Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
 
-					Soma = 0; 
+					Resto = (Soma * 10) % 11;
 
-					for (i = 1; i <= 10; i++) 
-						Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i); 
-						
-					Resto = (Soma * 10) % 11; 
+					if ((Resto == 10) || (Resto == 11))
+						Resto = 0;
 
-					if ((Resto == 10) || (Resto == 11)) 
-						Resto = 0; 
+					if (Resto != parseInt(strCPF.substring(9, 10)) )
+						return false;
 
-					if (Resto != parseInt(strCPF.substring(10, 11) ) ) 
-						return false; 
-					
-					§return true; 
+					Soma = 0;
+
+					for (i = 1; i <= 10; i++)
+						Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+
+					Resto = (Soma * 10) % 11;
+
+					if ((Resto == 10) || (Resto == 11))
+						Resto = 0;
+
+					if (Resto != parseInt(strCPF.substring(10, 11) ) )
+						return false;
+
+					§return true;
 				}
 
 			</script>
 
-	</body>
 
 
 @stop
