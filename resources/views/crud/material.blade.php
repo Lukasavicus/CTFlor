@@ -149,7 +149,8 @@
     <div class="row">
         <div class="card card-panel">
           <form class="col s12" action="{{ route('crud.material.get') }}" method="POST">
-                <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
+            <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
+            <input type="hidden" id="filepath" name="filepath">            
 
           @if(isset($results))
             <table class="responsive-table">
@@ -175,6 +176,7 @@
                 <div class="card-panel red waves-effect waves-light" role="alert"> "Nenhum material foi inserido ainda." </div>
             @else
                 <table class="responsive-table">
+
                 @foreach($materials as $material)
                     <?php 
                           foreach ($activities as $activity)     
@@ -198,12 +200,11 @@
                           </td>
 
                           <td>
-                              <button type="submit" class="waves-effect waves-light btn" id="filepath_button">
+                              <button type="submit" class="waves-effect waves-light btn" id="filepath_button" onclick="fireDownload('{{ $material->filepath }}');">
                               <i class="tiny material-icons left">description</i>  Download </button>
-                              <input id="filepath_" name="filepath" type="hidden" class="validate" value="{{ $material->filepath }}">
                           </td>
                           <td>
-                              <a href="#modal1" class="waves-effect waves-light btn modal-trigger"> 
+                              <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $material->id }}');">
                               <i class="material-icons left">delete</i> Excluir </a>
                           </td>
                     </tr>
@@ -219,6 +220,13 @@
 
 <script type="text/javascript">
     window.onload = function() {
-        document.formHeader.action = "{{ route('crud.event.delete') }}";
+        document.formHeader.action = "{{ route('crud.material.delete') }}";
+    }
+    function fireDownload(text)
+    {
+      console.log(text);
+      document.getElementById('filepath').innerHTML = text;
+      document.getElementById('filepath').value = text;
+
     }
 </script>

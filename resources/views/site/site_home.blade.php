@@ -108,6 +108,12 @@
 
 											<div class="card large card-panel">
 
+												<script type="text/javascript">
+
+													$(document).ready(function() {
+												    	$('select').material_select();
+													});
+												</script>
 
 												<div class="input-field col s4">
 														<select id="type_" name="type">

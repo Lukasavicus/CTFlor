@@ -98,7 +98,8 @@ class MaterialController extends Controller
 
     public function getMaterial(Request $request)
     {
-  		
+  		//dd($request);
+
         $file = Storage::disk('local')->get( $request->input('filepath') );
 
   		return ( new Response($file, 200) )->header('Content-Type', 'application/pdf')
@@ -110,7 +111,8 @@ class MaterialController extends Controller
     {
         $id = Input::get('modalMSGValue');
 
-        material::where('name', '=', $id)->delete();
+        Material::where('id', '=', $id)->delete();
+        
         return redirect()->back()->with('info', 'Material foi excluído com sucesso!');
     }
 

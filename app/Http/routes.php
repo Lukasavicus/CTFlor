@@ -127,7 +127,7 @@ use CTFlor\Models\Event;
     Route::get('/activity', [
     	'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@activityIndex',
     	'as' 	=> 'crud.activity',
-      'middleware' => ['role'],
+        'middleware' => ['role'],
     ]);
 
     Route::post('/activity', [
@@ -292,6 +292,12 @@ use CTFlor\Models\Event;
     Route::post('/material/search', [
         'uses'  => '\CTFlor\Http\Controllers\MaterialController@searchMaterial',
         'middleware' => ['auth'],
+    ]);
+
+    Route::post('/material/delete', [
+        'uses' => '\CTFlor\Http\Controllers\MaterialController@deleteRegister',
+        'as' => 'crud.material.delete',
+        'middleware' => ['role'],
     ]);
 
 
