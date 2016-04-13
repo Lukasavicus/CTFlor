@@ -57,7 +57,7 @@
 							</div>
 						 </div>
 						</div>
-
+<!--
 						<div class="row no-margin-bottom">
 						 <div id="palestrantes" class="full-height full-width">
 							 <div id="palestrantes-titulo-id"class="row">
@@ -141,7 +141,7 @@
 
 
 				</div>
-
+-->
 
 
 				<div id="organizacao" class="full-width container">
@@ -226,7 +226,7 @@
 			    $(document).ready(function() {
 						$(".button-collapse").sideNav();
 
-						 new scrollReveal();
+						 
            			$("#type_").on("change",function(){
 		           			if($(this).val()== 'professor'){
 												$('.hide-curso').hide();

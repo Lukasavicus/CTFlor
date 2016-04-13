@@ -49,7 +49,7 @@
                                     $('select').material_select();
                                 });
                               </script>
-                                
+
                               <div class="input-field col s4">
                                  <select id="type_" name="type">
                                      <option value="" disabled selected>Escolha uma opcao</option>
@@ -142,96 +142,6 @@
     							</div>
     					</div>
  </div>
+  <script type="text/javascript" src="js/ownFunctions.js"></script>
 
- <script type="text/javascript">
-     $(document).ready(function() {
-       $('select').material_select();
-      $(".button-collapse").sideNav();
-
-
-           $("#type_").on("change",function(){
-               if($(this).val()== 'professor'){
-                   $('.hide-curso').hide();
-                   $('.hide-dep').show();
-               }
-               if($(this).val()== 'student'){
-                   $('.hide-dep').hide();
-                   $('.hide-curso').show();
-               }
-           });
-
-     $("#cpf_").blur(function(){
-       TestaCPF($this.val());
-     });
-
-
-     $("#password_1").blur(function(){
-         if($(this).val() != document.getElementById("password_").value){
-           $('.hide-dep').hide();
-
-         }
-      });
-
-     });
-
-     function clear()
-     {
-       document.getElementById("name_").value =  "";
-
-       document.getElementById("cpf_").value = "";
-
-       document.getElementById("email_").value = "";
-
-       document.getElementById("phone_").value = "";
-
-       document.getElementById("address_").value = "";
-
-
-
-       document.getElementById("university_").value = "";
-
-       document.getElementById("course_").value = "";
-
-       document.getElementById("department_").value = "";
-
-       document.getElementById("responsability_").value = "";
-     }
-
-   function TestaCPF(strCPF)
-   {
-     var Soma;
-     var Resto;
-     Soma = 0;
-
-     if (strCPF == "00000000000")
-       return false;
-
-     for (i=1; i<=9; i++)
-       Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
-
-     Resto = (Soma * 10) % 11;
-
-     if ((Resto == 10) || (Resto == 11))
-       Resto = 0;
-
-     if (Resto != parseInt(strCPF.substring(9, 10)) )
-       return false;
-
-     Soma = 0;
-
-     for (i = 1; i <= 10; i++)
-       Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
-
-     Resto = (Soma * 10) % 11;
-
-     if ((Resto == 10) || (Resto == 11))
-       Resto = 0;
-
-     if (Resto != parseInt(strCPF.substring(10, 11) ) )
-       return false;
-
-     §return true;
-   }
-
- </script>
 @stop
