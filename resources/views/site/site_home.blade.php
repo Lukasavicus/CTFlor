@@ -1,7 +1,5 @@
 @extends('site.templates.site_default')
 @section('content')
-<link href="css/animate.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-
 			<!-- Page Content goes here -->
 
 					    <!-- Pagina principal com o logo e informacao do evento -->
@@ -57,7 +55,7 @@
 							</div>
 						 </div>
 						</div>
-
+<!--
 						<div class="row no-margin-bottom">
 						 <div id="palestrantes" class="full-height full-width">
 							 <div id="palestrantes-titulo-id"class="row">
@@ -258,7 +256,7 @@
 
 
 				</div>
-
+-->
 
 
 				<div id="organizacao" class="full-width container">
@@ -345,6 +343,8 @@
 
 						 	new scrollReveal();
            					$("#type_").on("change",function(){
+						 
+           			$("#type_").on("change",function(){
 		           			if($(this).val()== 'professor'){
 												$('.hide-curso').hide();
 								 			  $('.hide-dep').show();
