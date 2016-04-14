@@ -47,7 +47,6 @@
 
 
 
-<!--
 						<div class="row no-margin-bottom">
 						 <div id="programacao" class="full-height full-width">
 								<div class="col s6">
@@ -60,7 +59,7 @@
 							</div>
 						 </div>
 						</div>
--->
+s
 
 
 
@@ -160,9 +159,6 @@
 															<input id="password_1" name="password1" type="password" class="validate">
 															<label id="lpassword1" for="password1">Confirmar Senha</label>
 													</div>
-
-
-
 													<div class="input-field col s6">
 															<i class="material-icons prefix">store</i>
 															<input id="university_" name="university" type="text" class="validate">
@@ -174,24 +170,17 @@
 															<input id="course_" name="course" type="text" class="validate">
 															<label id="lcourse" for="course">Curso</label>
 													</div>
-
 													<div class="hide-dep input-field col s6">
 															<i class="material-icons prefix">work</i>
 															<input id="department_" name="department" type="text" class="validate">
 															<label id="ldepartment" for="department">Departamento</label>
 													</div>
-
-
-
 													<div class="input-field col s3">
 															<button type="submit" class="waves-effect waves-light green darken-4 btn">
 																<i class="material-icons left">input-field</i>
 																Inscrever
 															</button>
 													</div>
-
-
-
 												</div>
 											</div>
 								</form>
@@ -255,12 +244,12 @@
 			<script>
 			    $(document).ready(function() {
            			$("#type_").on("change",function(){
-             			
+
              			if($(this).val()== 'professor'){
 						  	$('.hide-curso').hide();
 							 $('.hide-dep').show();
 						}
-						
+
 						if($(this).val()== 'student'){
 							$('.hide-dep').hide();
 							$('.hide-curso').show();
@@ -271,14 +260,14 @@
 						TestaCPF($this.val());
 					});
 
-					
+
 					$("#password_1").blur(function(){
 						if($(this).val() != document.getElementById("password_").value){
 
 						}
 
 					});
-			      
+
 			      	$('select').material_select();
 
 
@@ -306,41 +295,41 @@
 
 			      document.getElementById("responsability_").value = "";
 			    }
-				
-				function TestaCPF(strCPF) 
-				{ 
-					var Soma; 
-					var Resto; 
-					Soma = 0; 
 
-					if (strCPF == "00000000000") 
-						return false; 
+				function TestaCPF(strCPF)
+				{
+					var Soma;
+					var Resto;
+					Soma = 0;
 
-					for (i=1; i<=9; i++) 
-						Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i); 
-					
-					Resto = (Soma * 10) % 11; 
-						
-					if ((Resto == 10) || (Resto == 11)) 
-						Resto = 0; 
+					if (strCPF == "00000000000")
+						return false;
 
-					if (Resto != parseInt(strCPF.substring(9, 10)) ) 
-						return false; 
+					for (i=1; i<=9; i++)
+						Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
 
-					Soma = 0; 
+					Resto = (Soma * 10) % 11;
 
-					for (i = 1; i <= 10; i++) 
-						Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i); 
-						
-					Resto = (Soma * 10) % 11; 
+					if ((Resto == 10) || (Resto == 11))
+						Resto = 0;
 
-					if ((Resto == 10) || (Resto == 11)) 
-						Resto = 0; 
+					if (Resto != parseInt(strCPF.substring(9, 10)) )
+						return false;
 
-					if (Resto != parseInt(strCPF.substring(10, 11) ) ) 
-						return false; 
-					
-					§return true; 
+					Soma = 0;
+
+					for (i = 1; i <= 10; i++)
+						Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+
+					Resto = (Soma * 10) % 11;
+
+					if ((Resto == 10) || (Resto == 11))
+						Resto = 0;
+
+					if (Resto != parseInt(strCPF.substring(10, 11) ) )
+						return false;
+
+					§return true;
 				}
 
 			</script>
