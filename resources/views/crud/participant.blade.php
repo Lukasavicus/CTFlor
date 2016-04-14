@@ -20,8 +20,8 @@
                          <input name="radioSearch" type="radio" id="nameSearch_" value="Name" />
                          <label for="nameSearch_">Nome</label>
 
-                         <input name="radioSearch" type="radio" id="locationSearch_" value="Location" />
-                         <label for="locationSearch_">Localização</label>
+                         <input name="radioSearch" type="radio" id="locationSearch_" value="Universidade" />
+                         <label for="universitySearch_">Universidade</label>
 
                          <input name="radioSearch" type="radio" id="typeSearch_" value="Tipe" />
                          <label for="typeSearch_">Tipo</label>
@@ -43,6 +43,7 @@
 @stop
 
 @section('fields')
+  @if($show_form)
     <div class="row">
         <div class="card card-panel">
             @if($errors->any())
@@ -64,19 +65,27 @@
                         <label id="lid" for="icon_prefix">ID:</label>
                     </div>
 
-                    <div class="input-field col s4">
+                    <div class="input-field col s6">
                         <i class="material-icons prefix">perm_identity</i>
                         <input id="name_" name="name" type="text" class="validate">
                         <label id="lname" for="name">Nome</label>
                     </div>
 
-                    <div class="input-field col s4">
+                    <div class="input-field col s6">
                         <i class="material-icons prefix">credit_card</i>
                         <input id="cpf_" name="cpf" type="text" class="validate">
                         <label id="lcpf" for="cpf">CPF</label>
                     </div>
+                </div>
 
-                    <div class="input-field col s4">
+                <div class="row">
+
+                    <div class="input-field col s6">
+                        <i class="material-icons prefix">lock</i>
+                        <input id="password_" name="password" type="password" class="validate">
+                        <label id="lpassword" for="password">Senha</label>
+                    </div>
+                    <div class="input-field col s6">
                         <i class="material-icons prefix">email</i>
                         <input id="email_" name="email" type="email" class="validate">
                         <label id="lemail" for="email">Email</label>
@@ -85,28 +94,14 @@
 
 
                 <div class="row">
-                    <div class="input-field col s4">
+
+                    <div class="input-field col s6">
                         <i class="material-icons prefix">phone</i>
                         <input id="phone_" name="phone" type="text" class="validate">
                         <label id="lphone" for="phone">Telefone</label>
                     </div>
 
-                    <div class="input-field col s4">
-                        <i class="material-icons prefix">location_on</i>
-                        <input id="address_" name="address" type="text" class="validate">
-                        <label id="laddress" for="address">Endereço</label>
-                    </div>
-
-                    <div class="input-field col s4">
-                        <i class="material-icons prefix">lock</i>
-                        <input id="password_" name="password" type="password" class="validate">
-                        <label id="lpassword" for="password">Senha</label>
-                    </div>
-                </div>
-
-
-                <div class="row">
-                    <div class="input-field col s4">
+                    <div class="input-field col s6">
                         <select id="type_" name="type">
                             <option value="" selected="false">Escolha uma opção</option>
                             <option id="student" value="student">Estudante</option>
@@ -116,40 +111,54 @@
                         </select>
                         <label>Tipo de usuário</label>
                     </div>
+                </div>
 
-                    <div class="input-field col s4">
+
+                <div class="row">
+
+                     <div class="input-field col s6">
+                        <i class="material-icons prefix">location_on</i>
+                        <input id="address_" name="address" type="text" class="validate">
+                        <label id="laddress" for="address">Endereço</label>
+                    </div>
+                    
+
+                    <div class="input-field col s6">
                         <i class="material-icons prefix">store</i>
                         <input id="university_" name="university" type="text" class="validate">
                         <label id="luniversity" for="university">Universidade</label>
                     </div>
 
-                    <div class="input-field col s4">
+                    
+                </div>
+
+                <div class="row">
+
+                    <div class="input-field col s6">
                         <i class="material-icons prefix">assignment</i>
                         <input id="course_" name="course" type="text" class="validate">
                         <label id="lcourse" for="course">Curso</label>
                     </div>
-                </div>
 
-                <div class="row">
                     <div class="input-field col s6">
                         <i class="material-icons prefix">work</i>
                         <input id="department_" name="department" type="text" class="validate">
                         <label id="ldepartment" for="department">Departamento</label>
                     </div>
 
-                    <div class="input-field col s6">
+                    <!-- <div class="input-field col s6">
                         <i class="material-icons prefix">supervisor_account</i>
                         <input id="responsability_" name="responsability" type="text" class="validate">
                         <label id="lresponsability" for="responsability">Responsabilidade</label>
                     </div>
-
+                    -->
                 </div>
 
 
 
                 <div class="row">
 
-                    <div class="input-field col s3">
+                    <div class="input-field col s3 offset-s3">
                         <button id="incluir_alterar" type="submit" class="waves-effect waves-light btn">
                           <i class="material-icons left">input</i>
                           Inserir
@@ -177,6 +186,7 @@
             </form>
         </div>
     </div>
+  @endif
 @stop
 
 @section('elements')

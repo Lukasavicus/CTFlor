@@ -25,31 +25,32 @@ class BancaAvaliadoraController extends Controller
         $events = Event::orderBy('name')->get();
         $professors = Participant::where('type', 'like' ,'professor')->orderBy('name')->get();
         $boards = BancaAvaliadora::orderBy('created_at')->get();
+        $show_form = true;
 
-
-        return view('crud.banca', compact('events', 'professors', 'boards'));
+        return view('crud.banca', compact('events', 'professors', 'boards', 'show_form'));
     }
 
     public function searchBoard(Request $request)
     {
         $this->validate($request,[
                'valueSearch'       => 'required',
-               'radioSearch'       => 'required',
+               'radioSearch'       => 'required'
         ]);
 
         $param  = Input::get('radioSearch');
         $searchText = Input::get('valueSearch');
 
 
+
         if($param == "Professor")
             $results = BancaAvaliadora::join('participants', function($join)
-                                            { $join->on('BancaAvaliadora.professor1', '=', 'participants.id')
-                                                   ->orOn('BancaAvaliadora.professor2', '=', 'participants.id')
-                                                   ->orOn('BancaAvaliadora.professor3', '=', 'participants.id')
-                                                   ->where('participants.type', 'LIKE' ,'professor')
-                                                   ->where('participants.name', 'LIKE' , $searchText . '%');
-                                            })->orderBy('participants.name')->get();
-
+                                            { $join->on('BancaAvaliadora.professor1', '=', 'participants.id', 'or');
+                                              $join->where('BancaAvaliadora.professor2', '=', 'participants.id', 'or');
+                                              $join->where('BancaAvaliadora.professor3', '=', 'participants.id');
+                                            })
+                                            ->where('participants.type', 'LIKE' ,'professor')
+                                            ->where('participants.name', 'LIKE' , $searchText . '%')
+                                            ->orderBy('participants.name')->get();
         //event_name
         else
             $results = BancaAvaliadora::join('events', function($join)
@@ -60,8 +61,9 @@ class BancaAvaliadoraController extends Controller
         $events = Event::orderBy('name')->get();
         $professors = Participant::where('type', 'like' ,'professor')->orderBy('name')->get();
         $boards = BancaAvaliadora::orderBy('created_at')->get();
+        $show_form = false;
 
-        return view('crud.banca', compact('results', 'events', 'professors', 'boards'));
+        return view('crud.banca', compact('results', 'events', 'professors', 'boards', 'show_form'));
     }
 
     /**
@@ -75,9 +77,9 @@ class BancaAvaliadoraController extends Controller
         //
         $this->validate($request,[
             'id_event'              => 'required',
-            'professor1'            => 'required|unique',
-            'professor2'            => 'required|unique',
-            'professor3'            => 'required|unique',
+            'professor1'            => 'required',
+            'professor2'            => 'required',
+            'professor3'            => 'required',
         ]);
 
         $input = $request->all();

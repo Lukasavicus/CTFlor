@@ -20,11 +20,11 @@ class ActivityController extends Controller{
     public function activityIndex()
     {
 
-    	  $activities = Activity::orderBy('name')->get();
+    	$activities = Activity::orderBy('name')->get();
         $events = Event::orderBy('name')->get();
         $types = Activity::getTypes();
-
-        return view('crud.activity', compact('activities', 'events', 'types') );
+        $show_form = true;
+        return view('crud.activity', compact('activities', 'events', 'types', 'show_form') );
     }
 
 
@@ -79,8 +79,10 @@ class ActivityController extends Controller{
         else                            
             $results = Activity::where('type', 'LIKE' , $searchText)->orderBy('type')->get();
 
-        return view('crud.activity', compact('results', 'events', 'types'));
 
+        $show_form = false;
+        
+        return view('crud.activity', compact('results', 'events', 'types', 'show_form'));
     }
 
 
@@ -101,8 +103,6 @@ class ActivityController extends Controller{
             if($key['name'] == $request['name'] && $key['id'] != $request['id'])//&& $key['id'] != $atividade['id']
                 return redirect()->back()->with('error', 'Failed to update event!');
         }
-
-        //dd($request->all());
 
         $this->validate($request,[
             'name'              => 'required',

@@ -23,17 +23,18 @@ class MaterialController extends Controller
 
     public function materialIndex()
     {
-        $user_type = Auth::user()->getRole()  ;//: "testetstetet";
+        $user_type = Auth::user()->getRole();
 
         if( strcmp($user_type, "organization") == 0 ) 
             $materials = Material::orderBy('title')->get();
         else
             $materials = Material::where('id_participant', Auth::user()->getId() )->orderBy('title')->get();
 
-
         $activities = Activity::orderBy('name')->get();
 
-        return view('crud.material', compact('materials', 'activities') );
+        $show_form = true;
+
+        return view('crud.material', compact('materials', 'activities', 'show_form') );
     }
 
     public function searchMaterial(Request $request)
@@ -55,9 +56,11 @@ class MaterialController extends Controller
         else if($param == "Category")     
             $results = Material::where('category', 'LIKE' , $searchText . '%')->orderBy('category')->get();
         else      
-            $results = Participant::where('keyword', 'LIKE' , '%' .  $searchText . '%')->orderBy('keyword')->get();
+            $results = Material::where('keywords', 'LIKE' , '%' .  $searchText . '%')->orderBy('keywords')->get();
 
-        return view('crud.material', compact('results', 'materials', 'activities'));
+        $show_form = false;
+
+        return view('crud.material', compact('results', 'materials', 'activities', 'show_form'));
     }
 
 
@@ -98,19 +101,17 @@ class MaterialController extends Controller
 
     public function getMaterial(Request $request)
     {
-  		//dd($request);
-
         $file = Storage::disk('local')->get( $request->input('filepath') );
 
   		return ( new Response($file, 200) )->header('Content-Type', 'application/pdf')
                                            ->header('Content-Disposition', 'attachment') ;
-
     }
 
     public function deleteRegister(Request $request)
     {
         $id = Input::get('modalMSGValue');
-
+        $result = Material::where('id', '=', $id)->first();
+        Storage::delete($result->filepath);
         Material::where('id', '=', $id)->delete();
         
         return redirect()->back()->with('info', 'Material foi excluído com sucesso!');

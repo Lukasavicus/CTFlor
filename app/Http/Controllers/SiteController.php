@@ -46,8 +46,9 @@ class SiteController extends Controller{
     {
         Auth::logout();
         Session::flush();        
-        $info = 'Até mais e volte logo. :)';
-        return view('site.site_logout', compact('info'));
+        //$info = 'Até mais e volte logo. :)';
+        
+        return view('site.site_home');
     }
 
 }

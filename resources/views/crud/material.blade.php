@@ -3,9 +3,9 @@
 
 @section('subheader')
     <br><br>
-        <h1 class="header center green-text text-darken-3">Materiais</h1>
+        <h1 class="header center green-text text-darken-3">Submissões</h1>
         <div class="row center">
-          <h5 class="header col s12 light">Você pode buscar, criar, alterar e excluir Materiais</h5>
+          <h5 class="header col s12 light">Você pode buscar, criar, alterar e excluir os seus materiais (Artigos, apresentações ...)</h5>
         </div>
     <br><br>
 @stop
@@ -45,8 +45,9 @@
 
 @section('fields')
 
+  @if($show_form)    
     <div class="row">
-        <div class="card card-panel">
+      <div class="card card-panel">
         @if($errors->any())
             <div class="card-panel red waves-effect waves-light" role="alert">
                 @foreach($errors->all() as $error)
@@ -54,6 +55,8 @@
                 @endforeach
             </div>
         @endif
+
+
         <form class="col s12" method="POST" action="{{ route('crud.material') }}" enctype="multipart/form-data">
             <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
             <div class="row">
@@ -121,26 +124,25 @@
 
             <div class="row">
 
-                <div class="input-field col s4 offset-s2">
-                    <button type="submit" class="waves-effect waves-light btn">
-                      <i class="material-icons left">input</i>
-                      Inserir
-                    </button>
-                </div>
+                  <div class="input-field col s4 offset-s2">
+                      <button type="submit" class="waves-effect waves-light btn">
+                        <i class="material-icons left">input</i>
+                        Inserir
+                      </button>
+                  </div>
 
-                <div class="input-field col s4">
-                    <button class="waves-effect waves-light btn" type="reset">
-                      <i class="material-icons left">info_outline</i>
-                      Limpar campos
-                    </button>
-                </div>
+                  <div class="input-field col s4">
+                      <button class="waves-effect waves-light btn" type="reset">
+                        <i class="material-icons left">info_outline</i>
+                        Limpar campos
+                      </button>
+                  </div>
 
-            </div>
-
-
-        </form>
+              </div>
+          </form>
+      </div>
     </div>
-  </div>
+  @endif
 @stop
 
 

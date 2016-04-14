@@ -14,15 +14,13 @@ class EventController extends Controller{
 
     public function eventIndex(){
         $events = Event::orderBy('name')->get();
-
-        return view('crud.event', compact('events'));
+        $show_form = true;
+        return view('crud.event', compact('events', 'show_form'));
     }
 
 
-    public function store(Request $request){
-
-        //dd($request);
-
+    public function store(Request $request)
+    {
         $evento = Event::find($request['id']);
 
         if($evento != null)
@@ -61,13 +59,11 @@ class EventController extends Controller{
                 return redirect()->back()->with('error', 'Falha ao atualizar evento!');
         }
 
-        //dd($request->all());
-
-         $this->validate($request,[
-                'name'              => 'required',
-                'start'             => 'required',
-                'end'               => 'required',
-                'location'          => 'required',
+        $this->validate($request,[
+            'name'              => 'required',
+            'start'             => 'required',
+            'end'               => 'required',
+            'location'          => 'required',
         ]);
 
         $evento->update($request->all());
@@ -91,15 +87,15 @@ class EventController extends Controller{
 
         $param  = Input::get('radioSearch');
         $searchText = Input::get('valueSearch');
+        $show_form = false;
 
-
+        //dd( $param , $searchText );
         if($param == "Name")  
-            $events = Event::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
-
+            $events = Event::where('name', 'LIKE' , '%' . $searchText . '%')->orderBy('name')->get();
         else                  
-            $events = Event::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
-        //dd($events);
-        return view( 'crud.event',  compact('events'));
+            $events = Event::where('location', 'LIKE' , '%' . $searchText . '%')->orderBy('location')->get();
+        
+        return view( 'crud.event',  compact('events', 'show_form'));
     }
 
 

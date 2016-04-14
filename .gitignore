@@ -3,3 +3,6 @@
 config/database.php
 vendor
 .phpintel
+.DS_Store
+public/.DS_Store
+storage/.DS_Store
