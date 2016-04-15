@@ -50,11 +50,10 @@
             <ul class="left hide-on-med-and-down">
                 <li class="flow-text" >CTFlor</li>
                 <li class=""><a href="{{ route('home') }}">Home</a></li>
-
+                <li class=""><a href="{{ route('crud.material') }}">Submissões</a></li>
                 @if( strcmp( Auth::user()->getRole(), "organization") == 0  )
                     <!-- <li class=""><a href="{{ route('controle.principal') }}">Sistema</a></li> -->
                     <li class=""><a href="{{ route('crud.activity') }}">Atividades</a></li>
-                    <li class=""><a href="{{ route('crud.material') }}">Submissões</a></li>
                     <li class=""><a href="{{ route('crud.participant') }}">Participantes</a></li>
                     <li class=""><a href="{{ route('crud.banca') }}">Banca Examinadora</a></li>
                     <li class=""><a href="{{ route('crud.event') }}">Eventos</a></li>
