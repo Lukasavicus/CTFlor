@@ -2,7 +2,7 @@
 @section('content')
 			<!-- Page Content goes here -->
 
-<<<<<<< HEAD
+
 					    <!-- Pagina principal com o logo e informacao do evento -->
 						<div class="row no-margin-bottom">
 							<div id="intro" class="full-height full-width">
