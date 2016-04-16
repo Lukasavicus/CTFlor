@@ -45,18 +45,8 @@
 						 </div>
 						</div>
 
-						<div class="row no-margin-bottom">
-						 <div id="programacao" class="full-height full-width">
-								<div class="col s6">
-
-								</div>
 
 
-							<div class="col s6  no-margin-bottom">
-
-							</div>
-						 </div>
-						</div>
 <!--
 						<div class="row no-margin-bottom">
 						 <div id="palestrantes" class="full-height full-width">
@@ -137,10 +127,6 @@
 						</div>
 					</div>
 
-
-
-
-				</div>
 -->
 
 
@@ -226,8 +212,9 @@
 			    $(document).ready(function() {
 						$(".button-collapse").sideNav();
 
-						 
+
            			$("#type_").on("change",function(){
+
 		           			if($(this).val()== 'professor'){
 												$('.hide-curso').hide();
 								 			  $('.hide-dep').show();
