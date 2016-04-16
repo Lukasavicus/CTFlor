@@ -8,7 +8,7 @@
 						<div class="row no-margin-bottom">
 							<div id="intro" class="full-height full-width">
 								 <div  class="col s12 full-height text-center intro-cover">
-											<img class="responsive-img animated tada " id="ctflor-logo" src="../images/CTFlorfaixa.png"/>
+											<img class="responsive-img animated tada " id="ctflor-logo" src="../images/CTFlorfaixa.jpg"/>
 								</div>
 							</div>
 						</div>
