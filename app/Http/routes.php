@@ -24,7 +24,7 @@ use CTFlor\Models\Event;
         'uses' => '\CTFlor\Http\Controllers\HomeController@post',
     ]);
 
-    Route::get('/', [
+    Route::get('/',  [
         'uses' => '\CTFlor\Http\Controllers\SiteController@indexPage',
         'as' => 'site',
     ]);
@@ -127,7 +127,7 @@ use CTFlor\Models\Event;
     Route::get('/activity', [
     	'uses' 	=> '\CTFlor\Http\Controllers\ActivityController@activityIndex',
     	'as' 	=> 'crud.activity',
-      'middleware' => ['role'],
+        'middleware' => ['role'],
     ]);
 
     Route::post('/activity', [
@@ -162,7 +162,7 @@ use CTFlor\Models\Event;
 
 
 // ==================================================== SUBSCRIPTION ==============================================
-    
+
     // =============== ACTIVITY ==============
 
     Route::get('/subscribingactivity', [
@@ -294,6 +294,12 @@ use CTFlor\Models\Event;
         'middleware' => ['auth'],
     ]);
 
+    Route::post('/material/delete', [
+        'uses' => '\CTFlor\Http\Controllers\MaterialController@deleteRegister',
+        'as' => 'crud.material.delete',
+        'middleware' => ['role'],
+    ]);
+
 
     Route::post('/material/download', [
         'uses'  => '\CTFlor\Http\Controllers\MaterialController@getMaterial',
@@ -365,7 +371,3 @@ use CTFlor\Models\Event;
         'middleware' => ['auth'],
     ]);
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
-
-

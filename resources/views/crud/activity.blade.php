@@ -43,6 +43,7 @@
 @stop
 
 @section('fields')
+  @if($show_form)
     <div class="row">
       <div class="card card-panel">
 
@@ -190,6 +191,7 @@
             </form>
       </div>
     </div>
+  @endif
 @stop
 
 @section('elements')

@@ -8,7 +8,7 @@ use Hash;
 use Illuminate\Http\Request;
 use CTFlor\Models\Activity;
 use CTFlor\Models\Package;
-
+use Session;
 class SiteController extends Controller{
 
     public function indexPage(){
@@ -45,9 +45,10 @@ class SiteController extends Controller{
     public function signout()
     {
         Auth::logout();
-        //Session::flush();        
-        $info = 'Até mais e volte logo. :)';
-        return view('site.site_logout', compact('info'));
+        Session::flush();        
+        //$info = 'Até mais e volte logo. :)';
+        
+        return view('site.site_home');
     }
 
 }

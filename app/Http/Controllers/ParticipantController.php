@@ -19,7 +19,8 @@ class ParticipantController extends Controller{
     public function participantIndex()
     {
         $participants = Participant::orderBy('name')->get();
-        return view('crud.participant', compact('participants') );
+        $show_form = true;
+        return view('crud.participant', compact('participants','show_form') );
     }
 
     public function searchParticipant(Request $request)
@@ -36,19 +37,19 @@ class ParticipantController extends Controller{
         if($param == "Name")              
             $results = Participant::where('name', 'LIKE' , $searchText . '%')->orderBy('name')->get();
         else if($param == "Location")     
-            $results = Participant::where('location', 'LIKE' , $searchText . '%')->orderBy('location')->get();
+            $results = Participant::where('university', 'LIKE' , $searchText . '%')->orderBy('university')->get();
         else      
             $results = Participant::where('type', 'LIKE' , $searchText . '%')->orderBy('type')->get();
 
-        return view('crud.participant', compact('results'));
+        $show_form = false;
+
+        return view('crud.participant', compact('results', 'show_form'));
     }
 
 
 
 
     public function store(Request $request){
-
-        //dd($request);
 
         $participante = Participant::find($request['id']);
 
