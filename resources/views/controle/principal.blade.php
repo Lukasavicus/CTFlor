@@ -17,67 +17,19 @@
 
     		@include('templates.partials.alerts')
 
-      		<div class="row col s12">
-    			<div class="row">
-	                <div class="input-field col s4">
-	                	<i class="material-icons prefix">perm_identity</i>
-	                    <input id="cpf" name="cpf" type="text" class="validate" value="{{ Auth::user()['name']}}" disabled="true">
-	                    <label class="active" for="cpf">Usuário</label>
-	                </div>
-   	 			</div>
-
-
-   	 			<div class="row col s4">
-	   	 			<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-					    	<img class="activator" src="images/office.jpg">
-					    </div>
-					    <div class="card-content">
-					    	<span class="card-title activator grey-text text-darken-4">Eventos<i class="material-icons right">more_vert</i></span>
-					    	<p><a href="#">CRUD</a></p>
-					    </div>
-					    <div class="card-reveal">
-					    	<span class="card-title grey-text text-darken-4">Eventos<i class="material-icons right">close</i></span>
-					    	<p>Here is some more information about this product that is only revealed once clicked on.</p>
-					 	</div>
-					</div>
-				</div>
-
-   	 			<div class="row col s4">
-	   	 			<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-					    	<img class="activator" src="images/parallax2.jpg">
-					    </div>
-					    <div class="card-content">
-					    	<span class="card-title activator grey-text text-darken-4">Atividades<i class="material-icons right">more_vert</i></span>
-					    	<p><a href="#">CRUD</a></p>
-					    	<p><a href="#">Lista</a></p>
-					    </div>
-					    <div class="card-reveal">
-					    	<span class="card-title grey-text text-darken-4">Atividades<i class="material-icons right">close</i></span>
-					    	<p>Here is some more information about this product that is only revealed once clicked on.</p>
-					 	</div>
-					</div>
-				</div>
-
-
-   	 			<div class="row col s4">
-	   	 			<div class="card">
-						<div class="card-image waves-effect waves-block waves-light">
-					    	<img class="activator" src="images/parallax1.jpg">
-					    </div>
-					    <div class="card-content">
-					    	<span class="card-title activator grey-text text-darken-4">Participantes<i class="material-icons right">more_vert</i></span>
-					    	<p><a href="#">CRUD</a></p>
-					    	<p><a href="#">Lista</a></p>
-					    </div>
-					    <div class="card-reveal">
-					    	<span class="card-title grey-text text-darken-4">Participantes<i class="material-icons right">close</i></span>
-					    	<p>Here is some more information about this product that is only revealed once clicked on.</p>
-					 	</div>
-					</div>
-				</div>
-
+    		<div class="row">
+		        <div class="col s12">
+		          <div class="card green lighten-1">
+		            <div class="card-content white-text">
+		              <span class="card-title"><b>Palestras - Minicursos e Visitas Técnicas</b></span>
+		              <p><b>Em breve maiores informações serão publicadas no seu mural, fique atento pois o CTFlor já começou!</b></p>
+		            </div>
+		            <div class="card-action">
+		              <p>Visite a nossa página no <a class="blue-text text-darken-2" href="https://www.facebook.com/events/1742062519350334/" target="_blank">Facebook</a></p>
+		            </div>
+		          </div>
+		        </div>
+		    </div>
   
           	</div>
     	</div>

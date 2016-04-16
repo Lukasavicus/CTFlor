@@ -3,9 +3,9 @@
 
 @section('subheader')
     <br><br>
-        <h1 class="header center green-text text-darken-3">Materiais</h1>
+        <h1 class="header center green-text text-darken-3">Submissões</h1>
         <div class="row center">
-          <h5 class="header col s12 light">Você pode buscar, criar, alterar e excluir Materiais</h5>
+          <h5 class="header col s12 light">Você pode buscar, criar, alterar e excluir os seus materiais (Artigos, apresentações ...)</h5>
         </div>
     <br><br>
 @stop
@@ -45,8 +45,9 @@
 
 @section('fields')
 
+  @if($show_form)    
     <div class="row">
-        <div class="card card-panel">
+      <div class="card card-panel">
         @if($errors->any())
             <div class="card-panel red waves-effect waves-light" role="alert">
                 @foreach($errors->all() as $error)
@@ -54,6 +55,8 @@
                 @endforeach
             </div>
         @endif
+
+
         <form class="col s12" method="POST" action="{{ route('crud.material') }}" enctype="multipart/form-data">
             <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
             <div class="row">
@@ -69,7 +72,7 @@
               </div>
 
               <input id="participant_" name="id_participant" type="hidden" class="validate" value="{{ Auth::user()['id']  }}">
-            
+              
               <div class="input-field col s4">
                   <i class="material-icons prefix">description</i>
                   <input id="title_" name="title" type="text" class="validate">
@@ -77,28 +80,37 @@
               </div>
 
               <div class="input-field col s4">
-                  <i class="material-icons prefix">language</i>
-                  <input id="keywords_" name="keywords" type="text" class="validate">
-                  <label for="icon_prefix">Palavra-chave</label>
+                  <i class="material-icons prefix">perm_identity</i>
+                  <input id="author_" name="author" type="text" class="validate">
+                  <label for="icon_prefix">Autor Principal</label>
               </div>
-
+            
             </div>
 
             <div class="row">
 
-                <div class="input-field col s4">
-                    <i class="material-icons prefix">note_add</i>
-                    <input id="abstract_" name="abstract" type="text" class="validate">
-                    <label for="icon_prefix">Resumo</label>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">language</i>
+                    <textarea id="keywords_" name="keywords" class="materialize-textarea validate"></textarea>
+                    <label for="icon_prefix">Palavras-chave</label>
                 </div>
 
-                <div class="input-field col s4">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">note_add</i>
+                    <textarea id="abstract_" name="abstract" class="materialize-textarea validate"></textarea>
+                    <label for="icon_prefix">Resumo</label>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6">
                     <i class="material-icons prefix">clear_all</i>
                     <input id="category_" name="category" type="text" class="validate">
                     <label for="icon_prefix">Categoria</label>
                 </div>
 
-                <div class="file-field input-field col s4">
+                <div class="file-field input-field col s6">
                   <div class="btn">
                     <span>Arquivo</span>
                     <input id="fileField_" name="fileField" type="file">
@@ -107,31 +119,30 @@
                     <input id="filePath_" name="filename" class="file-path validate" type="text">
                   </div>
                 </div>
-
+            
             </div>
-
 
             <div class="row">
-                <div class="input-field col s4">
-                    <button type="submit" class="waves-effect waves-light btn">
-                      <i class="material-icons left">input</i>
-                      Inserir
-                    </button>
-                </div>
 
-                <div class="input-field col s4">
-                    <button class="waves-effect waves-light btn" type="reset">
-                      <i class="material-icons left">info_outline</i>
-                      Limpar campos
-                    </button>
-                </div>
+                  <div class="input-field col s4 offset-s2">
+                      <button type="submit" class="waves-effect waves-light btn">
+                        <i class="material-icons left">input</i>
+                        Inserir
+                      </button>
+                  </div>
 
-            </div>
+                  <div class="input-field col s4">
+                      <button class="waves-effect waves-light btn" type="reset">
+                        <i class="material-icons left">info_outline</i>
+                        Limpar campos
+                      </button>
+                  </div>
 
-
-        </form>
+              </div>
+          </form>
+      </div>
     </div>
-  </div>
+  @endif
 @stop
 
 
@@ -140,7 +151,8 @@
     <div class="row">
         <div class="card card-panel">
           <form class="col s12" action="{{ route('crud.material.get') }}" method="POST">
-                <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
+            <input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
+            <input type="hidden" id="filepath" name="filepath">            
 
           @if(isset($results))
             <table class="responsive-table">
@@ -166,6 +178,7 @@
                 <div class="card-panel red waves-effect waves-light" role="alert"> "Nenhum material foi inserido ainda." </div>
             @else
                 <table class="responsive-table">
+
                 @foreach($materials as $material)
                     <?php 
                           foreach ($activities as $activity)     
@@ -189,17 +202,11 @@
                           </td>
 
                           <td>
-                              <button type="submit" class="waves-effect waves-light btn" id="filepath_button">
+                              <button type="submit" class="waves-effect waves-light btn" id="filepath_button" onclick="fireDownload('{{ $material->filepath }}');">
                               <i class="tiny material-icons left">description</i>  Download </button>
-                              <input id="filepath_" name="filepath" type="hidden" class="validate" value="{{ $material->filepath }}">
-                          </td>
-
-                          <td>
-                              <button class="waves-effect waves-light btn" > 
-                              <i class="material-icons left">info_outline</i> Editar </button>
                           </td>
                           <td>
-                              <a href="#modal1" class="waves-effect waves-light btn modal-trigger"> 
+                              <a href="#modal1" class="waves-effect waves-light btn modal-trigger" onclick="modalSetText('{{ $material->id }}');">
                               <i class="material-icons left">delete</i> Excluir </a>
                           </td>
                     </tr>
@@ -215,6 +222,13 @@
 
 <script type="text/javascript">
     window.onload = function() {
-        document.formHeader.action = "{{ route('crud.event.delete') }}";
+        document.formHeader.action = "{{ route('crud.material.delete') }}";
+    }
+    function fireDownload(text)
+    {
+      console.log(text);
+      document.getElementById('filepath').innerHTML = text;
+      document.getElementById('filepath').value = text;
+
     }
 </script>

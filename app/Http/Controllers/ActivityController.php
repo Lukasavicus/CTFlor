@@ -19,12 +19,11 @@ class ActivityController extends Controller{
 
     public function activityIndex()
     {
-
-    	  $activities = Activity::orderBy('name')->get();
+    	$activities = Activity::orderBy('name')->get();
         $events = Event::orderBy('name')->get();
         $types = Activity::getTypes();
-
-        return view('crud.activity', compact('activities', 'events', 'types') );
+        $show_form = true;
+        return view('crud.activity', compact('activities', 'events', 'types', 'show_form') );
     }
 
 
@@ -51,7 +50,7 @@ class ActivityController extends Controller{
             $input = $request->all();
 
             Activity::create($input);
-            return redirect()->back()->with('info', 'Successfully created event!');
+            return redirect()->back()->with('info', 'Atividade criada com sucesso!');
         }
 
 
@@ -79,8 +78,10 @@ class ActivityController extends Controller{
         else                            
             $results = Activity::where('type', 'LIKE' , $searchText)->orderBy('type')->get();
 
-        return view('crud.activity', compact('results', 'events', 'types'));
 
+        $show_form = false;
+        
+        return view('crud.activity', compact('results', 'events', 'types', 'show_form'));
     }
 
 
@@ -90,7 +91,7 @@ class ActivityController extends Controller{
 
         Activity::where('name', '=', $id)->delete();
 
-        return redirect()->back()->with('info', 'Successfully deleted activity!');
+        return redirect()->back()->with('info', 'Atividade foi excluída com sucesso!');
     }
 
     private function alterRegister(Request $request, $atividade){
@@ -99,10 +100,8 @@ class ActivityController extends Controller{
 
         foreach ($activities as $key){
             if($key['name'] == $request['name'] && $key['id'] != $request['id'])//&& $key['id'] != $atividade['id']
-                return redirect()->back()->with('error', 'Failed to update event!');
+                return redirect()->back()->with('error', 'Falha ao atualizar o evento!');
         }
-
-        //dd($request->all());
 
         $this->validate($request,[
             'name'              => 'required',
