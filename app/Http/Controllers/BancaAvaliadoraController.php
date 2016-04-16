@@ -3,7 +3,7 @@
 namespace CTFlor\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
 use CTFlor\Http\Requests;
 use CTFlor\Http\Controllers\Controller;
 use CTFlor\Models\Event;
@@ -44,13 +44,13 @@ class BancaAvaliadoraController extends Controller
 
         if($param == "Professor")
             $results = BancaAvaliadora::join('participants', function($join)
-                                            { $join->on('BancaAvaliadora.professor1', '=', 'participants.id', 'or');
-                                              $join->where('BancaAvaliadora.professor2', '=', 'participants.id', 'or');
-                                              $join->where('BancaAvaliadora.professor3', '=', 'participants.id');
+                                            { $join->on('BancaAvaliadora.professor1', '=', 'participants.id', 'or')
+                                                   ->orOn('BancaAvaliadora.professor2', '=', 'participants.id', 'or')
+                                                   ->orOn('BancaAvaliadora.professor3', '=', 'participants.id');
                                             })
-                                            ->where('participants.type', 'LIKE' ,'professor')
-                                            ->where('participants.name', 'LIKE' , $searchText . '%')
-                                            ->orderBy('participants.name')->get();
+                                            ->where('participants.type', '=' ,'professor')
+                                            ->where('participants.name', 'LIKE' , '%' . $searchText . '%')
+                                            ->get();
         //event_name
         else
             $results = BancaAvaliadora::join('events', function($join)

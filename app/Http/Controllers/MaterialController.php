@@ -52,9 +52,9 @@ class MaterialController extends Controller
 
 
         if($param == "Title")              
-            $results = Material::where('title', 'LIKE' , $searchText . '%')->orderBy('title')->get();
+            $results = Material::where('title', 'LIKE' , '%' . $searchText . '%')->orderBy('title')->get();
         else if($param == "Category")     
-            $results = Material::where('category', 'LIKE' , $searchText . '%')->orderBy('category')->get();
+            $results = Material::where('category', 'LIKE' , '%' . $searchText . '%')->orderBy('category')->get();
         else      
             $results = Material::where('keywords', 'LIKE' , '%' .  $searchText . '%')->orderBy('keywords')->get();
 

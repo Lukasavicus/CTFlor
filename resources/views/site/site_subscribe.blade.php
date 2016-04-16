@@ -30,7 +30,7 @@
                                                         <span id="span-cpf" ></span>
     													<div class="input-field col s4">
     															<i class="material-icons prefix">credit_card</i>
-    															<input id="cpf_" name="cpf" type="text" class="validate">
+    															<input id="cpf_" name="cpf" type="number" class="validate">
     															<label id="lcpf" for="cpf">CPF</label>
     													</div>
     													<div class="input-field col s8">

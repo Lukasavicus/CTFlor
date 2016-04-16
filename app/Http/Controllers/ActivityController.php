@@ -19,7 +19,6 @@ class ActivityController extends Controller{
 
     public function activityIndex()
     {
-
     	$activities = Activity::orderBy('name')->get();
         $events = Event::orderBy('name')->get();
         $types = Activity::getTypes();
@@ -51,7 +50,7 @@ class ActivityController extends Controller{
             $input = $request->all();
 
             Activity::create($input);
-            return redirect()->back()->with('info', 'Successfully created event!');
+            return redirect()->back()->with('info', 'Atividade criada com sucesso!');
         }
 
 
@@ -92,7 +91,7 @@ class ActivityController extends Controller{
 
         Activity::where('name', '=', $id)->delete();
 
-        return redirect()->back()->with('info', 'Successfully deleted activity!');
+        return redirect()->back()->with('info', 'Atividade foi excluída com sucesso!');
     }
 
     private function alterRegister(Request $request, $atividade){
@@ -101,7 +100,7 @@ class ActivityController extends Controller{
 
         foreach ($activities as $key){
             if($key['name'] == $request['name'] && $key['id'] != $request['id'])//&& $key['id'] != $atividade['id']
-                return redirect()->back()->with('error', 'Failed to update event!');
+                return redirect()->back()->with('error', 'Falha ao atualizar o evento!');
         }
 
         $this->validate($request,[
