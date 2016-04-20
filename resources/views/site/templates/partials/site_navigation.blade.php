@@ -1,4 +1,4 @@
-<div class="navbar-fixed container-fluid">
+<div class=" navbar-fixed container-fluid">
   <nav class="brown darken-4 " >
       <div class="nav-wrapper">
         <a href="{{ route('site') }}" class="brand-logo">CTFlor</a>

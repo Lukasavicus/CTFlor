@@ -2,10 +2,9 @@
 @section('content')
 <div class="container">
         @include('templates.partials.alerts')
-        <h3> Entre na plataforma do CTFlor agora mesmo.</h3>
-        <br />
+        <h4 class="text-center"> Acompanhe sua inscrição</h4>
 
-        <div class="row">
+        <div class="row text-center">
                 <form class="col s12" action="{{ route('home') }}" method="POST">
                         <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                         <div class="row">
@@ -33,7 +32,7 @@
                             </div>
                     </div>
                 </form>
-        </div>			
+        </div>
 </div>
 
 @stop

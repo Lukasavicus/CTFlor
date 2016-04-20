@@ -5,9 +5,9 @@
         <div  id="cadastro" class=row>
             <div class="col s12">
     					<div class="container">
-    							<h3> Cadastre-se na nossa plataforma agora mesmo!</h3>
-    							<br />
+
     							<div class="row">
+                    <h4 class="text-center"> Inscreva-se no evento!</h4>
     									@if($errors->any())
     											<div id="erros" class="card-panel  red waves-effect waves-light" role="alert">
     													@foreach($errors->all() as $error)
@@ -17,7 +17,7 @@
     									@endif
 
 
-    									<form class="col s10" method="POST" action="{{ route('crud.participant') }}">
+    									<form class="col s12" method="POST" action="{{ route('crud.participant') }}">
     										<input type="hidden" id="_token" name="_token" value="{{ Session::token() }}">
     										<div class="row">
 
@@ -70,6 +70,7 @@
     															<input id="password_" name="password" type="password" class="validate">
     															<label id="lpassword" for="password">Senha</label>
     													</div>
+                              <span id="span-password" ></span>
     													<div class="input-field col s6">
     															<i class="material-icons prefix">lock</i>
     															<input id="password_1" name="password1" type="password" class="validate">
@@ -91,14 +92,13 @@
     															<input id="department_" name="department" type="text" class="validate">
     															<label id="ldepartment" for="department">Departamento</label>
     													</div>
-    													<div class="input-field col s3 offset-s2">
-                                                            <button id="incluir_alterar" type="submit" class="waves-effect green darken-4 waves-light btn">
-                                                              <i class="material-icons left">input</i>
-                                                              Inserir
+    													<div class="input-field col s6 offset-s2">
+                                                            <button id="incluir_alterar" type="submit" class="waves-effect green darken-4 waves-light btn-large">
+
+                                                                  <i class="material-icons left">input</i>
+                                                                      Inscrever-se
                                                             </button>
                                                         </div>
-
-
     											</div>
     										</div>
     								</form>
@@ -106,7 +106,7 @@
     					</div>
     				</div>
 
-    				
+
  </div>
   <script type="text/javascript" src="js/ownFunctions.js"></script>
   <script type="text/javascript">
@@ -116,13 +116,12 @@
             console.log("Fired CPF function");
 
             var reg_exp = /^([0-9]{3,3})\.([0-9]{3,3})\.([0-9]{3,3})\-([0-9]{2,2})$/;
-            
-            if (reg_exp.exec($('#cpf_').val()) === null && $('#cpf_').val()) {
-                
 
+            if (reg_exp.exec($('#cpf_').val()) === null && $('#cpf_').val()) {
                 $('#span-cpf').fadeIn(1000, function() {
                     $(this).html('Erro CPF:');
                 });
+
                 $('#span-cpf').fadeIn('slow', function() {
                     $(this).html('Informe um CPF válido.');
                 });
@@ -137,7 +136,27 @@
 
         });
 
+        $('#password_1').focusout(function() {
+            if ($('#password_').val()!== $('#password_1').val()) {
 
+                $('#span-password').fadeIn('slow', function() {
+                    $(this).html('Senha e confirmação divergem.');
+                });
+            }
+        });
+
+        $('#type_').on('change', function(){
+            if($('#type_').val() == "professor"){
+                $(".hide-dep").show();
+                $(".hide-curso").hide();
+            }else if $('#type_').val() == "student"){
+                $(".hide-curso").show();
+                $(".hide-dep").hide();
+            }else{
+                $(".hide-curso").hide();
+                  $(".hide-dep").hide();
+            }
+        });
 
 
   </script>

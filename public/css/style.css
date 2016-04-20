@@ -1,14 +1,35 @@
+.hidden{
+     opacity:0;
+}
+.visible{
+     opacity:1;
+}
+.no-padding{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
 nav{
   padding-left: 2%;
   font-family: Roboto !important;
   font-size: 8pt !important;
   font-weight: 200 !important;
 }
+
 nav ul li:hover {
    background-color: #6d4c41;
 }
+
 col{
   padding-left: 4%;
+}
+.board-c{
+  height: 100px;
+  width: 400px;
+}
+.td-number{
+  width: 5px;
+  font-size: 3vw;
+  white-space: nowrap;
 }
 .image-circle{
     display: block;
@@ -66,6 +87,7 @@ col{
 	height:	301px;
 	background-color:#ffffff ;
 	opacity:0.74;
+  margin: 0px;
 
 }
 
@@ -89,6 +111,7 @@ col{
 	max-width: 60%;
 	max-height:60%;
 	margin-top: 10%;
+  text-align: center;
 
 }
 iframe{
@@ -99,6 +122,7 @@ iframe{
     margin-left: auto;
     margin-right: auto;
     max-width: initial;
+
 
 }
 
