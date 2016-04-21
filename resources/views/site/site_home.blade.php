@@ -16,7 +16,7 @@
 						<div class="section scrollspy no-padding">
 							 <div class="container-fluid">
 									<div id="event" class="row no-margin-bottom">
-									 
+
 											<div class="col l6 m6 s12">
 													 <h3 id="element-to-animate" class="animated">CTFlor - SIMATEF</h3>
 													 <p  class="flow-text paragraph-fsize"> O Congresso de Engenharia Florestal e IV Simpósio de Meio Ambiente e
@@ -32,7 +32,7 @@
 											</div>
 
 
-										<div class="col l6 m6 s12  center no-margin-bottom">
+										<div class="col l6 m6 s12  text-center no-margin-bottom">
 											 <div class="container-fluid animated slideInRight">
 														<div class=" photo " id="img-first" >
 															 <img class="responsive-img "  src="../images/photo1.png"/>
