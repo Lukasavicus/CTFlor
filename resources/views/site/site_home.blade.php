@@ -4,21 +4,21 @@
 <div class="container-fluid">
 					    <!-- Pagina principal com o logo e informacao do evento -->
 					<div id="intro" class="section scrollspy no-padding">
-					 	<div class="container-fluid">
+					 	<div class="container-fluid animate bounc">
 								<div class="row no-margin-bottom">
 										 <div  class="col l12 m12 s12 full-height text-center intro-cover">
-														<img class="center responsive-img animated bounce " id="ctflor-logo" src="../images/CTFlorfaixa.jpg"/>
+														<img class="center responsive-img  " id="ctflor-logo" src="../images/CTFlorfaixa.jpg"/>
 										 </div>
 								</div>
 						</div>
 					</div>
 
-						<div class="section scrollspy no-padding">
-							 <div class="container-fluid">
-									<div id="event" class="row no-margin-bottom">
-									 
+						<div id="event" class="section scrollspy no-padding">
+							 <div class="container-fluid side-padding">
+									<div  class="row no-margin-bottom">
+
 											<div class="col l6 m6 s12">
-													 <h3 id="element-to-animate" class="animated">CTFlor - SIMATEF</h3>
+													 <h3 id="element-to-animate" class="animated text-center">CTFlor - SIMATEF</h3>
 													 <p  class="flow-text paragraph-fsize"> O Congresso de Engenharia Florestal e IV Simpósio de Meio Ambiente e
 															Tecnologia Florestal serão realizados nos dias 21, 22 e 23 de maio, sendo um evento
 															promovido pela Ecoflorestal Jr. Empresa e Consultoria Florestal, formada por alunos
@@ -117,8 +117,8 @@
 						 </div>
 						</div>
 -->
-				<div class="section scrollspy no-padding">
-					<div class="row ">
+				<div id="submissao" class="section scrollspy no-padding">
+					<div class="row side-padding">
 						<h3 class="text-center black-text">Submissões </h3>
 
 						<div class="col l8">
@@ -155,7 +155,7 @@
 						<div class="col l4">
 								<div class="row">
 									 <div class="col s12">
-										 <div class="card small teal ">
+										 <div class="card small green-ctflor ">
 											 <div class="card-content white-text">
 												 <span class="card-title">Formato</span>
 												 <p>É aconselhavel que sejam seguidos os modelos de apresentação e relatório.
@@ -170,7 +170,7 @@
 					     </div>
 							 <div class="row">
 								 <div class="col s12 m12 l12">
-										 <div class="card-panel teal">
+										 <div class="card-panel green-ctflor">
 												 <span class="white-text">Os trabalhos aprovados pela Comissão Científica do CTFlor
 															 e pela assessoria da Revista Pesquisa Agropecuária Tropical
 															 farão parte de um número especial do periódico.
@@ -183,7 +183,7 @@
 			</div>
 		</div>
 
-			<div id="location" class="row no-margin-bottom">
+			<div id="location" class="section scrollspy row no-margin-bottom no-padding">
 		               <div  class=" location-cover full-height full-width">
 										   <h3 id="p-location" class="text-center">Local</h3>
 		                <div class="col l6 m6 s12">
@@ -203,7 +203,7 @@
 		  </div>
 
 
-			<div id="organization" class="container scrollspy">
+			<div id="organization" class="section scrollspy no-padding">
 			    <div class="row center" >
 			      <h3 class="text-center"> Organização </h3>
 						<br/>
@@ -233,7 +233,7 @@
 				<script>
 			    $(document).ready(function(){
 					$(".button-collapse").sideNav();
-
+					$('.scrollspy').scrollSpy();
 					// hide our element on page load
 						/* $('#element-to-animate').css('opacity', 0);
 
@@ -241,6 +241,14 @@
 								 $('#element-to-animate').addClass('fadeInLeft');
 						 }, { offset: '50%' });
 */
+
+							var options = [
+								{selector: '#image-test', offset: 50, callback: function() {
+									Materialize.fadeInImage("#ctflor-logo");
+								} }
+							];
+							Materialize.scrollFire(options);
+
 					});
 
 			</script>

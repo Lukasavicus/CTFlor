@@ -5,7 +5,7 @@
         <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="#event">O EVENTO</a></li>
-          <li><a href="#submission">SUBMISSÕES</a></li>
+          <li><a href="#submissao">SUBMISSÕES</a></li>
         <!--  <li><a href="#">PROGRAMAÇÃO</a></li> -->
         <!--  <li><a href="#">PALESTRANTES</a></li> -->
           <li><a href="#organization">ORGANIZAÇÃO</a></li>
@@ -16,7 +16,7 @@
         </ul>
         <ul class="side-nav" id="mobile-demo">
           <li><a href="#event">O EVENTO</a></li>
-          <li><a href="#submission">SUBMISSÕES</a></li>
+          <li><a href="#submissao">SUBMISSÕES</a></li>
           <!-- <li><a href="#">PROGRAMAÇÃO</a></li> -->
           <!-- <li><a href="#">PALESTRANTES</a></li> -->
           <li><a href="#">ORGANIZAÇÃO</a></li>

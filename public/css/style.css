@@ -8,6 +8,19 @@
   padding-top: 0px;
   padding-bottom: 0px;
 }
+.side-padding{
+  padding-left: 2%;
+  padding-right: 2%;
+}
+body {
+   display: flex;
+   min-height: 100vh;
+   flex-direction: column;
+ }
+
+ main {
+   flex: 1 0 auto;
+ }
 nav{
   padding-left: 2%;
   font-family: Roboto !important;
@@ -60,6 +73,9 @@ col{
 #event{
 	background-color: #108240;
   padding-left: 2%;
+}
+.green-ctflor{
+  background-color: #108240;
 }
 #organizacao{
   padding: 2%;
