@@ -13,9 +13,11 @@
 						</div>
 					</div>
 
+
 						<div id="event" class="section scrollspy no-padding">
 							 <div class="container-fluid side-padding">
 									<div  class="row no-margin-bottom">
+
 
 											<div class="col l6 m6 s12">
 													 <h3 id="element-to-animate" class="animated text-center">CTFlor - SIMATEF</h3>
@@ -32,7 +34,7 @@
 											</div>
 
 
-										<div class="col l6 m6 s12  center no-margin-bottom">
+										<div class="col l6 m6 s12  text-center no-margin-bottom">
 											 <div class="container-fluid animated slideInRight">
 														<div class=" photo " id="img-first" >
 															 <img class="responsive-img "  src="../images/photo1.png"/>
