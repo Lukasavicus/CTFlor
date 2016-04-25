@@ -41,16 +41,18 @@
                 <!-- <li class=""><a href="{{ route('subscribingP') }}">Lista por Participantes</a></li> -->
             </ul>
 
-            <ul id="dropdown2" class="dropdown-content">                
+            <ul id="dropdown2" class="dropdown-content">
                 <li> <a href="#">Mudar Senha</a> </li>
                 <li class="divider"></li>
                 <li> <a href="{{ route('site.signout') }}">Sair</a> </li>
             </ul>
-
-            <ul class="left hide-on-med-and-down">
-                <li class="flow-text" >CTFlor</li>
+						<a href="{{ route('site') }}" class="brand-logo">CTFlor</a>
+            <ul class="right hide-on-med-and-down">
                 <li class=""><a href="{{ route('home') }}">Home</a></li>
                 <li class=""><a href="{{ route('crud.material') }}">Submissões</a></li>
+								@if( strcmp( Auth::user()->getRole(), "organization") != 0  )
+										<li class=""><a href="{{ route('crud.activity') }}">Atividades</a></li>
+								@endif
                 @if( strcmp( Auth::user()->getRole(), "organization") == 0  )
                     <!-- <li class=""><a href="{{ route('controle.principal') }}">Sistema</a></li> -->
                     <li class=""><a href="{{ route('crud.activity') }}">Atividades</a></li>
