@@ -6,27 +6,31 @@ use CTFlor\Models\Participant;
 use Illuminate\Http\Request;
 class HomeController extends Controller{
 	
-    public function index(){
+    public function index()
+    {
 		return view('home');
 	}
 	
     public function post(Request $request)
     {
         $this->validate($request, [
-            'cpf' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
 
-        $credentials = $request->only(['cpf', 'password']); 
+        $credentials = $request->only(['email', 'password']); 
         
-        if(!Auth::attempt($request->only(['cpf', 'password']))){
+        if(!Auth::attempt($request->only(['email', 'password']))){
             return redirect()->back()->with('error', 'Sua senha ou cpf não conferem');
         }
         
-        return redirect()->route('controle.principal')->with('personal', 'Bem Vindo ' . Auth::user()['name'] . '.' . ' Você está logado no CTFlor! ')->with('pagePrincipal','pagePrincipal');
+        return redirect()->route('controle.principal')
+                         ->with('personal', 'Bem Vindo ' . Auth::user()['name'] . '.' . ' Você está logado no CTFlor! ')
+                         ->with('pagePrincipal','pagePrincipal');
     }
     
-    public function principal(){
+    public function principal()
+    {
     	return view('controle.principal');
     }
 }

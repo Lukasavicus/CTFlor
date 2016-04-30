@@ -11,10 +11,10 @@
                             <div class="card card-content">
                                         <div class="input-field col s8">
                                                 <i class="material-icons prefix">perm_identity</i>
-                                                <input id="cpf" name="cpf" type="text" class="validate"/>
-                                                <label class="active" for="cpf">CPF</label>
-                                                @if($errors->has('cpf'))
-                                                    <span>{{ $errors->first('cpf') }}</span>
+                                                <input id="email" name="email" type="email" class="validate"/>
+                                                <label class="active" for="email">Email</label>
+                                                @if($errors->has('email'))
+                                                    <span>{{ $errors->first('email') }}</span>
                                                 @endif
                                         </div>
                                         <div class="input-field col s8">
