@@ -13,6 +13,19 @@
 use CTFlor\Models\Event;
 
 
+// ==================================================== USER OPTIONS ==================================================
+    
+    // Password reset link request routes...
+    Route::get('password/email', 'Auth\PasswordController@getEmail');
+    Route::post('password/email', 'Auth\PasswordController@postEmail');
+
+    // Password reset routes...
+    Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+    Route::post('password/reset', 'Auth\PasswordController@postReset');
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
 // ==================================================== SITE ======================================================
 
      Route::get('/site', [
@@ -357,6 +370,10 @@ use CTFlor\Models\Event;
         'uses' => '\CTFlor\Http\Controllers\PagesController@packageSelectedIndex',
     ]);
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
 
 
 // ==================================================== PAYMENT ==================================================

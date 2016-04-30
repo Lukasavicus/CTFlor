@@ -28,6 +28,7 @@
 
                                         <div class="card-action input-field col s8">
                                             <button class="waves-effect waves-light green darken-4 btn" type="submit">Sign In</button>
+                                            <a class="waves-effect waves-light green darken-4 white-text btn" href="/password/email">Esqueci Senha</a>
                                         </div>
                             </div>
                     </div>

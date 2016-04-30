@@ -1,0 +1,5 @@
+.DS_Store
+.env
+Archive.zip
+vendor/
+.phpintel/
