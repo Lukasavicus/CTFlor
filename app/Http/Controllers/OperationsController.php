@@ -36,4 +36,31 @@ class OperationsController extends Controller
     }
 
 
+    public function getAlterPasswordView()
+    {
+        return view('operations.alterpassword');
+    }
+
+    public function changeUserPassword(Request $request)
+    {
+        $old_password_hashed = Participant::where( 'id' , '=', Auth::user()->getId() )->first(['password']);
+        
+        if (Hash::check( $request->oldpassword, $old_password_hashed->password ) ) 
+        {
+            if( strcasecmp($request->password, $request->password_confirmation) == 0)
+            {
+                DB::table('participants')->where( 'id', Auth::user()->getId() )->update( ['password' => Hash::make($request->password) ] );
+                return redirect()->back()->with('info', 'Senha atualizada com sucesso!');
+            }
+            else
+            {
+                return redirect()->back()->with('error', 'Nova Senha e Confirmação de Senha não conferem');
+            }
+        }
+        else
+        {
+            return redirect()->back()->with('error', 'Senha Antiga e Nova Senha não conferem');
+        }
+    }
+
 }

@@ -37,7 +37,7 @@
         <div class="nav-wrapper">
 			<a href="{{ route('site') }}" class="brand-logo">CTFlor</a>
             <ul class="right hide-on-med-and-down">
-                <li class=""><a href="{{ route('home') }}">Home</a></li>
+                <li class=""><a href="{{ route('controle.principal') }}">Home</a></li>
                 <li class=""><a href="{{ route('crud.material') }}">Submissões</a></li>
                 
 
@@ -51,7 +51,7 @@
 
 
                 <li><a class="dropdown-button" href="#!"  data-beloworigin="true" data-activates="dropdown2">Opções do Usuário<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li class=""><a href="{{ route('site') }}">Site do Evento</a></li>
+                <!-- <li class=""><a href="{{ route('site') }}">Site do Evento</a></li> -->
             </ul>
             <ul id="dropdown1" class="dropdown-content">
                 <li class=""><a href="{{ route('subscribing') }}">Lista por Atividades</a></li>
@@ -59,6 +59,7 @@
 
             <ul id="dropdown2" class="dropdown-content">
                 <li> <a href="{{  route('operations.alteruserinfo') }}">Alterar Informações Pessoais</a> </li>
+                <li> <a href="{{  route('operations.alterpassword') }}">Alterar Senha</a> </li>
                 <li class="divider"></li>
                 <li> <a href="{{ route('site.signout') }}">Sair</a> </li>
             </ul>

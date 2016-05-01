@@ -30,5 +30,5 @@ class PasswordController extends Controller
         //$this->middleware('guest');
     }
 
-    protected $redirectTo = '/site';
+    protected $redirectTo = '/principal';
 }

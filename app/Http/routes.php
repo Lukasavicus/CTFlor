@@ -37,6 +37,14 @@ use CTFlor\Models\Event;
         'uses'  => '\CTFlor\Http\Controllers\OperationsController@changeUserInfo',
     ]);
 
+    Route::get('/operations.alterpassword', [
+        'uses'  => '\CTFlor\Http\Controllers\OperationsController@getAlterPasswordView',
+        'as'    => 'operations.alterpassword',
+    ]);
+
+    Route::post('/operations.alterpassword', [
+        'uses'  => '\CTFlor\Http\Controllers\OperationsController@changeUserPassword',
+    ]);
 
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
