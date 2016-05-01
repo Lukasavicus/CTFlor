@@ -13,7 +13,7 @@
 use CTFlor\Models\Event;
 
 
-// ==================================================== USER OPTIONS ==================================================
+// ==================================================== EMAIL RESET  ==================================================
     
     // Password reset link request routes...
     Route::get('password/email', 'Auth\PasswordController@getEmail');
@@ -26,9 +26,26 @@ use CTFlor\Models\Event;
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
+// ==================================================== USER OPERATIONS ==================================================
+    
+    Route::get('/operations.alteruserinfo', [
+        'uses'  => '\CTFlor\Http\Controllers\OperationsController@getAlterUserInfoView',
+        'as'    => 'operations.alteruserinfo',
+    ]);
+
+    Route::post('/operations.alteruserinfo', [
+        'uses'  => '\CTFlor\Http\Controllers\OperationsController@changeUserInfo',
+    ]);
+
+
+
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
 // ==================================================== SITE ======================================================
 
-     Route::get('/site', [
+    Route::get('/site', [
       'uses' => '\CTFlor\Http\Controllers\HomeController@index',
       'as' => 'home',
     ]);
@@ -68,7 +85,6 @@ use CTFlor\Models\Event;
     ]);
 
     Route::get('/site.signout', [
-
         'uses' => '\CTFlor\Http\Controllers\SiteController@signout',
         'as' => 'site.signout',
     ]);

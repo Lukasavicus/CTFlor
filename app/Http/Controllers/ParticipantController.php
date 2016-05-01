@@ -48,8 +48,8 @@ class ParticipantController extends Controller{
 
 
 
-
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $participante = Participant::find($request['id']);
 
@@ -141,7 +141,7 @@ class ParticipantController extends Controller{
 
         //dd($request->all());
 
-        $this->validate($request,[
+            $this->validate($request,[
                 'name'          => 'required',
                 'cpf'           => 'required',
                 'email'         => 'required',
