@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use CTFlor\Http\Requests;
 use CTFlor\Http\Controllers\Controller;
 use CTFlor\Models\Participant;
+use CTFlor\Models\Activity;
 use CTFlor\Models\ActivityParticipant;
 use CTFlor\Models\TechnicalVisitParticipant;
 use Validator;
@@ -61,6 +62,25 @@ class OperationsController extends Controller
         {
             return redirect()->back()->with('error', 'Senha Antiga e Nova Senha não conferem');
         }
+    }
+
+
+    public function getActivitySubscriptionView( )
+    {
+        $lectures = Activity::where('type','=','lecture')->get();
+        return view('operations.activity', compact('lectures'));
+    }
+
+    public function getMiniCourseView( )
+    {
+        $mini_courses = Activity::where('type','=','mini_course')->get();
+        return view('operations.mini_course', compact('mini_courses'));
+    }
+
+    public function getTechnicalVisitView( )
+    {
+        $technical_courses = Activity::where('type','=','technical_visit')->get();
+        return view('operations.technical_course', compact('technical_courses'));   
     }
 
 }

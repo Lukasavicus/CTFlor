@@ -47,6 +47,35 @@ use CTFlor\Models\Event;
     ]);
 
 
+
+    Route::get('/operations.activity_subscription', [
+        'uses'  => '\CTFlor\Http\Controllers\OperationsController@getActivitySubscriptionView',
+        'as'    => 'operations.activity_subscription',
+    ]);
+
+    Route::post('/operations.activity_subscription', [
+        'uses'  => '\CTFlor\Http\Controllers\OperationsController@changeUserPassword',
+    ]);
+
+    Route::get('/operations.mini_course', [
+        'uses'  => '\CTFlor\Http\Controllers\OperationsController@getMiniCourseView',
+        'as'    => 'operations.mini_course',
+    ]);
+
+    Route::post('/operations.mini_course', [
+        'uses'  => '\CTFlor\Http\Controllers\OperationsController@changeUserPassword',
+    ]);
+
+    Route::get('/operations.technical_visit', [
+        'uses'  => '\CTFlor\Http\Controllers\OperationsController@getTechnicalVisitView',
+        'as'    => 'operations.technical_visit',
+    ]);
+
+    Route::post('/operations.technical_visit', [
+        'uses'  => '\CTFlor\Http\Controllers\OperationsController@changeUserPassword',
+    ]);
+
+
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 

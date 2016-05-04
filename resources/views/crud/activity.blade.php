@@ -156,6 +156,12 @@
                         <label id="lPriceActivity" for="icon_telephone">Preço</label>
                     </div>
 
+                    <div class="input-field col s8">
+                        <i class="material-icons prefix">note_add</i>
+                        <textarea id="description" name="description" class="materialize-textarea validate"></textarea>
+                        <label for="icon_prefix">Descrição</label>
+                    </div>
+
                 </div>
 
                 <div class="row">
